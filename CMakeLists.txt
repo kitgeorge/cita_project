@@ -8,8 +8,8 @@ endif()
 
 find_package(Boost REQUIRED)
 include_directories(${BOOST_INCLUDE_DIR} include/potential 
-include/vectors include/integration include/consts 
-include/utility include/multithreading include/fourier)
+include/vectors include/consts include/df
+include/utility include/multithreading)
 
 file(GLOB src_files src/*/*.cpp include/*/*.hpp)
 add_library(mylib SHARED ${src_files})
@@ -18,8 +18,8 @@ set_target_properties(mylib PROPERTIES SUFFIX ".so")
 target_link_libraries(mylib ${BOOST_LIBRARIES})
 
 target_include_directories(mylib INTERFACE include/potential 
-include/vectors include/integration include/consts 
-include/utility include/multithreading include/fourier)
+include/vectors include/df include/consts 
+include/utility include/multithreading)
 
 
 
