@@ -1,8 +1,8 @@
+#pragma once
 #include <vector>
 #include <csignal>
 #include <iostream>
-
-#pragma once;
+#include <array>
 
 namespace utility {
 

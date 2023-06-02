@@ -9,7 +9,8 @@ endif()
 find_package(Boost REQUIRED)
 include_directories(${BOOST_INCLUDE_DIR} include/potential 
 include/vectors include/consts include/df
-include/utility include/multithreading)
+include/utility include/multithreading
+include/tp_integration include/rc)
 
 file(GLOB src_files src/*/*.cpp include/*/*.hpp)
 add_library(mylib SHARED ${src_files})
@@ -19,9 +20,10 @@ target_link_libraries(mylib ${BOOST_LIBRARIES})
 
 target_include_directories(mylib INTERFACE include/potential 
 include/vectors include/df include/consts 
-include/utility include/multithreading)
+include/utility include/multithreading
+include/tp_integration include/rc)
 
-
+file(GLOB main1 main/test_particle.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -42,6 +44,18 @@ target_link_libraries(
     mylib
     GTest::gtest_main
     fftw3)
+
+foreach(main_file ${main1})
+    add_executable(
+        test_particle
+        ${main1}
+        ${src_files})
+    target_link_libraries(
+        test_particle
+        mylib
+        GTest::gtest_main
+    )
+endforeach(main_file ${main_files})
 
 include(GoogleTest)
 gtest_discover_tests(unit_tests)

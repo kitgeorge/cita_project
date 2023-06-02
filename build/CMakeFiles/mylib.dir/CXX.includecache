@@ -9,8 +9,12 @@
 ../include/potential/potential_funcs.hpp
 force.hpp
 ../include/potential/force.hpp
+coords.hpp
+../include/potential/coords.hpp
 add_functions.hpp
 ../include/potential/add_functions.hpp
+array
+-
 
 ../include/potential/spiral.hpp
 functional
@@ -34,6 +38,16 @@ string
 fstream
 -
 
+../include/vectors/coords.hpp
+array
+-
+vector
+-
+cmath
+-
+numbers
+-
+
 ../include/vectors/force.hpp
 array
 -
@@ -47,4 +61,6 @@ numbers
 -
 vector_io.hpp
 /home/kit/Documents/cita_project/src/potential/vector_io.hpp
+cmath
+-
 

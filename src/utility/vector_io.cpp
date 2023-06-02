@@ -18,7 +18,7 @@ template void writeCsv(std::string path, std::vector<double> data);
 
 std::vector<double> readCsv(std::string path) {
     std::ifstream infile(path);
-    std::string(line);
+    std::string line;
     std::vector<double> output;
     while(std::getline(infile, line)) {
         output.push_back(std::stod(line));

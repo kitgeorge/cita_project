@@ -16,6 +16,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/df"
   "../include/utility"
   "../include/multithreading"
+  "../include/tp_integration"
   "_deps/googletest-src/googletest/include"
   "_deps/googletest-src/googletest"
   )

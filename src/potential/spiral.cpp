@@ -11,17 +11,17 @@ PotentialFuncs getSpiralPotential(double m, double k_R,
         return amplitude*cos(m*(phi - pattern_speed*t) + k_R*R);
     };
 
-    std::function<vrs::Force(double, double, double)>
-    force = [=] (double R, double phi, double t) {
+    std::function<std::array<double, 2>(double, double, double)>
+    polar_force = [=] (double R, double phi, double t) {
         double f_R = k_R*amplitude
                      *sin(m*(phi - pattern_speed*t) + k_R*R);
-        double f_phi = m*amplitude
+        double f_phi = m/R*amplitude
                      *sin(m*(phi - pattern_speed*t) + k_R*R);
-        vrs::Force output({f_R, f_phi, 0});
+        std::array<double, 2> output = {f_R, f_phi};
         return output;
     };
     
-    potential::PotentialFuncs output(potential, force);
+    potential::PotentialFuncs output(potential, polar_force);
     return output;
 }
 
