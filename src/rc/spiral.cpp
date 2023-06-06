@@ -4,7 +4,7 @@
  * \author	Rimpei Chiba
  * \date		2021
  */
-
+/*
 #include "spiral.hpp"
 
 namespace RC
@@ -109,3 +109,4 @@ namespace RC
     return f;
   }
 }
+*/

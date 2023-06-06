@@ -4,7 +4,7 @@
  * \author	Rimpei Chiba
  * \date		2022-
  */
-
+/*
 #include "potential_multipole.hpp"
 
 namespace RC
@@ -237,3 +237,4 @@ namespace RC
 		return d2Phidr2;
 	}
 }
+*/

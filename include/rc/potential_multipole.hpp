@@ -4,6 +4,7 @@
  * \author	Rimpei Chiba
  * \date		2022-
  */
+ /*
 
 #ifndef _RC_POTENTIAL_MULTIPOLE_H_
 #define _RC_POTENTIAL_MULTIPOLE_H_
@@ -51,3 +52,4 @@ namespace RC
 }
 
 #endif
+*/

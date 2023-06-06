@@ -11,6 +11,8 @@
 // Function to get Jsres from (wp,Jf1,Jf2)
 //
 
+namespace RC {
+
 double getJsres(int Nr, int Npsi, double wp, double Jf1, double Jf2, 
   double Jr_max, double L_max, double dJr, double dL, 
   std::vector<std::vector<double>> &wp_J, bool &gotvalue)
@@ -76,7 +78,7 @@ double getJsres(int Nr, int Npsi, double wp, double Jf1, double Jf2,
   double Js0 = Js_min;
   const auto Jr0 = Jf1 + Nr * Js0;
   const auto L0  = Jf2 + Npsi * Js0;
-  const auto wp0 = XGivenJ(Jr0, L0, dJr, dL, wp_J);
+  const auto wp0 = RC::XGivenJ(Jr0, L0, dJr, dL, wp_J);
   double dwp0 = wp0 - wp;
   double Js1 = Js_max;
   const auto Jr1 = Jf1 + Nr * Js1;
@@ -240,7 +242,7 @@ double getJrres(double wp, double Lres, double Jr_max,
     const auto dwp_err = 1.e-4 * Units::Gyr_i; 
     const int count_max = 100;
     double Jr0 = 0.;
-    const auto wp0 = XGivenJ(Jr0, Lres, dJr, dL, wp_J);
+    const auto wp0 = RC::XGivenJ(Jr0, Lres, dJr, dL, wp_J);
     auto dwp0 = wp0 - wp;
     auto Jr1 = Jr_max;
     const auto wp1 = XGivenJ(Jr1, Lres, dJr, dL, wp_J);
@@ -299,6 +301,8 @@ double getJrres(double wp, double Lres, double Jr_max, double dJr, double dL,
 {
   bool gotvalue;
   return getJrres(wp, Lres, Jr_max, dJr, dL, wp_J, gotvalue);
+}
+
 }
 
 

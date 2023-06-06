@@ -5,10 +5,12 @@
  * \date		2019-
  */
 
-#include "mapXVtoAA2D.hpp"
 
-MapXVtoAA2D::MapXVtoAA2D(RC::Potential *Phi):
-	warn(false),
+#include "mapXVtoAA2D.hpp"
+namespace RC {
+
+MapXVtoAA2D::MapXVtoAA2D(potential::AxsymFuncs *Phi):
+	warn(true),
 	Phi(Phi),
 	dr_apsis(1.e-2 * Units::kpc),
 	dr_apsis_err(1.e-9 * Units::kpc),
@@ -32,7 +34,7 @@ void MapXVtoAA2D::clear()
 bool MapXVtoAA2D::findApsis(double L, double E)
 {
 	const auto Lsq = L * L;
-	const auto rc = Phi->rcGivenL(fabs(L));
+	const auto rc = Phi->RcGivenL(fabs(L));
 	if(rc > r_upper_limit)
 	{
 		if(warn)
@@ -59,7 +61,7 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 		// Find r_apo
 		// (1) Rough estimate
 		r_apo = 0.;
-		while((Phi->pot(r_apo) - E) < 0)
+		while((Phi->potential_R(r_apo) - E) < 0)
 		{
 			r_apo += dr_apsis;
 			if(r_apo > r_upper_limit)
@@ -73,12 +75,12 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 		r_apo = BracketNewtonRaphson(r_apo - dr_apsis, r_apo,
 		[&](double r, double &dfdr)
 		{
-			dfdr = Phi->dPhidr(r);
-			return Phi->pot(r) - E;
+			dfdr = Phi->dPhidR(r);
+			return Phi->potential_R(r) - E;
 		}, dr_apsis_err);
 
 		// (3) Ensure pr^2 = E - Phi(r_apo) > 0
-		while(E - Phi->pot(r_apo) <= 0)
+		while(E - Phi->potential_R(r_apo) <= 0)
 		{
 			r_apo -= dr_apsis_err;
 			if(r_apo < rc)
@@ -99,7 +101,7 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 
 		// Apocentre
 		r_apo = rc;
-		while(0.5 * Lsq / (r_apo * r_apo) + (Phi->pot(r_apo) - E) < 0)
+		while(0.5 * Lsq / (r_apo * r_apo) + (Phi->potential_R(r_apo) - E) < 0)
 		{
 			r_apo += dr_apsis;
 			if(r_apo > r_upper_limit)
@@ -111,7 +113,7 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 					show("L", L * Units::kpc2Gyr_i);
 					show("rc", rc * Units::kpc_i);
 					show("r_apo", r_apo * Units::kpc_i);
-					show("E_apo", (0.5 * Lsq / (r_apo * r_apo) + Phi->pot(r_apo)) * Units::kpc2Gyr2_i);
+					show("E_apo", (0.5 * Lsq / (r_apo * r_apo) + Phi->potential_R(r_apo)) * Units::kpc2Gyr2_i);
 				}
 				return false;
 			}
@@ -126,7 +128,7 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 			}
 			return false;
 		}
-		if(0.5 * Lsq / ((r_apo - dr_apsis) * (r_apo - dr_apsis)) + (Phi->pot(r_apo - dr_apsis) - E) > 0)
+		if(0.5 * Lsq / ((r_apo - dr_apsis) * (r_apo - dr_apsis)) + (Phi->potential_R(r_apo - dr_apsis) - E) > 0)
 		{
 			// Near circular orbit. Pass to epicycle approx.
 			r_apo = rc;
@@ -135,7 +137,7 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 
 		// Pericentre
 		r_peri = rc;
-		while(0.5 * Lsq / (r_peri * r_peri) + (Phi->pot(r_peri) - E) < 0)
+		while(0.5 * Lsq / (r_peri * r_peri) + (Phi->potential_R(r_peri) - E) < 0)
 		{
 			r_peri -= dr_apsis;
 			if(r_peri < r_lower_limit)
@@ -144,7 +146,7 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 				break;
 			}
 		}
-		if(0.5 * Lsq / ((r_peri + dr_apsis) * (r_peri + dr_apsis)) + (Phi->pot(r_peri + dr_apsis) - E) > 0)
+		if(0.5 * Lsq / ((r_peri + dr_apsis) * (r_peri + dr_apsis)) + (Phi->potential_R(r_peri + dr_apsis) - E) > 0)
 		{
 			// Near circular orbit. Pass to epicycle approx.
 			r_peri = rc;
@@ -158,8 +160,8 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 		[&](double r, double &dfdr)
 		{
 			auto rsq = r * r;
-			dfdr = Phi->dPhidr(r) - Lsq / (rsq * r);
-			return Phi->pot(r) + 0.5 * Lsq / rsq - E;
+			dfdr = Phi->dPhidR(r) - Lsq / (rsq * r);
+			return Phi->potential_R(r) + 0.5 * Lsq / rsq - E;
 		}, dr_apsis_err);
 		if(r_apo > r_upper_limit)
 		{
@@ -177,8 +179,8 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 			[&](double r, double &dfdr)
 			{
 				auto rsq = r * r;
-				dfdr = Phi->dPhidr(r) - Lsq / (rsq * r);
-				return Phi->pot(r) + 0.5 * Lsq / rsq - E;
+				dfdr = Phi->dPhidR(r) - Lsq / (rsq * r);
+				return Phi->potential_R(r) + 0.5 * Lsq / rsq - E;
 			}, dr_apsis_err);
 			if(r_peri > r_upper_limit)
 			{
@@ -194,7 +196,7 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 
 		// (3) Adjust r_peri and r_apo such that r_peri_true < r_peri, r_apo < r_apo_true
 		// to ensure pr(r) is real (pr^2 > 0) and non-zero within [r_peri,r_apo].
-		while((2. * (E - Phi->pot(r_apo)) - Lsq / (r_apo * r_apo)) <= 0)
+		while((2. * (E - Phi->potential_R(r_apo)) - Lsq / (r_apo * r_apo)) <= 0)
 		{
 			r_apo -= dr_apsis_err;
 			if(r_apo < rc)
@@ -203,7 +205,7 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 				break;
 			}
 		}
-		while((2. * (E - Phi->pot(r_peri)) - Lsq / (r_peri * r_peri)) <= 0)
+		while((2. * (E - Phi->potential_R(r_peri)) - Lsq / (r_peri * r_peri)) <= 0)
 		{
 			r_peri += dr_apsis_err;
 			if(r_peri > rc)
@@ -214,8 +216,8 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 		}
 		//r_apo -= dr_apsis_err;
 		//r_peri += dr_apsis_err;
-		assert(2*(E - Phi->pot(r_apo))  - Lsq/(r_apo*r_apo)   > 0);
-		assert(2*(E - Phi->pot(r_peri)) - Lsq/(r_peri*r_peri) > 0);
+		assert(2*(E - Phi->potential_R(r_apo))  - Lsq/(r_apo*r_apo)   > 0);
+		assert(2*(E - Phi->potential_R(r_peri)) - Lsq/(r_peri*r_peri) > 0);
 		return true;
 	}
 }
@@ -223,7 +225,7 @@ bool MapXVtoAA2D::findApsis(double L, double E)
 void MapXVtoAA2D::epicycle(double L)
 {  
 	// Compute orbital frequencies using epicycle theory.
-	const auto rc = Phi->rcGivenL(fabs(L));
+	const auto rc = Phi->RcGivenL(fabs(L));
 	r_apo  = rc;
 	r_peri = rc;
 	wr     = Phi->kappa(rc);
@@ -352,7 +354,7 @@ bool MapXVtoAA2D::mapLEtoJ(double L_, double E_, int N_tau)
 				const auto g    = tanh(a);
 				const auto dgdt = Pih * cosh(tau) / RC::sq(cosh(a));
 				const auto r    = r_mid + delta_r * g;
-				const auto pr2  = 2. * (E - Phi->pot(r)) - Lsq / (r * r);
+				const auto pr2  = 2. * (E - Phi->potential_R(r)) - Lsq / (r * r);
 				if(pr2 > 0)
 				{
 					const auto pr = sqrt(pr2);
@@ -395,7 +397,7 @@ bool MapXVtoAA2D::mapXVtoAA(double r, double psi, double vr, double vpsi, int N_
 {
 	clear();
 	L = r * vpsi; // could be either pos or neg
-	E = Phi->pot(r) + 0.5 * (vr * vr + vpsi * vpsi);
+	E = Phi->potential_R(r) + 0.5 * (vr * vr + vpsi * vpsi);
 	const auto result = mapLEtoJ(L, E, N_tau);
 	if(!result)
 	{
@@ -447,7 +449,7 @@ bool MapXVtoAA2D::mapXVtoAA(double r, double psi, double vr, double vpsi, int N_
 				const auto dgdt = Pih * cosh(tau) / (cosh(a) * cosh(a));
 				const auto rp = r_mid + delta_r * g;
 				const auto rpsqi = 1. / (rp * rp);
-				const auto pr2 = 2. * (E - Phi->pot(rp)) - Lsq * rpsqi;
+				const auto pr2 = 2. * (E - Phi->potential_R(rp)) - Lsq * rpsqi;
 				if(pr2 > 0)
 				{
 					const auto pr = sqrt(pr2);
@@ -489,7 +491,7 @@ bool MapXVtoAA2D::mapXVtoAA(double r, double psi, double vr, double vpsi, int N_
 			else
 			{
 				// Epicycle theory.
-				const auto rc = Phi->rcGivenL(fabs(L));
+				const auto rc = Phi->RcGivenL(fabs(L));
 				const auto k = Phi->kappa(rc);
 				const auto w = Phi->Omega(rc);
 				const auto ra = sqrt(2. * Jr / k);
@@ -555,7 +557,7 @@ double MapXVtoAA2D::W_k(int kr, int kp, const std::function<double (double)> &Ph
 			const auto g    = tanh(a);
 			const auto dgdt = Pih * cosh(tau) / RC::sq(cosh(a));
 			const auto r    = r_mid + delta_r * g;
-			const auto pr2  = 2. * (E - Phi->pot(r)) - Lsq / (r * r);
+			const auto pr2  = 2. * (E - Phi->potential_R(r)) - Lsq / (r * r);
 			if(pr2 > 0)
 			{
 				const auto pr = sqrt(pr2);
@@ -585,7 +587,7 @@ double MapXVtoAA2D::W_k(int kr, int kp, const std::function<double (double)> &Ph
 	}
 }
 
-void gridEOverJ(RC::Potential *Phi, int N_tau, int N_Jr, int N_L, 
+void gridEOverJ(potential::AxsymFuncs *Phi, int N_tau, int N_Jr, int N_L, 
 double dJr, double dL, std::vector<std::vector<double>> &E_J, bool prog)
 {
 	E_J.resize(N_Jr, std::vector<double>(N_L, 0.));
@@ -717,5 +719,6 @@ double XGivenJ(double Jr, double L, double dJr, double dL, std::vector<std::vect
 	{
 		return 0.;
 	}
+}
 }
 

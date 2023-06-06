@@ -4,7 +4,7 @@
  * \author	Rimpei Chiba
  * \date		2020-
  */
-
+/*
 #ifndef _BAR_H_
 #define _BAR_H_
 
@@ -93,3 +93,4 @@ namespace RC
 }
 
 #endif
+*/

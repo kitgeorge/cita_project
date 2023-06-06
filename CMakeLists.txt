@@ -43,6 +43,7 @@ target_link_libraries(
     unit_tests
     mylib
     GTest::gtest_main
+    ${BOOST_LIBRARIES}
     fftw3)
 
 foreach(main_file ${main1})
@@ -54,6 +55,7 @@ foreach(main_file ${main1})
         test_particle
         mylib
         GTest::gtest_main
+        ${BOOST_LIBRARIES}
     )
 endforeach(main_file ${main_files})
 

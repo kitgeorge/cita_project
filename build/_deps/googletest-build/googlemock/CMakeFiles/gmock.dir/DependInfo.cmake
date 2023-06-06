@@ -17,6 +17,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/utility"
   "../include/multithreading"
   "../include/tp_integration"
+  "../include/rc"
   "_deps/googletest-src/googlemock/include"
   "_deps/googletest-src/googlemock"
   "_deps/googletest-src/googletest/include"

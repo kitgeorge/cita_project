@@ -10,48 +10,222 @@ CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.cpp.o: ../src/multit
 CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.test.cpp.o: ../src/multithreading/execute_in_parallel.test.cpp
 
+CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/consts/units1.hpp
+CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/potential/axsym_funcs.hpp
 CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/potential/mestel.hpp
 CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/rc/utils.hpp
 CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/vectors/coords.hpp
-CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/vectors/force.hpp
 CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../src/potential/mestel.cpp
 
+CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/consts/units1.hpp
+CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/potential/mestel.hpp
 CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/rc/utils.hpp
 CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/vectors/coords.hpp
-CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../include/vectors/force.hpp
 CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o: ../src/potential/potential_funcs.test.cpp
 
 CMakeFiles/mylib.dir/src/potential/spiral.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/mylib.dir/src/potential/spiral.cpp.o: ../include/potential/spiral.hpp
+CMakeFiles/mylib.dir/src/potential/spiral.cpp.o: ../include/rc/force.hpp
 CMakeFiles/mylib.dir/src/potential/spiral.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/mylib.dir/src/potential/spiral.cpp.o: ../include/vectors/coords.hpp
-CMakeFiles/mylib.dir/src/potential/spiral.cpp.o: ../include/vectors/force.hpp
 CMakeFiles/mylib.dir/src/potential/spiral.cpp.o: ../src/potential/spiral.cpp
 
 CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o: ../include/potential/spiral.hpp
+CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o: ../include/rc/force.hpp
 CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o: ../include/utility/vector_io.hpp
 CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o: ../include/vectors/coords.hpp
-CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o: ../include/vectors/force.hpp
 CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o: ../src/potential/spiral.test.cpp
 
+CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o: ../include/rc/HEALPix.hpp
+CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o: ../src/rc/HEALPix.cpp
+
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../include/rc/bar.hpp
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../src/rc/bar.cpp
+
+CMakeFiles/mylib.dir/src/rc/export.cpp.o: ../include/rc/export.hpp
+CMakeFiles/mylib.dir/src/rc/export.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/export.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/export.cpp.o: ../src/rc/export.cpp
+
+CMakeFiles/mylib.dir/src/rc/force.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/force.cpp.o: ../src/rc/force.cpp
+
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/consts/units1.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/getJres.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../include/vectors/coords.hpp
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../src/rc/getJres.cpp
+
+CMakeFiles/mylib.dir/src/rc/import.cpp.o: ../include/rc/import.hpp
+CMakeFiles/mylib.dir/src/rc/import.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/import.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/import.cpp.o: ../src/rc/import.cpp
+
+CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o: ../include/rc/import.hpp
+CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o: ../include/rc/interpolate.hpp
+CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o: ../src/rc/interpolate.cpp
+
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/consts/units1.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../include/vectors/coords.hpp
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../src/rc/mapXVtoAA2D.cpp
+
+CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o: ../src/rc/math_RC.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../src/rc/potential.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/import.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/potential_AGAMA.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/potential_CartGrid.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/potential_multipole.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../src/rc/potential_AGAMA.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/import.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/potential_CartGrid.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../src/rc/potential_CartGrid.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/potential_Hernquist.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../src/rc/potential_Hernquist.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/import.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/potential_multipole.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../src/rc/potential_multipole.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../include/rc/potential_powerLawVc.hpp
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../src/rc/potential_powerLawVc.cpp
+
+CMakeFiles/mylib.dir/src/rc/sht.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/sht.cpp.o: ../include/rc/sht.hpp
+CMakeFiles/mylib.dir/src/rc/sht.cpp.o: ../src/rc/sht.cpp
+
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.o: ../include/potential/spiral.hpp
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.o: ../include/vectors/coords.hpp
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.o: ../src/rc/spiral.cpp
+
+CMakeFiles/mylib.dir/src/rc/utils.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/rc/utils.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/rc/utils.cpp.o: ../src/rc/utils.cpp
+
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/rc/force.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/tp_integration/integrate_rk4.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/utility/add_arrays.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/vectors/coords.hpp
-CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/vectors/force.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../src/tp_integration/integrate_rk4.cpp
 
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../include/rc/force.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../include/tp_integration/integrate_rk4.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../include/utility/add_arrays.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../include/vectors/coords.hpp
-CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../include/vectors/force.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../src/tp_integration/integrate_rk4.test.cpp
 
 CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o: ../include/utility/add_functions.hpp
@@ -76,9 +250,9 @@ CMakeFiles/mylib.dir/src/vectors/coords.cpp.o: ../src/vectors/coords.cpp
 CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o: ../src/vectors/coords.test.cpp
 
-CMakeFiles/mylib.dir/src/vectors/force.cpp.o: ../include/vectors/force.hpp
-CMakeFiles/mylib.dir/src/vectors/force.cpp.o: ../src/vectors/force.cpp
+CMakeFiles/mylib.dir/src/vectors/force1.cpp.o: ../include/vectors/force1.hpp
+CMakeFiles/mylib.dir/src/vectors/force1.cpp.o: ../src/vectors/force1.cpp
 
-CMakeFiles/mylib.dir/src/vectors/force.test.cpp.o: ../include/vectors/force.hpp
-CMakeFiles/mylib.dir/src/vectors/force.test.cpp.o: ../src/vectors/force.test.cpp
+CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o: ../include/vectors/force1.hpp
+CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o: ../src/vectors/force1.test.cpp
 

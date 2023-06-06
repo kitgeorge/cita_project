@@ -516,6 +516,600 @@ src/potential/spiral.test.cpp.s:
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.s
 .PHONY : src/potential/spiral.test.cpp.s
 
+src/rc/HEALPix.o: src/rc/HEALPix.cpp.o
+
+.PHONY : src/rc/HEALPix.o
+
+# target to build an object file
+src/rc/HEALPix.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/HEALPix.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/HEALPix.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o
+.PHONY : src/rc/HEALPix.cpp.o
+
+src/rc/HEALPix.i: src/rc/HEALPix.cpp.i
+
+.PHONY : src/rc/HEALPix.i
+
+# target to preprocess a source file
+src/rc/HEALPix.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/HEALPix.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/HEALPix.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.i
+.PHONY : src/rc/HEALPix.cpp.i
+
+src/rc/HEALPix.s: src/rc/HEALPix.cpp.s
+
+.PHONY : src/rc/HEALPix.s
+
+# target to generate assembly for a file
+src/rc/HEALPix.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/HEALPix.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/HEALPix.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.s
+.PHONY : src/rc/HEALPix.cpp.s
+
+src/rc/bar.o: src/rc/bar.cpp.o
+
+.PHONY : src/rc/bar.o
+
+# target to build an object file
+src/rc/bar.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/bar.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/bar.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/bar.cpp.o
+.PHONY : src/rc/bar.cpp.o
+
+src/rc/bar.i: src/rc/bar.cpp.i
+
+.PHONY : src/rc/bar.i
+
+# target to preprocess a source file
+src/rc/bar.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/bar.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/bar.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/bar.cpp.i
+.PHONY : src/rc/bar.cpp.i
+
+src/rc/bar.s: src/rc/bar.cpp.s
+
+.PHONY : src/rc/bar.s
+
+# target to generate assembly for a file
+src/rc/bar.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/bar.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/bar.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/bar.cpp.s
+.PHONY : src/rc/bar.cpp.s
+
+src/rc/export.o: src/rc/export.cpp.o
+
+.PHONY : src/rc/export.o
+
+# target to build an object file
+src/rc/export.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/export.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/export.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/export.cpp.o
+.PHONY : src/rc/export.cpp.o
+
+src/rc/export.i: src/rc/export.cpp.i
+
+.PHONY : src/rc/export.i
+
+# target to preprocess a source file
+src/rc/export.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/export.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/export.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/export.cpp.i
+.PHONY : src/rc/export.cpp.i
+
+src/rc/export.s: src/rc/export.cpp.s
+
+.PHONY : src/rc/export.s
+
+# target to generate assembly for a file
+src/rc/export.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/export.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/export.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/export.cpp.s
+.PHONY : src/rc/export.cpp.s
+
+src/rc/force.o: src/rc/force.cpp.o
+
+.PHONY : src/rc/force.o
+
+# target to build an object file
+src/rc/force.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/force.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/force.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/force.cpp.o
+.PHONY : src/rc/force.cpp.o
+
+src/rc/force.i: src/rc/force.cpp.i
+
+.PHONY : src/rc/force.i
+
+# target to preprocess a source file
+src/rc/force.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/force.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/force.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/force.cpp.i
+.PHONY : src/rc/force.cpp.i
+
+src/rc/force.s: src/rc/force.cpp.s
+
+.PHONY : src/rc/force.s
+
+# target to generate assembly for a file
+src/rc/force.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/force.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/force.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/force.cpp.s
+.PHONY : src/rc/force.cpp.s
+
+src/rc/getJres.o: src/rc/getJres.cpp.o
+
+.PHONY : src/rc/getJres.o
+
+# target to build an object file
+src/rc/getJres.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/getJres.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/getJres.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/getJres.cpp.o
+.PHONY : src/rc/getJres.cpp.o
+
+src/rc/getJres.i: src/rc/getJres.cpp.i
+
+.PHONY : src/rc/getJres.i
+
+# target to preprocess a source file
+src/rc/getJres.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/getJres.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/getJres.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/getJres.cpp.i
+.PHONY : src/rc/getJres.cpp.i
+
+src/rc/getJres.s: src/rc/getJres.cpp.s
+
+.PHONY : src/rc/getJres.s
+
+# target to generate assembly for a file
+src/rc/getJres.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/getJres.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/getJres.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/getJres.cpp.s
+.PHONY : src/rc/getJres.cpp.s
+
+src/rc/import.o: src/rc/import.cpp.o
+
+.PHONY : src/rc/import.o
+
+# target to build an object file
+src/rc/import.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/import.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/import.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/import.cpp.o
+.PHONY : src/rc/import.cpp.o
+
+src/rc/import.i: src/rc/import.cpp.i
+
+.PHONY : src/rc/import.i
+
+# target to preprocess a source file
+src/rc/import.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/import.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/import.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/import.cpp.i
+.PHONY : src/rc/import.cpp.i
+
+src/rc/import.s: src/rc/import.cpp.s
+
+.PHONY : src/rc/import.s
+
+# target to generate assembly for a file
+src/rc/import.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/import.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/import.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/import.cpp.s
+.PHONY : src/rc/import.cpp.s
+
+src/rc/interpolate.o: src/rc/interpolate.cpp.o
+
+.PHONY : src/rc/interpolate.o
+
+# target to build an object file
+src/rc/interpolate.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/interpolate.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/interpolate.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o
+.PHONY : src/rc/interpolate.cpp.o
+
+src/rc/interpolate.i: src/rc/interpolate.cpp.i
+
+.PHONY : src/rc/interpolate.i
+
+# target to preprocess a source file
+src/rc/interpolate.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/interpolate.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/interpolate.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/interpolate.cpp.i
+.PHONY : src/rc/interpolate.cpp.i
+
+src/rc/interpolate.s: src/rc/interpolate.cpp.s
+
+.PHONY : src/rc/interpolate.s
+
+# target to generate assembly for a file
+src/rc/interpolate.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/interpolate.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/interpolate.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/interpolate.cpp.s
+.PHONY : src/rc/interpolate.cpp.s
+
+src/rc/mapXVtoAA2D.o: src/rc/mapXVtoAA2D.cpp.o
+
+.PHONY : src/rc/mapXVtoAA2D.o
+
+# target to build an object file
+src/rc/mapXVtoAA2D.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/mapXVtoAA2D.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/mapXVtoAA2D.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o
+.PHONY : src/rc/mapXVtoAA2D.cpp.o
+
+src/rc/mapXVtoAA2D.i: src/rc/mapXVtoAA2D.cpp.i
+
+.PHONY : src/rc/mapXVtoAA2D.i
+
+# target to preprocess a source file
+src/rc/mapXVtoAA2D.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/mapXVtoAA2D.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/mapXVtoAA2D.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.i
+.PHONY : src/rc/mapXVtoAA2D.cpp.i
+
+src/rc/mapXVtoAA2D.s: src/rc/mapXVtoAA2D.cpp.s
+
+.PHONY : src/rc/mapXVtoAA2D.s
+
+# target to generate assembly for a file
+src/rc/mapXVtoAA2D.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/mapXVtoAA2D.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/mapXVtoAA2D.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.s
+.PHONY : src/rc/mapXVtoAA2D.cpp.s
+
+src/rc/math_RC.o: src/rc/math_RC.cpp.o
+
+.PHONY : src/rc/math_RC.o
+
+# target to build an object file
+src/rc/math_RC.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/math_RC.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/math_RC.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o
+.PHONY : src/rc/math_RC.cpp.o
+
+src/rc/math_RC.i: src/rc/math_RC.cpp.i
+
+.PHONY : src/rc/math_RC.i
+
+# target to preprocess a source file
+src/rc/math_RC.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/math_RC.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/math_RC.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/math_RC.cpp.i
+.PHONY : src/rc/math_RC.cpp.i
+
+src/rc/math_RC.s: src/rc/math_RC.cpp.s
+
+.PHONY : src/rc/math_RC.s
+
+# target to generate assembly for a file
+src/rc/math_RC.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/math_RC.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/math_RC.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/math_RC.cpp.s
+.PHONY : src/rc/math_RC.cpp.s
+
+src/rc/potential.o: src/rc/potential.cpp.o
+
+.PHONY : src/rc/potential.o
+
+# target to build an object file
+src/rc/potential.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential.cpp.o
+.PHONY : src/rc/potential.cpp.o
+
+src/rc/potential.i: src/rc/potential.cpp.i
+
+.PHONY : src/rc/potential.i
+
+# target to preprocess a source file
+src/rc/potential.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential.cpp.i
+.PHONY : src/rc/potential.cpp.i
+
+src/rc/potential.s: src/rc/potential.cpp.s
+
+.PHONY : src/rc/potential.s
+
+# target to generate assembly for a file
+src/rc/potential.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential.cpp.s
+.PHONY : src/rc/potential.cpp.s
+
+src/rc/potential_AGAMA.o: src/rc/potential_AGAMA.cpp.o
+
+.PHONY : src/rc/potential_AGAMA.o
+
+# target to build an object file
+src/rc/potential_AGAMA.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_AGAMA.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_AGAMA.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o
+.PHONY : src/rc/potential_AGAMA.cpp.o
+
+src/rc/potential_AGAMA.i: src/rc/potential_AGAMA.cpp.i
+
+.PHONY : src/rc/potential_AGAMA.i
+
+# target to preprocess a source file
+src/rc/potential_AGAMA.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_AGAMA.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_AGAMA.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.i
+.PHONY : src/rc/potential_AGAMA.cpp.i
+
+src/rc/potential_AGAMA.s: src/rc/potential_AGAMA.cpp.s
+
+.PHONY : src/rc/potential_AGAMA.s
+
+# target to generate assembly for a file
+src/rc/potential_AGAMA.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_AGAMA.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_AGAMA.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.s
+.PHONY : src/rc/potential_AGAMA.cpp.s
+
+src/rc/potential_CartGrid.o: src/rc/potential_CartGrid.cpp.o
+
+.PHONY : src/rc/potential_CartGrid.o
+
+# target to build an object file
+src/rc/potential_CartGrid.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_CartGrid.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_CartGrid.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o
+.PHONY : src/rc/potential_CartGrid.cpp.o
+
+src/rc/potential_CartGrid.i: src/rc/potential_CartGrid.cpp.i
+
+.PHONY : src/rc/potential_CartGrid.i
+
+# target to preprocess a source file
+src/rc/potential_CartGrid.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_CartGrid.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_CartGrid.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.i
+.PHONY : src/rc/potential_CartGrid.cpp.i
+
+src/rc/potential_CartGrid.s: src/rc/potential_CartGrid.cpp.s
+
+.PHONY : src/rc/potential_CartGrid.s
+
+# target to generate assembly for a file
+src/rc/potential_CartGrid.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_CartGrid.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_CartGrid.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.s
+.PHONY : src/rc/potential_CartGrid.cpp.s
+
+src/rc/potential_Hernquist.o: src/rc/potential_Hernquist.cpp.o
+
+.PHONY : src/rc/potential_Hernquist.o
+
+# target to build an object file
+src/rc/potential_Hernquist.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_Hernquist.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_Hernquist.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o
+.PHONY : src/rc/potential_Hernquist.cpp.o
+
+src/rc/potential_Hernquist.i: src/rc/potential_Hernquist.cpp.i
+
+.PHONY : src/rc/potential_Hernquist.i
+
+# target to preprocess a source file
+src/rc/potential_Hernquist.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_Hernquist.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_Hernquist.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.i
+.PHONY : src/rc/potential_Hernquist.cpp.i
+
+src/rc/potential_Hernquist.s: src/rc/potential_Hernquist.cpp.s
+
+.PHONY : src/rc/potential_Hernquist.s
+
+# target to generate assembly for a file
+src/rc/potential_Hernquist.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_Hernquist.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_Hernquist.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.s
+.PHONY : src/rc/potential_Hernquist.cpp.s
+
+src/rc/potential_multipole.o: src/rc/potential_multipole.cpp.o
+
+.PHONY : src/rc/potential_multipole.o
+
+# target to build an object file
+src/rc/potential_multipole.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_multipole.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_multipole.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o
+.PHONY : src/rc/potential_multipole.cpp.o
+
+src/rc/potential_multipole.i: src/rc/potential_multipole.cpp.i
+
+.PHONY : src/rc/potential_multipole.i
+
+# target to preprocess a source file
+src/rc/potential_multipole.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_multipole.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_multipole.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.i
+.PHONY : src/rc/potential_multipole.cpp.i
+
+src/rc/potential_multipole.s: src/rc/potential_multipole.cpp.s
+
+.PHONY : src/rc/potential_multipole.s
+
+# target to generate assembly for a file
+src/rc/potential_multipole.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_multipole.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_multipole.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.s
+.PHONY : src/rc/potential_multipole.cpp.s
+
+src/rc/potential_powerLawVc.o: src/rc/potential_powerLawVc.cpp.o
+
+.PHONY : src/rc/potential_powerLawVc.o
+
+# target to build an object file
+src/rc/potential_powerLawVc.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_powerLawVc.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_powerLawVc.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o
+.PHONY : src/rc/potential_powerLawVc.cpp.o
+
+src/rc/potential_powerLawVc.i: src/rc/potential_powerLawVc.cpp.i
+
+.PHONY : src/rc/potential_powerLawVc.i
+
+# target to preprocess a source file
+src/rc/potential_powerLawVc.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_powerLawVc.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_powerLawVc.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.i
+.PHONY : src/rc/potential_powerLawVc.cpp.i
+
+src/rc/potential_powerLawVc.s: src/rc/potential_powerLawVc.cpp.s
+
+.PHONY : src/rc/potential_powerLawVc.s
+
+# target to generate assembly for a file
+src/rc/potential_powerLawVc.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_powerLawVc.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_powerLawVc.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.s
+.PHONY : src/rc/potential_powerLawVc.cpp.s
+
+src/rc/sht.o: src/rc/sht.cpp.o
+
+.PHONY : src/rc/sht.o
+
+# target to build an object file
+src/rc/sht.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/sht.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/sht.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/sht.cpp.o
+.PHONY : src/rc/sht.cpp.o
+
+src/rc/sht.i: src/rc/sht.cpp.i
+
+.PHONY : src/rc/sht.i
+
+# target to preprocess a source file
+src/rc/sht.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/sht.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/sht.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/sht.cpp.i
+.PHONY : src/rc/sht.cpp.i
+
+src/rc/sht.s: src/rc/sht.cpp.s
+
+.PHONY : src/rc/sht.s
+
+# target to generate assembly for a file
+src/rc/sht.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/sht.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/sht.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/sht.cpp.s
+.PHONY : src/rc/sht.cpp.s
+
+src/rc/spiral.o: src/rc/spiral.cpp.o
+
+.PHONY : src/rc/spiral.o
+
+# target to build an object file
+src/rc/spiral.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/spiral.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/spiral.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/spiral.cpp.o
+.PHONY : src/rc/spiral.cpp.o
+
+src/rc/spiral.i: src/rc/spiral.cpp.i
+
+.PHONY : src/rc/spiral.i
+
+# target to preprocess a source file
+src/rc/spiral.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/spiral.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/spiral.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/spiral.cpp.i
+.PHONY : src/rc/spiral.cpp.i
+
+src/rc/spiral.s: src/rc/spiral.cpp.s
+
+.PHONY : src/rc/spiral.s
+
+# target to generate assembly for a file
+src/rc/spiral.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/spiral.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/spiral.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/spiral.cpp.s
+.PHONY : src/rc/spiral.cpp.s
+
+src/rc/utils.o: src/rc/utils.cpp.o
+
+.PHONY : src/rc/utils.o
+
+# target to build an object file
+src/rc/utils.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/utils.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/utils.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/utils.cpp.o
+.PHONY : src/rc/utils.cpp.o
+
+src/rc/utils.i: src/rc/utils.cpp.i
+
+.PHONY : src/rc/utils.i
+
+# target to preprocess a source file
+src/rc/utils.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/utils.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/utils.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/utils.cpp.i
+.PHONY : src/rc/utils.cpp.i
+
+src/rc/utils.s: src/rc/utils.cpp.s
+
+.PHONY : src/rc/utils.s
+
+# target to generate assembly for a file
+src/rc/utils.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/utils.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/utils.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/utils.cpp.s
+.PHONY : src/rc/utils.cpp.s
+
 src/tp_integration/integrate_rk4.o: src/tp_integration/integrate_rk4.cpp.o
 
 .PHONY : src/tp_integration/integrate_rk4.o
@@ -813,71 +1407,71 @@ src/vectors/coords.test.cpp.s:
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.s
 .PHONY : src/vectors/coords.test.cpp.s
 
-src/vectors/force.o: src/vectors/force.cpp.o
+src/vectors/force1.o: src/vectors/force1.cpp.o
 
-.PHONY : src/vectors/force.o
-
-# target to build an object file
-src/vectors/force.cpp.o:
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force.cpp.o
-.PHONY : src/vectors/force.cpp.o
-
-src/vectors/force.i: src/vectors/force.cpp.i
-
-.PHONY : src/vectors/force.i
-
-# target to preprocess a source file
-src/vectors/force.cpp.i:
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force.cpp.i
-.PHONY : src/vectors/force.cpp.i
-
-src/vectors/force.s: src/vectors/force.cpp.s
-
-.PHONY : src/vectors/force.s
-
-# target to generate assembly for a file
-src/vectors/force.cpp.s:
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force.cpp.s
-.PHONY : src/vectors/force.cpp.s
-
-src/vectors/force.test.o: src/vectors/force.test.cpp.o
-
-.PHONY : src/vectors/force.test.o
+.PHONY : src/vectors/force1.o
 
 # target to build an object file
-src/vectors/force.test.cpp.o:
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force.test.cpp.o
-.PHONY : src/vectors/force.test.cpp.o
+src/vectors/force1.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.cpp.o
+.PHONY : src/vectors/force1.cpp.o
 
-src/vectors/force.test.i: src/vectors/force.test.cpp.i
+src/vectors/force1.i: src/vectors/force1.cpp.i
 
-.PHONY : src/vectors/force.test.i
+.PHONY : src/vectors/force1.i
 
 # target to preprocess a source file
-src/vectors/force.test.cpp.i:
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force.test.cpp.i
-.PHONY : src/vectors/force.test.cpp.i
+src/vectors/force1.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.cpp.i
+.PHONY : src/vectors/force1.cpp.i
 
-src/vectors/force.test.s: src/vectors/force.test.cpp.s
+src/vectors/force1.s: src/vectors/force1.cpp.s
 
-.PHONY : src/vectors/force.test.s
+.PHONY : src/vectors/force1.s
 
 # target to generate assembly for a file
-src/vectors/force.test.cpp.s:
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force.test.cpp.s
-.PHONY : src/vectors/force.test.cpp.s
+src/vectors/force1.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.cpp.s
+.PHONY : src/vectors/force1.cpp.s
+
+src/vectors/force1.test.o: src/vectors/force1.test.cpp.o
+
+.PHONY : src/vectors/force1.test.o
+
+# target to build an object file
+src/vectors/force1.test.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.test.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o
+.PHONY : src/vectors/force1.test.cpp.o
+
+src/vectors/force1.test.i: src/vectors/force1.test.cpp.i
+
+.PHONY : src/vectors/force1.test.i
+
+# target to preprocess a source file
+src/vectors/force1.test.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.test.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.i
+.PHONY : src/vectors/force1.test.cpp.i
+
+src/vectors/force1.test.s: src/vectors/force1.test.cpp.s
+
+.PHONY : src/vectors/force1.test.s
+
+# target to generate assembly for a file
+src/vectors/force1.test.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.test.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.s
+.PHONY : src/vectors/force1.test.cpp.s
 
 # Help Target
 help:
@@ -923,6 +1517,60 @@ help:
 	@echo "... src/potential/spiral.test.o"
 	@echo "... src/potential/spiral.test.i"
 	@echo "... src/potential/spiral.test.s"
+	@echo "... src/rc/HEALPix.o"
+	@echo "... src/rc/HEALPix.i"
+	@echo "... src/rc/HEALPix.s"
+	@echo "... src/rc/bar.o"
+	@echo "... src/rc/bar.i"
+	@echo "... src/rc/bar.s"
+	@echo "... src/rc/export.o"
+	@echo "... src/rc/export.i"
+	@echo "... src/rc/export.s"
+	@echo "... src/rc/force.o"
+	@echo "... src/rc/force.i"
+	@echo "... src/rc/force.s"
+	@echo "... src/rc/getJres.o"
+	@echo "... src/rc/getJres.i"
+	@echo "... src/rc/getJres.s"
+	@echo "... src/rc/import.o"
+	@echo "... src/rc/import.i"
+	@echo "... src/rc/import.s"
+	@echo "... src/rc/interpolate.o"
+	@echo "... src/rc/interpolate.i"
+	@echo "... src/rc/interpolate.s"
+	@echo "... src/rc/mapXVtoAA2D.o"
+	@echo "... src/rc/mapXVtoAA2D.i"
+	@echo "... src/rc/mapXVtoAA2D.s"
+	@echo "... src/rc/math_RC.o"
+	@echo "... src/rc/math_RC.i"
+	@echo "... src/rc/math_RC.s"
+	@echo "... src/rc/potential.o"
+	@echo "... src/rc/potential.i"
+	@echo "... src/rc/potential.s"
+	@echo "... src/rc/potential_AGAMA.o"
+	@echo "... src/rc/potential_AGAMA.i"
+	@echo "... src/rc/potential_AGAMA.s"
+	@echo "... src/rc/potential_CartGrid.o"
+	@echo "... src/rc/potential_CartGrid.i"
+	@echo "... src/rc/potential_CartGrid.s"
+	@echo "... src/rc/potential_Hernquist.o"
+	@echo "... src/rc/potential_Hernquist.i"
+	@echo "... src/rc/potential_Hernquist.s"
+	@echo "... src/rc/potential_multipole.o"
+	@echo "... src/rc/potential_multipole.i"
+	@echo "... src/rc/potential_multipole.s"
+	@echo "... src/rc/potential_powerLawVc.o"
+	@echo "... src/rc/potential_powerLawVc.i"
+	@echo "... src/rc/potential_powerLawVc.s"
+	@echo "... src/rc/sht.o"
+	@echo "... src/rc/sht.i"
+	@echo "... src/rc/sht.s"
+	@echo "... src/rc/spiral.o"
+	@echo "... src/rc/spiral.i"
+	@echo "... src/rc/spiral.s"
+	@echo "... src/rc/utils.o"
+	@echo "... src/rc/utils.i"
+	@echo "... src/rc/utils.s"
 	@echo "... src/tp_integration/integrate_rk4.o"
 	@echo "... src/tp_integration/integrate_rk4.i"
 	@echo "... src/tp_integration/integrate_rk4.s"
@@ -950,12 +1598,12 @@ help:
 	@echo "... src/vectors/coords.test.o"
 	@echo "... src/vectors/coords.test.i"
 	@echo "... src/vectors/coords.test.s"
-	@echo "... src/vectors/force.o"
-	@echo "... src/vectors/force.i"
-	@echo "... src/vectors/force.s"
-	@echo "... src/vectors/force.test.o"
-	@echo "... src/vectors/force.test.i"
-	@echo "... src/vectors/force.test.s"
+	@echo "... src/vectors/force1.o"
+	@echo "... src/vectors/force1.i"
+	@echo "... src/vectors/force1.s"
+	@echo "... src/vectors/force1.test.o"
+	@echo "... src/vectors/force1.test.i"
+	@echo "... src/vectors/force1.test.s"
 .PHONY : help
 
 

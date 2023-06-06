@@ -148,9 +148,243 @@ CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/potential/spiral.test.cpp -o CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.s
 
+CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o: ../src/rc/HEALPix.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o -c /home/kit/Documents/cita_project/src/rc/HEALPix.cpp
+
+CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/HEALPix.cpp > CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/HEALPix.cpp -o CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/bar.cpp.o: ../src/rc/bar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/mylib.dir/src/rc/bar.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/bar.cpp.o -c /home/kit/Documents/cita_project/src/rc/bar.cpp
+
+CMakeFiles/mylib.dir/src/rc/bar.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/bar.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/bar.cpp > CMakeFiles/mylib.dir/src/rc/bar.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/bar.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/bar.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/bar.cpp -o CMakeFiles/mylib.dir/src/rc/bar.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/export.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/export.cpp.o: ../src/rc/export.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/mylib.dir/src/rc/export.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/export.cpp.o -c /home/kit/Documents/cita_project/src/rc/export.cpp
+
+CMakeFiles/mylib.dir/src/rc/export.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/export.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/export.cpp > CMakeFiles/mylib.dir/src/rc/export.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/export.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/export.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/export.cpp -o CMakeFiles/mylib.dir/src/rc/export.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/force.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/force.cpp.o: ../src/rc/force.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/mylib.dir/src/rc/force.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/force.cpp.o -c /home/kit/Documents/cita_project/src/rc/force.cpp
+
+CMakeFiles/mylib.dir/src/rc/force.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/force.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/force.cpp > CMakeFiles/mylib.dir/src/rc/force.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/force.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/force.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/force.cpp -o CMakeFiles/mylib.dir/src/rc/force.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.o: ../src/rc/getJres.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/mylib.dir/src/rc/getJres.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/getJres.cpp.o -c /home/kit/Documents/cita_project/src/rc/getJres.cpp
+
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/getJres.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/getJres.cpp > CMakeFiles/mylib.dir/src/rc/getJres.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/getJres.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/getJres.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/getJres.cpp -o CMakeFiles/mylib.dir/src/rc/getJres.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/import.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/import.cpp.o: ../src/rc/import.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/mylib.dir/src/rc/import.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/import.cpp.o -c /home/kit/Documents/cita_project/src/rc/import.cpp
+
+CMakeFiles/mylib.dir/src/rc/import.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/import.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/import.cpp > CMakeFiles/mylib.dir/src/rc/import.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/import.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/import.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/import.cpp -o CMakeFiles/mylib.dir/src/rc/import.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o: ../src/rc/interpolate.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o -c /home/kit/Documents/cita_project/src/rc/interpolate.cpp
+
+CMakeFiles/mylib.dir/src/rc/interpolate.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/interpolate.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/interpolate.cpp > CMakeFiles/mylib.dir/src/rc/interpolate.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/interpolate.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/interpolate.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/interpolate.cpp -o CMakeFiles/mylib.dir/src/rc/interpolate.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o: ../src/rc/mapXVtoAA2D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o -c /home/kit/Documents/cita_project/src/rc/mapXVtoAA2D.cpp
+
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/mapXVtoAA2D.cpp > CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/mapXVtoAA2D.cpp -o CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o: ../src/rc/math_RC.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o -c /home/kit/Documents/cita_project/src/rc/math_RC.cpp
+
+CMakeFiles/mylib.dir/src/rc/math_RC.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/math_RC.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/math_RC.cpp > CMakeFiles/mylib.dir/src/rc/math_RC.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/math_RC.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/math_RC.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/math_RC.cpp -o CMakeFiles/mylib.dir/src/rc/math_RC.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/potential.cpp.o: ../src/rc/potential.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/mylib.dir/src/rc/potential.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/potential.cpp.o -c /home/kit/Documents/cita_project/src/rc/potential.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/potential.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/potential.cpp > CMakeFiles/mylib.dir/src/rc/potential.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/potential.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/potential.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/potential.cpp -o CMakeFiles/mylib.dir/src/rc/potential.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o: ../src/rc/potential_AGAMA.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o -c /home/kit/Documents/cita_project/src/rc/potential_AGAMA.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/potential_AGAMA.cpp > CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/potential_AGAMA.cpp -o CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o: ../src/rc/potential_CartGrid.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o -c /home/kit/Documents/cita_project/src/rc/potential_CartGrid.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/potential_CartGrid.cpp > CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/potential_CartGrid.cpp -o CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o: ../src/rc/potential_Hernquist.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o -c /home/kit/Documents/cita_project/src/rc/potential_Hernquist.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/potential_Hernquist.cpp > CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/potential_Hernquist.cpp -o CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o: ../src/rc/potential_multipole.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o -c /home/kit/Documents/cita_project/src/rc/potential_multipole.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/potential_multipole.cpp > CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/potential_multipole.cpp -o CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o: ../src/rc/potential_powerLawVc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o -c /home/kit/Documents/cita_project/src/rc/potential_powerLawVc.cpp
+
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/potential_powerLawVc.cpp > CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/potential_powerLawVc.cpp -o CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/sht.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/sht.cpp.o: ../src/rc/sht.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/mylib.dir/src/rc/sht.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/sht.cpp.o -c /home/kit/Documents/cita_project/src/rc/sht.cpp
+
+CMakeFiles/mylib.dir/src/rc/sht.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/sht.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/sht.cpp > CMakeFiles/mylib.dir/src/rc/sht.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/sht.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/sht.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/sht.cpp -o CMakeFiles/mylib.dir/src/rc/sht.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.o: ../src/rc/spiral.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/mylib.dir/src/rc/spiral.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/spiral.cpp.o -c /home/kit/Documents/cita_project/src/rc/spiral.cpp
+
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/spiral.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/spiral.cpp > CMakeFiles/mylib.dir/src/rc/spiral.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/spiral.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/spiral.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/spiral.cpp -o CMakeFiles/mylib.dir/src/rc/spiral.cpp.s
+
+CMakeFiles/mylib.dir/src/rc/utils.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/rc/utils.cpp.o: ../src/rc/utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/mylib.dir/src/rc/utils.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/rc/utils.cpp.o -c /home/kit/Documents/cita_project/src/rc/utils.cpp
+
+CMakeFiles/mylib.dir/src/rc/utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/rc/utils.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/rc/utils.cpp > CMakeFiles/mylib.dir/src/rc/utils.cpp.i
+
+CMakeFiles/mylib.dir/src/rc/utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/rc/utils.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/rc/utils.cpp -o CMakeFiles/mylib.dir/src/rc/utils.cpp.s
+
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: CMakeFiles/mylib.dir/flags.make
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../src/tp_integration/integrate_rk4.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o -c /home/kit/Documents/cita_project/src/tp_integration/integrate_rk4.cpp
 
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.i: cmake_force
@@ -163,7 +397,7 @@ CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.s: cmake_force
 
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: CMakeFiles/mylib.dir/flags.make
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../src/tp_integration/integrate_rk4.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o -c /home/kit/Documents/cita_project/src/tp_integration/integrate_rk4.test.cpp
 
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.i: cmake_force
@@ -176,7 +410,7 @@ CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.s: cmake_force
 
 CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o: CMakeFiles/mylib.dir/flags.make
 CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o: ../src/utility/add_functions.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o -c /home/kit/Documents/cita_project/src/utility/add_functions.test.cpp
 
 CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.i: cmake_force
@@ -189,7 +423,7 @@ CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.s: cmake_force
 
 CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.o: CMakeFiles/mylib.dir/flags.make
 CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.o: ../src/utility/flatten.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.o -c /home/kit/Documents/cita_project/src/utility/flatten.test.cpp
 
 CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.i: cmake_force
@@ -202,7 +436,7 @@ CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.s: cmake_force
 
 CMakeFiles/mylib.dir/src/utility/shape.test.cpp.o: CMakeFiles/mylib.dir/flags.make
 CMakeFiles/mylib.dir/src/utility/shape.test.cpp.o: ../src/utility/shape.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/mylib.dir/src/utility/shape.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/mylib.dir/src/utility/shape.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/utility/shape.test.cpp.o -c /home/kit/Documents/cita_project/src/utility/shape.test.cpp
 
 CMakeFiles/mylib.dir/src/utility/shape.test.cpp.i: cmake_force
@@ -215,7 +449,7 @@ CMakeFiles/mylib.dir/src/utility/shape.test.cpp.s: cmake_force
 
 CMakeFiles/mylib.dir/src/utility/vector_io.cpp.o: CMakeFiles/mylib.dir/flags.make
 CMakeFiles/mylib.dir/src/utility/vector_io.cpp.o: ../src/utility/vector_io.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/mylib.dir/src/utility/vector_io.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/mylib.dir/src/utility/vector_io.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/utility/vector_io.cpp.o -c /home/kit/Documents/cita_project/src/utility/vector_io.cpp
 
 CMakeFiles/mylib.dir/src/utility/vector_io.cpp.i: cmake_force
@@ -228,7 +462,7 @@ CMakeFiles/mylib.dir/src/utility/vector_io.cpp.s: cmake_force
 
 CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.o: CMakeFiles/mylib.dir/flags.make
 CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.o: ../src/utility/vector_io.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.o -c /home/kit/Documents/cita_project/src/utility/vector_io.test.cpp
 
 CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.i: cmake_force
@@ -241,7 +475,7 @@ CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.s: cmake_force
 
 CMakeFiles/mylib.dir/src/vectors/coords.cpp.o: CMakeFiles/mylib.dir/flags.make
 CMakeFiles/mylib.dir/src/vectors/coords.cpp.o: ../src/vectors/coords.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/mylib.dir/src/vectors/coords.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/mylib.dir/src/vectors/coords.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/vectors/coords.cpp.o -c /home/kit/Documents/cita_project/src/vectors/coords.cpp
 
 CMakeFiles/mylib.dir/src/vectors/coords.cpp.i: cmake_force
@@ -254,7 +488,7 @@ CMakeFiles/mylib.dir/src/vectors/coords.cpp.s: cmake_force
 
 CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o: CMakeFiles/mylib.dir/flags.make
 CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o: ../src/vectors/coords.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o -c /home/kit/Documents/cita_project/src/vectors/coords.test.cpp
 
 CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.i: cmake_force
@@ -265,31 +499,31 @@ CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/vectors/coords.test.cpp -o CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.s
 
-CMakeFiles/mylib.dir/src/vectors/force.cpp.o: CMakeFiles/mylib.dir/flags.make
-CMakeFiles/mylib.dir/src/vectors/force.cpp.o: ../src/vectors/force.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/mylib.dir/src/vectors/force.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/vectors/force.cpp.o -c /home/kit/Documents/cita_project/src/vectors/force.cpp
+CMakeFiles/mylib.dir/src/vectors/force1.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/vectors/force1.cpp.o: ../src/vectors/force1.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/mylib.dir/src/vectors/force1.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/vectors/force1.cpp.o -c /home/kit/Documents/cita_project/src/vectors/force1.cpp
 
-CMakeFiles/mylib.dir/src/vectors/force.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/vectors/force.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/vectors/force.cpp > CMakeFiles/mylib.dir/src/vectors/force.cpp.i
+CMakeFiles/mylib.dir/src/vectors/force1.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/vectors/force1.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/vectors/force1.cpp > CMakeFiles/mylib.dir/src/vectors/force1.cpp.i
 
-CMakeFiles/mylib.dir/src/vectors/force.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/vectors/force.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/vectors/force.cpp -o CMakeFiles/mylib.dir/src/vectors/force.cpp.s
+CMakeFiles/mylib.dir/src/vectors/force1.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/vectors/force1.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/vectors/force1.cpp -o CMakeFiles/mylib.dir/src/vectors/force1.cpp.s
 
-CMakeFiles/mylib.dir/src/vectors/force.test.cpp.o: CMakeFiles/mylib.dir/flags.make
-CMakeFiles/mylib.dir/src/vectors/force.test.cpp.o: ../src/vectors/force.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/mylib.dir/src/vectors/force.test.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/vectors/force.test.cpp.o -c /home/kit/Documents/cita_project/src/vectors/force.test.cpp
+CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o: CMakeFiles/mylib.dir/flags.make
+CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o: ../src/vectors/force1.test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o -c /home/kit/Documents/cita_project/src/vectors/force1.test.cpp
 
-CMakeFiles/mylib.dir/src/vectors/force.test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/vectors/force.test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/vectors/force.test.cpp > CMakeFiles/mylib.dir/src/vectors/force.test.cpp.i
+CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/vectors/force1.test.cpp > CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.i
 
-CMakeFiles/mylib.dir/src/vectors/force.test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/vectors/force.test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/vectors/force.test.cpp -o CMakeFiles/mylib.dir/src/vectors/force.test.cpp.s
+CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/vectors/force1.test.cpp -o CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.s
 
 # Object files for target mylib
 mylib_OBJECTS = \
@@ -300,6 +534,24 @@ mylib_OBJECTS = \
 "CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o" \
 "CMakeFiles/mylib.dir/src/potential/spiral.cpp.o" \
 "CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/bar.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/export.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/force.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/getJres.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/import.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/potential.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/sht.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/spiral.cpp.o" \
+"CMakeFiles/mylib.dir/src/rc/utils.cpp.o" \
 "CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o" \
 "CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o" \
 "CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o" \
@@ -309,8 +561,8 @@ mylib_OBJECTS = \
 "CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.o" \
 "CMakeFiles/mylib.dir/src/vectors/coords.cpp.o" \
 "CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o" \
-"CMakeFiles/mylib.dir/src/vectors/force.cpp.o" \
-"CMakeFiles/mylib.dir/src/vectors/force.test.cpp.o"
+"CMakeFiles/mylib.dir/src/vectors/force1.cpp.o" \
+"CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o"
 
 # External object files for target mylib
 mylib_EXTERNAL_OBJECTS =
@@ -322,6 +574,24 @@ libmylib.so: CMakeFiles/mylib.dir/src/potential/mestel.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/src/potential/spiral.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/bar.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/export.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/force.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/getJres.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/import.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/potential.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/sht.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/spiral.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/rc/utils.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o
@@ -331,11 +601,11 @@ libmylib.so: CMakeFiles/mylib.dir/src/utility/vector_io.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/src/vectors/coords.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o
-libmylib.so: CMakeFiles/mylib.dir/src/vectors/force.cpp.o
-libmylib.so: CMakeFiles/mylib.dir/src/vectors/force.test.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/vectors/force1.cpp.o
+libmylib.so: CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o
 libmylib.so: CMakeFiles/mylib.dir/build.make
 libmylib.so: CMakeFiles/mylib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX shared library libmylib.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Linking CXX shared library libmylib.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mylib.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

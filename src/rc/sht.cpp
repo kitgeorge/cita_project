@@ -4,7 +4,7 @@
  * \author	Rimpei Chiba
  * \date		2020 
  */
-
+/*
 #include "sht.hpp"
 
 //

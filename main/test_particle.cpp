@@ -2,24 +2,25 @@
 #include "flatten.hpp"
 #include "vector_io.hpp"
 #include "add_functions.hpp"
-#include "units.hpp"
+#include "units1.hpp"
 #include "coords.hpp"
 #include "mestel.hpp"
 #include "spiral.hpp"
 #include "sample.hpp"
 #include "integrate_rk4.hpp"
 #include "execute_in_parallel.hpp"
+#include "mapXVtoAA2D.hpp"
 
 namespace vrs = vectors;
 namespace ptl = potential;
 
 int main() {
     int N_test_particles = 36;
-    int N_timesteps = 1e5;
+    int N_timesteps = 1e4;
 
     double mestel_vc = 220*consts::km;
     double R_0 = 8*consts::kpc;
-    double spiral_amplitude_fraction = 0.0001;
+    double spiral_amplitude_fraction = 0.001;
     double local_pitch_angle = std::numbers::pi/6;
     int m = 2;
     double k_R = m/R_0/tan(local_pitch_angle);
@@ -27,15 +28,16 @@ int main() {
     double local_kappa = local_Omega*sqrt(2);
     double pattern_speed = local_Omega + local_kappa/m;
 
-    double integration_time = 20*2*std::numbers::pi/local_Omega;
+    double integration_time = 50*2*std::numbers::pi/local_Omega;
     double timestep = integration_time/N_timesteps;
 
-    ptl::PotentialFuncs axsym_potential = ptl::getMestel(mestel_vc);
+    ptl::AxsymFuncs axsym_potential = ptl::getMestel(mestel_vc);
     ptl::PotentialFuncs spiral_potential 
-    = ptl::getSpiralPotential(m, k_R, spiral_amplitude_fraction
-                                         *axsym_potential.potential(R_0, 0, 0),
+    = ptl::getSpiralPotential(m, k_R, spiral_amplitude_fraction/k_R
+                                         *(-1)*axsym_potential.polar_force(R_0, 0, 0)[0],
                               pattern_speed);
     ptl::PotentialFuncs total_potential(axsym_potential, spiral_potential);
+
     // ptl::PotentialFuncs total_potential = axsym_potential;
     
 
@@ -65,6 +67,27 @@ int main() {
 
     std::vector<std::vector<vrs::Coords2d>>
     trajectories = multithreading::executeInParallel(tp_integration_functions);
+
+    RC::MapXVtoAA2D action_map(&axsym_potential);
+    int N_tau = 1e3;
+    std::vector<std::vector<std::vector<std::vector<double>>>>
+    aa_trajectories(N_test_particles, 
+                    std::vector<std::vector<std::vector<double>>>(N_timesteps,
+                    std::vector<std::vector<double>>(2, std::vector<double>(2))));
+    for(int i = 0; i < N_test_particles; ++i) {
+        for(int j = 0; j < N_timesteps; ++j) {
+            std::cout << i << ", " << j << std::endl;
+            action_map.mapXVtoAA(trajectories[i][j].polar[0][0]/consts::kpc,
+                                 trajectories[i][j].polar[0][1],
+                                 trajectories[i][j].polar[1][0]/(consts::kpc/consts::Myr),
+                                 trajectories[i][j].polar[1][1]/(consts::kpc/consts::Myr),
+                                 N_tau);
+            aa_trajectories[i][j][0][0] = action_map.Jr*pow(consts::kpc, 2)/consts::Myr;
+            aa_trajectories[i][j][0][1] = action_map.Jpsi*pow(consts::kpc, 2)/consts::Myr;
+            aa_trajectories[i][j][1][0] = action_map.thetar;
+            aa_trajectories[i][j][1][1] = action_map.thetapsi;
+        }
+    }
     
     // std::vector<std::vector<vrs::Coords2d>>
     // sampled_trajectories(1000);
@@ -74,6 +97,7 @@ int main() {
     
 
     utility::writeCsv("../data/test_particle_1.csv", vrs::getPolarsFlat(utility::flatten(trajectories)));
+    utility::writeCsv("../data/test_particle_1_aa.csv", utility::flatten(aa_trajectories));
 
 }
 

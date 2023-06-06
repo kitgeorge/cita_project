@@ -4,7 +4,7 @@
  * \author	Rimpei Chiba
  * \date		2022-
  */
-
+/*
 #include "potential_AGAMA.hpp"
 
 namespace RC
@@ -40,3 +40,4 @@ namespace RC
 		return multipole.d2Phidr2(r) + cartGrid.d2Phidr2(r);
 	}
 }
+*/

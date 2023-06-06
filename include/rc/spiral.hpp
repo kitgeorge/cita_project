@@ -4,7 +4,7 @@
  * \author	Rimpei Chiba
  * \date		2021
  */
-
+/*
 #ifndef _SPIRAL_H_
 #define _SPIRAL_H_
 
@@ -52,3 +52,4 @@ namespace RC
 }
 
 #endif
+*/

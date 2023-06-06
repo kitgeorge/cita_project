@@ -28,6 +28,7 @@
 #include "potential.hpp"
 #include "NewtonRaphson.hpp"
 #include "math_RC.hpp"
+#include "axsym_funcs.hpp"
 
 namespace RC {
 

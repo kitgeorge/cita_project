@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include "potential_funcs.hpp"
+#include "axsym_funcs.hpp"
+#include "mestel.hpp"
 #include <cmath>
 #include <numbers>
 
@@ -48,4 +50,27 @@ TEST(PotentialFuncsTest, CartesianForceWorks) {
     // for(int i = 0; i < 2; ++i) {
     //     ASSERT_EQ(pow(pot.polar_force(R, phi, 0)[i] - polar[i], 2) < 1e-6, 1);
     // }
+}
+
+TEST(PotentialFuncsTest, AddAxsymWorks) {
+    AxsymFuncs as = getMestel(220*1000);
+    double norm = as.potential(8*3e19, 0, 0);
+
+    std::function<double(double, double, double)>
+    potential = [norm] (double R, double phi, double t) {
+        return norm/100*cos(phi);
+    };
+    std::function<std::array<double, 2>(double, double, double)> 
+    force = [norm] (double R, double phi, double  t) {
+        std::array<double, 2>
+        output = {0, norm/100*sin(phi)/R};
+        return output;
+    };
+    PotentialFuncs pot(potential, force);
+    PotentialFuncs sum(pot, as);
+    EXPECT_EQ(sum.potential(8*3e19, 0, 0), as.potential(8*3e19, 0, 0) + pot.potential(8*3e19, 0, 0));
+    for(int i = 0; i < 2; ++i) {
+        EXPECT_EQ(sum.polar_force(8*3e19, 0, 0)[i], as.polar_force(8*3e19, 0, 0)[i] + pot.polar_force(8*3e19, 0, 0)[i]);
+        EXPECT_EQ(sum.cartesian_force(8*3e19, 0, 0)[i], as.cartesian_force(8*3e19, 0, 0)[i] + pot.cartesian_force(8*3e19, 0, 0)[i]);
+    }
 }

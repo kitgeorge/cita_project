@@ -1,4 +1,4 @@
-#include "force.hpp"
+#include "force1.hpp"
 
 namespace vectors {
 void Force::multiply(double scalar) {

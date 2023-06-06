@@ -1,5 +1,7 @@
 #pragma once
 #include "potential_funcs.hpp"
+#include "units1.hpp"
+#include "NewtonRaphson.hpp"
 
 namespace vrs = vectors;
 
@@ -23,41 +25,87 @@ struct AxsymFuncs : public PotentialFuncs {
     AxsymFuncs(std::function<double(double, double, double)> potential_,
                std::function<std::array<double, 2>(double, double, double)>
                polar_force_, 
-               std::array<std::function<double(double)>, 11> axsym_funcs,
-               std::function<double(double, double, double, double)> 
-               RcGivenwpN_):
-               potential(potential_), polar_force(polar_force_),
-               potential_R([potential_] (double R) {return potential_R(R, 0, 0)}),
+               std::array<std::function<double(double)>, 11> axsym_funcs):
+               PotentialFuncs(potential_, polar_force_), 
+               potential_R([potential_] (double R) {return potential_(R, 0, 0);}),
                dPhidR(axsym_funcs[0]), d2PhidR2(axsym_funcs[1]), 
                RcGivenL(axsym_funcs[2]), RcGivenE(axsym_funcs[3]), 
                RcGivenOmega(axsym_funcs[4]), vcGivenRc(axsym_funcs[5]),
-               LcGivenRc(axsym_funs[6]), EcGivenRc(axsym_funcs[7]), 
+               LcGivenRc(axsym_funcs[6]), EcGivenRc(axsym_funcs[7]), 
                EcGivenL(axsym_funcs[8]), Omega(axsym_funcs[9]), 
-               kappa(axsym_funcs[10]), RcGivenwpN(RcGivenwpN_) {
-    
-        cartesian_force = [this](double x, double y, double t) {
-            std::array<std::array<double, 2>, 2>
-            coords = {{ {{x, y}}, {{0, 0}} }};
-            vrs::Coords2d pos(coords, 0);
-            std::array<double, 2> f = {polar_force(pos.polar[0][0], 
-                                                   pos.polar[0][1], t)[0],
-                                       polar_force(pos.polar[0][0], 
-                                                   pos.polar[0][1], t)[1]};
-            f = vrs::getCartesianVector2d(pos.polar[0], f);
-            return f;
-        };
+               kappa(axsym_funcs[10]) {
+        RcGivenwpN = [this] (double Omegap, int Nr, int Npsi, int Nphi) {
+        // Taken from Rimpei's code (potential.cpp)
+
+		// f(rc) = Nr*kappa(rc) + Npsi*Omega(rc) - Nphi*Omegap = 0
+		// f is generally a decreasing function
+		const auto warn = false;
+		const auto rc_limit = 5.e+2 * consts::kpc;
+		const auto rc_err   = 1.e-7 * consts::kpc;
+		auto       drc      = 1.e-0 * consts::kpc;
+		auto rc = rc_err;
+		if(Nr * kappa(rc_err) + Npsi * Omega(rc_err) - Nphi * Omegap > 0) // If N•Omega decreases with R
+		{
+			while(Nr * kappa(rc) + Npsi * Omega(rc) - Nphi * Omegap > 0)
+			{
+				rc += drc;
+				if(rc > rc_limit) break;
+			}
+		}
+		else // For ILRs where N•Omega tends to zero towards R=0
+		{
+			drc = 0.1 * consts::kpc;
+			while(Nr * kappa(rc) + Npsi * Omega(rc) - Nphi * Omegap < 0)
+			{
+				rc += drc;
+				if(rc > rc_limit) break;
+			}
+			if(Nr == -1)
+			{
+				rc = rc_err;
+				// std::ofstream fout("test.dat");
+				// while(Nr * kappa(rc) + Npsi * Omega(rc) - Nphi * Omegap < 0)
+				// {
+				// 	fout << rc << " " << Nr * kappa(rc) + Npsi * Omega(rc) - Nphi * Omegap << std::endl;
+				// 	rc += drc;
+				// 	if(rc > rc_limit) break;
+				// }
+				// fout.close();
+			}
+		}
+		if(rc > rc_limit)
+		{
+			// if(warn) std::cerr << "Warning [shared/src/potential.cpp/rcGivenwpN]: rc > "
+			// 	<< rc_limit << ". (Omegap = " << Omegap * consts::Gyr << " [/Gyr], Nr = " 
+			// 	<< Nr << ", Npsi = " << Npsi << ", Nphi = " << Nphi << ")" << std::endl;
+		}
+		else if(rc < 0)
+		{
+			// if(warn) std::cerr << "Warning [shared/src/potential.cpp/rcGivenwpN]: rc > 0. "
+			// 	"(Omegap = " << Omegap * consts::Gyr << " [/Gyr], Nr = " << Nr 
+			// 	<< ", Npsi = " << Npsi << ", Nphi = " << Nphi << ")" << std::endl;
+		}
+		else
+		{
+			rc = bisection(rc - drc, rc, [&](double x) 
+			{
+				return Nr * kappa(x) + Npsi * Omega(x) - Nphi * Omegap;
+			}, rc_err);
+		}
+		return rc;
+	};
 
     }
 
     AxsymFuncs(const AxsymFuncs& old):
-               potential(old.potential), polar_force(old.polar_force),
+               PotentialFuncs(old),
                potential_R(old.potential_R), dPhidR(old.dPhidR), 
                d2PhidR2(old.d2PhidR2), RcGivenL(old.RcGivenL), 
                RcGivenE(old.RcGivenE), RcGivenOmega(old.RcGivenOmega),
                vcGivenRc(old.vcGivenRc), LcGivenRc(old.LcGivenRc),
                EcGivenRc(old.EcGivenRc), EcGivenL(old.EcGivenL),
                Omega(old.Omega), kappa(old.kappa), RcGivenwpN(old.RcGivenwpN) {}; 
-}
+};
 
-}
+};
 

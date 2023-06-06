@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC   -g -Wall -Wextra -O3 -std=gnu++2a
 
 CXX_DEFINES = -Dmylib_EXPORTS
 
-CXX_INCLUDES = -I/home/kit/Documents/cita_project/include/potential -I/home/kit/Documents/cita_project/include/vectors -I/home/kit/Documents/cita_project/include/consts -I/home/kit/Documents/cita_project/include/df -I/home/kit/Documents/cita_project/include/utility -I/home/kit/Documents/cita_project/include/multithreading -I/home/kit/Documents/cita_project/include/tp_integration 
+CXX_INCLUDES = -I/home/kit/Documents/cita_project/include/potential -I/home/kit/Documents/cita_project/include/vectors -I/home/kit/Documents/cita_project/include/consts -I/home/kit/Documents/cita_project/include/df -I/home/kit/Documents/cita_project/include/utility -I/home/kit/Documents/cita_project/include/multithreading -I/home/kit/Documents/cita_project/include/tp_integration -I/home/kit/Documents/cita_project/include/rc 
 

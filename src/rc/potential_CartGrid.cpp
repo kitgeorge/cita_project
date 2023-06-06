@@ -5,8 +5,8 @@
  * \date		2022-
  */
 
+/*
 #include "potential_CartGrid.hpp"
-
 namespace RC
 {
 	CartGrid::CartGrid(const std::string in):
@@ -332,3 +332,4 @@ namespace RC
 		else return dPhidR_makima[0].prime(R_max) * RC::cb(R_max / r);
 	}
 }
+*/

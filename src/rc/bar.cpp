@@ -4,7 +4,7 @@
  * \author	Rimpei Chiba
  * \date		2020-
  */
-
+/*
 #include "bar.hpp"
 
 namespace RC
@@ -462,3 +462,4 @@ namespace RC
   }
 }
 
+*/

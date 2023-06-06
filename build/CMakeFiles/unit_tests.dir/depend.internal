@@ -31,17 +31,28 @@ CMakeFiles/unit_tests.dir/src/multithreading/execute_in_parallel.test.cpp.o
  _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
  _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
 CMakeFiles/unit_tests.dir/src/potential/mestel.cpp.o
+ ../include/consts/units1.hpp
+ ../include/potential/axsym_funcs.hpp
  ../include/potential/mestel.hpp
  ../include/potential/potential_funcs.hpp
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/force.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/utils.hpp
  ../include/utility/add_functions.hpp
  ../include/vectors/coords.hpp
- ../include/vectors/force.hpp
  /home/kit/Documents/cita_project/src/potential/mestel.cpp
 CMakeFiles/unit_tests.dir/src/potential/potential_funcs.test.cpp.o
+ ../include/consts/units1.hpp
+ ../include/potential/axsym_funcs.hpp
+ ../include/potential/mestel.hpp
  ../include/potential/potential_funcs.hpp
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/force.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/utils.hpp
  ../include/utility/add_functions.hpp
  ../include/vectors/coords.hpp
- ../include/vectors/force.hpp
  /home/kit/Documents/cita_project/src/potential/potential_funcs.test.cpp
  _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
  _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
@@ -66,17 +77,17 @@ CMakeFiles/unit_tests.dir/src/potential/potential_funcs.test.cpp.o
 CMakeFiles/unit_tests.dir/src/potential/spiral.cpp.o
  ../include/potential/potential_funcs.hpp
  ../include/potential/spiral.hpp
+ ../include/rc/force.hpp
  ../include/utility/add_functions.hpp
  ../include/vectors/coords.hpp
- ../include/vectors/force.hpp
  /home/kit/Documents/cita_project/src/potential/spiral.cpp
 CMakeFiles/unit_tests.dir/src/potential/spiral.test.cpp.o
  ../include/potential/potential_funcs.hpp
  ../include/potential/spiral.hpp
+ ../include/rc/force.hpp
  ../include/utility/add_functions.hpp
  ../include/utility/vector_io.hpp
  ../include/vectors/coords.hpp
- ../include/vectors/force.hpp
  /home/kit/Documents/cita_project/src/potential/spiral.test.cpp
  _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
  _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
@@ -98,21 +109,184 @@ CMakeFiles/unit_tests.dir/src/potential/spiral.test.cpp.o
  _deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
  _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
  _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
+CMakeFiles/unit_tests.dir/src/rc/HEALPix.cpp.o
+ ../include/rc/HEALPix.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/HEALPix.cpp
+CMakeFiles/unit_tests.dir/src/rc/bar.cpp.o
+ ../include/rc/bar.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/bar.cpp
+CMakeFiles/unit_tests.dir/src/rc/export.cpp.o
+ ../include/rc/export.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/export.cpp
+CMakeFiles/unit_tests.dir/src/rc/force.cpp.o
+ ../include/rc/force.hpp
+ /home/kit/Documents/cita_project/src/rc/force.cpp
+CMakeFiles/unit_tests.dir/src/rc/getJres.cpp.o
+ ../include/consts/units1.hpp
+ ../include/potential/axsym_funcs.hpp
+ ../include/potential/potential_funcs.hpp
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/getJres.hpp
+ ../include/rc/mapXVtoAA2D.hpp
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ ../include/utility/add_functions.hpp
+ ../include/vectors/coords.hpp
+ /home/kit/Documents/cita_project/src/rc/getJres.cpp
+CMakeFiles/unit_tests.dir/src/rc/import.cpp.o
+ ../include/rc/import.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/import.cpp
+CMakeFiles/unit_tests.dir/src/rc/interpolate.cpp.o
+ ../include/rc/import.hpp
+ ../include/rc/interpolate.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/interpolate.cpp
+CMakeFiles/unit_tests.dir/src/rc/mapXVtoAA2D.cpp.o
+ ../include/consts/units1.hpp
+ ../include/potential/axsym_funcs.hpp
+ ../include/potential/potential_funcs.hpp
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/mapXVtoAA2D.hpp
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ ../include/utility/add_functions.hpp
+ ../include/vectors/coords.hpp
+ /home/kit/Documents/cita_project/src/rc/mapXVtoAA2D.cpp
+CMakeFiles/unit_tests.dir/src/rc/math_RC.cpp.o
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/math_RC.cpp
+CMakeFiles/unit_tests.dir/src/rc/potential.cpp.o
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/potential.cpp
+CMakeFiles/unit_tests.dir/src/rc/potential_AGAMA.cpp.o
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/import.hpp
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/potential_AGAMA.hpp
+ ../include/rc/potential_CartGrid.hpp
+ ../include/rc/potential_multipole.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/potential_AGAMA.cpp
+CMakeFiles/unit_tests.dir/src/rc/potential_CartGrid.cpp.o
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/import.hpp
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/potential_CartGrid.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/potential_CartGrid.cpp
+CMakeFiles/unit_tests.dir/src/rc/potential_Hernquist.cpp.o
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/potential_Hernquist.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/potential_Hernquist.cpp
+CMakeFiles/unit_tests.dir/src/rc/potential_multipole.cpp.o
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/import.hpp
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/potential_multipole.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/potential_multipole.cpp
+CMakeFiles/unit_tests.dir/src/rc/potential_powerLawVc.cpp.o
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/potential_powerLawVc.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/potential_powerLawVc.cpp
+CMakeFiles/unit_tests.dir/src/rc/sht.cpp.o
+ ../include/rc/pi.hpp
+ ../include/rc/sht.hpp
+ /home/kit/Documents/cita_project/src/rc/sht.cpp
+CMakeFiles/unit_tests.dir/src/rc/spiral.cpp.o
+ ../include/potential/potential_funcs.hpp
+ ../include/potential/spiral.hpp
+ ../include/rc/force.hpp
+ ../include/utility/add_functions.hpp
+ ../include/vectors/coords.hpp
+ /home/kit/Documents/cita_project/src/rc/spiral.cpp
+CMakeFiles/unit_tests.dir/src/rc/utils.cpp.o
+ ../include/rc/pi.hpp
+ ../include/rc/utils.hpp
+ /home/kit/Documents/cita_project/src/rc/utils.cpp
 CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.cpp.o
  ../include/potential/potential_funcs.hpp
+ ../include/rc/force.hpp
  ../include/tp_integration/integrate_rk4.hpp
  ../include/utility/add_arrays.hpp
  ../include/utility/add_functions.hpp
  ../include/vectors/coords.hpp
- ../include/vectors/force.hpp
  /home/kit/Documents/cita_project/src/tp_integration/integrate_rk4.cpp
 CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.test.cpp.o
  ../include/potential/potential_funcs.hpp
+ ../include/rc/force.hpp
  ../include/tp_integration/integrate_rk4.hpp
  ../include/utility/add_arrays.hpp
  ../include/utility/add_functions.hpp
  ../include/vectors/coords.hpp
- ../include/vectors/force.hpp
  /home/kit/Documents/cita_project/src/tp_integration/integrate_rk4.test.cpp
  _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
  _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
@@ -256,12 +430,12 @@ CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.o
  _deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
  _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
  _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
-CMakeFiles/unit_tests.dir/src/vectors/force.cpp.o
- ../include/vectors/force.hpp
- /home/kit/Documents/cita_project/src/vectors/force.cpp
-CMakeFiles/unit_tests.dir/src/vectors/force.test.cpp.o
- ../include/vectors/force.hpp
- /home/kit/Documents/cita_project/src/vectors/force.test.cpp
+CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.o
+ ../include/vectors/force1.hpp
+ /home/kit/Documents/cita_project/src/vectors/force1.cpp
+CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.o
+ ../include/vectors/force1.hpp
+ /home/kit/Documents/cita_project/src/vectors/force1.test.cpp
  _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
  _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
  _deps/googletest-src/googletest/include/gtest/gtest-message.h

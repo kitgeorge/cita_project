@@ -20,6 +20,8 @@
 #include "units.hpp"
 #include "mapXVtoAA2D.hpp"
 
+namespace RC {
+
 double getJsres(int Nr, int Npsi, double wp, double Jf1, double Jf2, 
   double Jr_max, double L_max, double dJr, double dL, 
   std::vector<std::vector<double>> &wp_J, bool &gotvalue);
@@ -34,5 +36,6 @@ double getJrres(double wp, double Lres, double Jr_max, double dJr, double dL,
 double getJrres(double wp, double Lres, double Jr_max, double dJr, double dL, 
   std::vector<std::vector<double>> &wp_J);
 
+}
 #endif
 

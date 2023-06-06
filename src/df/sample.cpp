@@ -25,4 +25,24 @@ getDFSample(std::function<double(double, double)> df,
     return output;
 }
 
+std::array<double, 2>
+getDFSampleEL(std::function<double(double, double)> df,
+              std::array<std::array<double, 2>, 2> bounds) {
+    // Should normalise df such that its maximal value over sampled bounds is 1
+    // (any lower and this function will be slower, any higher and it saturates)
+    double E, L;
+    while(accepted_flag == 0) {
+        E = bounds[0][0] + (double)std::rand()/RAND_MAX
+                                              *(bounds[0][1] - bounds[0][0]);
+        L = bounds[0][0] + (double)std::rand()/RAND_MAX
+                                              *(bounds[1][1] - bounds[1][0]);
+        if(df(E, L) > (double)std::rand()/RAND_MAX) {
+            accepted_flag = 1;
+        }
+    }
+    std::array<double, 2> output = {E, L};
+    return output;
+}
+
+
 }
