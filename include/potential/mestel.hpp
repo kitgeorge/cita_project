@@ -3,7 +3,7 @@
 #include <functional>
 #include "potential_funcs.hpp"
 #include "force.hpp"
-#include "units1.hpp"
+#include "units.hpp"
 #include "axsym_funcs.hpp"
 
 namespace potential {

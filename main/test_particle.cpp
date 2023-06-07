@@ -2,7 +2,7 @@
 #include "flatten.hpp"
 #include "vector_io.hpp"
 #include "add_functions.hpp"
-#include "units1.hpp"
+#include "units.hpp"
 #include "coords.hpp"
 #include "mestel.hpp"
 #include "spiral.hpp"
@@ -18,8 +18,8 @@ int main() {
     int N_test_particles = 36;
     int N_timesteps = 1e4;
 
-    double mestel_vc = 220*consts::km;
-    double R_0 = 8*consts::kpc;
+    double mestel_vc = 220*Units::kms;
+    double R_0 = 8;
     double spiral_amplitude_fraction = 0.001;
     double local_pitch_angle = std::numbers::pi/6;
     int m = 2;
@@ -48,7 +48,7 @@ int main() {
     initial_conditions(N_test_particles);
     for(int i = 0; i < N_test_particles; ++i) {
         initial_conditions[i].setPolar({{ {{R_0, (double)i/18*std::numbers::pi}},
-                                          {{30*consts::km, mestel_vc}} }});
+                                          {{30*Units::kms, mestel_vc}} }});
     }
     
 
@@ -77,13 +77,13 @@ int main() {
     for(int i = 0; i < N_test_particles; ++i) {
         for(int j = 0; j < N_timesteps; ++j) {
             std::cout << i << ", " << j << std::endl;
-            action_map.mapXVtoAA(trajectories[i][j].polar[0][0]/consts::kpc,
+            action_map.mapXVtoAA(trajectories[i][j].polar[0][0],
                                  trajectories[i][j].polar[0][1],
-                                 trajectories[i][j].polar[1][0]/(consts::kpc/consts::Myr),
-                                 trajectories[i][j].polar[1][1]/(consts::kpc/consts::Myr),
+                                 trajectories[i][j].polar[1][0],
+                                 trajectories[i][j].polar[1][1],
                                  N_tau);
-            aa_trajectories[i][j][0][0] = action_map.Jr*pow(consts::kpc, 2)/consts::Myr;
-            aa_trajectories[i][j][0][1] = action_map.Jpsi*pow(consts::kpc, 2)/consts::Myr;
+            aa_trajectories[i][j][0][0] = action_map.Jr;
+            aa_trajectories[i][j][0][1] = action_map.Jpsi;
             aa_trajectories[i][j][1][0] = action_map.thetar;
             aa_trajectories[i][j][1][1] = action_map.thetapsi;
         }

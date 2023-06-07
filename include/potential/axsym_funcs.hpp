@@ -1,6 +1,6 @@
 #pragma once
 #include "potential_funcs.hpp"
-#include "units1.hpp"
+#include "units.hpp"
 #include "NewtonRaphson.hpp"
 
 namespace vrs = vectors;
@@ -40,9 +40,9 @@ struct AxsymFuncs : public PotentialFuncs {
 		// f(rc) = Nr*kappa(rc) + Npsi*Omega(rc) - Nphi*Omegap = 0
 		// f is generally a decreasing function
 		const auto warn = false;
-		const auto rc_limit = 5.e+2 * consts::kpc;
-		const auto rc_err   = 1.e-7 * consts::kpc;
-		auto       drc      = 1.e-0 * consts::kpc;
+		const auto rc_limit = 5.e+2 * Units::kpc;
+		const auto rc_err   = 1.e-7 * Units::kpc;
+		auto       drc      = 1.e-0 * Units::kpc;
 		auto rc = rc_err;
 		if(Nr * kappa(rc_err) + Npsi * Omega(rc_err) - Nphi * Omegap > 0) // If N•Omega decreases with R
 		{
@@ -54,7 +54,7 @@ struct AxsymFuncs : public PotentialFuncs {
 		}
 		else // For ILRs where N•Omega tends to zero towards R=0
 		{
-			drc = 0.1 * consts::kpc;
+			drc = 0.1 * Units::kpc;
 			while(Nr * kappa(rc) + Npsi * Omega(rc) - Nphi * Omegap < 0)
 			{
 				rc += drc;

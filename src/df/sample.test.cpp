@@ -3,26 +3,26 @@
 #include "dehnen_df.hpp"
 #include "flatten.hpp"
 #include "vector_io.hpp"
-#include "units1.hpp"
+#include "units.hpp"
 #include "mestel.hpp"
 
 using namespace df;
 
 TEST(SampleTest, getDFSampleELPlotting) {
-    double v_c = 220*consts::km;
+    double v_c = 220*Units::kms;
     potential::AxsymFuncs pot = potential::getMestel(v_c);
     std::function<double(double)>
     surface_density = [](double R) {
-        double S_0 = 49*consts::M_solar/pow(consts::pc, 2);
-        return S_0*exp(-(R - 8*consts::kpc)/(8*consts::kpc));
+        double S_0 = 49*Units::M_sun/Units::pc2;
+        return S_0*exp(-(R - 8)/8);
     };
     std::function<double(double)>
     sigma_R = [](double R) {
-        double sigma_R_0 = 30*consts::km;
-        return sigma_R_0*exp(-(R - 8*consts::kpc)/(8*consts::kpc));
+        double sigma_R_0 = 30*Units::kms;
+        return sigma_R_0*exp(-(R - 8)/8);
     };
-    double E_max = pow(v_c, 2)/2 + pot.potential_R(16*consts::kpc);
-    double L_max = 16*consts::kpc*v_c;
+    double E_max = pow(v_c, 2)/2 + pot.potential_R(16);
+    double L_max = 16v_c;
     double E_min = -1*E_max;
     double L_min = 0.1*L_max;
     double N_samples = 1e3;
