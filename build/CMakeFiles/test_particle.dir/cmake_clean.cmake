@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test_particle.dir/main/test_particle.cpp.o"
+  "CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.cpp.o"
+  "CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.test.cpp.o"
+  "CMakeFiles/test_particle.dir/src/df/dehnen_df.cpp.o"
+  "CMakeFiles/test_particle.dir/src/df/dehnen_df.test.cpp.o"
   "CMakeFiles/test_particle.dir/src/df/sample.cpp.o"
+  "CMakeFiles/test_particle.dir/src/df/sample.test.cpp.o"
   "CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.cpp.o"
   "CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.test.cpp.o"
   "CMakeFiles/test_particle.dir/src/potential/mestel.cpp.o"

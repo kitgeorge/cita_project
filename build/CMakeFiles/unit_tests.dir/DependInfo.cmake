@@ -4,7 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/kit/Documents/cita_project/src/actions/theta_r_integrand.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.cpp.o"
+  "/home/kit/Documents/cita_project/src/actions/theta_r_integrand.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.test.cpp.o"
+  "/home/kit/Documents/cita_project/src/df/dehnen_df.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.o"
+  "/home/kit/Documents/cita_project/src/df/dehnen_df.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/unit_tests.dir/src/df/dehnen_df.test.cpp.o"
   "/home/kit/Documents/cita_project/src/df/sample.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/unit_tests.dir/src/df/sample.cpp.o"
+  "/home/kit/Documents/cita_project/src/df/sample.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/unit_tests.dir/src/df/sample.test.cpp.o"
   "/home/kit/Documents/cita_project/src/multithreading/execute_in_parallel.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/unit_tests.dir/src/multithreading/execute_in_parallel.cpp.o"
   "/home/kit/Documents/cita_project/src/multithreading/execute_in_parallel.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/unit_tests.dir/src/multithreading/execute_in_parallel.test.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/mestel.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/unit_tests.dir/src/potential/mestel.cpp.o"
@@ -53,6 +58,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/multithreading"
   "../include/tp_integration"
   "../include/rc"
+  "../include/actions"
   "_deps/googletest-src/googletest/include"
   "_deps/googletest-src/googletest"
   )

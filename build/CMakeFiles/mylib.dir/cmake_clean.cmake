@@ -1,5 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/mylib.dir/src/actions/theta_r_integrand.cpp.o"
+  "CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.o"
+  "CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.o"
+  "CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.o"
   "CMakeFiles/mylib.dir/src/df/sample.cpp.o"
+  "CMakeFiles/mylib.dir/src/df/sample.test.cpp.o"
   "CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.cpp.o"
   "CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.test.cpp.o"
   "CMakeFiles/mylib.dir/src/potential/mestel.cpp.o"

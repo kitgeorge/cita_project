@@ -285,6 +285,138 @@ main/test_particle.cpp.s:
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/main/test_particle.cpp.s
 .PHONY : main/test_particle.cpp.s
 
+src/actions/theta_r_integrand.o: src/actions/theta_r_integrand.cpp.o
+
+.PHONY : src/actions/theta_r_integrand.o
+
+# target to build an object file
+src/actions/theta_r_integrand.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.cpp.o
+.PHONY : src/actions/theta_r_integrand.cpp.o
+
+src/actions/theta_r_integrand.i: src/actions/theta_r_integrand.cpp.i
+
+.PHONY : src/actions/theta_r_integrand.i
+
+# target to preprocess a source file
+src/actions/theta_r_integrand.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.cpp.i
+.PHONY : src/actions/theta_r_integrand.cpp.i
+
+src/actions/theta_r_integrand.s: src/actions/theta_r_integrand.cpp.s
+
+.PHONY : src/actions/theta_r_integrand.s
+
+# target to generate assembly for a file
+src/actions/theta_r_integrand.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.cpp.s
+.PHONY : src/actions/theta_r_integrand.cpp.s
+
+src/actions/theta_r_integrand.test.o: src/actions/theta_r_integrand.test.cpp.o
+
+.PHONY : src/actions/theta_r_integrand.test.o
+
+# target to build an object file
+src/actions/theta_r_integrand.test.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.test.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.test.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.o
+.PHONY : src/actions/theta_r_integrand.test.cpp.o
+
+src/actions/theta_r_integrand.test.i: src/actions/theta_r_integrand.test.cpp.i
+
+.PHONY : src/actions/theta_r_integrand.test.i
+
+# target to preprocess a source file
+src/actions/theta_r_integrand.test.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.test.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.test.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.i
+.PHONY : src/actions/theta_r_integrand.test.cpp.i
+
+src/actions/theta_r_integrand.test.s: src/actions/theta_r_integrand.test.cpp.s
+
+.PHONY : src/actions/theta_r_integrand.test.s
+
+# target to generate assembly for a file
+src/actions/theta_r_integrand.test.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.test.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.test.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.s
+.PHONY : src/actions/theta_r_integrand.test.cpp.s
+
+src/df/dehnen_df.o: src/df/dehnen_df.cpp.o
+
+.PHONY : src/df/dehnen_df.o
+
+# target to build an object file
+src/df/dehnen_df.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.o
+.PHONY : src/df/dehnen_df.cpp.o
+
+src/df/dehnen_df.i: src/df/dehnen_df.cpp.i
+
+.PHONY : src/df/dehnen_df.i
+
+# target to preprocess a source file
+src/df/dehnen_df.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.i
+.PHONY : src/df/dehnen_df.cpp.i
+
+src/df/dehnen_df.s: src/df/dehnen_df.cpp.s
+
+.PHONY : src/df/dehnen_df.s
+
+# target to generate assembly for a file
+src/df/dehnen_df.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.s
+.PHONY : src/df/dehnen_df.cpp.s
+
+src/df/dehnen_df.test.o: src/df/dehnen_df.test.cpp.o
+
+.PHONY : src/df/dehnen_df.test.o
+
+# target to build an object file
+src/df/dehnen_df.test.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.test.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.test.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.o
+.PHONY : src/df/dehnen_df.test.cpp.o
+
+src/df/dehnen_df.test.i: src/df/dehnen_df.test.cpp.i
+
+.PHONY : src/df/dehnen_df.test.i
+
+# target to preprocess a source file
+src/df/dehnen_df.test.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.test.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.test.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.i
+.PHONY : src/df/dehnen_df.test.cpp.i
+
+src/df/dehnen_df.test.s: src/df/dehnen_df.test.cpp.s
+
+.PHONY : src/df/dehnen_df.test.s
+
+# target to generate assembly for a file
+src/df/dehnen_df.test.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.test.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.test.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.s
+.PHONY : src/df/dehnen_df.test.cpp.s
+
 src/df/sample.o: src/df/sample.cpp.o
 
 .PHONY : src/df/sample.o
@@ -317,6 +449,39 @@ src/df/sample.cpp.s:
 	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.cpp.s
 .PHONY : src/df/sample.cpp.s
+
+src/df/sample.test.o: src/df/sample.test.cpp.o
+
+.PHONY : src/df/sample.test.o
+
+# target to build an object file
+src/df/sample.test.cpp.o:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/sample.test.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.test.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.test.cpp.o
+.PHONY : src/df/sample.test.cpp.o
+
+src/df/sample.test.i: src/df/sample.test.cpp.i
+
+.PHONY : src/df/sample.test.i
+
+# target to preprocess a source file
+src/df/sample.test.cpp.i:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/sample.test.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.test.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.test.cpp.i
+.PHONY : src/df/sample.test.cpp.i
+
+src/df/sample.test.s: src/df/sample.test.cpp.s
+
+.PHONY : src/df/sample.test.s
+
+# target to generate assembly for a file
+src/df/sample.test.cpp.s:
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/sample.test.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.test.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.test.cpp.s
+.PHONY : src/df/sample.test.cpp.s
 
 src/multithreading/execute_in_parallel.o: src/multithreading/execute_in_parallel.cpp.o
 
@@ -1496,9 +1661,24 @@ help:
 	@echo "... main/test_particle.o"
 	@echo "... main/test_particle.i"
 	@echo "... main/test_particle.s"
+	@echo "... src/actions/theta_r_integrand.o"
+	@echo "... src/actions/theta_r_integrand.i"
+	@echo "... src/actions/theta_r_integrand.s"
+	@echo "... src/actions/theta_r_integrand.test.o"
+	@echo "... src/actions/theta_r_integrand.test.i"
+	@echo "... src/actions/theta_r_integrand.test.s"
+	@echo "... src/df/dehnen_df.o"
+	@echo "... src/df/dehnen_df.i"
+	@echo "... src/df/dehnen_df.s"
+	@echo "... src/df/dehnen_df.test.o"
+	@echo "... src/df/dehnen_df.test.i"
+	@echo "... src/df/dehnen_df.test.s"
 	@echo "... src/df/sample.o"
 	@echo "... src/df/sample.i"
 	@echo "... src/df/sample.s"
+	@echo "... src/df/sample.test.o"
+	@echo "... src/df/sample.test.i"
+	@echo "... src/df/sample.test.s"
 	@echo "... src/multithreading/execute_in_parallel.o"
 	@echo "... src/multithreading/execute_in_parallel.i"
 	@echo "... src/multithreading/execute_in_parallel.s"

@@ -39,9 +39,9 @@ class MapXVtoAA2D
 		potential::AxsymFuncs *Phi;
 		const double dr_apsis, dr_apsis_err, r_upper_limit, r_lower_limit, tau_max;
 		void clear();
-		bool findApsis(double L, double E); 
 
   public:
+		bool findApsis(double L, double E); 
 		double L, E, r_apo, r_peri, Jr, Jpsi, Tr, Tpsi, wr, wpsi, thetar, thetapsi;
 		void epicycle(double L);
 		bool mapLEtoJ(double L_, double E_, int N_tau);

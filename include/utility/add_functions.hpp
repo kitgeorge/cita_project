@@ -45,4 +45,20 @@ addFunctions(std::function<std::array<double, N>(Arg0, Arg1, Arg2)> first,
     };
 }
 
+template<class Arg>
+std::function<double(Arg)>
+multiplyFunction(std::function<double(Arg)> f, double scalar) {
+    return [=] (Arg a) {
+        return scalar*f(a);
+    };
+}
+
+template<class Arg0, class Arg1>
+std::function<double(Arg0, Arg1)>
+multiplyFunction(std::function<double(Arg0, Arg1)> f, double scalar) {
+    return [=] (Arg0 a0, Arg1 a1) {
+        return scalar*f(a0, a1);
+    };
+}
+
 }

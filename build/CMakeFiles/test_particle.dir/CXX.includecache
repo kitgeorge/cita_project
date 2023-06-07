@@ -6,29 +6,19 @@
 
 #IncludeRegexTransform: 
 
-../include/consts/units1.hpp
-
-../include/df/sample.hpp
-array
--
-cstdlib
--
+../include/actions/theta_r_integrand.hpp
 functional
 -
 numbers
 -
+cmath
+-
+axsym_funcs.hpp
+../include/actions/axsym_funcs.hpp
+mapXVtoAA2D.hpp
+../include/actions/mapXVtoAA2D.hpp
 
-../include/multithreading/execute_in_parallel.hpp
-boost/asio/thread_pool.hpp
--
-boost/asio.hpp
--
-functional
--
-thread
--
-vector
--
+../include/consts/units1.hpp
 
 ../include/potential/axsym_funcs.hpp
 potential_funcs.hpp
@@ -37,20 +27,6 @@ units1.hpp
 ../include/potential/units1.hpp
 NewtonRaphson.hpp
 ../include/potential/NewtonRaphson.hpp
-
-../include/potential/mestel.hpp
-cmath
--
-functional
--
-potential_funcs.hpp
-../include/potential/potential_funcs.hpp
-force.hpp
-../include/potential/force.hpp
-units1.hpp
-../include/potential/units1.hpp
-axsym_funcs.hpp
-../include/potential/axsym_funcs.hpp
 
 ../include/potential/potential_funcs.hpp
 force.hpp
@@ -61,16 +37,6 @@ add_functions.hpp
 ../include/potential/add_functions.hpp
 array
 -
-
-../include/potential/spiral.hpp
-functional
--
-cmath
--
-force.hpp
-../include/potential/force.hpp
-potential_funcs.hpp
-../include/potential/potential_funcs.hpp
 
 ../include/rc/NewtonRaphson.hpp
 stdlib.h
@@ -206,48 +172,8 @@ stdexcept
 pi.hpp
 ../include/rc/pi.hpp
 
-../include/tp_integration/integrate_rk4.hpp
-add_arrays.hpp
-../include/tp_integration/add_arrays.hpp
-coords.hpp
-../include/tp_integration/coords.hpp
-potential_funcs.hpp
-../include/tp_integration/potential_funcs.hpp
-
-../include/utility/add_arrays.hpp
-array
--
-
 ../include/utility/add_functions.hpp
 functional
--
-
-../include/utility/flatten.hpp
-vector
--
-iostream
--
-cstdlib
--
-shape.hpp
-../include/utility/shape.hpp
-
-../include/utility/shape.hpp
-vector
--
-csignal
--
-iostream
--
-array
--
-
-../include/utility/vector_io.hpp
-vector
--
-string
--
-fstream
 -
 
 ../include/vectors/coords.hpp
@@ -260,29 +186,7 @@ cmath
 numbers
 -
 
-/home/kit/Documents/cita_project/main/test_particle.cpp
-numbers
--
-flatten.hpp
-/home/kit/Documents/cita_project/main/flatten.hpp
-vector_io.hpp
-/home/kit/Documents/cita_project/main/vector_io.hpp
-add_functions.hpp
-/home/kit/Documents/cita_project/main/add_functions.hpp
-units1.hpp
-/home/kit/Documents/cita_project/main/units1.hpp
-coords.hpp
-/home/kit/Documents/cita_project/main/coords.hpp
-mestel.hpp
-/home/kit/Documents/cita_project/main/mestel.hpp
-spiral.hpp
-/home/kit/Documents/cita_project/main/spiral.hpp
-sample.hpp
-/home/kit/Documents/cita_project/main/sample.hpp
-integrate_rk4.hpp
-/home/kit/Documents/cita_project/main/integrate_rk4.hpp
-execute_in_parallel.hpp
-/home/kit/Documents/cita_project/main/execute_in_parallel.hpp
-mapXVtoAA2D.hpp
-/home/kit/Documents/cita_project/main/mapXVtoAA2D.hpp
+/home/kit/Documents/cita_project/src/actions/theta_r_integrand.cpp
+theta_r_integrand.hpp
+/home/kit/Documents/cita_project/src/actions/theta_r_integrand.hpp
 

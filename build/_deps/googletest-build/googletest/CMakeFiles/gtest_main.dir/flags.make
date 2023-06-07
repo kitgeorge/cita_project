@@ -6,5 +6,5 @@ CXX_FLAGS =   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREA
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/kit/Documents/cita_project/include/potential -I/home/kit/Documents/cita_project/include/vectors -I/home/kit/Documents/cita_project/include/consts -I/home/kit/Documents/cita_project/include/df -I/home/kit/Documents/cita_project/include/utility -I/home/kit/Documents/cita_project/include/multithreading -I/home/kit/Documents/cita_project/include/tp_integration -I/home/kit/Documents/cita_project/include/rc -isystem /home/kit/Documents/cita_project/build/_deps/googletest-src/googletest/include -isystem /home/kit/Documents/cita_project/build/_deps/googletest-src/googletest 
+CXX_INCLUDES = -I/home/kit/Documents/cita_project/include/potential -I/home/kit/Documents/cita_project/include/vectors -I/home/kit/Documents/cita_project/include/consts -I/home/kit/Documents/cita_project/include/df -I/home/kit/Documents/cita_project/include/utility -I/home/kit/Documents/cita_project/include/multithreading -I/home/kit/Documents/cita_project/include/tp_integration -I/home/kit/Documents/cita_project/include/rc -I/home/kit/Documents/cita_project/include/actions -isystem /home/kit/Documents/cita_project/build/_deps/googletest-src/googletest/include -isystem /home/kit/Documents/cita_project/build/_deps/googletest-src/googletest 
 

@@ -31,6 +31,7 @@ getDFSampleEL(std::function<double(double, double)> df,
     // Should normalise df such that its maximal value over sampled bounds is 1
     // (any lower and this function will be slower, any higher and it saturates)
     double E, L;
+    int accepted_flag = 0;
     while(accepted_flag == 0) {
         E = bounds[0][0] + (double)std::rand()/RAND_MAX
                                               *(bounds[0][1] - bounds[0][0]);
