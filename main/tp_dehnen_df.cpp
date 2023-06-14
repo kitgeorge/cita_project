@@ -23,7 +23,7 @@ int main() {
 
     double mestel_vc = 220*Units::kms;
     double R_0 = 8*Units::kpc;
-    double spiral_amplitude_fraction = 0;
+    double spiral_amplitude_fraction = 0.01;
     double local_pitch_angle = std::numbers::pi/6;
     int m = 2;
     double k_R = m/R_0/tan(local_pitch_angle);
@@ -36,7 +36,7 @@ int main() {
 
     ptl::AxsymFuncs axsym_potential = ptl::getMestel(mestel_vc, R_0);
     ptl::PotentialFuncs total_potential = axsym_potential;
-    int N_spirals = 1;
+    int N_spirals = 10;
 
     // std::cout << total_potential.potential(R_0, 0, 0.05*integration_time) << ", "
     //           << total_potential.polar_force(R_0, 0, 0.05*integration_time)[0] << ", "
@@ -177,7 +177,7 @@ int main() {
     }
 
     utility::writeCsv("../data/test_particle_dehnen.csv", vrs::getPolarsFlat(utility::flatten(output_trajectories)));
-    return 0;
+
     RC::MapXVtoAA2D action_map(&axsym_potential);
     int N_tau = 1e3;
     std::vector<std::vector<std::vector<std::vector<double>>>>

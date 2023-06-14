@@ -25,6 +25,7 @@ include/tp_integration include/rc include/actions)
 
 file(GLOB main1 main/test_particle.cpp)
 file(GLOB main2 main/tp_dehnen_df.cpp)
+file(GLOB main3 main/libration_amplitude.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -64,6 +65,17 @@ add_executable(
 
 target_link_libraries(
     tp_dehnen_df
+    mylib
+    GTest::gtest_main
+    ${BOOST_LIBRARIES})
+
+add_executable(
+    libration_amplitude
+    ${main3}
+    ${src_files})
+
+target_link_libraries(
+    libration_amplitude
     mylib
     GTest::gtest_main
     ${BOOST_LIBRARIES})
