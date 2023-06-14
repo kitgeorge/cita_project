@@ -36,7 +36,7 @@ int main() {
     = ptl::getSpiralPotential(m, k_R, spiral_amplitude_fraction/k_R
                                          *(-1)*axsym_potential.polar_force(R_0, 0, 0)[0],
                               pattern_speed, 0);
-    ptl::PotentialFuncs total_potential(axsym_potential, spiral_potential);
+    ptl::PotentialFuncs total_potential({axsym_potential, spiral_potential});
 
     // ptl::PotentialFuncs total_potential = axsym_potential;
     

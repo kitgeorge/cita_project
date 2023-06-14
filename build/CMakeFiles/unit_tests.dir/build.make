@@ -512,9 +512,22 @@ CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.test.cpp.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.test.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/tp_integration/integrate_rk4.test.cpp -o CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.test.cpp.s
 
+CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.o: CMakeFiles/unit_tests.dir/flags.make
+CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.o: ../src/utility/add_functions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.o -c /home/kit/Documents/cita_project/src/utility/add_functions.cpp
+
+CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kit/Documents/cita_project/src/utility/add_functions.cpp > CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.i
+
+CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kit/Documents/cita_project/src/utility/add_functions.cpp -o CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.s
+
 CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.o: CMakeFiles/unit_tests.dir/flags.make
 CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.o: ../src/utility/add_functions.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.o -c /home/kit/Documents/cita_project/src/utility/add_functions.test.cpp
 
 CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.i: cmake_force
@@ -527,7 +540,7 @@ CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.s: cmake_force
 
 CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.o: CMakeFiles/unit_tests.dir/flags.make
 CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.o: ../src/utility/flatten.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.o -c /home/kit/Documents/cita_project/src/utility/flatten.test.cpp
 
 CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.i: cmake_force
@@ -540,7 +553,7 @@ CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.s: cmake_force
 
 CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.o: CMakeFiles/unit_tests.dir/flags.make
 CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.o: ../src/utility/shape.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.o -c /home/kit/Documents/cita_project/src/utility/shape.test.cpp
 
 CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.i: cmake_force
@@ -553,7 +566,7 @@ CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.s: cmake_force
 
 CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.o: CMakeFiles/unit_tests.dir/flags.make
 CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.o: ../src/utility/vector_io.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.o -c /home/kit/Documents/cita_project/src/utility/vector_io.cpp
 
 CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.i: cmake_force
@@ -566,7 +579,7 @@ CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.s: cmake_force
 
 CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.o: CMakeFiles/unit_tests.dir/flags.make
 CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.o: ../src/utility/vector_io.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.o -c /home/kit/Documents/cita_project/src/utility/vector_io.test.cpp
 
 CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.i: cmake_force
@@ -579,7 +592,7 @@ CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.s: cmake_force
 
 CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.o: CMakeFiles/unit_tests.dir/flags.make
 CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.o: ../src/vectors/coords.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.o -c /home/kit/Documents/cita_project/src/vectors/coords.cpp
 
 CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.i: cmake_force
@@ -592,7 +605,7 @@ CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.s: cmake_force
 
 CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.o: CMakeFiles/unit_tests.dir/flags.make
 CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.o: ../src/vectors/coords.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.o -c /home/kit/Documents/cita_project/src/vectors/coords.test.cpp
 
 CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.i: cmake_force
@@ -605,7 +618,7 @@ CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.s: cmake_force
 
 CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.o: CMakeFiles/unit_tests.dir/flags.make
 CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.o: ../src/vectors/force1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.o -c /home/kit/Documents/cita_project/src/vectors/force1.cpp
 
 CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.i: cmake_force
@@ -618,7 +631,7 @@ CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.s: cmake_force
 
 CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.o: CMakeFiles/unit_tests.dir/flags.make
 CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.o: ../src/vectors/force1.test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.o -c /home/kit/Documents/cita_project/src/vectors/force1.test.cpp
 
 CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.i: cmake_force
@@ -666,6 +679,7 @@ unit_tests_OBJECTS = \
 "CMakeFiles/unit_tests.dir/src/rc/utils.cpp.o" \
 "CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.cpp.o" \
 "CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.test.cpp.o" \
+"CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.o" \
 "CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.o" \
 "CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.o" \
 "CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.o" \
@@ -714,6 +728,7 @@ unit_tests: CMakeFiles/unit_tests.dir/src/rc/spiral.cpp.o
 unit_tests: CMakeFiles/unit_tests.dir/src/rc/utils.cpp.o
 unit_tests: CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.cpp.o
 unit_tests: CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.test.cpp.o
+unit_tests: CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.o
 unit_tests: CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.o
 unit_tests: CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.o
 unit_tests: CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.o
@@ -728,7 +743,7 @@ unit_tests: libmylib.so
 unit_tests: lib/libgtest_main.a
 unit_tests: lib/libgtest.a
 unit_tests: CMakeFiles/unit_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Linking CXX executable unit_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Linking CXX executable unit_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/unit_tests.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/cmake -D TEST_TARGET=unit_tests -D TEST_EXECUTABLE=/home/kit/Documents/cita_project/build/unit_tests -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/home/kit/Documents/cita_project/build -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=unit_tests_TESTS -D CTEST_FILE=/home/kit/Documents/cita_project/build/unit_tests[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -P /usr/share/cmake-3.16/Modules/GoogleTestAddTests.cmake
 

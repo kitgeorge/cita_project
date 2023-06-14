@@ -1585,6 +1585,42 @@ src/tp_integration/integrate_rk4.test.cpp.s:
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.s
 .PHONY : src/tp_integration/integrate_rk4.test.cpp.s
 
+src/utility/add_functions.o: src/utility/add_functions.cpp.o
+
+.PHONY : src/utility/add_functions.o
+
+# target to build an object file
+src/utility/add_functions.cpp.o:
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/add_functions.cpp.o
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/add_functions.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/add_functions.cpp.o
+.PHONY : src/utility/add_functions.cpp.o
+
+src/utility/add_functions.i: src/utility/add_functions.cpp.i
+
+.PHONY : src/utility/add_functions.i
+
+# target to preprocess a source file
+src/utility/add_functions.cpp.i:
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/add_functions.cpp.i
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/add_functions.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/add_functions.cpp.i
+.PHONY : src/utility/add_functions.cpp.i
+
+src/utility/add_functions.s: src/utility/add_functions.cpp.s
+
+.PHONY : src/utility/add_functions.s
+
+# target to generate assembly for a file
+src/utility/add_functions.cpp.s:
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/add_functions.cpp.s
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/add_functions.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/add_functions.cpp.s
+.PHONY : src/utility/add_functions.cpp.s
+
 src/utility/add_functions.test.o: src/utility/add_functions.test.cpp.o
 
 .PHONY : src/utility/add_functions.test.o
@@ -2041,6 +2077,9 @@ help:
 	@echo "... src/tp_integration/integrate_rk4.test.o"
 	@echo "... src/tp_integration/integrate_rk4.test.i"
 	@echo "... src/tp_integration/integrate_rk4.test.s"
+	@echo "... src/utility/add_functions.o"
+	@echo "... src/utility/add_functions.i"
+	@echo "... src/utility/add_functions.s"
 	@echo "... src/utility/add_functions.test.o"
 	@echo "... src/utility/add_functions.test.i"
 	@echo "... src/utility/add_functions.test.s"

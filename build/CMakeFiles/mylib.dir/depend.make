@@ -354,6 +354,9 @@ CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../include/uti
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o: ../src/tp_integration/integrate_rk4.test.cpp
 
+CMakeFiles/mylib.dir/src/utility/add_functions.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/mylib.dir/src/utility/add_functions.cpp.o: ../src/utility/add_functions.cpp
+
 CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o: ../src/utility/add_functions.test.cpp
 

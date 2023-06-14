@@ -69,7 +69,7 @@ TEST(PotentialFuncsTest, AddAxsymWorks) {
         return output;
     };
     PotentialFuncs pot(potential, force);
-    PotentialFuncs sum(pot, as);
+    PotentialFuncs sum({pot, as});
     EXPECT_EQ(sum.potential(8*3e19, 0, 0), as.potential(8*3e19, 0, 0) + pot.potential(8*3e19, 0, 0));
     for(int i = 0; i < 2; ++i) {
         EXPECT_EQ(sum.polar_force(8*3e19, 0, 0)[i], as.polar_force(8*3e19, 0, 0)[i] + pot.polar_force(8*3e19, 0, 0)[i]);
