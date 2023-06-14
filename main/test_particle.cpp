@@ -19,7 +19,7 @@ int main() {
     int N_timesteps = 1e4;
 
     double mestel_vc = 220*Units::kms;
-    double R_0 = 8;
+    double R_0 = 8*Units::kpc;
     double spiral_amplitude_fraction = 0.001;
     double local_pitch_angle = std::numbers::pi/6;
     int m = 2;
@@ -31,11 +31,11 @@ int main() {
     double integration_time = 50*2*std::numbers::pi/local_Omega;
     double timestep = integration_time/N_timesteps;
 
-    ptl::AxsymFuncs axsym_potential = ptl::getMestel(mestel_vc);
+    ptl::AxsymFuncs axsym_potential = ptl::getMestel(mestel_vc, R_0);
     ptl::PotentialFuncs spiral_potential 
     = ptl::getSpiralPotential(m, k_R, spiral_amplitude_fraction/k_R
                                          *(-1)*axsym_potential.polar_force(R_0, 0, 0)[0],
-                              pattern_speed);
+                              pattern_speed, 0);
     ptl::PotentialFuncs total_potential(axsym_potential, spiral_potential);
 
     // ptl::PotentialFuncs total_potential = axsym_potential;
@@ -58,12 +58,8 @@ int main() {
 
 
     std::vector<std::function<std::vector<vrs::Coords2d>()>>
-    tp_integration_functions(N_test_particles); 
-    for(int i = 0; i < N_test_particles; ++i) {
-        tp_integration_functions[i] 
-        = tp_integration::getTpIntegrationFunction(total_potential, initial_conditions[i], 
-                                                   0, timestep, N_timesteps);
-    }
+    tp_integration_functions = tp_integration::getTpIntegrationFunctions(total_potential,
+                                        initial_conditions, 0, timestep, N_timesteps); 
 
     std::vector<std::vector<vrs::Coords2d>>
     trajectories = multithreading::executeInParallel(tp_integration_functions);

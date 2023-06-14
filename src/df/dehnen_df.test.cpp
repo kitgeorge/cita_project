@@ -11,16 +11,17 @@ using namespace df;
 
 TEST(DehnenDFTest, PlottingDF) {
     double v_c = 220*Units::kms;
-    potential::AxsymFuncs pot = potential::getMestel(v_c);
+    double R_0 = 8*Units::kpc;
+    potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
     std::function<double(double)>
     surface_density = [](double R) {
-        double S_0 = 49*Units::M_sun/Units::pc2;
+        double S_0 = 49*Units::Msun/Units::pc2;
         return S_0*exp(-(R - 8)/8);
     }; 
     std::function<double(double)>
-    sigma_R = [](double R) {
-        double sigma_R_0 = 30*Units::km;
-        return sigma_R_0*exp(-(R - 8)/8);
+    sigma_R = [R_0](double R) {
+        double sigma_R_0 = 30*Units::kms;
+        return sigma_R_0*exp(-(R - R_0)/R_0);
     };
     double E_max = pow(v_c, 2)/2 + pot.potential_R(16);
     double L_max = 16*v_c;
@@ -34,6 +35,8 @@ TEST(DehnenDFTest, PlottingDF) {
     df_values(N_E_values, std::vector<double>(N_L_values));
     for(int i = 0; i < N_E_values; ++i) {
         for(int j = 0; j < N_L_values; ++j) {
+            double E = E_min + (double)i/N_E_values*(E_max - E_min);
+            double L = L_min + (double)j/N_L_values*(L_max - L_min);
             df_values[i][j] = df(E_min + (double)i/N_E_values*(E_max - E_min),
                                  L_min + (double)j/N_L_values*(L_max - L_min));
         }

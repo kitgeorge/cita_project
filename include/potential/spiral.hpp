@@ -7,6 +7,7 @@ namespace potential {
 
 PotentialFuncs getSpiralPotential(double m, double k_R, 
                                   double amplitude,
-                                  double pattern_speed);
+                                  double pattern_speed, 
+                                  double initial_phase);
 
 }

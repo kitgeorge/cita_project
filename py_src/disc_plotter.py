@@ -21,7 +21,8 @@ class DiscPlotter:
         # data must be indexed as (phi, R)
         figure = plt.figure()
         ax = figure.add_subplot(111, polar='True')
-        ax.pcolormesh(self.X, self.Y, data[:, :], shading='auto')
+        pc = ax.pcolormesh(self.X, self.Y, data[:, :], shading='auto')
+        figure.colorbar(pc)
         plt.savefig(path, dpi=500)
         plt.close()
 

@@ -9,7 +9,7 @@ namespace vrs = vectors;
 
 TEST(GetSpiralPotentialTest, CartForceConsistent) {
     potential::PotentialFuncs 
-    p = getSpiralPotential(2, 1, 1, 2*std::numbers::pi);
+    p = getSpiralPotential(2, 1, 1, 2*std::numbers::pi, 0);
     double R_max = 10;
     double t_max = 1;
     int N_R_values = 100;
@@ -36,7 +36,7 @@ TEST(GetSpiralPotentialTest, CartForceConsistent) {
 
 TEST(GetSpiralPotentialTest, PlottingCheck) {
     potential::PotentialFuncs 
-    p = getSpiralPotential(2, 1, 1, 2*std::numbers::pi);
+    p = getSpiralPotential(2, 1, 1, 2*std::numbers::pi, 0);
     double R_max = 10;
     double t_max = 1;
     int N_R_values = 100;

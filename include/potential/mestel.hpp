@@ -8,6 +8,6 @@
 
 namespace potential {
 
-AxsymFuncs getMestel(double v_c);
+AxsymFuncs getMestel(double v_c, double R_0);
 
 }

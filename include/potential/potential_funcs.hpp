@@ -40,6 +40,13 @@ struct PotentialFuncs {
         polar_force = old.polar_force;
         cartesian_force = old.cartesian_force;
     }
+    void operator +=(const PotentialFuncs& p) {
+        potential = utility::addFunctions(potential, p.potential);
+        polar_force = utility::addFunctions(polar_force, p.polar_force);
+        cartesian_force = utility::addFunctions(cartesian_force,
+                                                p.cartesian_force);
+    }
+    void multiply(std::function<double(double, double, double)> envelope);
 };
 
 }

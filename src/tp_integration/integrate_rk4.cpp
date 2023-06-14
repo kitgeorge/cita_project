@@ -1,4 +1,5 @@
 #include "integrate_rk4.hpp"
+#include <iostream>
 
 namespace vrs = vectors;
 namespace ptl = potential;
@@ -24,6 +25,20 @@ getTpIntegrationFunction(const ptl::PotentialFuncs& potential,
         }
         return output;
     };
+}
+
+std::vector<std::function<std::vector<vrs::Coords2d>()>>
+getTpIntegrationFunctions(const potential::PotentialFuncs& potential,
+                          const std::vector<vectors::Coords2d>& initial_conditions,
+                          double t_start, double timestep, int N_timesteps) {
+    int N_test_particles = initial_conditions.size();
+    std::vector<std::function<std::vector<vrs::Coords2d>()>>
+    output(N_test_particles);
+    for(int i = 0; i < N_test_particles; ++i) {
+        output[i] = getTpIntegrationFunction(potential, initial_conditions[i],
+                                             t_start, timestep, N_timesteps);
+    }
+    return output;
 }
 
 vrs::Coords2d
@@ -55,6 +70,8 @@ rk4Iteration(const ptl::PotentialFuncs& potential,
     cart = add_arrays(cart, multiply_array(k[3], timestep/6));
 
     vrs::Coords2d output(cart, 0);
+
+   
 
     return output;
 }

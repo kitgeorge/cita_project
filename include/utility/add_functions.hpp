@@ -1,5 +1,6 @@
 #pragma once
 #include <functional>
+#include <iostream>
 
 namespace utility {
 
@@ -58,6 +59,14 @@ std::function<double(Arg0, Arg1)>
 multiplyFunction(std::function<double(Arg0, Arg1)> f, double scalar) {
     return [=] (Arg0 a0, Arg1 a1) {
         return scalar*f(a0, a1);
+    };
+}
+
+template<class Arg0, class Arg1, class Arg2>
+std::function<double(Arg0, Arg1, Arg2)>
+multiplyFunction(std::function<double(Arg0, Arg1, Arg2)> f, double scalar) {
+    return [=] (Arg0 a0, Arg1 a1, Arg2 a2) {
+        return scalar*f(a0, a1, a2);
     };
 }
 

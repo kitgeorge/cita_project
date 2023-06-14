@@ -2,6 +2,8 @@
 #include "potential_funcs.hpp"
 #include "axsym_funcs.hpp"
 #include "mestel.hpp"
+#include "units.hpp"
+#include "spiral.hpp"
 #include <cmath>
 #include <numbers>
 
@@ -53,8 +55,8 @@ TEST(PotentialFuncsTest, CartesianForceWorks) {
 }
 
 TEST(PotentialFuncsTest, AddAxsymWorks) {
-    AxsymFuncs as = getMestel(220*1000);
-    double norm = as.potential(8*3e19, 0, 0);
+    AxsymFuncs as = getMestel(220*1000, 8);
+    double norm = as.potential(8, 0, 0);
 
     std::function<double(double, double, double)>
     potential = [norm] (double R, double phi, double t) {
@@ -73,4 +75,30 @@ TEST(PotentialFuncsTest, AddAxsymWorks) {
         EXPECT_EQ(sum.polar_force(8*3e19, 0, 0)[i], as.polar_force(8*3e19, 0, 0)[i] + pot.polar_force(8*3e19, 0, 0)[i]);
         EXPECT_EQ(sum.cartesian_force(8*3e19, 0, 0)[i], as.cartesian_force(8*3e19, 0, 0)[i] + pot.cartesian_force(8*3e19, 0, 0)[i]);
     }
+}
+
+TEST(PotentialFuncsTest, MultiplySpiralWorks) {
+    double R_0 = 8*Units::kpc;
+    AxsymFuncs as = getMestel(220*Units::kms, R_0);
+    double spiral_amplitude_fraction = 0.001;
+    double local_Omega = as.Omega(R_0);
+    int m = 2;
+    double k_R = 2*std::numbers::pi/Units::kpc;
+    PotentialFuncs spiral = getSpiralPotential(2, k_R, spiral_amplitude_fraction/k_R
+                                                       *(-1)*as.polar_force(R_0, 0, 0)[0], local_Omega, 0);
+    std::function<double(double, double, double)>
+    envelope = [R_0] (double R, double phi, double t) {
+        return exp(-pow(R - R_0, 2)/(2*Units::kpc))*pow(cos(t/Units::Myr), 2);
+    };
+    PotentialFuncs spiral2 = spiral;
+    spiral2.multiply(envelope);
+    double R = R_0 + 0.7*Units::kpc;
+    double phi = 3.2;
+    double t = 0.56*Units::Myr;
+    EXPECT_EQ(spiral2.potential(R, phi, t), envelope(R, phi, t)*spiral.potential(R, phi, t));
+    for(int i = 0; i < 2; ++i) {
+        EXPECT_EQ(spiral2.polar_force(R, phi, t)[i], envelope(R, phi, t)*spiral.polar_force(R, phi, t)[i]);
+        EXPECT_EQ(spiral2.cartesian_force(R*cos(phi), R*sin(phi), t)[i], envelope(R, phi, t)*spiral.cartesian_force(R*cos(phi), R*sin(phi), t)[i]);
+    }
+
 }

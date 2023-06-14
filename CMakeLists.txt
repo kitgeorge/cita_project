@@ -24,6 +24,7 @@ include/utility include/multithreading
 include/tp_integration include/rc include/actions)
 
 file(GLOB main1 main/test_particle.cpp)
+file(GLOB main2 main/tp_dehnen_df.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -43,21 +44,29 @@ target_link_libraries(
     unit_tests
     mylib
     GTest::gtest_main
-    ${BOOST_LIBRARIES}
-    fftw3)
+    ${BOOST_LIBRARIES})
 
-foreach(main_file ${main1})
-    add_executable(
-        test_particle
-        ${main1}
-        ${src_files})
-    target_link_libraries(
-        test_particle
-        mylib
-        GTest::gtest_main
-        ${BOOST_LIBRARIES}
-    )
-endforeach(main_file ${main_files})
+add_executable(
+    test_particle
+    ${main1}
+    ${src_files})
+
+target_link_libraries(
+    test_particle
+    mylib
+    GTest::gtest_main
+    ${BOOST_LIBRARIES})
+
+add_executable(
+    tp_dehnen_df
+    ${main2}
+    ${src_files})
+
+target_link_libraries(
+    tp_dehnen_df
+    mylib
+    GTest::gtest_main
+    ${BOOST_LIBRARIES})
 
 include(GoogleTest)
 gtest_discover_tests(unit_tests)

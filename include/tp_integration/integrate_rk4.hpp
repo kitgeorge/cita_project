@@ -12,6 +12,11 @@ getTpIntegrationFunction(const potential::PotentialFuncs& potential,
                          double t_start, 
                          double timestep, int N_timesteps);
 
+std::vector<std::function<std::vector<vrs::Coords2d>()>>
+getTpIntegrationFunctions(const potential::PotentialFuncs& potential,
+                          const std::vector<vectors::Coords2d>& initial_conditions,
+                          double t_start, double timestep, int N_timesteps);
+
 vectors::Coords2d
 rk4Iteration(const potential::PotentialFuncs& potential, 
               vectors::Coords2d coords,

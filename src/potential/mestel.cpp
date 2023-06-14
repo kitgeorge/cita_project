@@ -5,8 +5,7 @@ namespace vrs = vectors;
 
 namespace potential {
 
-AxsymFuncs getMestel(double v_c) {
-    double R_0 = 8;
+AxsymFuncs getMestel(double v_c, double R_0) {
     std::function<double(double, double, double)>
     potential = [=] (double R, double phi, double t) {
         return pow(v_c, 2)*log(R/R_0);

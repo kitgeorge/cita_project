@@ -55,6 +55,15 @@ std::vector<T> flatten(std::vector<std::vector<std::vector<std::vector<T>>>> dat
 }
 
 template <typename T, std::size_t N>
+std::vector<T> flatten(std::array<T, N> data) {
+    std::vector<T> output(N);
+    for(int i = 0; i < N; ++i) {
+        output[i] = data[i];
+    }
+    return output;
+}
+
+template <typename T, std::size_t N>
 std::vector<T> flatten(std::vector<std::array<T, N>> data) {
     int N_0 = data.size();
     std::vector<T> output(N_0*N);

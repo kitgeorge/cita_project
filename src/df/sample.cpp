@@ -1,4 +1,5 @@
 #include "sample.hpp"
+#include <iostream>
 
 namespace df {
 
@@ -35,8 +36,9 @@ getDFSampleEL(std::function<double(double, double)> df,
     while(accepted_flag == 0) {
         E = bounds[0][0] + (double)std::rand()/RAND_MAX
                                               *(bounds[0][1] - bounds[0][0]);
-        L = bounds[0][0] + (double)std::rand()/RAND_MAX
+        L = bounds[1][0] + (double)std::rand()/RAND_MAX
                                               *(bounds[1][1] - bounds[1][0]);
+        // std::cout << E << ", " << L << ", " << df(E, L) << std::endl;
         if(df(E, L) > (double)std::rand()/RAND_MAX) {
             accepted_flag = 1;
         }

@@ -3,7 +3,6 @@
 
 CMakeFiles/mylib.dir/src/actions/theta_r_integrand.cpp.o
  ../include/actions/theta_r_integrand.hpp
- ../include/consts/units1.hpp
  ../include/potential/axsym_funcs.hpp
  ../include/potential/potential_funcs.hpp
  ../include/rc/NewtonRaphson.hpp
@@ -21,7 +20,6 @@ CMakeFiles/mylib.dir/src/actions/theta_r_integrand.cpp.o
  /home/kit/Documents/cita_project/src/actions/theta_r_integrand.cpp
 CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.o
  ../include/actions/theta_r_integrand.hpp
- ../include/consts/units1.hpp
  ../include/potential/axsym_funcs.hpp
  ../include/potential/mestel.hpp
  ../include/potential/potential_funcs.hpp
@@ -39,20 +37,59 @@ CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.o
  ../include/utility/vector_io.hpp
  ../include/vectors/coords.hpp
  /home/kit/Documents/cita_project/src/actions/theta_r_integrand.test.cpp
+CMakeFiles/mylib.dir/src/actions/theta_r_integrator.cpp.o
+ ../include/actions/theta_r_integrand.hpp
+ ../include/actions/theta_r_integrator.hpp
+ ../include/potential/axsym_funcs.hpp
+ ../include/potential/potential_funcs.hpp
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/mapXVtoAA2D.hpp
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ ../include/utility/add_functions.hpp
+ ../include/vectors/coords.hpp
+ /home/kit/Documents/cita_project/src/actions/theta_r_integrator.cpp
+CMakeFiles/mylib.dir/src/actions/theta_r_integrator.test.cpp.o
+ ../include/actions/theta_r_integrand.hpp
+ ../include/actions/theta_r_integrator.hpp
+ ../include/potential/axsym_funcs.hpp
+ ../include/potential/mestel.hpp
+ ../include/potential/potential_funcs.hpp
+ ../include/rc/NewtonRaphson.hpp
+ ../include/rc/coordinate.hpp
+ ../include/rc/force.hpp
+ ../include/rc/galaxy.hpp
+ ../include/rc/mapXVtoAA2D.hpp
+ ../include/rc/math_RC.hpp
+ ../include/rc/pi.hpp
+ ../include/rc/potential.hpp
+ ../include/rc/units.hpp
+ ../include/rc/utils.hpp
+ ../include/utility/add_functions.hpp
+ ../include/utility/flatten.hpp
+ ../include/utility/shape.hpp
+ ../include/utility/vector_io.hpp
+ ../include/vectors/coords.hpp
+ /home/kit/Documents/cita_project/src/actions/theta_r_integrator.test.cpp
 CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.o
- ../include/consts/units1.hpp
  ../include/df/dehnen_df.hpp
  ../include/potential/axsym_funcs.hpp
  ../include/potential/potential_funcs.hpp
  ../include/rc/NewtonRaphson.hpp
  ../include/rc/force.hpp
  ../include/rc/pi.hpp
+ ../include/rc/units.hpp
  ../include/rc/utils.hpp
  ../include/utility/add_functions.hpp
  ../include/vectors/coords.hpp
  /home/kit/Documents/cita_project/src/df/dehnen_df.cpp
 CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.o
- ../include/consts/units1.hpp
  ../include/df/dehnen_df.hpp
  ../include/potential/axsym_funcs.hpp
  ../include/potential/mestel.hpp
@@ -60,6 +97,7 @@ CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.o
  ../include/rc/NewtonRaphson.hpp
  ../include/rc/force.hpp
  ../include/rc/pi.hpp
+ ../include/rc/units.hpp
  ../include/rc/utils.hpp
  ../include/utility/add_functions.hpp
  ../include/utility/flatten.hpp
@@ -71,7 +109,6 @@ CMakeFiles/mylib.dir/src/df/sample.cpp.o
  ../include/df/sample.hpp
  /home/kit/Documents/cita_project/src/df/sample.cpp
 CMakeFiles/mylib.dir/src/df/sample.test.cpp.o
- ../include/consts/units1.hpp
  ../include/df/dehnen_df.hpp
  ../include/df/sample.hpp
  ../include/potential/axsym_funcs.hpp
@@ -80,6 +117,7 @@ CMakeFiles/mylib.dir/src/df/sample.test.cpp.o
  ../include/rc/NewtonRaphson.hpp
  ../include/rc/force.hpp
  ../include/rc/pi.hpp
+ ../include/rc/units.hpp
  ../include/rc/utils.hpp
  ../include/utility/add_functions.hpp
  ../include/utility/flatten.hpp
@@ -94,25 +132,32 @@ CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.test.cpp.o
  ../include/multithreading/execute_in_parallel.hpp
  /home/kit/Documents/cita_project/src/multithreading/execute_in_parallel.test.cpp
 CMakeFiles/mylib.dir/src/potential/mestel.cpp.o
- ../include/consts/units1.hpp
  ../include/potential/axsym_funcs.hpp
  ../include/potential/mestel.hpp
  ../include/potential/potential_funcs.hpp
  ../include/rc/NewtonRaphson.hpp
  ../include/rc/force.hpp
  ../include/rc/pi.hpp
+ ../include/rc/units.hpp
  ../include/rc/utils.hpp
  ../include/utility/add_functions.hpp
  ../include/vectors/coords.hpp
  /home/kit/Documents/cita_project/src/potential/mestel.cpp
+CMakeFiles/mylib.dir/src/potential/potential_funcs.cpp.o
+ ../include/potential/potential_funcs.hpp
+ ../include/rc/force.hpp
+ ../include/utility/add_functions.hpp
+ ../include/vectors/coords.hpp
+ /home/kit/Documents/cita_project/src/potential/potential_funcs.cpp
 CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o
- ../include/consts/units1.hpp
  ../include/potential/axsym_funcs.hpp
  ../include/potential/mestel.hpp
  ../include/potential/potential_funcs.hpp
+ ../include/potential/spiral.hpp
  ../include/rc/NewtonRaphson.hpp
  ../include/rc/force.hpp
  ../include/rc/pi.hpp
+ ../include/rc/units.hpp
  ../include/rc/utils.hpp
  ../include/utility/add_functions.hpp
  ../include/vectors/coords.hpp
@@ -156,7 +201,6 @@ CMakeFiles/mylib.dir/src/rc/force.cpp.o
  ../include/rc/force.hpp
  /home/kit/Documents/cita_project/src/rc/force.cpp
 CMakeFiles/mylib.dir/src/rc/getJres.cpp.o
- ../include/consts/units1.hpp
  ../include/potential/axsym_funcs.hpp
  ../include/potential/potential_funcs.hpp
  ../include/rc/NewtonRaphson.hpp
@@ -185,7 +229,6 @@ CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o
  ../include/rc/utils.hpp
  /home/kit/Documents/cita_project/src/rc/interpolate.cpp
 CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o
- ../include/consts/units1.hpp
  ../include/potential/axsym_funcs.hpp
  ../include/potential/potential_funcs.hpp
  ../include/rc/NewtonRaphson.hpp
