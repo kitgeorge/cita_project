@@ -9,7 +9,7 @@
 #include "mapXVtoAA2D.hpp"
 namespace RC {
 
-MapXVtoAA2D::MapXVtoAA2D(potential::AxsymFuncs *Phi):
+MapXVtoAA2D::MapXVtoAA2D(const potential::AxsymFuncs* Phi):
 	warn(true),
 	Phi(Phi),
 	dr_apsis(1.e-2 * Units::kpc),
@@ -587,7 +587,7 @@ double MapXVtoAA2D::W_k(int kr, int kp, const std::function<double (double)> &Ph
 	}
 }
 
-void gridEOverJ(potential::AxsymFuncs *Phi, int N_tau, int N_Jr, int N_L, 
+void gridEOverJ(const potential::AxsymFuncs *Phi, int N_tau, int N_Jr, int N_L, 
 double dJr, double dL, std::vector<std::vector<double>> &E_J, bool prog)
 {
 	E_J.resize(N_Jr, std::vector<double>(N_L, 0.));
@@ -658,7 +658,7 @@ double dJr, double dL, std::vector<std::vector<double>> &E_J, bool prog)
 	if(prog) std::cout << "\r100%" << std::endl;
 }
 
-double XGivenJ(double Jr, double L, double dJr, double dL, std::vector<std::vector<double>> &X_J)
+double XGivenJ(double Jr, double L, double dJr, double dL, const std::vector<std::vector<double>> &X_J)
 {
 	// Get X (bilinear interpolation in 2D action space)
 	const auto N_Jr = X_J.size();

@@ -5,6 +5,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kit/Documents/cita_project/main/tp_dehnen_df.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/main/tp_dehnen_df.cpp.o"
+  "/home/kit/Documents/cita_project/src/actions/jres_finder.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.cpp.o"
+  "/home/kit/Documents/cita_project/src/actions/jres_finder.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.test.cpp.o"
+  "/home/kit/Documents/cita_project/src/actions/libration_calculator.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o"
+  "/home/kit/Documents/cita_project/src/actions/libration_calculator.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.o"
   "/home/kit/Documents/cita_project/src/actions/theta_r_integrand.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrand.cpp.o"
   "/home/kit/Documents/cita_project/src/actions/theta_r_integrand.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrand.test.cpp.o"
   "/home/kit/Documents/cita_project/src/actions/theta_r_integrator.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.cpp.o"
@@ -16,6 +20,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kit/Documents/cita_project/src/multithreading/execute_in_parallel.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/multithreading/execute_in_parallel.cpp.o"
   "/home/kit/Documents/cita_project/src/multithreading/execute_in_parallel.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/multithreading/execute_in_parallel.test.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/mestel.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/potential/mestel.cpp.o"
+  "/home/kit/Documents/cita_project/src/potential/mestel_spiral.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/potential_funcs.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/potential_funcs.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.test.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/spiral.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir/src/potential/spiral.cpp.o"

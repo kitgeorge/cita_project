@@ -1,5 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test_particle.dir/main/test_particle.cpp.o"
+  "CMakeFiles/test_particle.dir/src/actions/jres_finder.cpp.o"
+  "CMakeFiles/test_particle.dir/src/actions/jres_finder.test.cpp.o"
+  "CMakeFiles/test_particle.dir/src/actions/libration_calculator.cpp.o"
+  "CMakeFiles/test_particle.dir/src/actions/libration_calculator.test.cpp.o"
   "CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.cpp.o"
   "CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.test.cpp.o"
   "CMakeFiles/test_particle.dir/src/actions/theta_r_integrator.cpp.o"
@@ -11,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.cpp.o"
   "CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.test.cpp.o"
   "CMakeFiles/test_particle.dir/src/potential/mestel.cpp.o"
+  "CMakeFiles/test_particle.dir/src/potential/mestel_spiral.cpp.o"
   "CMakeFiles/test_particle.dir/src/potential/potential_funcs.cpp.o"
   "CMakeFiles/test_particle.dir/src/potential/potential_funcs.test.cpp.o"
   "CMakeFiles/test_particle.dir/src/potential/spiral.cpp.o"

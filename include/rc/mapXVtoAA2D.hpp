@@ -36,7 +36,7 @@ class MapXVtoAA2D
 {
 	private:
 		bool warn;
-		potential::AxsymFuncs *Phi;
+		const potential::AxsymFuncs *Phi;
 		const double dr_apsis, dr_apsis_err, r_upper_limit, r_lower_limit, tau_max;
 		void clear();
 
@@ -47,13 +47,13 @@ class MapXVtoAA2D
 		bool mapLEtoJ(double L_, double E_, int N_tau);
 		bool mapXVtoAA(double r, double psi, double vr, double vpsi, int N_tau);
 		double W_k(int kr, int kp, const std::function<double (double)> &Philm, int N_tau);
-		MapXVtoAA2D(potential::AxsymFuncs *Phi);
+		MapXVtoAA2D(const potential::AxsymFuncs *Phi);
 };
 
-void gridEOverJ(potential::AxsymFuncs *Phi, int N_tau, int N_Jr, int N_L, 
+void gridEOverJ(const potential::AxsymFuncs *Phi, int N_tau, int N_Jr, int N_L, 
 double dJr, double dL, std::vector<std::vector<double>> &E_J, bool prog);
 
-double XGivenJ(double Jr, double L, double dJr, double dL, std::vector<std::vector<double>> &X_J);
+double XGivenJ(double Jr, double L, double dJr, double dL, const std::vector<std::vector<double>> &X_J);
 
 }
 

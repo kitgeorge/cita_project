@@ -365,6 +365,162 @@ main/tp_dehnen_df.cpp.s:
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/main/tp_dehnen_df.cpp.s
 .PHONY : main/tp_dehnen_df.cpp.s
 
+src/actions/jres_finder.o: src/actions/jres_finder.cpp.o
+
+.PHONY : src/actions/jres_finder.o
+
+# target to build an object file
+src/actions/jres_finder.cpp.o:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.cpp.o
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.cpp.o
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.cpp.o
+.PHONY : src/actions/jres_finder.cpp.o
+
+src/actions/jres_finder.i: src/actions/jres_finder.cpp.i
+
+.PHONY : src/actions/jres_finder.i
+
+# target to preprocess a source file
+src/actions/jres_finder.cpp.i:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.cpp.i
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.cpp.i
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.cpp.i
+.PHONY : src/actions/jres_finder.cpp.i
+
+src/actions/jres_finder.s: src/actions/jres_finder.cpp.s
+
+.PHONY : src/actions/jres_finder.s
+
+# target to generate assembly for a file
+src/actions/jres_finder.cpp.s:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.cpp.s
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.cpp.s
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.cpp.s
+.PHONY : src/actions/jres_finder.cpp.s
+
+src/actions/jres_finder.test.o: src/actions/jres_finder.test.cpp.o
+
+.PHONY : src/actions/jres_finder.test.o
+
+# target to build an object file
+src/actions/jres_finder.test.cpp.o:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.test.cpp.o
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.test.cpp.o
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.test.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.test.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.test.cpp.o
+.PHONY : src/actions/jres_finder.test.cpp.o
+
+src/actions/jres_finder.test.i: src/actions/jres_finder.test.cpp.i
+
+.PHONY : src/actions/jres_finder.test.i
+
+# target to preprocess a source file
+src/actions/jres_finder.test.cpp.i:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.test.cpp.i
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.test.cpp.i
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.test.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.test.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.test.cpp.i
+.PHONY : src/actions/jres_finder.test.cpp.i
+
+src/actions/jres_finder.test.s: src/actions/jres_finder.test.cpp.s
+
+.PHONY : src/actions/jres_finder.test.s
+
+# target to generate assembly for a file
+src/actions/jres_finder.test.cpp.s:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.test.cpp.s
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.test.cpp.s
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.test.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.test.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.test.cpp.s
+.PHONY : src/actions/jres_finder.test.cpp.s
+
+src/actions/libration_calculator.o: src/actions/libration_calculator.cpp.o
+
+.PHONY : src/actions/libration_calculator.o
+
+# target to build an object file
+src/actions/libration_calculator.cpp.o:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.cpp.o
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o
+.PHONY : src/actions/libration_calculator.cpp.o
+
+src/actions/libration_calculator.i: src/actions/libration_calculator.cpp.i
+
+.PHONY : src/actions/libration_calculator.i
+
+# target to preprocess a source file
+src/actions/libration_calculator.cpp.i:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.cpp.i
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.i
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.i
+.PHONY : src/actions/libration_calculator.cpp.i
+
+src/actions/libration_calculator.s: src/actions/libration_calculator.cpp.s
+
+.PHONY : src/actions/libration_calculator.s
+
+# target to generate assembly for a file
+src/actions/libration_calculator.cpp.s:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.cpp.s
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.s
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.s
+.PHONY : src/actions/libration_calculator.cpp.s
+
+src/actions/libration_calculator.test.o: src/actions/libration_calculator.test.cpp.o
+
+.PHONY : src/actions/libration_calculator.test.o
+
+# target to build an object file
+src/actions/libration_calculator.test.cpp.o:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.test.cpp.o
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.o
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.test.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.o
+.PHONY : src/actions/libration_calculator.test.cpp.o
+
+src/actions/libration_calculator.test.i: src/actions/libration_calculator.test.cpp.i
+
+.PHONY : src/actions/libration_calculator.test.i
+
+# target to preprocess a source file
+src/actions/libration_calculator.test.cpp.i:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.test.cpp.i
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.i
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.test.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.i
+.PHONY : src/actions/libration_calculator.test.cpp.i
+
+src/actions/libration_calculator.test.s: src/actions/libration_calculator.test.cpp.s
+
+.PHONY : src/actions/libration_calculator.test.s
+
+# target to generate assembly for a file
+src/actions/libration_calculator.test.cpp.s:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.test.cpp.s
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.s
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.test.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.s
+.PHONY : src/actions/libration_calculator.test.cpp.s
+
 src/actions/theta_r_integrand.o: src/actions/theta_r_integrand.cpp.o
 
 .PHONY : src/actions/theta_r_integrand.o
@@ -793,6 +949,45 @@ src/potential/mestel.cpp.s:
 	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel.cpp.s
 .PHONY : src/potential/mestel.cpp.s
+
+src/potential/mestel_spiral.o: src/potential/mestel_spiral.cpp.o
+
+.PHONY : src/potential/mestel_spiral.o
+
+# target to build an object file
+src/potential/mestel_spiral.cpp.o:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel_spiral.cpp.o
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel_spiral.cpp.o
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o
+.PHONY : src/potential/mestel_spiral.cpp.o
+
+src/potential/mestel_spiral.i: src/potential/mestel_spiral.cpp.i
+
+.PHONY : src/potential/mestel_spiral.i
+
+# target to preprocess a source file
+src/potential/mestel_spiral.cpp.i:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel_spiral.cpp.i
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.i
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel_spiral.cpp.i
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.i
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.i
+.PHONY : src/potential/mestel_spiral.cpp.i
+
+src/potential/mestel_spiral.s: src/potential/mestel_spiral.cpp.s
+
+.PHONY : src/potential/mestel_spiral.s
+
+# target to generate assembly for a file
+src/potential/mestel_spiral.cpp.s:
+	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel_spiral.cpp.s
+	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.s
+	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel_spiral.cpp.s
+	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.s
+	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.s
+.PHONY : src/potential/mestel_spiral.cpp.s
 
 src/potential/potential_funcs.o: src/potential/potential_funcs.cpp.o
 
@@ -2151,6 +2346,18 @@ help:
 	@echo "... main/tp_dehnen_df.o"
 	@echo "... main/tp_dehnen_df.i"
 	@echo "... main/tp_dehnen_df.s"
+	@echo "... src/actions/jres_finder.o"
+	@echo "... src/actions/jres_finder.i"
+	@echo "... src/actions/jres_finder.s"
+	@echo "... src/actions/jres_finder.test.o"
+	@echo "... src/actions/jres_finder.test.i"
+	@echo "... src/actions/jres_finder.test.s"
+	@echo "... src/actions/libration_calculator.o"
+	@echo "... src/actions/libration_calculator.i"
+	@echo "... src/actions/libration_calculator.s"
+	@echo "... src/actions/libration_calculator.test.o"
+	@echo "... src/actions/libration_calculator.test.i"
+	@echo "... src/actions/libration_calculator.test.s"
 	@echo "... src/actions/theta_r_integrand.o"
 	@echo "... src/actions/theta_r_integrand.i"
 	@echo "... src/actions/theta_r_integrand.s"
@@ -2184,6 +2391,9 @@ help:
 	@echo "... src/potential/mestel.o"
 	@echo "... src/potential/mestel.i"
 	@echo "... src/potential/mestel.s"
+	@echo "... src/potential/mestel_spiral.o"
+	@echo "... src/potential/mestel_spiral.i"
+	@echo "... src/potential/mestel_spiral.s"
 	@echo "... src/potential/potential_funcs.o"
 	@echo "... src/potential/potential_funcs.i"
 	@echo "... src/potential/potential_funcs.s"

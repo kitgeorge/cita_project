@@ -6,6 +6,7 @@
 #include "spiral.hpp"
 #include <cmath>
 #include <numbers>
+#include <iostream>
 
 using namespace potential;
 
@@ -101,4 +102,12 @@ TEST(PotentialFuncsTest, MultiplySpiralWorks) {
         EXPECT_EQ(spiral2.cartesian_force(R*cos(phi), R*sin(phi), t)[i], envelope(R, phi, t)*spiral.cartesian_force(R*cos(phi), R*sin(phi), t)[i]);
     }
 
+}
+
+TEST(PotentialFuncsTest, MestelResonanceWorks) {
+    double v_c = 220*Units::kms;
+    double R_0 = 8*Units::kpc;
+    AxsymFuncs pot = getMestel(v_c, R_0);
+    double R = pot.resonanceRadius(1, 2, pot.Omega(R_0));
+    std::cout << R << std::endl;
 }

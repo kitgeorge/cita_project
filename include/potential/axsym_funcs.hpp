@@ -21,11 +21,13 @@ struct AxsymFuncs : public PotentialFuncs {
     std::function<double(double)> Omega;
     std::function<double(double)> kappa;
     std::function<double(double, double, double, double)> RcGivenwpN;
+	std::function<double(int, int, double)> resonanceRadius;
 
     AxsymFuncs(std::function<double(double, double, double)> potential_,
                std::function<std::array<double, 2>(double, double, double)>
                polar_force_, 
-               std::array<std::function<double(double)>, 11> axsym_funcs):
+               std::array<std::function<double(double)>, 11> axsym_funcs,
+			   std::function<double(int, int, double)> resonanceRadius_):
                PotentialFuncs(potential_, polar_force_), 
                potential_R([potential_] (double R) {return potential_(R, 0, 0);}),
                dPhidR(axsym_funcs[0]), d2PhidR2(axsym_funcs[1]), 
@@ -33,7 +35,7 @@ struct AxsymFuncs : public PotentialFuncs {
                RcGivenOmega(axsym_funcs[4]), vcGivenRc(axsym_funcs[5]),
                LcGivenRc(axsym_funcs[6]), EcGivenRc(axsym_funcs[7]), 
                EcGivenL(axsym_funcs[8]), Omega(axsym_funcs[9]), 
-               kappa(axsym_funcs[10]) {
+               kappa(axsym_funcs[10]), resonanceRadius(resonanceRadius_) {
         RcGivenwpN = [this] (double Omegap, int Nr, int Npsi, int Nphi) {
         // Taken from Rimpei's code (potential.cpp)
 
@@ -104,7 +106,8 @@ struct AxsymFuncs : public PotentialFuncs {
                RcGivenE(old.RcGivenE), RcGivenOmega(old.RcGivenOmega),
                vcGivenRc(old.vcGivenRc), LcGivenRc(old.LcGivenRc),
                EcGivenRc(old.EcGivenRc), EcGivenL(old.EcGivenL),
-               Omega(old.Omega), kappa(old.kappa), RcGivenwpN(old.RcGivenwpN) {}; 
+               Omega(old.Omega), kappa(old.kappa), RcGivenwpN(old.RcGivenwpN),
+			   resonanceRadius(old.resonanceRadius) {}; 
 };
 
 };

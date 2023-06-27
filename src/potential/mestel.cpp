@@ -60,9 +60,13 @@ AxsymFuncs getMestel(double v_c, double R_0) {
     kappa = [Omega] (double R) {
         return sqrt(2)*Omega(R);
     };
+    std::function<double(int, int, double)>
+    resonanceRadius = [v_c] (int N_R, int N_phi, double Omega_p) {
+        return (1 + sqrt(2)*(double)N_R/N_phi)*v_c/Omega_p;
+    };
     AxsymFuncs output(potential, polar_force, 
     {{dPhidR, d2PhidR2, RcGivenL, RcGivenE, RcGivenOmega, vcGivenRc, LcGivenRc,
-      EcGivenRc, EcGivenL, Omega, kappa}});
+      EcGivenRc, EcGivenL, Omega, kappa}}, resonanceRadius);
     return output;
 }
 
