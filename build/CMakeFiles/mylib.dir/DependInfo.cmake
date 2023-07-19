@@ -12,6 +12,9 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kit/Documents/cita_project/src/actions/theta_r_integrand.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.o"
   "/home/kit/Documents/cita_project/src/actions/theta_r_integrator.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/actions/theta_r_integrator.cpp.o"
   "/home/kit/Documents/cita_project/src/actions/theta_r_integrator.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/actions/theta_r_integrator.test.cpp.o"
+  "/home/kit/Documents/cita_project/src/basis_functions/bfe.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o"
+  "/home/kit/Documents/cita_project/src/basis_functions/bfe.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o"
+  "/home/kit/Documents/cita_project/src/basis_functions/potential_from_density.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o"
   "/home/kit/Documents/cita_project/src/df/dehnen_df.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.o"
   "/home/kit/Documents/cita_project/src/df/dehnen_df.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.o"
   "/home/kit/Documents/cita_project/src/df/sample.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/df/sample.cpp.o"
@@ -20,6 +23,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kit/Documents/cita_project/src/multithreading/execute_in_parallel.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.test.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/mestel.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/potential/mestel.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/mestel_spiral.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o"
+  "/home/kit/Documents/cita_project/src/potential/mestel_spiral.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/potential_funcs.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/potential/potential_funcs.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/potential_funcs.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o"
   "/home/kit/Documents/cita_project/src/potential/spiral.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/potential/spiral.cpp.o"
@@ -42,6 +46,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kit/Documents/cita_project/src/rc/sht.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/rc/sht.cpp.o"
   "/home/kit/Documents/cita_project/src/rc/spiral.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/rc/spiral.cpp.o"
   "/home/kit/Documents/cita_project/src/rc/utils.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/rc/utils.cpp.o"
+  "/home/kit/Documents/cita_project/src/special_functions/gamma.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/special_functions/gamma.cpp.o"
+  "/home/kit/Documents/cita_project/src/special_functions/gamma.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/special_functions/gamma.test.cpp.o"
   "/home/kit/Documents/cita_project/src/tp_integration/integrate_rk4.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o"
   "/home/kit/Documents/cita_project/src/tp_integration/integrate_rk4.test.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o"
   "/home/kit/Documents/cita_project/src/utility/add_functions.cpp" "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/src/utility/add_functions.cpp.o"
@@ -73,6 +79,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/tp_integration"
   "../include/rc"
   "../include/actions"
+  "../include/special_functions"
+  "../include/basis_functions"
   )
 
 # Targets to which this target links.

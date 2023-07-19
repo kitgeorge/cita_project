@@ -15,3 +15,20 @@ TEST(ExecuteInParallelTest, IntWorks) {
         ASSERT_EQ(results[i], i*i);
     }
 }
+
+TEST(ExecuteInParallelTest, OptionalWorks) {
+    int N_functions = 100;
+    std::vector<std::function<std::optional<int>()>> functions(N_functions);
+    for(int i = 0; i < N_functions; ++i) {
+        functions[i] = [i]() {
+            std::optional output(i*i);
+            return output;
+        };
+    }
+    std::vector<std::optional<int>>
+    results = std::move(multithreading::executeInParallel(functions));
+    ASSERT_EQ(results.size(), N_functions);
+    for(int i = 0; i < N_functions; ++i) {
+        ASSERT_EQ(results[i].value(), i*i);
+    }
+}

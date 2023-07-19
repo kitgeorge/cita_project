@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 #include <iostream>
+#include <complex>
 
 namespace utility {
 
@@ -46,8 +47,41 @@ namespace utility {
 //     };
 // }
 
+
+// This is a mess, should sort out sometime
+
+
 double addFunctions(const std::vector<std::function<double(double, double, double)>>& 
                     functions, double a0, double a1, double a2);
+
+template <class Arg0, class Arg1>
+std::function<std::complex<double>(Arg0, Arg1)>
+addFunctions(const std::vector<std::function<std::complex<double>(Arg0, Arg1)>>&
+             functions) {
+    return [=] (Arg0 a0, Arg1 a1) {
+        std::complex<double> output = 0;
+        for(auto func: functions) {
+            output += func(a0, a1);
+        }
+        return output;
+    };
+}
+
+template <class Arg0, class Arg1, std::size_t N>
+std::function<std::array<std::complex<double>, N>(Arg0, Arg1)>
+addFunctions(const std::vector<std::function<std::array<std::complex<double>, N>(Arg0, Arg1)>>&
+             functions) {
+    return [=] (Arg0 a0, Arg1 a1) {
+        std::array<std::complex<double>, N> output = {};
+        for(auto func: functions) {
+            std::array<std::complex<double>, N> value = func(a0, a1);
+            for(int i = 0; i < N; ++i) {
+                output[i] += value[i];
+            }
+        }
+        return output;
+    };
+}
 
 template <std::size_t N>
 std::array<double, N> 
@@ -80,6 +114,28 @@ std::function<double(Arg0, Arg1)>
 multiplyFunction(std::function<double(Arg0, Arg1)> f, double scalar) {
     return [=] (Arg0 a0, Arg1 a1) {
         return scalar*f(a0, a1);
+    };
+}
+
+template<class Arg0, class Arg1>
+std::function<std::complex<double>(Arg0, Arg1)>
+multiplyFunction(const std::function<std::complex<double>(Arg0, Arg1)>& f, 
+                 std::complex<double> scalar) {
+    return [=] (Arg0 a0, Arg1 a1) {
+        return scalar*f(a0, a1);
+    };
+}
+
+template<class Arg0, class Arg1, std::size_t N>
+std::function<std::array<std::complex<double>, N>(Arg0, Arg1)>
+multiplyFunction(const std::function<std::array<std::complex<double>, N>(Arg0, Arg1)>& f, 
+                 std::complex<double> scalar) {
+    return [=] (Arg0 a0, Arg1 a1) {
+        std::array<std::complex<double>, N> output = f(a0, a1);
+        for(int i = 0; i < N; ++i) {
+            output[i] = scalar*output[i];
+        }
+        return output;
     };
 }
 

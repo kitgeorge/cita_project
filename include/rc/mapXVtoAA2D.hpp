@@ -53,7 +53,8 @@ class MapXVtoAA2D
 void gridEOverJ(const potential::AxsymFuncs *Phi, int N_tau, int N_Jr, int N_L, 
 double dJr, double dL, std::vector<std::vector<double>> &E_J, bool prog);
 
-double XGivenJ(double Jr, double L, double dJr, double dL, const std::vector<std::vector<double>> &X_J);
+double XGivenJ(double Jr, double L, double dJr, double dL, 
+			   const std::vector<std::vector<double>> &X_J);
 
 }
 

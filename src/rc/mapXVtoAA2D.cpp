@@ -613,6 +613,9 @@ double dJr, double dL, std::vector<std::vector<double>> &E_J, bool prog)
 			const auto L  = dL * l;
 			const auto Ec = (L > L_min) ? Phi->EcGivenL(L) : Phi->EcGivenL(L_min);
 			double E = Ec + dE;
+			if(E == 0) {
+				std::cout << "ZERO" << std::endl;
+			}
 			// Initial rough search.
 			while(1)
 			{

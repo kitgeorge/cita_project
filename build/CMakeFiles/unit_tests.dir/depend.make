@@ -61,7 +61,10 @@ CMakeFiles/unit_tests.dir/src/actions/jres_finder.test.cpp.o: _deps/googletest-s
 
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../include/actions/jres_finder.hpp
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../include/actions/libration_calculator.hpp
+CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../include/potential/mestel.hpp
+CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../include/potential/mestel_spiral.hpp
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../include/rc/NewtonRaphson.hpp
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../include/rc/coordinate.hpp
@@ -79,6 +82,7 @@ CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o: ../src/actions
 
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.o: ../include/actions/jres_finder.hpp
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.o: ../include/actions/libration_calculator.hpp
+CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.o: ../include/potential/axsym_funcs.hpp
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.o: ../include/potential/mestel.hpp
 CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.o: ../include/potential/mestel_spiral.hpp
@@ -236,6 +240,57 @@ CMakeFiles/unit_tests.dir/src/actions/theta_r_integrator.test.cpp.o: _deps/googl
 CMakeFiles/unit_tests.dir/src/actions/theta_r_integrator.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
 CMakeFiles/unit_tests.dir/src/actions/theta_r_integrator.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
 
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.cpp.o: ../include/basis_functions/bfe.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.cpp.o: ../include/rc/units.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.cpp.o: ../include/utility/comp_funcs.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.cpp.o: ../src/basis_functions/bfe.cpp
+
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/bfe.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/potential_from_density.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/units.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/comp_funcs.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/flatten.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/shape.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/vector_io.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: ../src/basis_functions/bfe.test.cpp
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-message.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-param-test.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-printers.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-test-part.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-typed-test.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_prod.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-port.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-printers.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
+CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
+
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/bfe.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/potential_from_density.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/units.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/comp_funcs.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/flatten.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/shape.hpp
+CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o: ../src/basis_functions/potential_from_density.cpp
+
 CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.o: ../include/df/dehnen_df.hpp
 CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.o: ../include/potential/axsym_funcs.hpp
 CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.o: ../include/potential/potential_funcs.hpp
@@ -362,10 +417,65 @@ CMakeFiles/unit_tests.dir/src/potential/mestel.cpp.o: ../include/utility/add_fun
 CMakeFiles/unit_tests.dir/src/potential/mestel.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/unit_tests.dir/src/potential/mestel.cpp.o: ../src/potential/mestel.cpp
 
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/actions/jres_finder.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/mestel.hpp
 CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/mestel_spiral.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/force.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/math_RC.hpp
 CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/potential.hpp
 CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/units.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o: ../src/potential/mestel_spiral.cpp
+
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/actions/jres_finder.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/mestel.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/mestel_spiral.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/force.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/units.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../include/vectors/coords.hpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: ../src/potential/mestel_spiral.test.cpp
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-message.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-param-test.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-printers.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-test-part.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-typed-test.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_prod.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-port.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-printers.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
+CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
 
 CMakeFiles/unit_tests.dir/src/potential/potential_funcs.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/unit_tests.dir/src/potential/potential_funcs.cpp.o: ../include/rc/force.hpp
@@ -601,6 +711,32 @@ CMakeFiles/unit_tests.dir/src/rc/spiral.cpp.o: ../src/rc/spiral.cpp
 CMakeFiles/unit_tests.dir/src/rc/utils.cpp.o: ../include/rc/pi.hpp
 CMakeFiles/unit_tests.dir/src/rc/utils.cpp.o: ../include/rc/utils.hpp
 CMakeFiles/unit_tests.dir/src/rc/utils.cpp.o: ../src/rc/utils.cpp
+
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.cpp.o: ../src/special_functions/gamma.cpp
+
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: ../src/special_functions/gamma.test.cpp
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-message.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-param-test.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-printers.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-test-part.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-typed-test.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_prod.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-port.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-printers.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
+CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
 
 CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/rc/force.hpp

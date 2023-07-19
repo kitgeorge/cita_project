@@ -1,6 +1,7 @@
 /home/kit/Documents/cita_project/build/CMakeFiles/install/local.dir
 /home/kit/Documents/cita_project/build/CMakeFiles/edit_cache.dir
 /home/kit/Documents/cita_project/build/CMakeFiles/test.dir
+/home/kit/Documents/cita_project/build/CMakeFiles/resonance_evolution.dir
 /home/kit/Documents/cita_project/build/CMakeFiles/libration_amplitude.dir
 /home/kit/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir
 /home/kit/Documents/cita_project/build/CMakeFiles/install/strip.dir

@@ -89,7 +89,10 @@ CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.test.cpp.o: _deps/googletest
 
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../include/actions/jres_finder.hpp
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../include/actions/libration_calculator.hpp
+CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../include/potential/mestel.hpp
+CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../include/potential/mestel_spiral.hpp
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../include/rc/NewtonRaphson.hpp
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../include/rc/coordinate.hpp
@@ -107,6 +110,7 @@ CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o: ../src/actio
 
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.o: ../include/actions/jres_finder.hpp
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.o: ../include/actions/libration_calculator.hpp
+CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.o: ../include/potential/axsym_funcs.hpp
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.o: ../include/potential/mestel.hpp
 CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.o: ../include/potential/mestel_spiral.hpp
@@ -264,6 +268,57 @@ CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.test.cpp.o: _deps/goo
 CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
 CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
 
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o: ../include/basis_functions/bfe.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o: ../include/rc/units.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o: ../include/utility/comp_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o: ../src/basis_functions/bfe.cpp
+
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/bfe.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/potential_from_density.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/units.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/comp_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/flatten.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/shape.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/vector_io.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../src/basis_functions/bfe.test.cpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-message.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-param-test.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-printers.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-test-part.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-typed-test.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_prod.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-port.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-printers.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
+
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/bfe.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/potential_from_density.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/units.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/comp_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/flatten.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/shape.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../src/basis_functions/potential_from_density.cpp
+
 CMakeFiles/tp_dehnen_df.dir/src/df/dehnen_df.cpp.o: ../include/df/dehnen_df.hpp
 CMakeFiles/tp_dehnen_df.dir/src/df/dehnen_df.cpp.o: ../include/potential/axsym_funcs.hpp
 CMakeFiles/tp_dehnen_df.dir/src/df/dehnen_df.cpp.o: ../include/potential/potential_funcs.hpp
@@ -390,10 +445,65 @@ CMakeFiles/tp_dehnen_df.dir/src/potential/mestel.cpp.o: ../include/utility/add_f
 CMakeFiles/tp_dehnen_df.dir/src/potential/mestel.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/tp_dehnen_df.dir/src/potential/mestel.cpp.o: ../src/potential/mestel.cpp
 
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/actions/jres_finder.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/mestel.hpp
 CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/mestel_spiral.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/force.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/math_RC.hpp
 CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/potential.hpp
 CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/units.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o: ../src/potential/mestel_spiral.cpp
+
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/actions/jres_finder.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/mestel.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/mestel_spiral.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/force.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/units.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../include/vectors/coords.hpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: ../src/potential/mestel_spiral.test.cpp
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-message.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-param-test.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-printers.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-test-part.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-typed-test.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_prod.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-port.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-printers.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
+CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
 
 CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.cpp.o: ../include/rc/force.hpp
@@ -629,6 +739,32 @@ CMakeFiles/tp_dehnen_df.dir/src/rc/spiral.cpp.o: ../src/rc/spiral.cpp
 CMakeFiles/tp_dehnen_df.dir/src/rc/utils.cpp.o: ../include/rc/pi.hpp
 CMakeFiles/tp_dehnen_df.dir/src/rc/utils.cpp.o: ../include/rc/utils.hpp
 CMakeFiles/tp_dehnen_df.dir/src/rc/utils.cpp.o: ../src/rc/utils.cpp
+
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.cpp.o: ../src/special_functions/gamma.cpp
+
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: ../src/special_functions/gamma.test.cpp
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-message.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-param-test.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-printers.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-test-part.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-typed-test.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest_prod.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-port.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/custom/gtest-printers.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
+CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o: _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
 
 CMakeFiles/tp_dehnen_df.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/tp_dehnen_df.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/rc/force.hpp

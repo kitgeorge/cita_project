@@ -19,6 +19,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/tp_integration"
   "../include/rc"
   "../include/actions"
+  "../include/special_functions"
+  "../include/basis_functions"
   "_deps/googletest-src/googletest/include"
   "_deps/googletest-src/googletest"
   )

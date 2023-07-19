@@ -41,7 +41,10 @@ CMakeFiles/mylib.dir/src/actions/jres_finder.test.cpp.o: ../src/actions/jres_fin
 
 CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../include/actions/jres_finder.hpp
 CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../include/actions/libration_calculator.hpp
+CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../include/potential/mestel.hpp
+CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../include/potential/mestel_spiral.hpp
 CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../include/rc/NewtonRaphson.hpp
 CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../include/rc/coordinate.hpp
@@ -59,6 +62,7 @@ CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o: ../src/actions/libr
 
 CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.o: ../include/actions/jres_finder.hpp
 CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.o: ../include/actions/libration_calculator.hpp
+CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.o: ../include/potential/axsym_funcs.hpp
 CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.o: ../include/potential/mestel.hpp
 CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.o: ../include/potential/mestel_spiral.hpp
@@ -156,6 +160,37 @@ CMakeFiles/mylib.dir/src/actions/theta_r_integrator.test.cpp.o: ../include/utili
 CMakeFiles/mylib.dir/src/actions/theta_r_integrator.test.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/mylib.dir/src/actions/theta_r_integrator.test.cpp.o: ../src/actions/theta_r_integrator.test.cpp
 
+CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o: ../include/basis_functions/bfe.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o: ../include/utility/comp_funcs.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o: ../src/basis_functions/bfe.cpp
+
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/bfe.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/potential_from_density.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/comp_funcs.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/flatten.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/shape.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/vector_io.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../src/basis_functions/bfe.test.cpp
+
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/bfe.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/potential_from_density.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/comp_funcs.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/flatten.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/utility/shape.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../src/basis_functions/potential_from_density.cpp
+
 CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.o: ../include/df/dehnen_df.hpp
 CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.o: ../include/potential/axsym_funcs.hpp
 CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.o: ../include/potential/potential_funcs.hpp
@@ -222,10 +257,45 @@ CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/utility/add_function
 CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/mylib.dir/src/potential/mestel.cpp.o: ../src/potential/mestel.cpp
 
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/actions/jres_finder.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/mestel.hpp
 CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/mestel_spiral.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/math_RC.hpp
 CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/potential.hpp
 CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o: ../src/potential/mestel_spiral.cpp
+
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/actions/jres_finder.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/mestel.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/mestel_spiral.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/math_RC.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/potential.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/rc/utils.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/utility/add_functions.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../include/vectors/coords.hpp
+CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o: ../src/potential/mestel_spiral.test.cpp
 
 CMakeFiles/mylib.dir/src/potential/potential_funcs.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/mylib.dir/src/potential/potential_funcs.cpp.o: ../include/rc/force.hpp
@@ -421,6 +491,12 @@ CMakeFiles/mylib.dir/src/rc/spiral.cpp.o: ../src/rc/spiral.cpp
 CMakeFiles/mylib.dir/src/rc/utils.cpp.o: ../include/rc/pi.hpp
 CMakeFiles/mylib.dir/src/rc/utils.cpp.o: ../include/rc/utils.hpp
 CMakeFiles/mylib.dir/src/rc/utils.cpp.o: ../src/rc/utils.cpp
+
+CMakeFiles/mylib.dir/src/special_functions/gamma.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/mylib.dir/src/special_functions/gamma.cpp.o: ../src/special_functions/gamma.cpp
+
+CMakeFiles/mylib.dir/src/special_functions/gamma.test.cpp.o: ../include/special_functions/gamma.hpp
+CMakeFiles/mylib.dir/src/special_functions/gamma.test.cpp.o: ../src/special_functions/gamma.test.cpp
 
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/potential/potential_funcs.hpp
 CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o: ../include/rc/force.hpp

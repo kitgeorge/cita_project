@@ -10,7 +10,8 @@ find_package(Boost REQUIRED)
 include_directories(${BOOST_INCLUDE_DIR} include/potential 
 include/vectors include/consts include/df
 include/utility include/multithreading
-include/tp_integration include/rc include/actions)
+include/tp_integration include/rc include/actions
+include/special_functions include/basis_functions)
 
 file(GLOB src_files src/*/*.cpp include/*/*.hpp)
 add_library(mylib SHARED ${src_files})
@@ -21,11 +22,13 @@ target_link_libraries(mylib ${BOOST_LIBRARIES})
 target_include_directories(mylib INTERFACE include/potential 
 include/vectors include/df include/consts 
 include/utility include/multithreading
-include/tp_integration include/rc include/actions)
+include/tp_integration include/rc include/actions
+include/special_functions include/basis_functions)
 
 file(GLOB main1 main/test_particle.cpp)
 file(GLOB main2 main/tp_dehnen_df.cpp)
 file(GLOB main3 main/libration_amplitude.cpp)
+file(GLOB main4 main/resonance_evolution.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -76,6 +79,17 @@ add_executable(
 
 target_link_libraries(
     libration_amplitude
+    mylib
+    GTest::gtest_main
+    ${BOOST_LIBRARIES})
+
+add_executable(
+    resonance_evolution
+    ${main4}
+    ${src_files})
+
+target_link_libraries(
+    resonance_evolution
     mylib
     GTest::gtest_main
     ${BOOST_LIBRARIES})
