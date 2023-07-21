@@ -275,17 +275,31 @@ CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o: ../include/special_fu
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o: ../include/utility/comp_funcs.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o: ../src/basis_functions/bfe.cpp
 
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/actions/jres_finder.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/bfe.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/potential_from_density.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/mestel.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/mestel_spiral.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/force.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/math_RC.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/potential.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/units.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/utils.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/special_functions/gamma.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/comp_funcs.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/flatten.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/shape.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/vector_io.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: ../src/basis_functions/bfe.test.cpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
@@ -310,6 +324,7 @@ CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest
 
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/bfe.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/potential_from_density.hpp
+CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/pi.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/units.hpp
 CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o: ../include/special_functions/gamma.hpp

@@ -272,17 +272,31 @@ CMakeFiles/test_particle.dir/src/basis_functions/bfe.cpp.o: ../include/special_f
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.cpp.o: ../include/utility/comp_funcs.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.cpp.o: ../src/basis_functions/bfe.cpp
 
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/actions/jres_finder.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/bfe.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/potential_from_density.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/mestel.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/mestel_spiral.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/force.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/math_RC.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/potential.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/units.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/utils.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/special_functions/gamma.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/comp_funcs.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/flatten.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/shape.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/vector_io.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: ../src/basis_functions/bfe.test.cpp
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
 CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletest-src/googletest/include/gtest/gtest-matchers.h
@@ -307,6 +321,7 @@ CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o: _deps/googletes
 
 CMakeFiles/test_particle.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/bfe.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/potential_from_density.hpp
+CMakeFiles/test_particle.dir/src/basis_functions/potential_from_density.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/pi.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/units.hpp
 CMakeFiles/test_particle.dir/src/basis_functions/potential_from_density.cpp.o: ../include/special_functions/gamma.hpp

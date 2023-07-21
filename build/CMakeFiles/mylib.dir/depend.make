@@ -167,21 +167,36 @@ CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o: ../include/special_functions
 CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o: ../include/utility/comp_funcs.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o: ../src/basis_functions/bfe.cpp
 
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/actions/jres_finder.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/bfe.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/basis_functions/potential_from_density.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/multithreading/execute_in_parallel.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/axsym_funcs.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/mestel.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/mestel_spiral.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/potential/potential_funcs.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/NewtonRaphson.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/coordinate.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/force.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/galaxy.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/mapXVtoAA2D.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/math_RC.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/pi.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/potential.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/units.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/rc/utils.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/special_functions/gamma.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/add_functions.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/comp_funcs.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/flatten.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/shape.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/utility/vector_io.hpp
+CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../include/vectors/coords.hpp
 CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o: ../src/basis_functions/bfe.test.cpp
 
 CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/bfe.hpp
 CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/basis_functions/potential_from_density.hpp
+CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/multithreading/execute_in_parallel.hpp
 CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/pi.hpp
 CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/rc/units.hpp
 CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o: ../include/special_functions/gamma.hpp

@@ -1,3 +1,4 @@
+#pragma once
 #include <boost/asio/thread_pool.hpp>
 #include <boost/asio.hpp>
 #include <functional>
