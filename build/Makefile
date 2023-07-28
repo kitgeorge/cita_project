@@ -56,18 +56,6 @@ CMAKE_BINARY_DIR = /home/kit/Documents/cita_project/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -78,51 +66,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -181,19 +124,6 @@ resonance_evolution/fast:
 .PHONY : resonance_evolution/fast
 
 #=============================================================================
-# Target rules for targets named libration_amplitude
-
-# Build rule for target.
-libration_amplitude: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 libration_amplitude
-.PHONY : libration_amplitude
-
-# fast build rule for target.
-libration_amplitude/fast:
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/build
-.PHONY : libration_amplitude/fast
-
-#=============================================================================
 # Target rules for targets named tp_dehnen_df
 
 # Build rule for target.
@@ -220,19 +150,6 @@ test_particle/fast:
 .PHONY : test_particle/fast
 
 #=============================================================================
-# Target rules for targets named unit_tests
-
-# Build rule for target.
-unit_tests: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 unit_tests
-.PHONY : unit_tests
-
-# fast build rule for target.
-unit_tests/fast:
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/build
-.PHONY : unit_tests/fast
-
-#=============================================================================
 # Target rules for targets named mylib
 
 # Build rule for target.
@@ -244,85 +161,6 @@ mylib: cmake_check_build_system
 mylib/fast:
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/build
 .PHONY : mylib/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gmock
-
-# Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
-
-# fast build rule for target.
-gmock/fast:
-	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
-
-main/libration_amplitude.o: main/libration_amplitude.cpp.o
-
-.PHONY : main/libration_amplitude.o
-
-# target to build an object file
-main/libration_amplitude.cpp.o:
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/main/libration_amplitude.cpp.o
-.PHONY : main/libration_amplitude.cpp.o
-
-main/libration_amplitude.i: main/libration_amplitude.cpp.i
-
-.PHONY : main/libration_amplitude.i
-
-# target to preprocess a source file
-main/libration_amplitude.cpp.i:
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/main/libration_amplitude.cpp.i
-.PHONY : main/libration_amplitude.cpp.i
-
-main/libration_amplitude.s: main/libration_amplitude.cpp.s
-
-.PHONY : main/libration_amplitude.s
-
-# target to generate assembly for a file
-main/libration_amplitude.cpp.s:
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/main/libration_amplitude.cpp.s
-.PHONY : main/libration_amplitude.cpp.s
 
 main/resonance_evolution.o: main/resonance_evolution.cpp.o
 
@@ -412,10 +250,8 @@ src/actions/jres_finder.o: src/actions/jres_finder.cpp.o
 # target to build an object file
 src/actions/jres_finder.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/jres_finder.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.cpp.o
 .PHONY : src/actions/jres_finder.cpp.o
 
@@ -426,10 +262,8 @@ src/actions/jres_finder.i: src/actions/jres_finder.cpp.i
 # target to preprocess a source file
 src/actions/jres_finder.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/jres_finder.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.cpp.i
 .PHONY : src/actions/jres_finder.cpp.i
 
@@ -440,54 +274,10 @@ src/actions/jres_finder.s: src/actions/jres_finder.cpp.s
 # target to generate assembly for a file
 src/actions/jres_finder.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/jres_finder.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.cpp.s
 .PHONY : src/actions/jres_finder.cpp.s
-
-src/actions/jres_finder.test.o: src/actions/jres_finder.test.cpp.o
-
-.PHONY : src/actions/jres_finder.test.o
-
-# target to build an object file
-src/actions/jres_finder.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/jres_finder.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.test.cpp.o
-.PHONY : src/actions/jres_finder.test.cpp.o
-
-src/actions/jres_finder.test.i: src/actions/jres_finder.test.cpp.i
-
-.PHONY : src/actions/jres_finder.test.i
-
-# target to preprocess a source file
-src/actions/jres_finder.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/jres_finder.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.test.cpp.i
-.PHONY : src/actions/jres_finder.test.cpp.i
-
-src/actions/jres_finder.test.s: src/actions/jres_finder.test.cpp.s
-
-.PHONY : src/actions/jres_finder.test.s
-
-# target to generate assembly for a file
-src/actions/jres_finder.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/jres_finder.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/jres_finder.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/jres_finder.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/jres_finder.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/jres_finder.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/jres_finder.test.cpp.s
-.PHONY : src/actions/jres_finder.test.cpp.s
 
 src/actions/libration_calculator.o: src/actions/libration_calculator.cpp.o
 
@@ -496,10 +286,8 @@ src/actions/libration_calculator.o: src/actions/libration_calculator.cpp.o
 # target to build an object file
 src/actions/libration_calculator.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/libration_calculator.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.o
 .PHONY : src/actions/libration_calculator.cpp.o
 
@@ -510,10 +298,8 @@ src/actions/libration_calculator.i: src/actions/libration_calculator.cpp.i
 # target to preprocess a source file
 src/actions/libration_calculator.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/libration_calculator.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.i
 .PHONY : src/actions/libration_calculator.cpp.i
 
@@ -524,54 +310,10 @@ src/actions/libration_calculator.s: src/actions/libration_calculator.cpp.s
 # target to generate assembly for a file
 src/actions/libration_calculator.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/libration_calculator.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.cpp.s
 .PHONY : src/actions/libration_calculator.cpp.s
-
-src/actions/libration_calculator.test.o: src/actions/libration_calculator.test.cpp.o
-
-.PHONY : src/actions/libration_calculator.test.o
-
-# target to build an object file
-src/actions/libration_calculator.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/libration_calculator.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.o
-.PHONY : src/actions/libration_calculator.test.cpp.o
-
-src/actions/libration_calculator.test.i: src/actions/libration_calculator.test.cpp.i
-
-.PHONY : src/actions/libration_calculator.test.i
-
-# target to preprocess a source file
-src/actions/libration_calculator.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/libration_calculator.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.i
-.PHONY : src/actions/libration_calculator.test.cpp.i
-
-src/actions/libration_calculator.test.s: src/actions/libration_calculator.test.cpp.s
-
-.PHONY : src/actions/libration_calculator.test.s
-
-# target to generate assembly for a file
-src/actions/libration_calculator.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/libration_calculator.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/libration_calculator.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/libration_calculator.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/libration_calculator.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/libration_calculator.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/libration_calculator.test.cpp.s
-.PHONY : src/actions/libration_calculator.test.cpp.s
 
 src/actions/theta_r_integrand.o: src/actions/theta_r_integrand.cpp.o
 
@@ -580,10 +322,8 @@ src/actions/theta_r_integrand.o: src/actions/theta_r_integrand.cpp.o
 # target to build an object file
 src/actions/theta_r_integrand.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrand.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrand.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrand.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.cpp.o
 .PHONY : src/actions/theta_r_integrand.cpp.o
 
@@ -594,10 +334,8 @@ src/actions/theta_r_integrand.i: src/actions/theta_r_integrand.cpp.i
 # target to preprocess a source file
 src/actions/theta_r_integrand.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrand.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrand.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrand.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.cpp.i
 .PHONY : src/actions/theta_r_integrand.cpp.i
 
@@ -608,54 +346,10 @@ src/actions/theta_r_integrand.s: src/actions/theta_r_integrand.cpp.s
 # target to generate assembly for a file
 src/actions/theta_r_integrand.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrand.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrand.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrand.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.cpp.s
 .PHONY : src/actions/theta_r_integrand.cpp.s
-
-src/actions/theta_r_integrand.test.o: src/actions/theta_r_integrand.test.cpp.o
-
-.PHONY : src/actions/theta_r_integrand.test.o
-
-# target to build an object file
-src/actions/theta_r_integrand.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrand.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrand.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrand.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.o
-.PHONY : src/actions/theta_r_integrand.test.cpp.o
-
-src/actions/theta_r_integrand.test.i: src/actions/theta_r_integrand.test.cpp.i
-
-.PHONY : src/actions/theta_r_integrand.test.i
-
-# target to preprocess a source file
-src/actions/theta_r_integrand.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrand.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrand.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrand.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.i
-.PHONY : src/actions/theta_r_integrand.test.cpp.i
-
-src/actions/theta_r_integrand.test.s: src/actions/theta_r_integrand.test.cpp.s
-
-.PHONY : src/actions/theta_r_integrand.test.s
-
-# target to generate assembly for a file
-src/actions/theta_r_integrand.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrand.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrand.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrand.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrand.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrand.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrand.test.cpp.s
-.PHONY : src/actions/theta_r_integrand.test.cpp.s
 
 src/actions/theta_r_integrator.o: src/actions/theta_r_integrator.cpp.o
 
@@ -664,10 +358,8 @@ src/actions/theta_r_integrator.o: src/actions/theta_r_integrator.cpp.o
 # target to build an object file
 src/actions/theta_r_integrator.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrator.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrator.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrator.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrator.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrator.cpp.o
 .PHONY : src/actions/theta_r_integrator.cpp.o
 
@@ -678,10 +370,8 @@ src/actions/theta_r_integrator.i: src/actions/theta_r_integrator.cpp.i
 # target to preprocess a source file
 src/actions/theta_r_integrator.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrator.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrator.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrator.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrator.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrator.cpp.i
 .PHONY : src/actions/theta_r_integrator.cpp.i
 
@@ -692,54 +382,10 @@ src/actions/theta_r_integrator.s: src/actions/theta_r_integrator.cpp.s
 # target to generate assembly for a file
 src/actions/theta_r_integrator.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrator.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrator.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrator.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrator.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrator.cpp.s
 .PHONY : src/actions/theta_r_integrator.cpp.s
-
-src/actions/theta_r_integrator.test.o: src/actions/theta_r_integrator.test.cpp.o
-
-.PHONY : src/actions/theta_r_integrator.test.o
-
-# target to build an object file
-src/actions/theta_r_integrator.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrator.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrator.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrator.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrator.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrator.test.cpp.o
-.PHONY : src/actions/theta_r_integrator.test.cpp.o
-
-src/actions/theta_r_integrator.test.i: src/actions/theta_r_integrator.test.cpp.i
-
-.PHONY : src/actions/theta_r_integrator.test.i
-
-# target to preprocess a source file
-src/actions/theta_r_integrator.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrator.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrator.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrator.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrator.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrator.test.cpp.i
-.PHONY : src/actions/theta_r_integrator.test.cpp.i
-
-src/actions/theta_r_integrator.test.s: src/actions/theta_r_integrator.test.cpp.s
-
-.PHONY : src/actions/theta_r_integrator.test.s
-
-# target to generate assembly for a file
-src/actions/theta_r_integrator.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/actions/theta_r_integrator.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/actions/theta_r_integrator.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/actions/theta_r_integrator.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/actions/theta_r_integrator.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/actions/theta_r_integrator.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/actions/theta_r_integrator.test.cpp.s
-.PHONY : src/actions/theta_r_integrator.test.cpp.s
 
 src/basis_functions/bfe.o: src/basis_functions/bfe.cpp.o
 
@@ -748,10 +394,8 @@ src/basis_functions/bfe.o: src/basis_functions/bfe.cpp.o
 # target to build an object file
 src/basis_functions/bfe.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/basis_functions/bfe.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/basis_functions/bfe.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/basis_functions/bfe.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/basis_functions/bfe.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.o
 .PHONY : src/basis_functions/bfe.cpp.o
 
@@ -762,10 +406,8 @@ src/basis_functions/bfe.i: src/basis_functions/bfe.cpp.i
 # target to preprocess a source file
 src/basis_functions/bfe.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/basis_functions/bfe.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/basis_functions/bfe.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/basis_functions/bfe.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/basis_functions/bfe.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.i
 .PHONY : src/basis_functions/bfe.cpp.i
 
@@ -776,54 +418,10 @@ src/basis_functions/bfe.s: src/basis_functions/bfe.cpp.s
 # target to generate assembly for a file
 src/basis_functions/bfe.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/basis_functions/bfe.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/basis_functions/bfe.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/basis_functions/bfe.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/basis_functions/bfe.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/basis_functions/bfe.cpp.s
 .PHONY : src/basis_functions/bfe.cpp.s
-
-src/basis_functions/bfe.test.o: src/basis_functions/bfe.test.cpp.o
-
-.PHONY : src/basis_functions/bfe.test.o
-
-# target to build an object file
-src/basis_functions/bfe.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/basis_functions/bfe.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/basis_functions/bfe.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.o
-.PHONY : src/basis_functions/bfe.test.cpp.o
-
-src/basis_functions/bfe.test.i: src/basis_functions/bfe.test.cpp.i
-
-.PHONY : src/basis_functions/bfe.test.i
-
-# target to preprocess a source file
-src/basis_functions/bfe.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/basis_functions/bfe.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/basis_functions/bfe.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.i
-.PHONY : src/basis_functions/bfe.test.cpp.i
-
-src/basis_functions/bfe.test.s: src/basis_functions/bfe.test.cpp.s
-
-.PHONY : src/basis_functions/bfe.test.s
-
-# target to generate assembly for a file
-src/basis_functions/bfe.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/basis_functions/bfe.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/basis_functions/bfe.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/basis_functions/bfe.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/basis_functions/bfe.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/basis_functions/bfe.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/basis_functions/bfe.test.cpp.s
-.PHONY : src/basis_functions/bfe.test.cpp.s
 
 src/basis_functions/potential_from_density.o: src/basis_functions/potential_from_density.cpp.o
 
@@ -832,10 +430,8 @@ src/basis_functions/potential_from_density.o: src/basis_functions/potential_from
 # target to build an object file
 src/basis_functions/potential_from_density.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/basis_functions/potential_from_density.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/basis_functions/potential_from_density.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/basis_functions/potential_from_density.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.o
 .PHONY : src/basis_functions/potential_from_density.cpp.o
 
@@ -846,10 +442,8 @@ src/basis_functions/potential_from_density.i: src/basis_functions/potential_from
 # target to preprocess a source file
 src/basis_functions/potential_from_density.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/basis_functions/potential_from_density.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/basis_functions/potential_from_density.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/basis_functions/potential_from_density.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.i
 .PHONY : src/basis_functions/potential_from_density.cpp.i
 
@@ -860,10 +454,8 @@ src/basis_functions/potential_from_density.s: src/basis_functions/potential_from
 # target to generate assembly for a file
 src/basis_functions/potential_from_density.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/basis_functions/potential_from_density.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/basis_functions/potential_from_density.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/basis_functions/potential_from_density.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/basis_functions/potential_from_density.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/basis_functions/potential_from_density.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/basis_functions/potential_from_density.cpp.s
 .PHONY : src/basis_functions/potential_from_density.cpp.s
 
@@ -874,10 +466,8 @@ src/df/dehnen_df.o: src/df/dehnen_df.cpp.o
 # target to build an object file
 src/df/dehnen_df.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/dehnen_df.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/dehnen_df.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/dehnen_df.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.o
 .PHONY : src/df/dehnen_df.cpp.o
 
@@ -888,10 +478,8 @@ src/df/dehnen_df.i: src/df/dehnen_df.cpp.i
 # target to preprocess a source file
 src/df/dehnen_df.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/dehnen_df.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/dehnen_df.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/dehnen_df.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.i
 .PHONY : src/df/dehnen_df.cpp.i
 
@@ -902,54 +490,10 @@ src/df/dehnen_df.s: src/df/dehnen_df.cpp.s
 # target to generate assembly for a file
 src/df/dehnen_df.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/dehnen_df.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/dehnen_df.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/dehnen_df.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.cpp.s
 .PHONY : src/df/dehnen_df.cpp.s
-
-src/df/dehnen_df.test.o: src/df/dehnen_df.test.cpp.o
-
-.PHONY : src/df/dehnen_df.test.o
-
-# target to build an object file
-src/df/dehnen_df.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/dehnen_df.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/dehnen_df.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/dehnen_df.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.o
-.PHONY : src/df/dehnen_df.test.cpp.o
-
-src/df/dehnen_df.test.i: src/df/dehnen_df.test.cpp.i
-
-.PHONY : src/df/dehnen_df.test.i
-
-# target to preprocess a source file
-src/df/dehnen_df.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/dehnen_df.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/dehnen_df.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/dehnen_df.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.i
-.PHONY : src/df/dehnen_df.test.cpp.i
-
-src/df/dehnen_df.test.s: src/df/dehnen_df.test.cpp.s
-
-.PHONY : src/df/dehnen_df.test.s
-
-# target to generate assembly for a file
-src/df/dehnen_df.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/dehnen_df.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/dehnen_df.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/dehnen_df.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/dehnen_df.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/dehnen_df.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/dehnen_df.test.cpp.s
-.PHONY : src/df/dehnen_df.test.cpp.s
 
 src/df/sample.o: src/df/sample.cpp.o
 
@@ -958,10 +502,8 @@ src/df/sample.o: src/df/sample.cpp.o
 # target to build an object file
 src/df/sample.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/sample.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/sample.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/sample.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/sample.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.cpp.o
 .PHONY : src/df/sample.cpp.o
 
@@ -972,10 +514,8 @@ src/df/sample.i: src/df/sample.cpp.i
 # target to preprocess a source file
 src/df/sample.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/sample.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/sample.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/sample.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/sample.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.cpp.i
 .PHONY : src/df/sample.cpp.i
 
@@ -986,54 +526,10 @@ src/df/sample.s: src/df/sample.cpp.s
 # target to generate assembly for a file
 src/df/sample.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/sample.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/sample.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/sample.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/sample.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.cpp.s
 .PHONY : src/df/sample.cpp.s
-
-src/df/sample.test.o: src/df/sample.test.cpp.o
-
-.PHONY : src/df/sample.test.o
-
-# target to build an object file
-src/df/sample.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/sample.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/sample.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/sample.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/sample.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.test.cpp.o
-.PHONY : src/df/sample.test.cpp.o
-
-src/df/sample.test.i: src/df/sample.test.cpp.i
-
-.PHONY : src/df/sample.test.i
-
-# target to preprocess a source file
-src/df/sample.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/sample.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/sample.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/sample.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/sample.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.test.cpp.i
-.PHONY : src/df/sample.test.cpp.i
-
-src/df/sample.test.s: src/df/sample.test.cpp.s
-
-.PHONY : src/df/sample.test.s
-
-# target to generate assembly for a file
-src/df/sample.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/df/sample.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/df/sample.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/df/sample.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/df/sample.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/df/sample.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/df/sample.test.cpp.s
-.PHONY : src/df/sample.test.cpp.s
 
 src/multithreading/execute_in_parallel.o: src/multithreading/execute_in_parallel.cpp.o
 
@@ -1042,10 +538,8 @@ src/multithreading/execute_in_parallel.o: src/multithreading/execute_in_parallel
 # target to build an object file
 src/multithreading/execute_in_parallel.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/multithreading/execute_in_parallel.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/multithreading/execute_in_parallel.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/multithreading/execute_in_parallel.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/multithreading/execute_in_parallel.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.cpp.o
 .PHONY : src/multithreading/execute_in_parallel.cpp.o
 
@@ -1056,10 +550,8 @@ src/multithreading/execute_in_parallel.i: src/multithreading/execute_in_parallel
 # target to preprocess a source file
 src/multithreading/execute_in_parallel.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/multithreading/execute_in_parallel.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/multithreading/execute_in_parallel.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/multithreading/execute_in_parallel.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/multithreading/execute_in_parallel.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.cpp.i
 .PHONY : src/multithreading/execute_in_parallel.cpp.i
 
@@ -1070,54 +562,10 @@ src/multithreading/execute_in_parallel.s: src/multithreading/execute_in_parallel
 # target to generate assembly for a file
 src/multithreading/execute_in_parallel.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/multithreading/execute_in_parallel.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/multithreading/execute_in_parallel.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/multithreading/execute_in_parallel.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/multithreading/execute_in_parallel.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.cpp.s
 .PHONY : src/multithreading/execute_in_parallel.cpp.s
-
-src/multithreading/execute_in_parallel.test.o: src/multithreading/execute_in_parallel.test.cpp.o
-
-.PHONY : src/multithreading/execute_in_parallel.test.o
-
-# target to build an object file
-src/multithreading/execute_in_parallel.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/multithreading/execute_in_parallel.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/multithreading/execute_in_parallel.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/multithreading/execute_in_parallel.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/multithreading/execute_in_parallel.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.test.cpp.o
-.PHONY : src/multithreading/execute_in_parallel.test.cpp.o
-
-src/multithreading/execute_in_parallel.test.i: src/multithreading/execute_in_parallel.test.cpp.i
-
-.PHONY : src/multithreading/execute_in_parallel.test.i
-
-# target to preprocess a source file
-src/multithreading/execute_in_parallel.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/multithreading/execute_in_parallel.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/multithreading/execute_in_parallel.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/multithreading/execute_in_parallel.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/multithreading/execute_in_parallel.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.test.cpp.i
-.PHONY : src/multithreading/execute_in_parallel.test.cpp.i
-
-src/multithreading/execute_in_parallel.test.s: src/multithreading/execute_in_parallel.test.cpp.s
-
-.PHONY : src/multithreading/execute_in_parallel.test.s
-
-# target to generate assembly for a file
-src/multithreading/execute_in_parallel.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/multithreading/execute_in_parallel.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/multithreading/execute_in_parallel.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/multithreading/execute_in_parallel.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/multithreading/execute_in_parallel.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/multithreading/execute_in_parallel.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/multithreading/execute_in_parallel.test.cpp.s
-.PHONY : src/multithreading/execute_in_parallel.test.cpp.s
 
 src/potential/mestel.o: src/potential/mestel.cpp.o
 
@@ -1126,10 +574,8 @@ src/potential/mestel.o: src/potential/mestel.cpp.o
 # target to build an object file
 src/potential/mestel.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/mestel.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel.cpp.o
 .PHONY : src/potential/mestel.cpp.o
 
@@ -1140,10 +586,8 @@ src/potential/mestel.i: src/potential/mestel.cpp.i
 # target to preprocess a source file
 src/potential/mestel.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/mestel.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel.cpp.i
 .PHONY : src/potential/mestel.cpp.i
 
@@ -1154,10 +598,8 @@ src/potential/mestel.s: src/potential/mestel.cpp.s
 # target to generate assembly for a file
 src/potential/mestel.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/mestel.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel.cpp.s
 .PHONY : src/potential/mestel.cpp.s
 
@@ -1168,10 +610,8 @@ src/potential/mestel_spiral.o: src/potential/mestel_spiral.cpp.o
 # target to build an object file
 src/potential/mestel_spiral.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/mestel_spiral.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel_spiral.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel_spiral.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.o
 .PHONY : src/potential/mestel_spiral.cpp.o
 
@@ -1182,10 +622,8 @@ src/potential/mestel_spiral.i: src/potential/mestel_spiral.cpp.i
 # target to preprocess a source file
 src/potential/mestel_spiral.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/mestel_spiral.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel_spiral.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel_spiral.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.i
 .PHONY : src/potential/mestel_spiral.cpp.i
 
@@ -1196,54 +634,10 @@ src/potential/mestel_spiral.s: src/potential/mestel_spiral.cpp.s
 # target to generate assembly for a file
 src/potential/mestel_spiral.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/mestel_spiral.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel_spiral.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel_spiral.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel_spiral.cpp.s
 .PHONY : src/potential/mestel_spiral.cpp.s
-
-src/potential/mestel_spiral.test.o: src/potential/mestel_spiral.test.cpp.o
-
-.PHONY : src/potential/mestel_spiral.test.o
-
-# target to build an object file
-src/potential/mestel_spiral.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/mestel_spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel_spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel_spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.o
-.PHONY : src/potential/mestel_spiral.test.cpp.o
-
-src/potential/mestel_spiral.test.i: src/potential/mestel_spiral.test.cpp.i
-
-.PHONY : src/potential/mestel_spiral.test.i
-
-# target to preprocess a source file
-src/potential/mestel_spiral.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/mestel_spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel_spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel_spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.i
-.PHONY : src/potential/mestel_spiral.test.cpp.i
-
-src/potential/mestel_spiral.test.s: src/potential/mestel_spiral.test.cpp.s
-
-.PHONY : src/potential/mestel_spiral.test.s
-
-# target to generate assembly for a file
-src/potential/mestel_spiral.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/mestel_spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/mestel_spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/mestel_spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/mestel_spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/mestel_spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/mestel_spiral.test.cpp.s
-.PHONY : src/potential/mestel_spiral.test.cpp.s
 
 src/potential/potential_funcs.o: src/potential/potential_funcs.cpp.o
 
@@ -1252,10 +646,8 @@ src/potential/potential_funcs.o: src/potential/potential_funcs.cpp.o
 # target to build an object file
 src/potential/potential_funcs.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/potential_funcs.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/potential_funcs.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/potential_funcs.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/potential_funcs.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/potential_funcs.cpp.o
 .PHONY : src/potential/potential_funcs.cpp.o
 
@@ -1266,10 +658,8 @@ src/potential/potential_funcs.i: src/potential/potential_funcs.cpp.i
 # target to preprocess a source file
 src/potential/potential_funcs.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/potential_funcs.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/potential_funcs.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/potential_funcs.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/potential_funcs.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/potential_funcs.cpp.i
 .PHONY : src/potential/potential_funcs.cpp.i
 
@@ -1280,54 +670,10 @@ src/potential/potential_funcs.s: src/potential/potential_funcs.cpp.s
 # target to generate assembly for a file
 src/potential/potential_funcs.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/potential_funcs.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/potential_funcs.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/potential_funcs.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/potential_funcs.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/potential_funcs.cpp.s
 .PHONY : src/potential/potential_funcs.cpp.s
-
-src/potential/potential_funcs.test.o: src/potential/potential_funcs.test.cpp.o
-
-.PHONY : src/potential/potential_funcs.test.o
-
-# target to build an object file
-src/potential/potential_funcs.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/potential_funcs.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/potential_funcs.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/potential_funcs.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/potential_funcs.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.o
-.PHONY : src/potential/potential_funcs.test.cpp.o
-
-src/potential/potential_funcs.test.i: src/potential/potential_funcs.test.cpp.i
-
-.PHONY : src/potential/potential_funcs.test.i
-
-# target to preprocess a source file
-src/potential/potential_funcs.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/potential_funcs.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/potential_funcs.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/potential_funcs.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/potential_funcs.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.i
-.PHONY : src/potential/potential_funcs.test.cpp.i
-
-src/potential/potential_funcs.test.s: src/potential/potential_funcs.test.cpp.s
-
-.PHONY : src/potential/potential_funcs.test.s
-
-# target to generate assembly for a file
-src/potential/potential_funcs.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/potential_funcs.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/potential_funcs.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/potential_funcs.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/potential_funcs.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/potential_funcs.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/potential_funcs.test.cpp.s
-.PHONY : src/potential/potential_funcs.test.cpp.s
 
 src/potential/spiral.o: src/potential/spiral.cpp.o
 
@@ -1336,10 +682,8 @@ src/potential/spiral.o: src/potential/spiral.cpp.o
 # target to build an object file
 src/potential/spiral.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/spiral.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/spiral.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/spiral.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/spiral.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/spiral.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/spiral.cpp.o
 .PHONY : src/potential/spiral.cpp.o
 
@@ -1350,10 +694,8 @@ src/potential/spiral.i: src/potential/spiral.cpp.i
 # target to preprocess a source file
 src/potential/spiral.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/spiral.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/spiral.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/spiral.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/spiral.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/spiral.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/spiral.cpp.i
 .PHONY : src/potential/spiral.cpp.i
 
@@ -1364,54 +706,10 @@ src/potential/spiral.s: src/potential/spiral.cpp.s
 # target to generate assembly for a file
 src/potential/spiral.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/spiral.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/spiral.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/spiral.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/spiral.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/spiral.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/spiral.cpp.s
 .PHONY : src/potential/spiral.cpp.s
-
-src/potential/spiral.test.o: src/potential/spiral.test.cpp.o
-
-.PHONY : src/potential/spiral.test.o
-
-# target to build an object file
-src/potential/spiral.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/spiral.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.o
-.PHONY : src/potential/spiral.test.cpp.o
-
-src/potential/spiral.test.i: src/potential/spiral.test.cpp.i
-
-.PHONY : src/potential/spiral.test.i
-
-# target to preprocess a source file
-src/potential/spiral.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/spiral.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.i
-.PHONY : src/potential/spiral.test.cpp.i
-
-src/potential/spiral.test.s: src/potential/spiral.test.cpp.s
-
-.PHONY : src/potential/spiral.test.s
-
-# target to generate assembly for a file
-src/potential/spiral.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/potential/spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/potential/spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/potential/spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/potential/spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/potential/spiral.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/potential/spiral.test.cpp.s
-.PHONY : src/potential/spiral.test.cpp.s
 
 src/rc/HEALPix.o: src/rc/HEALPix.cpp.o
 
@@ -1420,10 +718,8 @@ src/rc/HEALPix.o: src/rc/HEALPix.cpp.o
 # target to build an object file
 src/rc/HEALPix.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/HEALPix.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/HEALPix.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/HEALPix.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/HEALPix.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/HEALPix.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.o
 .PHONY : src/rc/HEALPix.cpp.o
 
@@ -1434,10 +730,8 @@ src/rc/HEALPix.i: src/rc/HEALPix.cpp.i
 # target to preprocess a source file
 src/rc/HEALPix.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/HEALPix.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/HEALPix.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/HEALPix.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/HEALPix.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/HEALPix.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.i
 .PHONY : src/rc/HEALPix.cpp.i
 
@@ -1448,10 +742,8 @@ src/rc/HEALPix.s: src/rc/HEALPix.cpp.s
 # target to generate assembly for a file
 src/rc/HEALPix.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/HEALPix.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/HEALPix.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/HEALPix.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/HEALPix.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/HEALPix.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/HEALPix.cpp.s
 .PHONY : src/rc/HEALPix.cpp.s
 
@@ -1462,10 +754,8 @@ src/rc/bar.o: src/rc/bar.cpp.o
 # target to build an object file
 src/rc/bar.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/bar.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/bar.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/bar.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/bar.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/bar.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/bar.cpp.o
 .PHONY : src/rc/bar.cpp.o
 
@@ -1476,10 +766,8 @@ src/rc/bar.i: src/rc/bar.cpp.i
 # target to preprocess a source file
 src/rc/bar.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/bar.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/bar.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/bar.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/bar.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/bar.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/bar.cpp.i
 .PHONY : src/rc/bar.cpp.i
 
@@ -1490,10 +778,8 @@ src/rc/bar.s: src/rc/bar.cpp.s
 # target to generate assembly for a file
 src/rc/bar.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/bar.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/bar.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/bar.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/bar.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/bar.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/bar.cpp.s
 .PHONY : src/rc/bar.cpp.s
 
@@ -1504,10 +790,8 @@ src/rc/export.o: src/rc/export.cpp.o
 # target to build an object file
 src/rc/export.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/export.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/export.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/export.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/export.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/export.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/export.cpp.o
 .PHONY : src/rc/export.cpp.o
 
@@ -1518,10 +802,8 @@ src/rc/export.i: src/rc/export.cpp.i
 # target to preprocess a source file
 src/rc/export.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/export.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/export.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/export.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/export.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/export.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/export.cpp.i
 .PHONY : src/rc/export.cpp.i
 
@@ -1532,10 +814,8 @@ src/rc/export.s: src/rc/export.cpp.s
 # target to generate assembly for a file
 src/rc/export.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/export.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/export.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/export.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/export.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/export.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/export.cpp.s
 .PHONY : src/rc/export.cpp.s
 
@@ -1546,10 +826,8 @@ src/rc/force.o: src/rc/force.cpp.o
 # target to build an object file
 src/rc/force.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/force.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/force.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/force.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/force.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/force.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/force.cpp.o
 .PHONY : src/rc/force.cpp.o
 
@@ -1560,10 +838,8 @@ src/rc/force.i: src/rc/force.cpp.i
 # target to preprocess a source file
 src/rc/force.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/force.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/force.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/force.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/force.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/force.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/force.cpp.i
 .PHONY : src/rc/force.cpp.i
 
@@ -1574,10 +850,8 @@ src/rc/force.s: src/rc/force.cpp.s
 # target to generate assembly for a file
 src/rc/force.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/force.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/force.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/force.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/force.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/force.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/force.cpp.s
 .PHONY : src/rc/force.cpp.s
 
@@ -1588,10 +862,8 @@ src/rc/getJres.o: src/rc/getJres.cpp.o
 # target to build an object file
 src/rc/getJres.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/getJres.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/getJres.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/getJres.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/getJres.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/getJres.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/getJres.cpp.o
 .PHONY : src/rc/getJres.cpp.o
 
@@ -1602,10 +874,8 @@ src/rc/getJres.i: src/rc/getJres.cpp.i
 # target to preprocess a source file
 src/rc/getJres.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/getJres.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/getJres.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/getJres.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/getJres.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/getJres.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/getJres.cpp.i
 .PHONY : src/rc/getJres.cpp.i
 
@@ -1616,10 +886,8 @@ src/rc/getJres.s: src/rc/getJres.cpp.s
 # target to generate assembly for a file
 src/rc/getJres.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/getJres.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/getJres.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/getJres.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/getJres.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/getJres.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/getJres.cpp.s
 .PHONY : src/rc/getJres.cpp.s
 
@@ -1630,10 +898,8 @@ src/rc/import.o: src/rc/import.cpp.o
 # target to build an object file
 src/rc/import.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/import.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/import.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/import.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/import.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/import.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/import.cpp.o
 .PHONY : src/rc/import.cpp.o
 
@@ -1644,10 +910,8 @@ src/rc/import.i: src/rc/import.cpp.i
 # target to preprocess a source file
 src/rc/import.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/import.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/import.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/import.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/import.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/import.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/import.cpp.i
 .PHONY : src/rc/import.cpp.i
 
@@ -1658,10 +922,8 @@ src/rc/import.s: src/rc/import.cpp.s
 # target to generate assembly for a file
 src/rc/import.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/import.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/import.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/import.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/import.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/import.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/import.cpp.s
 .PHONY : src/rc/import.cpp.s
 
@@ -1672,10 +934,8 @@ src/rc/interpolate.o: src/rc/interpolate.cpp.o
 # target to build an object file
 src/rc/interpolate.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/interpolate.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/interpolate.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/interpolate.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/interpolate.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/interpolate.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/interpolate.cpp.o
 .PHONY : src/rc/interpolate.cpp.o
 
@@ -1686,10 +946,8 @@ src/rc/interpolate.i: src/rc/interpolate.cpp.i
 # target to preprocess a source file
 src/rc/interpolate.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/interpolate.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/interpolate.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/interpolate.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/interpolate.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/interpolate.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/interpolate.cpp.i
 .PHONY : src/rc/interpolate.cpp.i
 
@@ -1700,10 +958,8 @@ src/rc/interpolate.s: src/rc/interpolate.cpp.s
 # target to generate assembly for a file
 src/rc/interpolate.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/interpolate.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/interpolate.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/interpolate.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/interpolate.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/interpolate.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/interpolate.cpp.s
 .PHONY : src/rc/interpolate.cpp.s
 
@@ -1714,10 +970,8 @@ src/rc/mapXVtoAA2D.o: src/rc/mapXVtoAA2D.cpp.o
 # target to build an object file
 src/rc/mapXVtoAA2D.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/mapXVtoAA2D.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/mapXVtoAA2D.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/mapXVtoAA2D.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/mapXVtoAA2D.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/mapXVtoAA2D.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.o
 .PHONY : src/rc/mapXVtoAA2D.cpp.o
 
@@ -1728,10 +982,8 @@ src/rc/mapXVtoAA2D.i: src/rc/mapXVtoAA2D.cpp.i
 # target to preprocess a source file
 src/rc/mapXVtoAA2D.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/mapXVtoAA2D.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/mapXVtoAA2D.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/mapXVtoAA2D.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/mapXVtoAA2D.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/mapXVtoAA2D.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.i
 .PHONY : src/rc/mapXVtoAA2D.cpp.i
 
@@ -1742,10 +994,8 @@ src/rc/mapXVtoAA2D.s: src/rc/mapXVtoAA2D.cpp.s
 # target to generate assembly for a file
 src/rc/mapXVtoAA2D.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/mapXVtoAA2D.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/mapXVtoAA2D.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/mapXVtoAA2D.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/mapXVtoAA2D.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/mapXVtoAA2D.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/mapXVtoAA2D.cpp.s
 .PHONY : src/rc/mapXVtoAA2D.cpp.s
 
@@ -1756,10 +1006,8 @@ src/rc/math_RC.o: src/rc/math_RC.cpp.o
 # target to build an object file
 src/rc/math_RC.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/math_RC.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/math_RC.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/math_RC.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/math_RC.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/math_RC.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/math_RC.cpp.o
 .PHONY : src/rc/math_RC.cpp.o
 
@@ -1770,10 +1018,8 @@ src/rc/math_RC.i: src/rc/math_RC.cpp.i
 # target to preprocess a source file
 src/rc/math_RC.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/math_RC.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/math_RC.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/math_RC.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/math_RC.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/math_RC.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/math_RC.cpp.i
 .PHONY : src/rc/math_RC.cpp.i
 
@@ -1784,10 +1030,8 @@ src/rc/math_RC.s: src/rc/math_RC.cpp.s
 # target to generate assembly for a file
 src/rc/math_RC.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/math_RC.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/math_RC.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/math_RC.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/math_RC.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/math_RC.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/math_RC.cpp.s
 .PHONY : src/rc/math_RC.cpp.s
 
@@ -1798,10 +1042,8 @@ src/rc/potential.o: src/rc/potential.cpp.o
 # target to build an object file
 src/rc/potential.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential.cpp.o
 .PHONY : src/rc/potential.cpp.o
 
@@ -1812,10 +1054,8 @@ src/rc/potential.i: src/rc/potential.cpp.i
 # target to preprocess a source file
 src/rc/potential.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential.cpp.i
 .PHONY : src/rc/potential.cpp.i
 
@@ -1826,10 +1066,8 @@ src/rc/potential.s: src/rc/potential.cpp.s
 # target to generate assembly for a file
 src/rc/potential.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential.cpp.s
 .PHONY : src/rc/potential.cpp.s
 
@@ -1840,10 +1078,8 @@ src/rc/potential_AGAMA.o: src/rc/potential_AGAMA.cpp.o
 # target to build an object file
 src/rc/potential_AGAMA.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_AGAMA.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_AGAMA.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_AGAMA.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_AGAMA.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_AGAMA.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.o
 .PHONY : src/rc/potential_AGAMA.cpp.o
 
@@ -1854,10 +1090,8 @@ src/rc/potential_AGAMA.i: src/rc/potential_AGAMA.cpp.i
 # target to preprocess a source file
 src/rc/potential_AGAMA.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_AGAMA.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_AGAMA.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_AGAMA.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_AGAMA.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_AGAMA.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.i
 .PHONY : src/rc/potential_AGAMA.cpp.i
 
@@ -1868,10 +1102,8 @@ src/rc/potential_AGAMA.s: src/rc/potential_AGAMA.cpp.s
 # target to generate assembly for a file
 src/rc/potential_AGAMA.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_AGAMA.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_AGAMA.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_AGAMA.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_AGAMA.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_AGAMA.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_AGAMA.cpp.s
 .PHONY : src/rc/potential_AGAMA.cpp.s
 
@@ -1882,10 +1114,8 @@ src/rc/potential_CartGrid.o: src/rc/potential_CartGrid.cpp.o
 # target to build an object file
 src/rc/potential_CartGrid.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_CartGrid.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_CartGrid.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_CartGrid.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_CartGrid.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_CartGrid.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.o
 .PHONY : src/rc/potential_CartGrid.cpp.o
 
@@ -1896,10 +1126,8 @@ src/rc/potential_CartGrid.i: src/rc/potential_CartGrid.cpp.i
 # target to preprocess a source file
 src/rc/potential_CartGrid.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_CartGrid.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_CartGrid.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_CartGrid.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_CartGrid.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_CartGrid.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.i
 .PHONY : src/rc/potential_CartGrid.cpp.i
 
@@ -1910,10 +1138,8 @@ src/rc/potential_CartGrid.s: src/rc/potential_CartGrid.cpp.s
 # target to generate assembly for a file
 src/rc/potential_CartGrid.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_CartGrid.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_CartGrid.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_CartGrid.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_CartGrid.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_CartGrid.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_CartGrid.cpp.s
 .PHONY : src/rc/potential_CartGrid.cpp.s
 
@@ -1924,10 +1150,8 @@ src/rc/potential_Hernquist.o: src/rc/potential_Hernquist.cpp.o
 # target to build an object file
 src/rc/potential_Hernquist.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_Hernquist.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_Hernquist.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_Hernquist.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_Hernquist.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_Hernquist.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.o
 .PHONY : src/rc/potential_Hernquist.cpp.o
 
@@ -1938,10 +1162,8 @@ src/rc/potential_Hernquist.i: src/rc/potential_Hernquist.cpp.i
 # target to preprocess a source file
 src/rc/potential_Hernquist.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_Hernquist.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_Hernquist.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_Hernquist.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_Hernquist.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_Hernquist.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.i
 .PHONY : src/rc/potential_Hernquist.cpp.i
 
@@ -1952,10 +1174,8 @@ src/rc/potential_Hernquist.s: src/rc/potential_Hernquist.cpp.s
 # target to generate assembly for a file
 src/rc/potential_Hernquist.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_Hernquist.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_Hernquist.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_Hernquist.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_Hernquist.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_Hernquist.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_Hernquist.cpp.s
 .PHONY : src/rc/potential_Hernquist.cpp.s
 
@@ -1966,10 +1186,8 @@ src/rc/potential_multipole.o: src/rc/potential_multipole.cpp.o
 # target to build an object file
 src/rc/potential_multipole.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_multipole.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_multipole.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_multipole.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_multipole.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_multipole.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.o
 .PHONY : src/rc/potential_multipole.cpp.o
 
@@ -1980,10 +1198,8 @@ src/rc/potential_multipole.i: src/rc/potential_multipole.cpp.i
 # target to preprocess a source file
 src/rc/potential_multipole.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_multipole.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_multipole.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_multipole.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_multipole.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_multipole.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.i
 .PHONY : src/rc/potential_multipole.cpp.i
 
@@ -1994,10 +1210,8 @@ src/rc/potential_multipole.s: src/rc/potential_multipole.cpp.s
 # target to generate assembly for a file
 src/rc/potential_multipole.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_multipole.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_multipole.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_multipole.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_multipole.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_multipole.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_multipole.cpp.s
 .PHONY : src/rc/potential_multipole.cpp.s
 
@@ -2008,10 +1222,8 @@ src/rc/potential_powerLawVc.o: src/rc/potential_powerLawVc.cpp.o
 # target to build an object file
 src/rc/potential_powerLawVc.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_powerLawVc.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_powerLawVc.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_powerLawVc.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_powerLawVc.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_powerLawVc.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.o
 .PHONY : src/rc/potential_powerLawVc.cpp.o
 
@@ -2022,10 +1234,8 @@ src/rc/potential_powerLawVc.i: src/rc/potential_powerLawVc.cpp.i
 # target to preprocess a source file
 src/rc/potential_powerLawVc.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_powerLawVc.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_powerLawVc.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_powerLawVc.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_powerLawVc.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_powerLawVc.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.i
 .PHONY : src/rc/potential_powerLawVc.cpp.i
 
@@ -2036,10 +1246,8 @@ src/rc/potential_powerLawVc.s: src/rc/potential_powerLawVc.cpp.s
 # target to generate assembly for a file
 src/rc/potential_powerLawVc.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/potential_powerLawVc.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/potential_powerLawVc.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/potential_powerLawVc.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/potential_powerLawVc.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/potential_powerLawVc.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/potential_powerLawVc.cpp.s
 .PHONY : src/rc/potential_powerLawVc.cpp.s
 
@@ -2050,10 +1258,8 @@ src/rc/sht.o: src/rc/sht.cpp.o
 # target to build an object file
 src/rc/sht.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/sht.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/sht.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/sht.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/sht.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/sht.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/sht.cpp.o
 .PHONY : src/rc/sht.cpp.o
 
@@ -2064,10 +1270,8 @@ src/rc/sht.i: src/rc/sht.cpp.i
 # target to preprocess a source file
 src/rc/sht.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/sht.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/sht.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/sht.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/sht.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/sht.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/sht.cpp.i
 .PHONY : src/rc/sht.cpp.i
 
@@ -2078,10 +1282,8 @@ src/rc/sht.s: src/rc/sht.cpp.s
 # target to generate assembly for a file
 src/rc/sht.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/sht.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/sht.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/sht.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/sht.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/sht.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/sht.cpp.s
 .PHONY : src/rc/sht.cpp.s
 
@@ -2092,10 +1294,8 @@ src/rc/spiral.o: src/rc/spiral.cpp.o
 # target to build an object file
 src/rc/spiral.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/spiral.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/spiral.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/spiral.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/spiral.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/spiral.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/spiral.cpp.o
 .PHONY : src/rc/spiral.cpp.o
 
@@ -2106,10 +1306,8 @@ src/rc/spiral.i: src/rc/spiral.cpp.i
 # target to preprocess a source file
 src/rc/spiral.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/spiral.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/spiral.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/spiral.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/spiral.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/spiral.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/spiral.cpp.i
 .PHONY : src/rc/spiral.cpp.i
 
@@ -2120,10 +1318,8 @@ src/rc/spiral.s: src/rc/spiral.cpp.s
 # target to generate assembly for a file
 src/rc/spiral.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/spiral.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/spiral.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/spiral.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/spiral.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/spiral.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/spiral.cpp.s
 .PHONY : src/rc/spiral.cpp.s
 
@@ -2134,10 +1330,8 @@ src/rc/utils.o: src/rc/utils.cpp.o
 # target to build an object file
 src/rc/utils.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/utils.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/utils.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/utils.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/utils.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/utils.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/utils.cpp.o
 .PHONY : src/rc/utils.cpp.o
 
@@ -2148,10 +1342,8 @@ src/rc/utils.i: src/rc/utils.cpp.i
 # target to preprocess a source file
 src/rc/utils.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/utils.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/utils.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/utils.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/utils.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/utils.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/utils.cpp.i
 .PHONY : src/rc/utils.cpp.i
 
@@ -2162,10 +1354,8 @@ src/rc/utils.s: src/rc/utils.cpp.s
 # target to generate assembly for a file
 src/rc/utils.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/rc/utils.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/rc/utils.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/rc/utils.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/rc/utils.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/rc/utils.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/rc/utils.cpp.s
 .PHONY : src/rc/utils.cpp.s
 
@@ -2176,10 +1366,8 @@ src/special_functions/gamma.o: src/special_functions/gamma.cpp.o
 # target to build an object file
 src/special_functions/gamma.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/special_functions/gamma.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/special_functions/gamma.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/special_functions/gamma.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/special_functions/gamma.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/special_functions/gamma.cpp.o
 .PHONY : src/special_functions/gamma.cpp.o
 
@@ -2190,10 +1378,8 @@ src/special_functions/gamma.i: src/special_functions/gamma.cpp.i
 # target to preprocess a source file
 src/special_functions/gamma.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/special_functions/gamma.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/special_functions/gamma.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/special_functions/gamma.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/special_functions/gamma.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/special_functions/gamma.cpp.i
 .PHONY : src/special_functions/gamma.cpp.i
 
@@ -2204,54 +1390,10 @@ src/special_functions/gamma.s: src/special_functions/gamma.cpp.s
 # target to generate assembly for a file
 src/special_functions/gamma.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/special_functions/gamma.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/special_functions/gamma.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/special_functions/gamma.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/special_functions/gamma.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/special_functions/gamma.cpp.s
 .PHONY : src/special_functions/gamma.cpp.s
-
-src/special_functions/gamma.test.o: src/special_functions/gamma.test.cpp.o
-
-.PHONY : src/special_functions/gamma.test.o
-
-# target to build an object file
-src/special_functions/gamma.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/special_functions/gamma.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/special_functions/gamma.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/special_functions/gamma.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/special_functions/gamma.test.cpp.o
-.PHONY : src/special_functions/gamma.test.cpp.o
-
-src/special_functions/gamma.test.i: src/special_functions/gamma.test.cpp.i
-
-.PHONY : src/special_functions/gamma.test.i
-
-# target to preprocess a source file
-src/special_functions/gamma.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/special_functions/gamma.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/special_functions/gamma.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/special_functions/gamma.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/special_functions/gamma.test.cpp.i
-.PHONY : src/special_functions/gamma.test.cpp.i
-
-src/special_functions/gamma.test.s: src/special_functions/gamma.test.cpp.s
-
-.PHONY : src/special_functions/gamma.test.s
-
-# target to generate assembly for a file
-src/special_functions/gamma.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/special_functions/gamma.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/special_functions/gamma.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/special_functions/gamma.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/special_functions/gamma.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/special_functions/gamma.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/special_functions/gamma.test.cpp.s
-.PHONY : src/special_functions/gamma.test.cpp.s
 
 src/tp_integration/integrate_rk4.o: src/tp_integration/integrate_rk4.cpp.o
 
@@ -2260,10 +1402,8 @@ src/tp_integration/integrate_rk4.o: src/tp_integration/integrate_rk4.cpp.o
 # target to build an object file
 src/tp_integration/integrate_rk4.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/tp_integration/integrate_rk4.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/tp_integration/integrate_rk4.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/tp_integration/integrate_rk4.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/tp_integration/integrate_rk4.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.o
 .PHONY : src/tp_integration/integrate_rk4.cpp.o
 
@@ -2274,10 +1414,8 @@ src/tp_integration/integrate_rk4.i: src/tp_integration/integrate_rk4.cpp.i
 # target to preprocess a source file
 src/tp_integration/integrate_rk4.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/tp_integration/integrate_rk4.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/tp_integration/integrate_rk4.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/tp_integration/integrate_rk4.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/tp_integration/integrate_rk4.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.i
 .PHONY : src/tp_integration/integrate_rk4.cpp.i
 
@@ -2288,54 +1426,10 @@ src/tp_integration/integrate_rk4.s: src/tp_integration/integrate_rk4.cpp.s
 # target to generate assembly for a file
 src/tp_integration/integrate_rk4.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/tp_integration/integrate_rk4.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/tp_integration/integrate_rk4.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/tp_integration/integrate_rk4.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/tp_integration/integrate_rk4.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.cpp.s
 .PHONY : src/tp_integration/integrate_rk4.cpp.s
-
-src/tp_integration/integrate_rk4.test.o: src/tp_integration/integrate_rk4.test.cpp.o
-
-.PHONY : src/tp_integration/integrate_rk4.test.o
-
-# target to build an object file
-src/tp_integration/integrate_rk4.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/tp_integration/integrate_rk4.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/tp_integration/integrate_rk4.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/tp_integration/integrate_rk4.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/tp_integration/integrate_rk4.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.o
-.PHONY : src/tp_integration/integrate_rk4.test.cpp.o
-
-src/tp_integration/integrate_rk4.test.i: src/tp_integration/integrate_rk4.test.cpp.i
-
-.PHONY : src/tp_integration/integrate_rk4.test.i
-
-# target to preprocess a source file
-src/tp_integration/integrate_rk4.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/tp_integration/integrate_rk4.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/tp_integration/integrate_rk4.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/tp_integration/integrate_rk4.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/tp_integration/integrate_rk4.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.i
-.PHONY : src/tp_integration/integrate_rk4.test.cpp.i
-
-src/tp_integration/integrate_rk4.test.s: src/tp_integration/integrate_rk4.test.cpp.s
-
-.PHONY : src/tp_integration/integrate_rk4.test.s
-
-# target to generate assembly for a file
-src/tp_integration/integrate_rk4.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/tp_integration/integrate_rk4.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/tp_integration/integrate_rk4.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/tp_integration/integrate_rk4.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/tp_integration/integrate_rk4.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/tp_integration/integrate_rk4.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/tp_integration/integrate_rk4.test.cpp.s
-.PHONY : src/tp_integration/integrate_rk4.test.cpp.s
 
 src/utility/add_functions.o: src/utility/add_functions.cpp.o
 
@@ -2344,10 +1438,8 @@ src/utility/add_functions.o: src/utility/add_functions.cpp.o
 # target to build an object file
 src/utility/add_functions.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/add_functions.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/add_functions.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/add_functions.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/add_functions.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/add_functions.cpp.o
 .PHONY : src/utility/add_functions.cpp.o
 
@@ -2358,10 +1450,8 @@ src/utility/add_functions.i: src/utility/add_functions.cpp.i
 # target to preprocess a source file
 src/utility/add_functions.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/add_functions.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/add_functions.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/add_functions.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/add_functions.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/add_functions.cpp.i
 .PHONY : src/utility/add_functions.cpp.i
 
@@ -2372,138 +1462,10 @@ src/utility/add_functions.s: src/utility/add_functions.cpp.s
 # target to generate assembly for a file
 src/utility/add_functions.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/add_functions.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/add_functions.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/add_functions.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/add_functions.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/add_functions.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/add_functions.cpp.s
 .PHONY : src/utility/add_functions.cpp.s
-
-src/utility/add_functions.test.o: src/utility/add_functions.test.cpp.o
-
-.PHONY : src/utility/add_functions.test.o
-
-# target to build an object file
-src/utility/add_functions.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/add_functions.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/add_functions.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/add_functions.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/add_functions.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.o
-.PHONY : src/utility/add_functions.test.cpp.o
-
-src/utility/add_functions.test.i: src/utility/add_functions.test.cpp.i
-
-.PHONY : src/utility/add_functions.test.i
-
-# target to preprocess a source file
-src/utility/add_functions.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/add_functions.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/add_functions.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/add_functions.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/add_functions.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.i
-.PHONY : src/utility/add_functions.test.cpp.i
-
-src/utility/add_functions.test.s: src/utility/add_functions.test.cpp.s
-
-.PHONY : src/utility/add_functions.test.s
-
-# target to generate assembly for a file
-src/utility/add_functions.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/add_functions.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/add_functions.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/add_functions.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/add_functions.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/add_functions.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/add_functions.test.cpp.s
-.PHONY : src/utility/add_functions.test.cpp.s
-
-src/utility/flatten.test.o: src/utility/flatten.test.cpp.o
-
-.PHONY : src/utility/flatten.test.o
-
-# target to build an object file
-src/utility/flatten.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/flatten.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/flatten.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/flatten.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/flatten.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.o
-.PHONY : src/utility/flatten.test.cpp.o
-
-src/utility/flatten.test.i: src/utility/flatten.test.cpp.i
-
-.PHONY : src/utility/flatten.test.i
-
-# target to preprocess a source file
-src/utility/flatten.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/flatten.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/flatten.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/flatten.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/flatten.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.i
-.PHONY : src/utility/flatten.test.cpp.i
-
-src/utility/flatten.test.s: src/utility/flatten.test.cpp.s
-
-.PHONY : src/utility/flatten.test.s
-
-# target to generate assembly for a file
-src/utility/flatten.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/flatten.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/flatten.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/flatten.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/flatten.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/flatten.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/flatten.test.cpp.s
-.PHONY : src/utility/flatten.test.cpp.s
-
-src/utility/shape.test.o: src/utility/shape.test.cpp.o
-
-.PHONY : src/utility/shape.test.o
-
-# target to build an object file
-src/utility/shape.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/shape.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/shape.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/shape.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/shape.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/shape.test.cpp.o
-.PHONY : src/utility/shape.test.cpp.o
-
-src/utility/shape.test.i: src/utility/shape.test.cpp.i
-
-.PHONY : src/utility/shape.test.i
-
-# target to preprocess a source file
-src/utility/shape.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/shape.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/shape.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/shape.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/shape.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/shape.test.cpp.i
-.PHONY : src/utility/shape.test.cpp.i
-
-src/utility/shape.test.s: src/utility/shape.test.cpp.s
-
-.PHONY : src/utility/shape.test.s
-
-# target to generate assembly for a file
-src/utility/shape.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/shape.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/shape.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/shape.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/shape.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/shape.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/shape.test.cpp.s
-.PHONY : src/utility/shape.test.cpp.s
 
 src/utility/vector_io.o: src/utility/vector_io.cpp.o
 
@@ -2512,10 +1474,8 @@ src/utility/vector_io.o: src/utility/vector_io.cpp.o
 # target to build an object file
 src/utility/vector_io.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/vector_io.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/vector_io.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/vector_io.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/vector_io.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/vector_io.cpp.o
 .PHONY : src/utility/vector_io.cpp.o
 
@@ -2526,10 +1486,8 @@ src/utility/vector_io.i: src/utility/vector_io.cpp.i
 # target to preprocess a source file
 src/utility/vector_io.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/vector_io.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/vector_io.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/vector_io.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/vector_io.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/vector_io.cpp.i
 .PHONY : src/utility/vector_io.cpp.i
 
@@ -2540,54 +1498,10 @@ src/utility/vector_io.s: src/utility/vector_io.cpp.s
 # target to generate assembly for a file
 src/utility/vector_io.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/vector_io.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/vector_io.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/vector_io.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/vector_io.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/vector_io.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/vector_io.cpp.s
 .PHONY : src/utility/vector_io.cpp.s
-
-src/utility/vector_io.test.o: src/utility/vector_io.test.cpp.o
-
-.PHONY : src/utility/vector_io.test.o
-
-# target to build an object file
-src/utility/vector_io.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/vector_io.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/vector_io.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/vector_io.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/vector_io.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.o
-.PHONY : src/utility/vector_io.test.cpp.o
-
-src/utility/vector_io.test.i: src/utility/vector_io.test.cpp.i
-
-.PHONY : src/utility/vector_io.test.i
-
-# target to preprocess a source file
-src/utility/vector_io.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/vector_io.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/vector_io.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/vector_io.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/vector_io.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.i
-.PHONY : src/utility/vector_io.test.cpp.i
-
-src/utility/vector_io.test.s: src/utility/vector_io.test.cpp.s
-
-.PHONY : src/utility/vector_io.test.s
-
-# target to generate assembly for a file
-src/utility/vector_io.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/utility/vector_io.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/utility/vector_io.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/utility/vector_io.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/utility/vector_io.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/utility/vector_io.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/utility/vector_io.test.cpp.s
-.PHONY : src/utility/vector_io.test.cpp.s
 
 src/vectors/coords.o: src/vectors/coords.cpp.o
 
@@ -2596,10 +1510,8 @@ src/vectors/coords.o: src/vectors/coords.cpp.o
 # target to build an object file
 src/vectors/coords.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/coords.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/coords.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/coords.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/coords.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/coords.cpp.o
 .PHONY : src/vectors/coords.cpp.o
 
@@ -2610,10 +1522,8 @@ src/vectors/coords.i: src/vectors/coords.cpp.i
 # target to preprocess a source file
 src/vectors/coords.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/coords.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/coords.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/coords.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/coords.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/coords.cpp.i
 .PHONY : src/vectors/coords.cpp.i
 
@@ -2624,54 +1534,10 @@ src/vectors/coords.s: src/vectors/coords.cpp.s
 # target to generate assembly for a file
 src/vectors/coords.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/coords.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/coords.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/coords.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/coords.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/coords.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/coords.cpp.s
 .PHONY : src/vectors/coords.cpp.s
-
-src/vectors/coords.test.o: src/vectors/coords.test.cpp.o
-
-.PHONY : src/vectors/coords.test.o
-
-# target to build an object file
-src/vectors/coords.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/coords.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/coords.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/coords.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/coords.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.o
-.PHONY : src/vectors/coords.test.cpp.o
-
-src/vectors/coords.test.i: src/vectors/coords.test.cpp.i
-
-.PHONY : src/vectors/coords.test.i
-
-# target to preprocess a source file
-src/vectors/coords.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/coords.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/coords.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/coords.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/coords.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.i
-.PHONY : src/vectors/coords.test.cpp.i
-
-src/vectors/coords.test.s: src/vectors/coords.test.cpp.s
-
-.PHONY : src/vectors/coords.test.s
-
-# target to generate assembly for a file
-src/vectors/coords.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/coords.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/coords.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/coords.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/coords.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/coords.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/coords.test.cpp.s
-.PHONY : src/vectors/coords.test.cpp.s
 
 src/vectors/force1.o: src/vectors/force1.cpp.o
 
@@ -2680,10 +1546,8 @@ src/vectors/force1.o: src/vectors/force1.cpp.o
 # target to build an object file
 src/vectors/force1.cpp.o:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/force1.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/force1.cpp.o
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/force1.cpp.o
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.o
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.cpp.o
 .PHONY : src/vectors/force1.cpp.o
 
@@ -2694,10 +1558,8 @@ src/vectors/force1.i: src/vectors/force1.cpp.i
 # target to preprocess a source file
 src/vectors/force1.cpp.i:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/force1.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/force1.cpp.i
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/force1.cpp.i
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.i
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.cpp.i
 .PHONY : src/vectors/force1.cpp.i
 
@@ -2708,54 +1570,10 @@ src/vectors/force1.s: src/vectors/force1.cpp.s
 # target to generate assembly for a file
 src/vectors/force1.cpp.s:
 	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/force1.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/force1.cpp.s
 	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/force1.cpp.s
 	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.cpp.s
 	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.cpp.s
 .PHONY : src/vectors/force1.cpp.s
-
-src/vectors/force1.test.o: src/vectors/force1.test.cpp.o
-
-.PHONY : src/vectors/force1.test.o
-
-# target to build an object file
-src/vectors/force1.test.cpp.o:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/force1.test.cpp.o
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/force1.test.cpp.o
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/force1.test.cpp.o
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.test.cpp.o
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.o
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.o
-.PHONY : src/vectors/force1.test.cpp.o
-
-src/vectors/force1.test.i: src/vectors/force1.test.cpp.i
-
-.PHONY : src/vectors/force1.test.i
-
-# target to preprocess a source file
-src/vectors/force1.test.cpp.i:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/force1.test.cpp.i
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/force1.test.cpp.i
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/force1.test.cpp.i
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.test.cpp.i
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.i
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.i
-.PHONY : src/vectors/force1.test.cpp.i
-
-src/vectors/force1.test.s: src/vectors/force1.test.cpp.s
-
-.PHONY : src/vectors/force1.test.s
-
-# target to generate assembly for a file
-src/vectors/force1.test.cpp.s:
-	$(MAKE) -f CMakeFiles/resonance_evolution.dir/build.make CMakeFiles/resonance_evolution.dir/src/vectors/force1.test.cpp.s
-	$(MAKE) -f CMakeFiles/libration_amplitude.dir/build.make CMakeFiles/libration_amplitude.dir/src/vectors/force1.test.cpp.s
-	$(MAKE) -f CMakeFiles/tp_dehnen_df.dir/build.make CMakeFiles/tp_dehnen_df.dir/src/vectors/force1.test.cpp.s
-	$(MAKE) -f CMakeFiles/test_particle.dir/build.make CMakeFiles/test_particle.dir/src/vectors/force1.test.cpp.s
-	$(MAKE) -f CMakeFiles/unit_tests.dir/build.make CMakeFiles/unit_tests.dir/src/vectors/force1.test.cpp.s
-	$(MAKE) -f CMakeFiles/mylib.dir/build.make CMakeFiles/mylib.dir/src/vectors/force1.test.cpp.s
-.PHONY : src/vectors/force1.test.cpp.s
 
 # Help Target
 help:
@@ -2763,26 +1581,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/local"
 	@echo "... edit_cache"
-	@echo "... test"
 	@echo "... resonance_evolution"
-	@echo "... libration_amplitude"
 	@echo "... tp_dehnen_df"
-	@echo "... install/strip"
 	@echo "... test_particle"
-	@echo "... unit_tests"
-	@echo "... install"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... mylib"
-	@echo "... gmock_main"
-	@echo "... gmock"
-	@echo "... gtest_main"
-	@echo "... gtest"
-	@echo "... main/libration_amplitude.o"
-	@echo "... main/libration_amplitude.i"
-	@echo "... main/libration_amplitude.s"
 	@echo "... main/resonance_evolution.o"
 	@echo "... main/resonance_evolution.i"
 	@echo "... main/resonance_evolution.s"
@@ -2795,75 +1599,42 @@ help:
 	@echo "... src/actions/jres_finder.o"
 	@echo "... src/actions/jres_finder.i"
 	@echo "... src/actions/jres_finder.s"
-	@echo "... src/actions/jres_finder.test.o"
-	@echo "... src/actions/jres_finder.test.i"
-	@echo "... src/actions/jres_finder.test.s"
 	@echo "... src/actions/libration_calculator.o"
 	@echo "... src/actions/libration_calculator.i"
 	@echo "... src/actions/libration_calculator.s"
-	@echo "... src/actions/libration_calculator.test.o"
-	@echo "... src/actions/libration_calculator.test.i"
-	@echo "... src/actions/libration_calculator.test.s"
 	@echo "... src/actions/theta_r_integrand.o"
 	@echo "... src/actions/theta_r_integrand.i"
 	@echo "... src/actions/theta_r_integrand.s"
-	@echo "... src/actions/theta_r_integrand.test.o"
-	@echo "... src/actions/theta_r_integrand.test.i"
-	@echo "... src/actions/theta_r_integrand.test.s"
 	@echo "... src/actions/theta_r_integrator.o"
 	@echo "... src/actions/theta_r_integrator.i"
 	@echo "... src/actions/theta_r_integrator.s"
-	@echo "... src/actions/theta_r_integrator.test.o"
-	@echo "... src/actions/theta_r_integrator.test.i"
-	@echo "... src/actions/theta_r_integrator.test.s"
 	@echo "... src/basis_functions/bfe.o"
 	@echo "... src/basis_functions/bfe.i"
 	@echo "... src/basis_functions/bfe.s"
-	@echo "... src/basis_functions/bfe.test.o"
-	@echo "... src/basis_functions/bfe.test.i"
-	@echo "... src/basis_functions/bfe.test.s"
 	@echo "... src/basis_functions/potential_from_density.o"
 	@echo "... src/basis_functions/potential_from_density.i"
 	@echo "... src/basis_functions/potential_from_density.s"
 	@echo "... src/df/dehnen_df.o"
 	@echo "... src/df/dehnen_df.i"
 	@echo "... src/df/dehnen_df.s"
-	@echo "... src/df/dehnen_df.test.o"
-	@echo "... src/df/dehnen_df.test.i"
-	@echo "... src/df/dehnen_df.test.s"
 	@echo "... src/df/sample.o"
 	@echo "... src/df/sample.i"
 	@echo "... src/df/sample.s"
-	@echo "... src/df/sample.test.o"
-	@echo "... src/df/sample.test.i"
-	@echo "... src/df/sample.test.s"
 	@echo "... src/multithreading/execute_in_parallel.o"
 	@echo "... src/multithreading/execute_in_parallel.i"
 	@echo "... src/multithreading/execute_in_parallel.s"
-	@echo "... src/multithreading/execute_in_parallel.test.o"
-	@echo "... src/multithreading/execute_in_parallel.test.i"
-	@echo "... src/multithreading/execute_in_parallel.test.s"
 	@echo "... src/potential/mestel.o"
 	@echo "... src/potential/mestel.i"
 	@echo "... src/potential/mestel.s"
 	@echo "... src/potential/mestel_spiral.o"
 	@echo "... src/potential/mestel_spiral.i"
 	@echo "... src/potential/mestel_spiral.s"
-	@echo "... src/potential/mestel_spiral.test.o"
-	@echo "... src/potential/mestel_spiral.test.i"
-	@echo "... src/potential/mestel_spiral.test.s"
 	@echo "... src/potential/potential_funcs.o"
 	@echo "... src/potential/potential_funcs.i"
 	@echo "... src/potential/potential_funcs.s"
-	@echo "... src/potential/potential_funcs.test.o"
-	@echo "... src/potential/potential_funcs.test.i"
-	@echo "... src/potential/potential_funcs.test.s"
 	@echo "... src/potential/spiral.o"
 	@echo "... src/potential/spiral.i"
 	@echo "... src/potential/spiral.s"
-	@echo "... src/potential/spiral.test.o"
-	@echo "... src/potential/spiral.test.i"
-	@echo "... src/potential/spiral.test.s"
 	@echo "... src/rc/HEALPix.o"
 	@echo "... src/rc/HEALPix.i"
 	@echo "... src/rc/HEALPix.s"
@@ -2921,45 +1692,21 @@ help:
 	@echo "... src/special_functions/gamma.o"
 	@echo "... src/special_functions/gamma.i"
 	@echo "... src/special_functions/gamma.s"
-	@echo "... src/special_functions/gamma.test.o"
-	@echo "... src/special_functions/gamma.test.i"
-	@echo "... src/special_functions/gamma.test.s"
 	@echo "... src/tp_integration/integrate_rk4.o"
 	@echo "... src/tp_integration/integrate_rk4.i"
 	@echo "... src/tp_integration/integrate_rk4.s"
-	@echo "... src/tp_integration/integrate_rk4.test.o"
-	@echo "... src/tp_integration/integrate_rk4.test.i"
-	@echo "... src/tp_integration/integrate_rk4.test.s"
 	@echo "... src/utility/add_functions.o"
 	@echo "... src/utility/add_functions.i"
 	@echo "... src/utility/add_functions.s"
-	@echo "... src/utility/add_functions.test.o"
-	@echo "... src/utility/add_functions.test.i"
-	@echo "... src/utility/add_functions.test.s"
-	@echo "... src/utility/flatten.test.o"
-	@echo "... src/utility/flatten.test.i"
-	@echo "... src/utility/flatten.test.s"
-	@echo "... src/utility/shape.test.o"
-	@echo "... src/utility/shape.test.i"
-	@echo "... src/utility/shape.test.s"
 	@echo "... src/utility/vector_io.o"
 	@echo "... src/utility/vector_io.i"
 	@echo "... src/utility/vector_io.s"
-	@echo "... src/utility/vector_io.test.o"
-	@echo "... src/utility/vector_io.test.i"
-	@echo "... src/utility/vector_io.test.s"
 	@echo "... src/vectors/coords.o"
 	@echo "... src/vectors/coords.i"
 	@echo "... src/vectors/coords.s"
-	@echo "... src/vectors/coords.test.o"
-	@echo "... src/vectors/coords.test.i"
-	@echo "... src/vectors/coords.test.s"
 	@echo "... src/vectors/force1.o"
 	@echo "... src/vectors/force1.i"
 	@echo "... src/vectors/force1.s"
-	@echo "... src/vectors/force1.test.o"
-	@echo "... src/vectors/force1.test.i"
-	@echo "... src/vectors/force1.test.s"
 .PHONY : help
 
 

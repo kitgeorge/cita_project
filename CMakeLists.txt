@@ -9,6 +9,7 @@ endif()
 option(MakeTests "MakeTests" ON)
 
 find_package(Boost REQUIRED)
+find_package(Threads REQUIRED)
 include_directories(${BOOST_INCLUDE_DIR} include/potential 
 include/vectors include/consts include/df
 include/utility include/multithreading
@@ -23,6 +24,7 @@ add_library(mylib SHARED ${src_files})
 set_target_properties(mylib PROPERTIES SUFFIX ".so")
 
 target_link_libraries(mylib ${BOOST_LIBRARIES})
+target_link_libraries(mylib PRIVATE Threads::Threads)
 
 target_include_directories(mylib INTERFACE include/potential 
 include/vectors include/df include/consts 
@@ -54,7 +56,8 @@ target_link_libraries(
     unit_tests
     mylib
     GTest::gtest_main
-    ${BOOST_LIBRARIES})
+    ${BOOST_LIBRARIES}
+    Threads::Threads)
 endif()
 
 add_executable(
@@ -65,7 +68,8 @@ add_executable(
 target_link_libraries(
     test_particle
     mylib
-    ${BOOST_LIBRARIES})
+    ${BOOST_LIBRARIES}
+    Threads::Threads)
 
 add_executable(
     tp_dehnen_df
@@ -75,8 +79,10 @@ add_executable(
 target_link_libraries(
     tp_dehnen_df
     mylib
-    ${BOOST_LIBRARIES})
+    ${BOOST_LIBRARIES}
+    Threads::Threads)
 
+#[[
 add_executable(
     libration_amplitude
     ${main3}
@@ -85,8 +91,9 @@ add_executable(
 target_link_libraries(
     libration_amplitude
     mylib
-    ${BOOST_LIBRARIES})
-
+    ${BOOST_LIBRARIES}
+    Threads::Threads)
+]]
 add_executable(
     resonance_evolution
     ${main4}
@@ -95,7 +102,9 @@ add_executable(
 target_link_libraries(
     resonance_evolution
     mylib
-    ${BOOST_LIBRARIES})
+    ${BOOST_LIBRARIES}
+    Threads::Threads)
+
 
 if(MakeTests)
 include(GoogleTest)
