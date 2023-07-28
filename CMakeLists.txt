@@ -16,7 +16,7 @@ include/tp_integration include/rc include/actions
 include/special_functions include/basis_functions)
 
 file(GLOB src_files src/*/*.cpp include/*/*.hpp)
-if(!MakeTests)
+if(NOT MakeTests)
 list(FILTER src_files EXCLUDE REGEX ".test.cpp")
 endif()
 add_library(mylib SHARED ${src_files})
