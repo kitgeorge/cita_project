@@ -920,8 +920,6 @@ tp_dehnen_df: CMakeFiles/tp_dehnen_df.dir/src/vectors/force1.cpp.o
 tp_dehnen_df: CMakeFiles/tp_dehnen_df.dir/src/vectors/force1.test.cpp.o
 tp_dehnen_df: CMakeFiles/tp_dehnen_df.dir/build.make
 tp_dehnen_df: libmylib.so
-tp_dehnen_df: lib/libgtest_main.a
-tp_dehnen_df: lib/libgtest.a
 tp_dehnen_df: CMakeFiles/tp_dehnen_df.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Linking CXX executable tp_dehnen_df"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tp_dehnen_df.dir/link.txt --verbose=$(VERBOSE)

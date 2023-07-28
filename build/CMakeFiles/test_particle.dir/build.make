@@ -920,8 +920,6 @@ test_particle: CMakeFiles/test_particle.dir/src/vectors/force1.cpp.o
 test_particle: CMakeFiles/test_particle.dir/src/vectors/force1.test.cpp.o
 test_particle: CMakeFiles/test_particle.dir/build.make
 test_particle: libmylib.so
-test_particle: lib/libgtest_main.a
-test_particle: lib/libgtest.a
 test_particle: CMakeFiles/test_particle.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kit/Documents/cita_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Linking CXX executable test_particle"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_particle.dir/link.txt --verbose=$(VERBOSE)

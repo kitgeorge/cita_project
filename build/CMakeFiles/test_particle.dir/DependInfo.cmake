@@ -77,15 +77,11 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/actions"
   "../include/special_functions"
   "../include/basis_functions"
-  "_deps/googletest-src/googletest/include"
-  "_deps/googletest-src/googletest"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/kit/Documents/cita_project/build/CMakeFiles/mylib.dir/DependInfo.cmake"
-  "/home/kit/Documents/cita_project/build/_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
-  "/home/kit/Documents/cita_project/build/_deps/googletest-build/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

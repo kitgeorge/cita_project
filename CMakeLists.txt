@@ -6,6 +6,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Apple
     message(STATUS "Added compiler options: -g -Wall -Wextra -O3 -pthread")
 endif()
 
+option(MakeTests "MakeTests" ON)
+
 find_package(Boost REQUIRED)
 include_directories(${BOOST_INCLUDE_DIR} include/potential 
 include/vectors include/consts include/df
@@ -30,6 +32,7 @@ file(GLOB main2 main/tp_dehnen_df.cpp)
 file(GLOB main3 main/libration_amplitude.cpp)
 file(GLOB main4 main/resonance_evolution.cpp)
 
+if(MakeTests)
 include(FetchContent)
 FetchContent_Declare(
     googletest
@@ -49,6 +52,7 @@ target_link_libraries(
     mylib
     GTest::gtest_main
     ${BOOST_LIBRARIES})
+endif()
 
 add_executable(
     test_particle
@@ -58,7 +62,6 @@ add_executable(
 target_link_libraries(
     test_particle
     mylib
-    GTest::gtest_main
     ${BOOST_LIBRARIES})
 
 add_executable(
@@ -69,7 +72,6 @@ add_executable(
 target_link_libraries(
     tp_dehnen_df
     mylib
-    GTest::gtest_main
     ${BOOST_LIBRARIES})
 
 add_executable(
@@ -80,7 +82,6 @@ add_executable(
 target_link_libraries(
     libration_amplitude
     mylib
-    GTest::gtest_main
     ${BOOST_LIBRARIES})
 
 add_executable(
@@ -91,8 +92,9 @@ add_executable(
 target_link_libraries(
     resonance_evolution
     mylib
-    GTest::gtest_main
     ${BOOST_LIBRARIES})
 
+if(MakeTests)
 include(GoogleTest)
 gtest_discover_tests(unit_tests)
+endif()

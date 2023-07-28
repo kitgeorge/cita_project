@@ -305,6 +305,9 @@ FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLETEST:BOOL=OFF
 // may want to turn this OFF.)
 INSTALL_GTEST:BOOL=ON
 
+//MakeTests
+MakeTests:BOOL=ON
+
 //Path to a program.
 _Python_EXECUTABLE:FILEPATH=/usr/bin/python3.8
 
