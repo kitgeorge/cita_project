@@ -59,6 +59,7 @@ target_link_libraries(
     GTest::gtest_main
     ${BOOST_LIBRARIES}
     Threads::Threads)
+
 endif()
 
 add_executable(
@@ -66,22 +67,12 @@ add_executable(
     ${main1}
     ${src_files})
 
-target_link_libraries(
-    test_particle
-    mylib
-    ${BOOST_LIBRARIES}
-    Threads::Threads)
 
 add_executable(
     tp_dehnen_df
     ${main2}
     ${src_files})
 
-target_link_libraries(
-    tp_dehnen_df
-    mylib
-    ${BOOST_LIBRARIES}
-    Threads::Threads)
 
 #[[
 add_executable(
@@ -92,6 +83,7 @@ add_executable(
 target_link_libraries(
     libration_amplitude
     mylib
+    GTest::gtest_main
     ${BOOST_LIBRARIES}
     Threads::Threads)
 ]]
@@ -100,22 +92,71 @@ add_executable(
     ${main4}
     ${src_files})
 
-target_link_libraries(
-    resonance_evolution
-    mylib
-    ${BOOST_LIBRARIES}
-    Threads::Threads)
 
 add_executable(
     bfe_evaluation
     ${main5}
     ${src_files})
 
-target_link_libraries(
-    bfe_evaluation
-    mylib
-    ${BOOST_LIBRARIES}
-    Threads::Threads)
+if(MakeTests)
+
+    target_link_libraries(
+        test_particle
+        mylib
+        GTest::gtest_main
+        ${BOOST_LIBRARIES}
+        Threads::Threads)
+
+    target_link_libraries(
+        tp_dehnen_df
+        mylib
+        GTest::gtest_main
+        ${BOOST_LIBRARIES}
+        Threads::Threads)
+
+    target_link_libraries(
+        resonance_evolution
+        mylib
+        GTest::gtest_main
+        ${BOOST_LIBRARIES}
+        Threads::Threads)
+
+    target_link_libraries(
+        bfe_evaluation
+        mylib
+        GTest::gtest_main
+        ${BOOST_LIBRARIES}
+        Threads::Threads)
+
+else()
+
+    target_link_libraries(
+        test_particle
+        mylib
+        ${BOOST_LIBRARIES}
+        Threads::Threads)
+
+    target_link_libraries(
+        tp_dehnen_df
+        mylib
+        ${BOOST_LIBRARIES}
+        Threads::Threads)
+
+    target_link_libraries(
+        resonance_evolution
+        mylib
+        ${BOOST_LIBRARIES}
+        Threads::Threads)
+
+    target_link_libraries(
+        bfe_evaluation
+        mylib
+        ${BOOST_LIBRARIES}
+        Threads::Threads)
+
+endif()
+
+
 
 if(MakeTests)
 include(GoogleTest)

@@ -5,10 +5,13 @@
 #include "comp_funcs.hpp"
 #include "mestel_spiral.hpp"
 #include "execute_in_parallel.hpp"
+#include "gamma.hpp"
 
 int main() {
-    int n_max = 30;
-    int l_max = 30;
+    special_functions::storeFactorialValues();
+
+    int n_max = 25;
+    int l_max = 25;
     int k_Ka = 4;
     double R_Ka = 20*Units::kpc;
     int N_R = 1000;
