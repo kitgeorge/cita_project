@@ -36,6 +36,7 @@ file(GLOB main1 main/test_particle.cpp)
 file(GLOB main2 main/tp_dehnen_df.cpp)
 file(GLOB main3 main/libration_amplitude.cpp)
 file(GLOB main4 main/resonance_evolution.cpp)
+file(GLOB main5 main/bfe_evaluation.cpp)
 
 if(MakeTests)
 include(FetchContent)
@@ -105,6 +106,16 @@ target_link_libraries(
     ${BOOST_LIBRARIES}
     Threads::Threads)
 
+add_executable(
+    bfe_evaluation
+    ${main5}
+    ${src_files})
+
+target_link_libraries(
+    bfe_evaluation
+    mylib
+    ${BOOST_LIBRARIES}
+    Threads::Threads)
 
 if(MakeTests)
 include(GoogleTest)

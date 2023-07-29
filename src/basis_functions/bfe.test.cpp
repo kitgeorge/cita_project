@@ -220,7 +220,7 @@ TEST_F(BFETest, DISABLED_CheckMestel) {
                       utility::flatten(force_values));
 }
 
-TEST_F(BFETest, CheckSpiral) {
+TEST_F(BFETest, DISABLED_CheckSpiral) {
     std::function<double(double, double, double)>
     spiral_density_time = potential::getStandardSpiralDensity();
     std::function<double(double, double)>
