@@ -7,7 +7,8 @@ namespace special_functions {
 
 std::vector<double> getGammaIntValues() {
     std::vector<double> output(N_gamma_values);
-    for(int i = 0; i < N_gamma_values; ++i) {
+    // 0 undefined
+    for(int i = 1; i < N_gamma_values; ++i) {
         output[i] = boost::math::tgamma(i);
     }
     return output;
@@ -22,7 +23,7 @@ std::vector<double> getGammaHalfIntValues() {
 }
 
 double Gamma(int x) {
-    assert(x >= 0);
+    assert(x > 0);
     assert(x < N_gamma_values);
     return gamma_int_values[x];
 }
