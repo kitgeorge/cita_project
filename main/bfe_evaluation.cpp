@@ -9,7 +9,6 @@
 #include <iostream>
 
 int main() {
-    special_functions::storeFactorialValues();
 
     int n_max = 50;
     int l_max = 50;
