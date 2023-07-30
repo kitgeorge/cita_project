@@ -8,6 +8,7 @@
 #include "gamma.hpp"
 #include <iostream>
 
+
 int main() {
 
     int n_max = 50;
