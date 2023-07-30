@@ -6,12 +6,13 @@
 #include "mestel_spiral.hpp"
 #include "execute_in_parallel.hpp"
 #include "gamma.hpp"
+#include <iostream>
 
 int main() {
     special_functions::storeFactorialValues();
 
-    int n_max = 25;
-    int l_max = 25;
+    int n_max = 50;
+    int l_max = 50;
     int k_Ka = 4;
     double R_Ka = 20*Units::kpc;
     int N_R = 1000;
