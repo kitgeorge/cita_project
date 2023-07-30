@@ -1,7 +1,0 @@
-/home/ctg2/Documents/cita_project/build/CMakeFiles/edit_cache.dir
-/home/ctg2/Documents/cita_project/build/CMakeFiles/bfe_evaluation.dir
-/home/ctg2/Documents/cita_project/build/CMakeFiles/resonance_evolution.dir
-/home/ctg2/Documents/cita_project/build/CMakeFiles/tp_dehnen_df.dir
-/home/ctg2/Documents/cita_project/build/CMakeFiles/test_particle.dir
-/home/ctg2/Documents/cita_project/build/CMakeFiles/rebuild_cache.dir
-/home/ctg2/Documents/cita_project/build/CMakeFiles/mylib.dir
