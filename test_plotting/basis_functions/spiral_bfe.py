@@ -9,10 +9,10 @@ R_Ka = 20
 R_values = np.array([i/N_R*R_Ka for i in range(N_R)])
 phi_values = np.array([i/N_phi*2*math.pi for i in range(N_phi)])
 
-density = np.loadtxt("../../test_data/basis_functions/spiral_density.csv")
-trunc_density = np.loadtxt("../../test_data/basis_functions/spiral_trunc_density.csv")
-trunc_potential = np.loadtxt("../../test_data/basis_functions/spiral_trunc_potential.csv")
-trunc_force = np.loadtxt("../../test_data/basis_functions/spiral_trunc_force.csv")
+density = np.loadtxt("../../data/basis_functions/spiral_density.csv")
+trunc_density = np.loadtxt("../../data/basis_functions/spiral_trunc_density.csv")
+trunc_potential = np.loadtxt("../../data/basis_functions/spiral_trunc_potential.csv")
+trunc_force = np.loadtxt("../../data/basis_functions/spiral_trunc_force.csv")
 
 density = density.reshape(N_R, N_phi)
 trunc_density = trunc_density.reshape(N_R, N_phi)
