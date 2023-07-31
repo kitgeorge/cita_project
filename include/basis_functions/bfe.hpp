@@ -1,12 +1,48 @@
 #pragma once
 #include "gamma.hpp"
+#include "bfe_pochhammer.hpp"
 #include "units.hpp"
 #include "comp_funcs.hpp"
+#include "nd_vectors.hpp"
 #include <complex>
 #include <cassert>
 
 
 namespace basis_functions {
+
+// Basis function coefficients tabulated
+
+utility::vector5d<double> getAlphaKaValues();
+utility::vector4d<double> getBetaKaValues();
+utility::vector3d<double> getPValues();
+utility::vector3d<double> getSValues();
+
+
+namespace {
+static constexpr int k_max = 10;
+static constexpr int l_max = 80;
+static constexpr int n_max = 120;
+static constexpr int i_max = 10;
+static constexpr int j_max = 120;
+
+static const utility::vector5d<double> 
+alpha_Ka_values = getAlphaKaValues();
+static const utility::vector4d<double>
+beta_Ka_values = getBetaKaValues();
+static const utility::vector3d<double>
+P_values = getPValues();
+static const utility::vector3d<double>
+S_values = getSValues();
+
+}
+
+double getAlphaKa(int k, int l, int n, int i, int j);
+double getBetaKa(int k, int l, int n, int j);
+double getP(int k, int l, int n);
+double getS(int k, int l, int n);
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 
 std::complex<double>
 scalarProduct(const std::function<std::complex<double>(double, double)>& pot_conj,
@@ -17,6 +53,10 @@ std::complex<double>
 scalarProduct(const std::function<std::complex<double>(double, double)>& pot_conj,
                const std::vector<std::array<double, 3>>& density, double R_max);
 
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
 class BFE {
     // Following notation in Fouvry et al (2015)
     const int k_Ka;
@@ -24,10 +64,6 @@ class BFE {
     const int N_R;
     const int N_phi;
 
-    double alpha_Ka(int k, int l, int n, int i, int j) const;
-    double beta_Ka(int k, int l, int n, int j) const;
-    double P(int k, int l, int n) const;
-    double S(int k, int l, int n) const;
     double U(int n, int l, double R) const;
     double UPrime(int n, int l, double R) const;
     double D(int n, int l, double R) const;

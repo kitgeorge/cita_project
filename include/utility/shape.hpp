@@ -6,33 +6,33 @@
 
 namespace utility {
 
-template <typename T>
-std::vector<std::vector<T>> makeShape(std::array<int, 2> shape) {
-    std::vector<std::vector<T>>
-    output(shape[0], std::vector<T>(shape[1]));
-    return output;
-}
+// template <typename T>
+// std::vector<std::vector<T>> makeShape(std::array<int, 2> shape) {
+//     std::vector<std::vector<T>>
+//     output(shape[0], std::vector<T>(shape[1]));
+//     return output;
+// }
 
-template <typename T>
-std::vector<std::vector<std::vector<T>>>
-makeShape(std::array<int, 3> shape) {
-    std::vector<std::vector<std::vector<T>>>
-    output(shape[0], 
-           std::vector<std::vector<T>>(shape[1],
-                                       std::vector<T>(shape[2])));
-    return output;
-}
+// template <typename T>
+// std::vector<std::vector<std::vector<T>>>
+// makeShape(std::array<int, 3> shape) {
+//     std::vector<std::vector<std::vector<T>>>
+//     output(shape[0], 
+//            std::vector<std::vector<T>>(shape[1],
+//                                        std::vector<T>(shape[2])));
+//     return output;
+// }
 
-template <typename T>
-std::vector<std::vector<std::vector<std::vector<T>>>>
-makeShape(std::array<int, 4> shape) {
-    std::vector<std::vector<std::vector<std::vector<T>>>>
-    output(shape[0],
-           std::vector<std::vector<std::vector<T>>>(shape[1],
-                            std::vector<std::vector<T>>(shape[2], 
-                                        std::vector<T>(shape[3]))));
-    return output;
-}
+// template <typename T>
+// std::vector<std::vector<std::vector<std::vector<T>>>>
+// makeShape(std::array<int, 4> shape) {
+//     std::vector<std::vector<std::vector<std::vector<T>>>>
+//     output(shape[0],
+//            std::vector<std::vector<std::vector<T>>>(shape[1],
+//                             std::vector<std::vector<T>>(shape[2], 
+//                                         std::vector<T>(shape[3]))));
+//     return output;
+// }
 
 template <typename T>
 std::vector<std::vector<std::vector<std::vector<T>>>>

@@ -4,7 +4,7 @@
 #include <iostream>
 
 namespace special_functions {
-
+    
 std::vector<double> getGammaIntValues() {
     std::vector<double> output(N_gamma_values);
     // 0 undefined
@@ -20,8 +20,8 @@ std::vector<double> getGammaHalfIntValues() {
         output[i] = boost::math::tgamma(i + 0.5);
     }
     return output;
-}
 
+}
 double Gamma(int x) {
     assert(x > 0);
     assert(x < N_gamma_values);
@@ -95,13 +95,5 @@ double GammaHalf(int x) {
 //     return output;
 // }
 
-double Pochhammer(double a, int i) {
-    assert(i >= 0);
-    double output = 1; 
-    for(int j = 0; j < i; ++j) {
-        output = output*(a + j);
-    }
-    assert(std::isfinite(output));
-    return output;
-}
+
 }
