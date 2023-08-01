@@ -12,8 +12,8 @@
 
 int main() {
 
-    int n_max = 30;
-    int l_max = 30;
+    int n_max = 15;
+    int l_max = 15;
     int k_Ka = 4;
     double R_Ka = 20*Units::kpc;
     int N_R = 1000;
