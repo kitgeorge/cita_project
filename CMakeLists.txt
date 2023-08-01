@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 project(shared LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
-    add_compile_options(-g -Wall -Wextra -O3)
+    add_compile_options(-g -O3) # Removed -Wall -Wextra, may want to reinstate
     message(STATUS "Added compiler options: -g -O3 -pthread")
 endif()
 

@@ -37,6 +37,9 @@ class PotentialFromDensity {
         template <typename DensityType>
         PotentialFromDensity(const DensityType& density, const BFE& expansion, 
                              int n_max, int l_max);
+        
+        // For diagnostic purposes
+        std::vector<std::vector<std::complex<double>>> getCoefficients() const;
 };
 
 

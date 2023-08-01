@@ -100,6 +100,11 @@ getTruncFunction(std::function<std::function<DataType(double, double)>
     return utility::addFunctions(utility::flatten(terms));
 }
 
+std::vector<std::vector<std::complex<double>>>
+PotentialFromDensity::getCoefficients() const {
+    return coefficients;
+}
+
 template PotentialFromDensity::
          PotentialFromDensity(const std::function<double(double, double)>& density,
                               const BFE& expansion, int N_n, int N_l);
