@@ -43,7 +43,7 @@ getCoefficients(const DensityType& density, const BFE& expansion) const {
 std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
 PotentialFromDensity::calculateDensityTerms(const BFE& expansion) const {
     std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
-    output(nl_max[0], 
+    output(nl_max[0] + 1, 
             std::vector<std::function<std::complex<double>(double, double)>>(2*nl_max[1] + 1));
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
