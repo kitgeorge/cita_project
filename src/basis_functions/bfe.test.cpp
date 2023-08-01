@@ -6,6 +6,7 @@
 #include "comp_funcs.hpp"
 #include "mestel_spiral.hpp"
 #include "execute_in_parallel.hpp"
+#include "comp_funcs.hpp"
 #include <optional>
 
 using namespace basis_functions;
@@ -33,13 +34,13 @@ class BFETest : public ::testing::Test {
         void SetUp() override {
             k_Ka = 4;
             R_Ka = 20*Units::kpc;
-            N_R = 1000;
-            N_phi = 1000;
+            N_R = 5000;
+            N_phi = 5000;
             expansion.emplace(k_Ka, R_Ka, N_R, N_phi);
             // N_R and N_phi are being used for too many things
             // but can't be bothered to fix yet
-            n_max = 15;
-            l_max = 15;
+            n_max = 30;
+            l_max = 30;
             mestel_vc = 220*Units::kms;
             mestel_R0 = 8*Units::kpc;
             double vc = mestel_vc;
@@ -77,17 +78,25 @@ TEST_F(BFETest, DISABLED_CheckOrthonormal) {
                         EXPECT_LT(std::abs(scalarProduct(
                                                 conj, expansion.value().rho(i, k),
                                                 R_Ka, N_R, N_phi) + 1.0),
-                                                0.25);
+                                                0.01);
                     }
                     else {
                         EXPECT_LT(std::abs(scalarProduct(
                                                 conj, expansion.value().rho(i, k),
                                                 R_Ka, N_R, N_phi)),
-                                                0.25);
+                                                0.01);
                     }
                 }
             }
         }
+    }
+}
+
+TEST_F(BFETest, CheckNorm) {
+    for(int i = 0; i <= n_max; ++i) {
+        std::cout << i << std::endl;
+        EXPECT_LT(std::abs(scalarProduct(utility::conjugateFunction(expansion.value().psi(i, 2)),
+                                         expansion.value().rho(i, 2), R_Ka, N_R, N_phi) + 1.0), 0.25);
     }
 }
 

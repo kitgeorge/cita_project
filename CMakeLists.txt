@@ -61,7 +61,7 @@ target_link_libraries(
     Threads::Threads)
 
 endif()
-
+#[[
 add_executable(
     test_particle
     ${main1}
@@ -72,7 +72,7 @@ add_executable(
     tp_dehnen_df
     ${main2}
     ${src_files})
-
+]]
 
 #
 #add_executable(
@@ -86,12 +86,12 @@ add_executable(
 #    GTest::gtest_main
 #    ${BOOST_LIBRARIES}
 #    Threads::Threads)
-
+#[[
 add_executable(
     resonance_evolution
     ${main4}
     ${src_files})
-
+]]
 
 add_executable(
     bfe_evaluation
@@ -99,7 +99,7 @@ add_executable(
     ${src_files})
 
 if(MakeTests)
-
+#[[
     target_link_libraries(
         test_particle
         mylib
@@ -120,7 +120,7 @@ if(MakeTests)
         GTest::gtest_main
         ${BOOST_LIBRARIES}
         Threads::Threads)
-
+]]
     target_link_libraries(
         bfe_evaluation
         mylib
@@ -129,7 +129,7 @@ if(MakeTests)
         Threads::Threads)
 
 else()
-
+#[[
     target_link_libraries(
         test_particle
         mylib
@@ -147,7 +147,7 @@ else()
         mylib
         ${BOOST_LIBRARIES}
         Threads::Threads)
-
+]]
     target_link_libraries(
         bfe_evaluation
         mylib

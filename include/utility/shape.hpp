@@ -110,8 +110,43 @@ std::array<int, 4> getShape(std::vector<std::vector<std::vector<std::vector<T>>>
             }
             for(int k = 0; k < output[2]; ++k) {
                 if(x[i][j][k].size() != output[3]) {
-                    std::cout << "Non-regualr vector shape" << std::endl;
+                    std::cout << "Non-regular vector shape" << std::endl;
                     std::abort();
+                }
+            }
+        }
+    }
+    return output;
+}
+
+template <typename T>
+std::array<int, 5> getShape(std::vector<std::vector<std::vector<std::vector<std::vector<T>>>>> x) {
+    std::array<int, 5> output;
+    output[0] = x.size();
+    output[1] = x[0].size();
+    output[2] = x[0][0].size();
+    output[3] = x[0][0][0].size();
+    output[4] = x[0][0][0][0].size();
+    for(int i = 0; i < output[0]; ++i) {
+        if(x[i].size() != output[1]) {
+            std::cout << "Non-regular vector shape" << std::endl;
+            std::abort();
+        }
+        for(int j = 0; j < output[1]; ++j) {
+            if(x[i][j].size() != output[2]) {
+                std::cout << "Non-regular vector shape" << std::endl;
+                std::abort();
+            }
+            for(int k = 0; k < output[2]; ++k) {
+                if(x[i][j][k].size() != output[3]) {
+                    std::cout << "Non-regular vector shape" << std::endl;
+                    std::abort();
+                    for(int l = 0; l < output[3]; ++l) {
+                        if(x[i][j][k][l].size() != output[4]) {
+                            std::cout << "Non-regular vector shape" << std::endl;
+                            std::abort();
+                        }
+                    }
                 }
             }
         }

@@ -6,6 +6,7 @@
 #include "nd_vectors.hpp"
 #include <complex>
 #include <cassert>
+#include <boost/multiprecision/gmp.hpp>
 
 
 namespace basis_functions {
@@ -25,6 +26,7 @@ static constexpr int n_max = 50;
 static constexpr int i_max = 10;
 static constexpr int j_max = 50;
 
+}
 static const utility::vector5d<double> 
 alpha_Ka_values = getAlphaKaValues();
 static const utility::vector4d<double>
@@ -34,7 +36,6 @@ P_values = getPValues();
 static const utility::vector3d<double>
 S_values = getSValues();
 
-}
 
 double getAlphaKa(int k, int l, int n, int i, int j);
 double getBetaKa(int k, int l, int n, int j);

@@ -55,6 +55,28 @@ std::vector<T> flatten(std::vector<std::vector<std::vector<std::vector<T>>>> dat
     return output;
 }
 
+template <typename T>
+std::vector<T> flatten(std::vector<std::vector<std::vector<std::vector<std::vector<T>>>>> data) {
+    std::array<int, 5> dimensions = getShape(data);
+
+    std::vector<T> output(dimensions[0]*dimensions[1]*dimensions[2]*dimensions[3]*dimensions[4]);
+    for(int i = 0; i < dimensions[0]; ++i) {
+        for(int j = 0; j < dimensions[1]; ++j) {
+            for(int k = 0; k < dimensions[2]; ++k) {
+                for(int l = 0; l < dimensions[3]; ++l) {
+                    for(int m = 0; m < dimensions[4]; ++m) {
+                        output[i*dimensions[1]*dimensions[2]*dimensions[3]*dimensions[4]
+                            + j*dimensions[2]*dimensions[3]*dimensions[4]
+                            + k*dimensions[3]*dimensions[4] + l*dimensions[4] + m]
+                                  = data[i][j][k][l][m];
+                    }
+                }
+            }
+        }
+    }
+    return output;
+}
+
 template <typename T, std::size_t N>
 std::vector<T> flatten(std::array<T, N> data) {
     std::vector<T> output(N);
