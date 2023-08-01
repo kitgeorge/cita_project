@@ -100,9 +100,9 @@ int main() {
                 double R = (double)k*10/N_R_values*R_Ka;
                 for(int l = 0; l < N_phi_values/10; ++l) {
                     double phi = (double)l*10/N_phi_values*2*std::numbers::pi;
-                    density_terms_functions[i*(2*l_max + 1)*N_R_values*N_phi_values
-                                            + j*N_R_values*N_phi_values
-                                            + k*N_phi_values + l]
+                    density_terms_functions[i*(2*l_max + 1)*N_R_values*N_phi_values/100
+                                            + j*N_R_values*N_phi_values/100
+                                            + k*N_phi_values/10 + l]
                         = [&pot, R, phi, i, j] () {
                         return std::abs(pot.density_terms[i][j](R, phi));
                     };
