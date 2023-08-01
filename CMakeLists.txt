@@ -3,7 +3,7 @@ project(shared LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
     add_compile_options(-g -Wall -Wextra -O3)
-    message(STATUS "Added compiler options: -g -Wall -Wextra -O3 -pthread")
+    message(STATUS "Added compiler options: -g -O3 -pthread")
 endif()
 
 option(MakeTests "MakeTests" ON)

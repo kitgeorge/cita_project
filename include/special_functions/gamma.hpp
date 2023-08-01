@@ -16,9 +16,18 @@ namespace {
 
 // Tabulates Gamma function for all integers and half-integers 0 < x < 172
 // (at compile time!)
-static constexpr int N_gamma_values = 172;
-static const std::vector<double> gamma_int_values = getGammaIntValues();
-static const std::vector<double> gamma_half_int_values = getGammaHalfIntValues();
+int& N_gamma_values() {static int x = 172; return x;}
+
+static std::vector<double>& gamma_int_values() {
+    static std::vector<double> x = getGammaIntValues();
+    return x;
+}
+static std::vector<double>& gamma_half_int_values() {
+    static std::vector<double> x = getGammaHalfIntValues();
+    return x;
+}
+// static const std::vector<double> gamma_int_values = getGammaIntValues();
+// static const std::vector<double> gamma_half_int_values = getGammaHalfIntValues();
 }
 
 // void storeFactorialValues();

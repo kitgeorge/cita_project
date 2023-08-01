@@ -20,10 +20,10 @@ utility::vector3d<double> getSValues();
 
 namespace {
 static constexpr int k_max = 10;
-static constexpr int l_max = 80;
-static constexpr int n_max = 120;
+static constexpr int l_max = 50;
+static constexpr int n_max = 50;
 static constexpr int i_max = 10;
-static constexpr int j_max = 120;
+static constexpr int j_max = 50;
 
 static const utility::vector5d<double> 
 alpha_Ka_values = getAlphaKaValues();

@@ -6,17 +6,17 @@
 namespace special_functions {
     
 std::vector<double> getGammaIntValues() {
-    std::vector<double> output(N_gamma_values);
+    std::vector<double> output(N_gamma_values());
     // 0 undefined
-    for(int i = 1; i < N_gamma_values; ++i) {
+    for(int i = 1; i < N_gamma_values(); ++i) {
         output[i] = boost::math::tgamma(i);
     }
     return output;
 }
 
 std::vector<double> getGammaHalfIntValues() {
-    std::vector<double> output(N_gamma_values);
-    for(int i = 0; i < N_gamma_values; ++i) {
+    std::vector<double> output(N_gamma_values());
+    for(int i = 0; i < N_gamma_values(); ++i) {
         output[i] = boost::math::tgamma(i + 0.5);
     }
     return output;
@@ -24,14 +24,14 @@ std::vector<double> getGammaHalfIntValues() {
 }
 double Gamma(int x) {
     assert(x > 0);
-    assert(x < N_gamma_values);
-    return gamma_int_values[x];
+    assert(x < N_gamma_values());
+    return gamma_int_values()[x];
 }
 
 double GammaHalf(int x) {
     assert(x >= 0);
-    assert(x < N_gamma_values);
-    return gamma_half_int_values[x];
+    assert(x < N_gamma_values());
+    return gamma_half_int_values()[x];
 }
 
 // void storeFactorialValues() {

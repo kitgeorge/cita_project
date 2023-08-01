@@ -34,6 +34,7 @@ double S(int k, int l, int n) {
 }
 
 double alpha_Ka(int k, int l, int n, int i, int j) {
+    // std::cout << k << ", " << l << ", " << n << ", " << i << ", " << j << std::endl;
     double output = getPochhammerInt(-k, i)*getPochhammerHalfInt(l, i)
                     *getPochhammerHalfInt(2*k + l + n, j)
                     /(getPochhammerInt(l + 1, i)*getPochhammerInt(1, i)
@@ -49,6 +50,14 @@ double beta_Ka(int k, int l, int n, int j) {
                     *getPochhammerInt(-n, j)
                     /(getPochhammerInt(2*k + 1, j)*getPochhammerHalfInt(k, j)
                       *getPochhammerInt(1, j));
+    if(!std::isfinite(output)) {
+        std::cout << k << ", " << l << ", " << n << ", " << j << ", " << output << std::endl;
+        std::cout << getPochhammerHalfInt(2*k + l + n, j) << ", " 
+                  << getPochhammerInt(k + 1, j) << ", " 
+                  << getPochhammerInt(-n, j) << ", " 
+                  << getPochhammerInt(2*k + 1, j) << ", " << getPochhammerHalfInt(k, j)
+                  << ", " << getPochhammerInt(1, j) << std::endl;
+    }
     assert(std::isfinite(output));
     return output;
 }
