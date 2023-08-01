@@ -74,19 +74,19 @@ add_executable(
     ${src_files})
 
 
-#[[
-add_executable(
-    libration_amplitude
-    ${main3}
-    ${src_files})
+#
+#add_executable(
+#    libration_amplitude
+#    ${main3}
+#    ${src_files})
+#
+#target_link_libraries(
+#    libration_amplitude
+#    mylib
+#    GTest::gtest_main
+#    ${BOOST_LIBRARIES}
+#    Threads::Threads)
 
-target_link_libraries(
-    libration_amplitude
-    mylib
-    GTest::gtest_main
-    ${BOOST_LIBRARIES}
-    Threads::Threads)
-]]
 add_executable(
     resonance_evolution
     ${main4}
