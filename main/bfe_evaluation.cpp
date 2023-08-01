@@ -12,8 +12,8 @@
 
 int main() {
 
-    int n_max = 15;
-    int l_max = 15;
+    int n_max = 30;
+    int l_max = 30;
     int k_Ka = 4;
     double R_Ka = 20*Units::kpc;
     int N_R = 1000;
@@ -91,4 +91,27 @@ int main() {
     }
     utility::writeCsv("../data/basis_functions/spiral_bfe_coefficients.csv",
                       utility::flatten(coefficients));
+
+    std::vector<std::function<double()>>
+    density_terms_functions((n_max + 1)*(2*l_max + 1)*N_R_values*N_phi_values);
+    for(int i = 0; i <= n_max; ++i) {
+        for(int j = 0; j < 2*l_max + 1; ++j) {
+            for(int k = 0; k < N_R_values; ++k) {
+                double R = (double)k/N_R_values*R_Ka;
+                for(int l = 0; l < N_phi_values; ++l) {
+                    double phi = (double)l/N_phi_values*2*std::numbers::pi;
+                    density_terms_functions[i*(2*l_max + 1)*N_R_values*N_phi_values
+                                            + j*N_R_values*N_phi_values
+                                            + k*N_phi_values + l]
+                        = [&pot, R, phi, i, j] () {
+                        return std::abs(pot.density_terms[i][j](R, phi));
+                    };
+                }
+            }
+        }
+    }
+    std::vector<double>
+    density_terms_abs_values = multithreading::executeInParallel(density_terms_functions);
+    utility::writeCsv("../data/basis_functions/spiral_density_terms.csv",
+                      density_terms_abs_values);
 }

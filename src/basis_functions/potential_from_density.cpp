@@ -9,7 +9,8 @@ PotentialFromDensity(const DensityType& density, const BFE& expansion,
                      coefficients(getCoefficients(density, expansion)),
                      trunc_density(getTruncDensity(expansion)),
                      trunc_potential(getTruncPotential(expansion)),
-                     trunc_force(getTruncForce(expansion)) {}
+                     trunc_force(getTruncForce(expansion)),
+                     density_terms(calculateDensityTerms(expansion)) {}
 
 template <typename DensityType>
 std::vector<std::vector<std::complex<double>>> 
@@ -31,6 +32,27 @@ getCoefficients(const DensityType& density, const BFE& expansion) const {
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
             output[i][j] = output_flat[i*(nl_max[1] + 1) + j];
+        }
+    }
+    return output;
+}
+
+
+// Should probably refactor, as this is identical to some later code 
+// (where it is then summed)
+std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
+PotentialFromDensity::calculateDensityTerms(const BFE& expansion) const {
+    std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
+    output(nl_max[0], 
+            std::vector<std::function<std::complex<double>(double, double)>>(2*nl_max[1] + 1));
+    for(int i = 0; i <= nl_max[0]; ++i) {
+        for(int j = 0; j <= nl_max[1]; ++j) {
+            output[i][nl_max[1] + j] = utility::multiplyFunction(expansion.rho(i, j),
+                                            coefficients[i][j]);
+            if(j != 0) {
+                output[i][nl_max[1] - j] 
+                        = utility::conjugateFunction(output[i][nl_max[1] + j]);
+            }
         }
     }
     return output;

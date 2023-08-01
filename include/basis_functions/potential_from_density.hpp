@@ -29,10 +29,16 @@ class PotentialFromDensity {
     std::function<std::array<double, 2>(double, double)> 
     getTruncForce(const BFE& expansion) const;
 
+    std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
+    calculateDensityTerms(const BFE& expansion) const;
+
     public:
         const std::function<double(double, double)> trunc_density;
         const std::function<double(double, double)> trunc_potential;
         const std::function<std::array<double, 2>(double, double)> trunc_force;
+
+        const std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
+        density_terms;
 
         template <typename DensityType>
         PotentialFromDensity(const DensityType& density, const BFE& expansion, 
