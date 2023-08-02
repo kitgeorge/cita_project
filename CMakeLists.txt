@@ -7,7 +7,6 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Apple
 endif()
 
 option(MakeTests "MakeTests" ON)
-message("${CMAKE_PREFIX_PATH}")
 find_package(Boost REQUIRED)
 find_package(Threads REQUIRED)
 
@@ -35,7 +34,7 @@ set_target_properties(mylib PROPERTIES SUFFIX ".so")
 
 target_link_libraries(mylib ${BOOST_LIBRARIES})
 target_link_libraries(mylib PRIVATE Threads::Threads)
-target_link_libraries(mylib PRIVATE /usr/lib/x86_64-linux-gnu/libgmp.so)
+target_link_libraries(mylib PRIVATE GMPPath)
 
 target_include_directories(mylib INTERFACE include/potential 
 include/vectors include/df include/consts 
@@ -70,7 +69,7 @@ target_link_libraries(
     GTest::gtest_main
     ${BOOST_LIBRARIES}
     Threads::Threads
-    /usr/lib/x86_64-linux-gnu/libgmp.so)
+    GMPPath)
 
 endif()
 #[[
@@ -139,7 +138,7 @@ if(MakeTests)
         GTest::gtest_main
         ${BOOST_LIBRARIES}
         Threads::Threads
-        /usr/lib/x86_64-linux-gnu/libgmp.so)
+        GMPPath)
 
 else()
 #[[
@@ -166,7 +165,7 @@ else()
         mylib
         ${BOOST_LIBRARIES}
         Threads::Threads
-        /usr/lib/x86_64-linux-gnu/libgmp.so)
+        GMPPath)
 
 endif()
 
