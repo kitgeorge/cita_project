@@ -4,7 +4,7 @@
 #include <cassert>
 #include <boost/multiprecision/gmp.hpp>
 
-using LooongDouble = boost::multiprecision::mpf_float_1000;
+using LooongDouble = boost::multiprecision::mpf_float_100;
 
 namespace special_functions {
 // Tabulates Pochhammer symbols in ranges required by BFE, given 

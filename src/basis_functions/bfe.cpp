@@ -1,4 +1,5 @@
 #include "bfe.hpp"
+#include <iostream>
 
 using namespace std::complex_literals;
 using special_functions::Gamma;
@@ -131,6 +132,7 @@ double D(int k, int n, int l, double R_norm) {
 ////////////////////////////////////////////////////////////
 
 utility::vector4d<double> calculateUValues() {
+    std::cout << "Calculating U values" << std::endl;
     std::array<int, 4> shape = {k_max + 1, n_max + 1, l_max + 1, N_R_tabulated};
     utility::vector4d<double> output = utility::makeShape<double>(shape);
     for(int i = 0; i < shape[0]; ++i) {
@@ -148,6 +150,7 @@ utility::vector4d<double> calculateUValues() {
 }
 
 utility::vector4d<double> calculateUPrimeValues() {
+    std::cout << "Calculating U_prime values" << std::endl;
     std::array<int, 4> shape = {k_max + 1, n_max + 1, l_max + 1, N_R_tabulated};
     utility::vector4d<double> output = utility::makeShape<double>(shape);
     for(int i = 0; i < shape[0]; ++i) {
@@ -164,6 +167,7 @@ utility::vector4d<double> calculateUPrimeValues() {
 }
 
 utility::vector4d<double> calculateDValues() {
+    std::cout << "Calculating D values" << std::endl;
     std::array<int, 4> shape = {k_max + 1, n_max + 1, l_max + 1, N_R_tabulated};
     utility::vector4d<double> output = utility::makeShape<double>(shape);
     for(int i = 0; i < shape[0]; ++i) {
@@ -299,6 +303,7 @@ double getD(int k, int n, int l, double R, double R_Ka) {
 ////////////////////////////////////////////////////////////
 
 utility::vector5d<LooongDouble> getAlphaKaValues() {
+    std::cout << "Calculating Alpha_Ka" << std::endl;
     std::array<int, 5> shape = {k_max + 1, l_max + 1, n_max + 1,
                                 i_max + 1, j_max + 1};
     utility::vector5d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);
@@ -317,6 +322,7 @@ utility::vector5d<LooongDouble> getAlphaKaValues() {
 }
 
 utility::vector4d<LooongDouble> getBetaKaValues() {
+    std::cout << "Calculating Beta_Ka" << std::endl;
     std::array<int, 4> shape = {k_max + 1, l_max + 1, n_max + 1,
                                 j_max + 1};
     utility::vector4d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);

@@ -6,7 +6,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Apple
     message(STATUS "Added compiler options: -g -O3 -pthread")
 endif()
 
-option(MakeTests "MakeTests" ON)
+option(Local "Local" ON)
 find_package(Boost REQUIRED)
 find_package(Threads REQUIRED)
 
@@ -26,7 +26,7 @@ include/tp_integration include/rc include/actions
 include/special_functions include/basis_functions)
 
 file(GLOB src_files src/*/*.cpp include/*/*.hpp)
-if(NOT MakeTests)
+if(NOT Local)
 list(FILTER src_files EXCLUDE REGEX ".test.cpp")
 endif()
 add_library(mylib SHARED ${src_files})
@@ -34,7 +34,11 @@ set_target_properties(mylib PROPERTIES SUFFIX ".so")
 
 target_link_libraries(mylib ${BOOST_LIBRARIES})
 target_link_libraries(mylib PRIVATE Threads::Threads)
-target_link_libraries(mylib PRIVATE GMPPath)
+if(Local)
+target_link_libraries(mylib PRIVATE /usr/lib/x86_64-linux-gnu/libgmp.so)
+else()
+target_link_libraries(mylib PRIVATE ~/anaconda3/envs/cxx-env/lib/libgmp.so)
+endif()
 
 target_include_directories(mylib INTERFACE include/potential 
 include/vectors include/df include/consts 
@@ -48,7 +52,7 @@ file(GLOB main3 main/libration_amplitude.cpp)
 file(GLOB main4 main/resonance_evolution.cpp)
 file(GLOB main5 main/bfe_evaluation.cpp)
 
-if(MakeTests)
+if(Local)
 include(FetchContent)
 FetchContent_Declare(
     googletest
@@ -57,7 +61,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-#enable_testing()
+enable_testing()
 
 add_executable(
     unit_tests
@@ -69,7 +73,8 @@ target_link_libraries(
     GTest::gtest_main
     ${BOOST_LIBRARIES}
     Threads::Threads
-    GMPPath)
+    /usr/lib/x86_64-linux-gnu/libgmp.so)
+
 
 endif()
 #[[
@@ -109,7 +114,7 @@ add_executable(
     ${main5}
     ${src_files})
 
-if(MakeTests)
+if(Local)
 #[[
     target_link_libraries(
         test_particle
@@ -138,7 +143,7 @@ if(MakeTests)
         GTest::gtest_main
         ${BOOST_LIBRARIES}
         Threads::Threads
-        GMPPath)
+        /usr/lib/x86_64-linux-gnu/libgmp.so)
 
 else()
 #[[
@@ -165,13 +170,13 @@ else()
         mylib
         ${BOOST_LIBRARIES}
         Threads::Threads
-        GMPPath)
+        ~/anaconda3/envs/cxx-env/lib/libgmp.so)
 
 endif()
 
 
 
-if(MakeTests)
+if(Local)
 include(GoogleTest)
 gtest_discover_tests(unit_tests)
 endif()
