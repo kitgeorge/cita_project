@@ -33,9 +33,9 @@ double S(int k, int l, int n) {
     return output;
 }
 
-double alpha_Ka(int k, int l, int n, int i, int j) {
+LooongDouble alpha_Ka(int k, int l, int n, int i, int j) {
     // std::cout << k << ", " << l << ", " << n << ", " << i << ", " << j << std::endl;
-    double output = getPochhammerInt(-k, i)*getPochhammerHalfInt(l, i)
+    LooongDouble output = getPochhammerInt(-k, i)*getPochhammerHalfInt(l, i)
                     *getPochhammerHalfInt(2*k + l + n, j)
                     /(getPochhammerInt(l + 1, i)*getPochhammerInt(1, i)
                       *getPochhammerInt(l + i + 1, j)*getPochhammerHalfInt(l, j) 
@@ -45,8 +45,8 @@ double alpha_Ka(int k, int l, int n, int i, int j) {
     return output;
 }
 
-double beta_Ka(int k, int l, int n, int j) {
-    double output = getPochhammerHalfInt(2*k + l + n, j)*getPochhammerInt(k + 1, j)
+LooongDouble beta_Ka(int k, int l, int n, int j) {
+    LooongDouble output = getPochhammerHalfInt(2*k + l + n, j)*getPochhammerInt(k + 1, j)
                     *getPochhammerInt(-n, j)
                     /(getPochhammerInt(2*k + 1, j)*getPochhammerHalfInt(k, j)
                       *getPochhammerInt(1, j));
@@ -68,10 +68,10 @@ double beta_Ka(int k, int l, int n, int j) {
 ////////////////////////////////////////////////////////////
 
 
-utility::vector5d<double> getAlphaKaValues() {
+utility::vector5d<LooongDouble> getAlphaKaValues() {
     std::array<int, 5> shape = {k_max + 1, l_max + 1, n_max + 1,
                                 i_max + 1, j_max + 1};
-    utility::vector5d<double> output = utility::makeShape<double>(shape);
+    utility::vector5d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             for(int k = 0; k < shape[2]; ++k) {
@@ -86,10 +86,10 @@ utility::vector5d<double> getAlphaKaValues() {
     return output;
 }
 
-utility::vector4d<double> getBetaKaValues() {
+utility::vector4d<LooongDouble> getBetaKaValues() {
     std::array<int, 4> shape = {k_max + 1, l_max + 1, n_max + 1,
                                 j_max + 1};
-    utility::vector4d<double> output = utility::makeShape<double>(shape);
+    utility::vector4d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             for(int k = 0; k < shape[2]; ++k) {
@@ -129,7 +129,7 @@ utility::vector3d<double> getSValues() {
 }
 
 
-double getAlphaKa(int k, int l, int n, int i, int j) {
+LooongDouble getAlphaKa(int k, int l, int n, int i, int j) {
     assert(k >= 0);
     assert(k <= k_max);
     assert(l >= 0);
@@ -144,7 +144,7 @@ double getAlphaKa(int k, int l, int n, int i, int j) {
     return alpha_Ka_values[k][l][n][i][j];
 }
 
-double getBetaKa(int k, int l, int n, int j) {
+LooongDouble getBetaKa(int k, int l, int n, int j) {
     assert(k >= 0);
     assert(k <= k_max);
     assert(l >= 0);
@@ -257,11 +257,12 @@ BFE::psi_f(int n, int l) const {
     };
 }
 
+// Calculate as LooongDouble, but return as double
 double BFE::U(int n, int l, double R) const {
-    double output = 0;
+    LooongDouble output = 0;
     for(int i = 0; i <= k_Ka; ++i) {
         for(int j = 0; j <= n; ++j) {
-            double term = getAlphaKa(k_Ka, l, n, i, j)*pow(R/R_Ka, 2*i + 2*j + l);
+            LooongDouble term = getAlphaKa(k_Ka, l, n, i, j)*pow(R/R_Ka, 2*i + 2*j + l);
             output += term;
         }
     }
@@ -273,13 +274,13 @@ double BFE::U(int n, int l, double R) const {
 }
 
 double BFE::UPrime(int n, int l, double R) const {
-    double output = 0;
+    LooongDouble output = 0;
     for(int i = 0; i <= k_Ka; ++i) {
         for(int j = 0; j <= n; ++j) {
             if(i == 0 && j == 0 && l == 0) {
                 continue;
             }
-            double term = getAlphaKa(k_Ka, l, n, i, j)
+            LooongDouble term = getAlphaKa(k_Ka, l, n, i, j)
                           *(2*i + 2*j + l)*pow(R/R_Ka, 2*i + 2*j + l - 1);
             output += term;
         }
@@ -289,9 +290,9 @@ double BFE::UPrime(int n, int l, double R) const {
 }
 
 double BFE::D(int n, int l, double R) const {
-    double output = 0;
+    LooongDouble output = 0;
     for(int j = 0; j <= n; ++j) {
-        double term = getBetaKa(k_Ka, l, n, j)*pow(1 - pow(R/R_Ka, 2), j);
+        LooongDouble term = getBetaKa(k_Ka, l, n, j)*pow(1 - pow(R/R_Ka, 2), j);
         // std:: cout << "D, " << term << std::endl;
         output += term;
     }

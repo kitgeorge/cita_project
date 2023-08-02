@@ -7,9 +7,15 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Apple
 endif()
 
 option(MakeTests "MakeTests" ON)
-
+#[[
 find_package(Boost REQUIRED)
 find_package(Threads REQUIRED)
+find_library(
+    gmp_LIB
+    NAMES libgmp-dev libgmp3-dev libgmp
+)
+]]
+
 include_directories(${BOOST_INCLUDE_DIR} include/potential 
 include/vectors include/consts include/df
 include/utility include/multithreading

@@ -7,14 +7,16 @@
 #include <complex>
 #include <cassert>
 #include <boost/multiprecision/gmp.hpp>
+// With such high precision, I'll probably have to run on server for RAM
 
+using LooongDouble = boost::multiprecision::mpf_float_1000;
 
 namespace basis_functions {
 
 // Basis function coefficients tabulated
 
-utility::vector5d<double> getAlphaKaValues();
-utility::vector4d<double> getBetaKaValues();
+utility::vector5d<LooongDouble> getAlphaKaValues();
+utility::vector4d<LooongDouble> getBetaKaValues();
 utility::vector3d<double> getPValues();
 utility::vector3d<double> getSValues();
 
@@ -27,9 +29,9 @@ static constexpr int i_max = 10;
 static constexpr int j_max = 50;
 
 }
-static const utility::vector5d<double> 
+static const utility::vector5d<LooongDouble> 
 alpha_Ka_values = getAlphaKaValues();
-static const utility::vector4d<double>
+static const utility::vector4d<LooongDouble>
 beta_Ka_values = getBetaKaValues();
 static const utility::vector3d<double>
 P_values = getPValues();
@@ -37,15 +39,15 @@ static const utility::vector3d<double>
 S_values = getSValues();
 
 
-double getAlphaKa(int k, int l, int n, int i, int j);
-double getBetaKa(int k, int l, int n, int j);
+LooongDouble getAlphaKa(int k, int l, int n, int i, int j);
+LooongDouble getBetaKa(int k, int l, int n, int j);
 double getP(int k, int l, int n);
 double getS(int k, int l, int n);
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-std::complex<double>
+std::complex<LooongDouble>
 scalarProduct(const std::function<std::complex<double>(double, double)>& pot_conj,
                const std::function<std::complex<double>(double, double)>& density,
                double R_max, int N_R, int N_phi);

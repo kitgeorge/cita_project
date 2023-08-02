@@ -2,15 +2,18 @@
 #include <vector>
 #include <cmath>
 #include <cassert>
+#include <boost/multiprecision/gmp.hpp>
+
+using LooongDouble = boost::multiprecision::mpf_float_1000;
 
 namespace special_functions {
 // Tabulates Pochhammer symbols in ranges required by BFE, given 
 // constraints on n and l due to maximum calculable Gamma
-double Pochhammer(double a, int i);
+LooongDouble Pochhammer(double a, int i);
 
-std::vector<std::vector<double>> getPochhammerIntValues();
-std::vector<std::vector<double>> getPochhammerNegativeIntValues();
-std::vector<std::vector<double>> getPochhammerHalfIntValues();
+std::vector<std::vector<LooongDouble>> getPochhammerIntValues();
+std::vector<std::vector<LooongDouble>> getPochhammerNegativeIntValues();
+std::vector<std::vector<LooongDouble>> getPochhammerHalfIntValues();
 namespace {
 // The names of these constants aren't quite precise,
 // see how they're used instead
@@ -25,25 +28,25 @@ int& half_i_max() {static int x = 80; return x;};
 
 // I'm not sure if there need to be pointers or something
 // involved here
-std::vector<std::vector<double>>& Pochhammer_int_values() {
-    static std::vector<std::vector<double>>
+std::vector<std::vector<LooongDouble>>& Pochhammer_int_values() {
+    static std::vector<std::vector<LooongDouble>>
     x = getPochhammerIntValues();
     return x;
 }
-std::vector<std::vector<double>>& Pochhammer_negative_int_values() {
-    static std::vector<std::vector<double>>
+std::vector<std::vector<LooongDouble>>& Pochhammer_negative_int_values() {
+    static std::vector<std::vector<LooongDouble>>
     x = getPochhammerNegativeIntValues();
     return x;
 }
-std::vector<std::vector<double>>& Pochhammer_half_int_values() {
-    static std::vector<std::vector<double>>
+std::vector<std::vector<LooongDouble>>& Pochhammer_half_int_values() {
+    static std::vector<std::vector<LooongDouble>>
     x = getPochhammerHalfIntValues();
     return x;
 }
 }
 
-double getPochhammerInt(int a, int i);
-double getPochhammerHalfInt(int a_minus_half, int i);
+LooongDouble getPochhammerInt(int a, int i);
+LooongDouble getPochhammerHalfInt(int a_minus_half, int i);
 
 }
 
