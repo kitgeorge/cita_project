@@ -32,17 +32,17 @@ std::vector<std::vector<LooongDouble>>& Pochhammer_int_values() {
     static std::vector<std::vector<LooongDouble>> x;
     // Not sure if the compiler would optimise for the calculation to
     // only happen once anyway, but this makes sure
-    if(x.empty()) {x = getPochhammerIntValues();};
+    if(x.empty()) {x.resize(1); x = getPochhammerIntValues();};
     return x;
 }
 std::vector<std::vector<LooongDouble>>& Pochhammer_negative_int_values() {
     static std::vector<std::vector<LooongDouble>> x;
-    if(x.empty()) {x = getPochhammerNegativeIntValues();};
+    if(x.empty()) {x.resize(1); x = getPochhammerNegativeIntValues();};
     return x;
 }
 std::vector<std::vector<LooongDouble>>& Pochhammer_half_int_values() {
     static std::vector<std::vector<LooongDouble>> x;
-    if(x.empty()) {x = getPochhammerHalfIntValues();};
+    if(x.empty()) {x.resize(1); x = getPochhammerHalfIntValues();};
     return x;
 }
 }

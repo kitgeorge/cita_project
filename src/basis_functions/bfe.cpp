@@ -189,42 +189,43 @@ utility::vector4d<double> calculateDValues() {
 utility::vector5d<LooongDouble>& 
 alpha_Ka_values() {
     static utility::vector5d<LooongDouble> x;
-    if(x.empty()) {x = getAlphaKaValues();};
+    if(x.empty()) {x.resize(1); x = getAlphaKaValues();};
     return x;
 }
 utility::vector4d<LooongDouble>& 
 beta_Ka_values() {
     static utility::vector4d<LooongDouble> x;
-    if(x.empty()) {x = getBetaKaValues();};
+    if(x.empty()) {x.resize(1); x = getBetaKaValues();};
     return x;
 }
 utility::vector3d<double>& 
 P_values() {
     static utility::vector3d<double> x;
-    if(x.empty()) {x = getPValues();};
+    if(x.empty()) {x.resize(1); x = getPValues();};
     return x;
 }
 utility::vector3d<double>& 
 S_values() {
     static utility::vector3d<double> x;
-    if(x.empty()) {x = getSValues();};
+    if(x.empty()) {x.resize(1); x = getSValues();};
     return x;
 }
 
 
 utility::vector4d<double>& U_values() {
     static utility::vector4d<double> x;
-    if(x.empty()) {x = getUValues();};
+    // Resize so another thread doesn't see x as empty
+    if(x.empty()) {x.resize(1); x = getUValues();};
     return x;
 }
 utility::vector4d<double>& UPrime_values() {
     static utility::vector4d<double> x;
-    if(x.empty()) {x = getUPrimeValues();};
+    if(x.empty()) {x.resize(1); x = getUPrimeValues();};
     return x;
 }
 utility::vector4d<double>& D_values() {
     static utility::vector4d<double> x;
-    if(x.empty()) {x = getDValues();};
+    if(x.empty()) {x.resize(1); x = getDValues();};
     return x;
 }
 ////////////////////////////////////////////////////////////
