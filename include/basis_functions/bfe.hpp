@@ -47,7 +47,7 @@ double getS(int k, int l, int n);
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-std::complex<LooongDouble>
+std::complex<double>
 scalarProduct(const std::function<std::complex<double>(double, double)>& pot_conj,
                const std::function<std::complex<double>(double, double)>& density,
                double R_max, int N_R, int N_phi);

@@ -12,9 +12,9 @@
 
 int main() {
     // Temporary diagnostic
-    utility::writeCsv("../data/alpha_Ka_values.csv", utility::flatten(basis_functions::alpha_Ka_values));
-    utility::writeCsv("../data/beta_Ka_values.csv", utility::flatten(basis_functions::beta_Ka_values));
-    return 0;
+    // utility::writeCsv("../data/alpha_Ka_values.csv", utility::flatten(basis_functions::alpha_Ka_values));
+    // utility::writeCsv("../data/beta_Ka_values.csv", utility::flatten(basis_functions::beta_Ka_values));
+    // return 0;
 
     int n_max = 30;
     int l_max = 30;

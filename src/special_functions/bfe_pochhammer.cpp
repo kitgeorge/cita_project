@@ -13,13 +13,13 @@ LooongDouble Pochhammer(double a, int i) {
         output = output*(a + j);
     }
     // std::cout << a << ", " << i << ", " << output << std::endl;
-    assert(std::isfinite(output));
+    assert(std::isfinite(output.convert_to<double>()));
     return output;
 }
 
-std::vector<std::vector<double>> getPochhammerIntValues() {
-    std::vector<std::vector<double>>
-    output(int_a_max() + 1, std::vector<double>(int_i_max() + 1));
+std::vector<std::vector<LooongDouble>> getPochhammerIntValues() {
+    std::vector<std::vector<LooongDouble>>
+    output(int_a_max() + 1, std::vector<LooongDouble>(int_i_max() + 1));
     for(int i = 0; i <= int_a_max(); ++i) {
         for(int j = 0; j <= int_i_max(); ++j) {
             output[i][j] = Pochhammer(i, j);

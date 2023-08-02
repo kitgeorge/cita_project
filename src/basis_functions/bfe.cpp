@@ -41,7 +41,7 @@ LooongDouble alpha_Ka(int k, int l, int n, int i, int j) {
                       *getPochhammerInt(l + i + 1, j)*getPochhammerHalfInt(l, j) 
                       *getPochhammerInt(1, j))
                     *getPochhammerHalfInt(i + l, j)*getPochhammerInt(-n, j);
-    assert(std::isfinite(output));
+    assert(std::isfinite(output.convert_to<double>()));
     return output;
 }
 
@@ -50,7 +50,8 @@ LooongDouble beta_Ka(int k, int l, int n, int j) {
                     *getPochhammerInt(-n, j)
                     /(getPochhammerInt(2*k + 1, j)*getPochhammerHalfInt(k, j)
                       *getPochhammerInt(1, j));
-    if(!std::isfinite(output)) {
+    double check = output.convert_to<double>();
+    if(!std::isfinite(check)) {
         std::cout << k << ", " << l << ", " << n << ", " << j << ", " << output << std::endl;
         std::cout << getPochhammerHalfInt(2*k + l + n, j) << ", " 
                   << getPochhammerInt(k + 1, j) << ", " 
@@ -58,7 +59,7 @@ LooongDouble beta_Ka(int k, int l, int n, int j) {
                   << getPochhammerInt(2*k + 1, j) << ", " << getPochhammerHalfInt(k, j)
                   << ", " << getPochhammerInt(1, j) << std::endl;
     }
-    assert(std::isfinite(output));
+    assert(std::isfinite(check));
     return output;
 }
 
@@ -266,11 +267,12 @@ double BFE::U(int n, int l, double R) const {
             output += term;
         }
     }
-    output = -output*sqrt(Units::G)/sqrt(R_Ka)*getP(k_Ka, l, n);
+    double output_double = output.convert_to<double>();
+    output_double *= -sqrt(Units::G)/sqrt(R_Ka)*getP(k_Ka, l, n);
     // if(R > 0) {
     //     assert(output != 0);
     // }
-    return output;
+    return output_double;
 }
 
 double BFE::UPrime(int n, int l, double R) const {
@@ -285,8 +287,9 @@ double BFE::UPrime(int n, int l, double R) const {
             output += term;
         }
     }
-    output = -output*sqrt(Units::G)/pow(R_Ka, 1.5)*getP(k_Ka, l, n);
-    return output;
+    double output_double = output.convert_to<double>();
+    output_double *= -sqrt(Units::G)/pow(R_Ka, 1.5)*getP(k_Ka, l, n);
+    return output_double;
 }
 
 double BFE::D(int n, int l, double R) const {
@@ -296,12 +299,13 @@ double BFE::D(int n, int l, double R) const {
         // std:: cout << "D, " << term << std::endl;
         output += term;
     }
-    output = output*pow(-1, n)/(sqrt(Units::G)*pow(R_Ka, 1.5))
+    double output_double = output.convert_to<double>();
+    output_double *= pow(-1, n)/(sqrt(Units::G)*pow(R_Ka, 1.5))
              *getS(k_Ka, l, n)*pow(1 - pow(R/R_Ka, 2), k_Ka - 0.5)*pow(R/R_Ka, l);
     // if(R > 0 && R < R_Ka) {
     //     assert(output != 0);
     // }
-    return output;
+    return output_double;
 }
 
 std::complex<double>
