@@ -7,15 +7,15 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Apple
 endif()
 
 option(MakeTests "MakeTests" ON)
-#[[
+
 find_package(Boost REQUIRED)
 find_package(Threads REQUIRED)
-find_library(
-    gmp_LIB
-    NAMES libgmp-dev libgmp3-dev libgmp
-)
-]]
 
+#[[
+find_package(GMP REQUIRED HINTS /usr/include /usr/include/x86_64-linux-gnu
+                                /usr/lib/x86_64-linux-gnu 
+                                /usr/lib/x86_64-linux-gnu/pkgconfig)
+]]
 include_directories(${BOOST_INCLUDE_DIR} include/potential 
 include/vectors include/consts include/df
 include/utility include/multithreading
@@ -31,6 +31,7 @@ set_target_properties(mylib PROPERTIES SUFFIX ".so")
 
 target_link_libraries(mylib ${BOOST_LIBRARIES})
 target_link_libraries(mylib PRIVATE Threads::Threads)
+target_link_libraries(mylib gmp libgmp)
 
 target_include_directories(mylib INTERFACE include/potential 
 include/vectors include/df include/consts 
