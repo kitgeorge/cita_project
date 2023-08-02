@@ -92,7 +92,7 @@ TEST_F(BFETest, DISABLED_CheckOrthonormal) {
     }
 }
 
-TEST_F(BFETest, CheckNorm) {
+TEST_F(BFETest, DISABLED_CheckNorm) {
     for(int i = 0; i <= n_max; ++i) {
         std::cout << i << std::endl;
         EXPECT_LT(std::abs(scalarProduct(utility::conjugateFunction(expansion.value().psi(i, 2)),

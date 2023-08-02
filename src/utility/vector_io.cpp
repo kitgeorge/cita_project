@@ -27,6 +27,18 @@ std::vector<double> readCsv(std::string path) {
     return output;
 }
 
+bool fileExists(std::string path) {
+    // from https://www.geeksforgeeks.org/how-to-check-a-file-or-directory-exists-in-cpp/
+    const char* file = path.c_str();
+    struct stat sb;
+    if(stat(file, &sb) == 0 && !(sb.st_mode & S_IFDIR)) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
 
 
 }

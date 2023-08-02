@@ -29,18 +29,20 @@ int& half_i_max() {static int x = 80; return x;};
 // I'm not sure if there need to be pointers or something
 // involved here
 std::vector<std::vector<LooongDouble>>& Pochhammer_int_values() {
-    static std::vector<std::vector<LooongDouble>>
-    x = getPochhammerIntValues();
+    static std::vector<std::vector<LooongDouble>> x;
+    // Not sure if the compiler would optimise for the calculation to
+    // only happen once anyway, but this makes sure
+    if(x.empty()) {x = getPochhammerIntValues();};
     return x;
 }
 std::vector<std::vector<LooongDouble>>& Pochhammer_negative_int_values() {
-    static std::vector<std::vector<LooongDouble>>
-    x = getPochhammerNegativeIntValues();
+    static std::vector<std::vector<LooongDouble>> x;
+    if(x.empty()) {x = getPochhammerNegativeIntValues();};
     return x;
 }
 std::vector<std::vector<LooongDouble>>& Pochhammer_half_int_values() {
-    static std::vector<std::vector<LooongDouble>>
-    x = getPochhammerHalfIntValues();
+    static std::vector<std::vector<LooongDouble>> x;
+    if(x.empty()) {x = getPochhammerHalfIntValues();};
     return x;
 }
 }

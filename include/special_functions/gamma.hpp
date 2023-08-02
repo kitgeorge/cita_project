@@ -19,11 +19,13 @@ namespace {
 int& N_gamma_values() {static int x = 172; return x;}
 
 static std::vector<double>& gamma_int_values() {
-    static std::vector<double> x = getGammaIntValues();
+    static std::vector<double> x;
+    if(x.empty()) {x = getGammaIntValues();};
     return x;
 }
 static std::vector<double>& gamma_half_int_values() {
-    static std::vector<double> x = getGammaHalfIntValues();
+    static std::vector<double> x;
+    if(x.empty()) {x = getGammaHalfIntValues();};
     return x;
 }
 // static const std::vector<double> gamma_int_values = getGammaIntValues();

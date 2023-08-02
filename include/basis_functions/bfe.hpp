@@ -4,6 +4,8 @@
 #include "units.hpp"
 #include "comp_funcs.hpp"
 #include "nd_vectors.hpp"
+#include "vector_io.hpp"
+#include "flatten.hpp"
 #include <complex>
 #include <cassert>
 #include <boost/multiprecision/gmp.hpp>
@@ -15,12 +17,6 @@ namespace basis_functions {
 
 // Basis function coefficients tabulated
 
-utility::vector5d<LooongDouble> getAlphaKaValues();
-utility::vector4d<LooongDouble> getBetaKaValues();
-utility::vector3d<double> getPValues();
-utility::vector3d<double> getSValues();
-
-
 namespace {
 static constexpr int k_max = 10;
 static constexpr int l_max = 50;
@@ -28,21 +24,44 @@ static constexpr int n_max = 50;
 static constexpr int i_max = 10;
 static constexpr int j_max = 50;
 
+static constexpr int N_R_tabulated = 1e6;
 }
-static const utility::vector5d<LooongDouble> 
-alpha_Ka_values = getAlphaKaValues();
-static const utility::vector4d<LooongDouble>
-beta_Ka_values = getBetaKaValues();
-static const utility::vector3d<double>
-P_values = getPValues();
-static const utility::vector3d<double>
-S_values = getSValues();
 
+utility::vector5d<LooongDouble> getAlphaKaValues();
+utility::vector4d<LooongDouble> getBetaKaValues();
+utility::vector3d<double> getPValues();
+utility::vector3d<double> getSValues();
+
+utility::vector5d<LooongDouble>& 
+alpha_Ka_values();
+utility::vector4d<LooongDouble>& 
+beta_Ka_values();
+utility::vector3d<double>& 
+P_values();
+utility::vector3d<double>& 
+S_values();
 
 LooongDouble getAlphaKa(int k, int l, int n, int i, int j);
 LooongDouble getBetaKa(int k, int l, int n, int j);
 double getP(int k, int l, int n);
 double getS(int k, int l, int n);
+
+
+utility::vector4d<double> getUValues();
+utility::vector4d<double> getUPrimeValues();
+utility::vector4d<double> getDValues();
+
+utility::vector4d<double> calculateUValues();
+utility::vector4d<double> calculateUPrimeValues();
+utility::vector4d<double> calculateDValues();
+
+utility::vector4d<double>& U_values();
+utility::vector4d<double>& UPrime_values();
+utility::vector4d<double>& D_values();
+
+double getU(int k, int n, int l, double R, double R_Ka);
+double getUPrime(int k, int n, int l, double R, double R_Ka);
+double getD(int k, int n, int l, double R, double R_Ka);
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -67,9 +86,9 @@ class BFE {
     const int N_R;
     const int N_phi;
 
-    double U(int n, int l, double R) const;
-    double UPrime(int n, int l, double R) const;
-    double D(int n, int l, double R) const;
+    // double U(int n, int l, double R) const;
+    // double UPrime(int n, int l, double R) const;
+    // double D(int n, int l, double R) const;
 
     public:
         BFE(int k_Ka_, double R_Ka_, int N_R_, int N_phi_);

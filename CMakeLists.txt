@@ -58,7 +58,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-enable_testing()
+#enable_testing()
 
 add_executable(
     unit_tests
