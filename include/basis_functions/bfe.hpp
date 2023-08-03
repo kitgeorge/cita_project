@@ -25,7 +25,7 @@ static constexpr int n_max = 50;
 static constexpr int i_max = 10;
 static constexpr int j_max = 50;
 
-static constexpr int N_R_tabulated = 1e6;
+static constexpr int N_R_tabulated = 1e4;
 }
 
 utility::vector5d<LooongDouble> getAlphaKaValues();
