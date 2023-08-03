@@ -4,7 +4,7 @@
 #include <cassert>
 #include <boost/multiprecision/gmp.hpp>
 
-using LooongDouble = boost::multiprecision::mpf_float_100;
+using LooongDouble = boost::multiprecision::mpf_float_1000;
 
 namespace special_functions {
 // Tabulates Pochhammer symbols in ranges required by BFE, given 
@@ -32,17 +32,17 @@ std::vector<std::vector<LooongDouble>>& Pochhammer_int_values() {
     static std::vector<std::vector<LooongDouble>> x;
     // Not sure if the compiler would optimise for the calculation to
     // only happen once anyway, but this makes sure
-    if(x.empty()) {x.resize(1); x = getPochhammerIntValues();};
+    if(x.empty()) {x = getPochhammerIntValues();};
     return x;
 }
 std::vector<std::vector<LooongDouble>>& Pochhammer_negative_int_values() {
     static std::vector<std::vector<LooongDouble>> x;
-    if(x.empty()) {x.resize(1); x = getPochhammerNegativeIntValues();};
+    if(x.empty()) {x = getPochhammerNegativeIntValues();};
     return x;
 }
 std::vector<std::vector<LooongDouble>>& Pochhammer_half_int_values() {
     static std::vector<std::vector<LooongDouble>> x;
-    if(x.empty()) {x.resize(1); x = getPochhammerHalfIntValues();};
+    if(x.empty()) {x = getPochhammerHalfIntValues();};
     return x;
 }
 }

@@ -6,12 +6,13 @@
 #include "nd_vectors.hpp"
 #include "vector_io.hpp"
 #include "flatten.hpp"
+#include "execute_in_parallel.hpp"
 #include <complex>
 #include <cassert>
 #include <boost/multiprecision/gmp.hpp>
 // With such high precision, I'll probably have to run on server for RAM
 
-using LooongDouble = boost::multiprecision::mpf_float_100;
+using LooongDouble = boost::multiprecision::mpf_float_1000;
 
 namespace basis_functions {
 
@@ -24,7 +25,7 @@ static constexpr int n_max = 50;
 static constexpr int i_max = 10;
 static constexpr int j_max = 50;
 
-static constexpr int N_R_tabulated = 10;
+static constexpr int N_R_tabulated = 1e6;
 }
 
 utility::vector5d<LooongDouble> getAlphaKaValues();
