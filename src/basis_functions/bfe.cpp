@@ -134,25 +134,27 @@ utility::vector4d<double>
 calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
     std::array<int, 4> shape = {k_max + 1, n_max + 1, l_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2]*shape[3];
-    std::vector<std::function<double()>>
-    calculation_functions(N_values);
+    // Bundling up to prevent under-utilisation of cores
+    std::vector<std::function<std::vector<double>()>>
+    calculation_functions(shape[0]*shape[1]*shape[2]);
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             for(int k = 0; k < shape[2]; ++k) {
-                for(int l = 0; l < shape[3]; ++l) {
-                    // Calculate central value in R bin
-                    double R_norm = (double)(l + 0.5)/shape[3];
-                    calculation_functions[i*shape[1]*shape[2]*shape[3]
-                                          + j*shape[2]*shape[3]
-                                          + k*shape[3] + l]
-                        = [i, j, k, R_norm, &which] () {
-                        return which(i, j, k, R_norm);
-                    };
-                }
+                calculation_functions[i*shape[1]*shape[2]
+                                      + j*shape[2] + k]
+                    = [i, j, k, N_R_tabulated, &which] {
+                    std::vector<double> output(N_R_tabulated);
+                    for(int l = 0; l < N_R_tabulated; ++l) {
+                        // Calculate central value in R bin
+                        double R_norm = (double)(l + 0.5)/N_R_tabulated;
+                        output[l] = which(i, j, k, R_norm);
+                    }
+                    return output;
+                };
             }
         }
     }
-    std::vector<double> 
+    std::vector<std::vector<double>> 
     flat = multithreading::executeInParallel(calculation_functions);
     utility::vector4d<double> output = utility::makeShape<double>(shape);
     for(int i = 0; i < shape[0]; ++i) {
@@ -160,9 +162,8 @@ calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
             for(int k = 0; k < shape[2]; ++k) {
                 for(int l = 0; l < shape[3]; ++l) {
                     output[i][j][k][l] = 
-                    flat[i*shape[1]*shape[2]*shape[3]
-                                          + j*shape[2]*shape[3]
-                                          + k*shape[3] + l];                    
+                    flat[i*shape[1]*shape[2]
+                         + j*shape[2] + k][l];                    
                 }
             }
         }
@@ -248,7 +249,7 @@ utility::vector4d<double> getUValues() {
 utility::vector4d<double> getUPrimeValues() {
     std::array<int, 4> shape = {k_max + 1, l_max + 1, n_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2]*shape[3];
-    std::string path = "../cache/basis_functions/u_primeValues.csv";
+    std::string path = "../cache/basis_functions/u_prime_values.csv";
     if(utility::fileExists(path)) {
         std::vector<double> flat = utility::readCsv(path);
         if(flat.size() == N_values) {

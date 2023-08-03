@@ -18,7 +18,6 @@ LooongDouble Pochhammer(double a, int i) {
 }
 
 std::vector<std::vector<LooongDouble>> getPochhammerIntValues() {
-    std::cout << "Calculating Pochhammer int values" << std::endl;
     std::vector<std::vector<LooongDouble>>
     output(int_a_max() + 1, std::vector<LooongDouble>(int_i_max() + 1));
     for(int i = 0; i <= int_a_max(); ++i) {
@@ -30,7 +29,6 @@ std::vector<std::vector<LooongDouble>> getPochhammerIntValues() {
 }
 
 std::vector<std::vector<LooongDouble>> getPochhammerNegativeIntValues() {
-    std::cout << "Calculating Pochhammer negative int values" << std::endl;
     std::vector<std::vector<LooongDouble>>
     output(-negative_a_min() + 1, std::vector<LooongDouble>(negative_i_max() + 1));
     for(int i = 0; i >= negative_a_min(); --i) {
@@ -42,7 +40,6 @@ std::vector<std::vector<LooongDouble>> getPochhammerNegativeIntValues() {
 }
 
 std::vector<std::vector<LooongDouble>> getPochhammerHalfIntValues() {
-    std::cout << "Calculating Pochhammer half int values" << std::endl;
     std::vector<std::vector<LooongDouble>>
     output(half_a_max() + 1, std::vector<LooongDouble>(half_i_max() + 1));
     for(int i = 0; i <= half_a_max(); ++i) {
