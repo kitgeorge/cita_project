@@ -1,4 +1,5 @@
 #include "potential_from_density.hpp"
+#include <iostream>
 
 namespace basis_functions {
 
@@ -23,6 +24,8 @@ getCoefficients(const DensityType& density, const BFE& expansion) const {
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
             coefficient_functions[i*(nl_max[1] + 1) + j] = [=] () {
+                std::cout << "Calculating BFE coefficients: "
+                          << i << ", " << k << std::endl;
                 return expansion.getCoefficient(i, j, density);
             };
         }
