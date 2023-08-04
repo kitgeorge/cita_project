@@ -313,25 +313,26 @@ utility::vector5d<LooongDouble> getAlphaKaValues() {
     std::array<int, 5> shape = {k_max + 1, l_max + 1, n_max + 1,
                                 i_max + 1, j_max + 1};
     int N_values = shape[0]*shape[1]*shape[2]*shape[3]*shape[4];
-    std::vector<std::function<LooongDouble()>> calculation_functions(N_values);
+    std::vector<std::function<std::vector<LooongDouble>()>> 
+    calculation_functions(N_values/(shape[3]*shape[4]));
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             for(int k = 0; k < shape[2]; ++k) {
-                for(int l = 0; l < shape[3]; ++l) {
-                    for(int m = 0; m < shape[4]; ++m) {
-                        calculation_functions[i*shape[1]*shape[2]*shape[3]*shape[4]
-                                              + j*shape[2]*shape[3]*shape[4]
-                                              + k*shape[3]*shape[4]
-                                              + l*shape[4] + m]
-                            = [i, j, k, l, m] () {
-                            return alpha_Ka(i, j, k, l, m);
-                        };
+                calculation_functions[i*shape[1]*shape[2]
+                                        + j*shape[2] + k]
+                    = [i, j, k, shape] () {
+                    std::vector<LooongDouble> output(shape[3]*shape[4]);
+                    for(int l = 0; l < shape[3]; ++l) {
+                        for(int m = 0; m < shape[4]; ++m) {
+                            output[l*shape[4] + m] = alpha_Ka(i, j, k, l, m);
+                        }
                     }
-                }
+                    return output;
+                };
             }
         }
     }
-    std::vector<LooongDouble> 
+    std::vector<std::vector<LooongDouble>> 
     flat = multithreading::executeInParallel(calculation_functions);
     utility::vector5d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);
     for(int i = 0; i < shape[0]; ++i) {
@@ -339,10 +340,8 @@ utility::vector5d<LooongDouble> getAlphaKaValues() {
             for(int k = 0; k < shape[2]; ++k) {
                 for(int l = 0; l < shape[3]; ++l) {
                     for(int m = 0; m < shape[4]; ++m) {
-                        output[i][j][k][l][m] = flat[i*shape[1]*shape[2]*shape[3]*shape[4]
-                                              + j*shape[2]*shape[3]*shape[4]
-                                              + k*shape[3]*shape[4]
-                                              + l*shape[4] + m];
+                        output[i][j][k][l][m] = flat[i*shape[1]*shape[2]
+                                              + j*shape[2] + k][l*shape[4] + m];
                     }
                 }
             }
@@ -355,31 +354,32 @@ utility::vector4d<LooongDouble> getBetaKaValues() {
     std::array<int, 4> shape = {k_max + 1, l_max + 1, n_max + 1,
                                 j_max + 1};
     int N_values = shape[0]*shape[1]*shape[2]*shape[3];
-    std::vector<std::function<LooongDouble()>> calculation_functions(N_values);
+    std::vector<std::function<std::vector<LooongDouble>()>> 
+    calculation_functions(N_values/shape[3]);
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             for(int k = 0; k < shape[2]; ++k) {
-                for(int l = 0; l < shape[3]; ++l) {
-                    calculation_functions[i*shape[1]*shape[2]*shape[3]
-                                              + j*shape[2]*shape[3]
-                                              + k*shape[3] + l]
-                            = [i, j, k, l] () {
-                        return beta_Ka(i, j, k, l);
-                    };
-                }
+                calculation_functions[i*shape[1]*shape[2]
+                                        + j*shape[2] + k]
+                    = [i, j, k, shape] () {
+                    std::vector<LooongDouble> output(shape[3]);
+                    for(int l = 0; l < shape[3]; ++l) {
+                            output[l] = beta_Ka(i, j, k, l);
+                    }
+                    return output;
+                };
             }
         }
     }
-    std::vector<LooongDouble> 
+    std::vector<std::vector<LooongDouble>> 
     flat = multithreading::executeInParallel(calculation_functions);
     utility::vector4d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             for(int k = 0; k < shape[2]; ++k) {
                 for(int l = 0; l < shape[3]; ++l) {
-                    output[i][j][k][l] = flat[i*shape[1]*shape[2]*shape[3]
-                                              + j*shape[2]*shape[3]
-                                              + k*shape[3] + l];
+                    output[i][j][k][l] = flat[i*shape[1]*shape[2]
+                                              + j*shape[2] + k][l];
                 }
             }
         }
@@ -390,24 +390,27 @@ namespace {
 utility::vector3d<double> getPSValues(std::function<double(int, int, int)> which) {
     std::array<int, 3> shape = {k_max + 1, l_max + 1, n_max + 1};
     int N_values = shape[0]*shape[1]*shape[2];
-    std::vector<std::function<double()>> calculation_functions(N_values);
+    std::vector<std::function<std::vector<double>()>> 
+    calculation_functions(N_values/shape[2]);
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
-            for(int k = 0; k < shape[2]; ++k) {
-                calculation_functions[i*shape[1]*shape[2] + j*shape[2] + k]
-                            = [i, j, k, &which] () {
-                    return which(i, j, k);
-                };
-            }
+            calculation_functions[i*shape[1] + j]
+                        = [i, j, shape, &which] () {
+                std::vector<double> output(shape[2]);
+                for(int k = 0; k < shape[2]; ++k) {
+                    output[k] = which(i, j, k);
+                }
+                return output;
+            };
         }
     }
-    std::vector<double> 
+    std::vector<std::vector<double>> 
     flat = multithreading::executeInParallel(calculation_functions);
     utility::vector3d<double> output = utility::makeShape<double>(shape);
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             for(int k = 0; k < shape[2]; ++k) {
-                output[i][j][k] = flat[i*shape[1]*shape[2] + j*shape[2] + k];
+                output[i][j][k] = flat[i*shape[1] + j][k];
             }
         }
     }
