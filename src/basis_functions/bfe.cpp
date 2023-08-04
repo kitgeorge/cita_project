@@ -1,10 +1,12 @@
 #include "bfe.hpp"
+#include <iostream>
 
 using namespace std::complex_literals;
 using special_functions::Gamma;
 using special_functions::GammaHalf;
 using special_functions::getPochhammerInt;
 using special_functions::getPochhammerHalfInt;
+namespace mp = boost::multiprecision;
 
 namespace basis_functions {
 
@@ -75,12 +77,14 @@ double U(int k, int n, int l, double R_norm) {
     LooongDouble output = 0;
     for(int i = 0; i <= k; ++i) {
         for(int j = 0; j <= n; ++j) {
-            LooongDouble term = getAlphaKa(k, l, n, i, j)*pow(R_norm, 2*i + 2*j + l);
+            // Powers of R_norm must also be computed to high precision
+            LooongDouble term = getAlphaKa(k, l, n, i, j)
+                        *mp::pow(LooongDouble(R_norm), 2*i + 2*j);
             output += term;
         }
     }
     double output_double = output.convert_to<double>();
-    output_double *= -sqrt(Units::G)*getP(k, l, n);
+    output_double *= -sqrt(Units::G)*getP(k, l, n)*pow(R_norm, l);
     // if(R > 0) {
     //     assert(output != 0);
     // }
@@ -97,12 +101,12 @@ double UPrime(int k, int n, int l, double R_norm) {
                 continue;
             }
             LooongDouble term = getAlphaKa(k, l, n, i, j)
-                          *(2*i + 2*j + l)*pow(R_norm, 2*i + 2*j + l - 1);
+                        *(2*i + 2*j + l)*mp::pow(LooongDouble(R_norm), 2*i + 2*j);
             output += term;
         }
     }
     double output_double = output.convert_to<double>();
-    output_double *= -sqrt(Units::G)*getP(k, l, n);
+    output_double *= -sqrt(Units::G)*getP(k, l, n)*pow(R_norm, l - 1);
     return output_double;
 }
 
@@ -110,7 +114,8 @@ double D(int k, int n, int l, double R_norm) {
     // As above
     LooongDouble output = 0;
     for(int j = 0; j <= n; ++j) {
-        LooongDouble term = getBetaKa(k, l, n, j)*pow(1 - pow(R_norm, 2), j);
+        LooongDouble term = getBetaKa(k, l, n, j)
+            *mp::pow(LooongDouble(1) - mp::pow(LooongDouble(R_norm), 2), j);
         // std:: cout << "D, " << term << std::endl;
         output += term;
     }
@@ -142,6 +147,7 @@ calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
             for(int k = 0; k < shape[2]; ++k) {
                 calculation_functions[i*shape[1]*shape[2]
                                       + j*shape[2] + k]
+                    std::cout << "UUpD: " << i << ", " << j << ", " << k << std::endl;
                     = [i, j, k, N_R_tabulated, &which] {
                     std::vector<double> output(N_R_tabulated);
                     for(int l = 0; l < N_R_tabulated; ++l) {
