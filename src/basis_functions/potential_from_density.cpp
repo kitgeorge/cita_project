@@ -25,7 +25,7 @@ getCoefficients(const DensityType& density, const BFE& expansion) const {
         for(int j = 0; j <= nl_max[1]; ++j) {
             coefficient_functions[i*(nl_max[1] + 1) + j] = [=] () {
                 std::cout << "Calculating BFE coefficients: "
-                          << i << ", " << k << std::endl;
+                          << i << ", " << j << std::endl;
                 return expansion.getCoefficient(i, j, density);
             };
         }
