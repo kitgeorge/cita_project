@@ -137,7 +137,6 @@ double D(int k, int n, int l, double R_norm) {
 namespace {
 utility::vector4d<double> 
 calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
-    std::cout << "CALCULATING UUpD" << std::endl;
     std::array<int, 4> shape = {k_max + 1, n_max + 1, l_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2]*shape[3];
     // Bundling up to prevent under-utilisation of cores

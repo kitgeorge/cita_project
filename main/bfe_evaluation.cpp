@@ -28,12 +28,12 @@ int main() {
     // basis_functions::P_values();
     // std::cout << "S" << std::endl;
     // basis_functions::S_values();
-    // std::cout << "U" << std::endl;
-    // basis_functions::U_values();
-    // std::cout << "UPrime" << std::endl;
-    // basis_functions::UPrime_values();
-    // std::cout << "D" << std::endl;
-    // basis_functions::D_values();
+    std::cout << "U" << std::endl;
+    basis_functions::U_values();
+    std::cout << "UPrime" << std::endl;
+    basis_functions::UPrime_values();
+    std::cout << "D" << std::endl;
+    basis_functions::D_values();
 
     int n_max = 50;
     int l_max = 50;
