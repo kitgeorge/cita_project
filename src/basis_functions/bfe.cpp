@@ -145,10 +145,10 @@ calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             for(int k = 0; k < shape[2]; ++k) {
-                std::cout << "UUpD: " << i << ", " << j << ", " << k << std::endl;
                 calculation_functions[i*shape[1]*shape[2]
                                       + j*shape[2] + k]
                     = [i, j, k, N_R_tabulated, &which] {
+                    std::cout << "UUpD: " << i << ", " << j << ", " << k << std::endl;
                     std::vector<double> output(N_R_tabulated);
                     for(int l = 0; l < N_R_tabulated; ++l) {
                         // Calculate central value in R bin
