@@ -8,11 +8,11 @@ N_R_tabulated = 10000
 table_shape = (k_max + 1, (n_max + 1)*(l_max + 1)*N_R_tabulated)
 
 print("Reading u values")
-u_values = pd.read_csv("../cache/basis_functions/u_values.csv").to_numpy()[:, 0]
+u_values = pd.read_csv("../cache/basis_functions/u_values.csv", header=None).to_numpy()[:, 0]
 print("Reading u prime values")
-u_prime_values = pd.read_csv("../cache/basis_functions/u_prime_values.csv").to_numpy()[:, 0]
+u_prime_values = pd.read_csv("../cache/basis_functions/u_prime_values.csv", header=None).to_numpy()[:, 0]
 print("Reading d values")
-d_values = pd.read_csv("../cache/basis_functions/d_values.csv").to_numpy()[:, 0]
+d_values = pd.read_csv("../cache/basis_functions/d_values.csv", header=None).to_numpy()[:, 0]
 
 u_values = u_values.reshape(table_shape)
 u_prime_values = u_prime_values.reshape(table_shape)
