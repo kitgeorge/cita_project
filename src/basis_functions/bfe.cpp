@@ -179,6 +179,7 @@ calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
 }
 
 utility::vector4d<double> calculateUValues() {
+    std::cout << "CALCULATING U" << std::endl;
     return calculateUUpDValues(U);
 }
 
