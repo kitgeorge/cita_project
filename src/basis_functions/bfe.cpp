@@ -78,13 +78,13 @@ double U(int k, int n, int l, double R_norm) {
     for(int i = 0; i <= k; ++i) {
         for(int j = 0; j <= n; ++j) {
             // Powers of R_norm must also be computed to high precision
-            LooongDouble term = getAlphaKa(k, l, n, i, j)
+            LooongDouble term = getAlphaKa(l, n, i, j)
                         *mp::pow(LooongDouble(R_norm), 2*i + 2*j);
             output += term;
         }
     }
     double output_double = output.convert_to<double>();
-    output_double *= -sqrt(Units::G)*getP(k, l, n)*pow(R_norm, l);
+    output_double *= -sqrt(Units::G)*getP(l, n)*pow(R_norm, l);
     // if(R > 0) {
     //     assert(output != 0);
     // }
@@ -100,13 +100,13 @@ double UPrime(int k, int n, int l, double R_norm) {
             if(i == 0 && j == 0 && l == 0) {
                 continue;
             }
-            LooongDouble term = getAlphaKa(k, l, n, i, j)
+            LooongDouble term = getAlphaKa(l, n, i, j)
                         *(2*i + 2*j + l)*mp::pow(LooongDouble(R_norm), 2*i + 2*j);
             output += term;
         }
     }
     double output_double = output.convert_to<double>();
-    output_double *= -sqrt(Units::G)*getP(k, l, n)*pow(R_norm, l - 1);
+    output_double *= -sqrt(Units::G)*getP(l, n)*pow(R_norm, l - 1);
     return output_double;
 }
 
@@ -114,14 +114,14 @@ double D(int k, int n, int l, double R_norm) {
     // As above
     LooongDouble output = 0;
     for(int j = 0; j <= n; ++j) {
-        LooongDouble term = getBetaKa(k, l, n, j)
+        LooongDouble term = getBetaKa(l, n, j)
             *mp::pow(LooongDouble(1) - mp::pow(LooongDouble(R_norm), 2), j);
         // std:: cout << "D, " << term << std::endl;
         output += term;
     }
     double output_double = output.convert_to<double>();
     output_double *= pow(-1, n)/(sqrt(Units::G))
-             *getS(k, l, n)*pow(1 - pow(R_norm, 2), k - 0.5)*pow(R_norm, l);
+             *getS(l, n)*pow(1 - pow(R_norm, 2), k - 0.5)*pow(R_norm, l);
     // if(R > 0 && R < R_Ka) {
     //     assert(output != 0);
     // }
@@ -135,273 +135,23 @@ double D(int k, int n, int l, double R_norm) {
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 namespace {
-utility::vector4d<double> 
+utility::vector3d<double> 
 calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
-    std::array<int, 4> shape = {k_max + 1, n_max + 1, l_max + 1, N_R_tabulated};
-    int N_values = shape[0]*shape[1]*shape[2]*shape[3];
+    std::array<int, 3> shape = {n_max + 1, l_max + 1, N_R_tabulated};
+    int N_values = shape[0]*shape[1]*shape[2];
     // Bundling up to prevent under-utilisation of cores
     std::vector<std::function<std::vector<double>()>>
-    calculation_functions(shape[0]*shape[1]*shape[2]);
-    for(int i = 0; i < shape[0]; ++i) {
-        for(int j = 0; j < shape[1]; ++j) {
-            for(int k = 0; k < shape[2]; ++k) {
-                calculation_functions[i*shape[1]*shape[2]
-                                      + j*shape[2] + k]
-                    = [i, j, k, N_R_tabulated, &which] {
-                    std::cout << "UUpD: " << i << ", " << j << ", " << k << std::endl;
-                    std::vector<double> output(N_R_tabulated);
-                    for(int l = 0; l < N_R_tabulated; ++l) {
-                        // Calculate central value in R bin
-                        double R_norm = (double)(l + 0.5)/N_R_tabulated;
-                        output[l] = which(i, j, k, R_norm);
-                    }
-                    return output;
-                };
-            }
-        }
-    }
-    std::vector<std::vector<double>> 
-    flat = multithreading::executeInParallel(calculation_functions);
-    utility::vector4d<double> output = utility::makeShape<double>(shape);
-    for(int i = 0; i < shape[0]; ++i) {
-        for(int j = 0; j < shape[1]; ++j) {
-            for(int k = 0; k < shape[2]; ++k) {
-                for(int l = 0; l < shape[3]; ++l) {
-                    output[i][j][k][l] = 
-                    flat[i*shape[1]*shape[2]
-                         + j*shape[2] + k][l];                    
-                }
-            }
-        }
-    }
-    return output;    
-} 
-}
-
-utility::vector4d<double> calculateUValues() {
-    return calculateUUpDValues(U);
-}
-
-utility::vector4d<double> calculateUPrimeValues() {
-    return calculateUUpDValues(UPrime);
-}
-
-utility::vector4d<double> calculateDValues() {
-    return calculateUUpDValues(D);
-}
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-utility::vector5d<LooongDouble>& 
-alpha_Ka_values() {
-    static utility::vector5d<LooongDouble> x;
-    if(x.empty()) {x = getAlphaKaValues();};
-    return x;
-}
-utility::vector4d<LooongDouble>& 
-beta_Ka_values() {
-    static utility::vector4d<LooongDouble> x;
-    if(x.empty()) {x = getBetaKaValues();};
-    return x;
-}
-utility::vector3d<double>& 
-P_values() {
-    static utility::vector3d<double> x;
-    if(x.empty()) {x = getPValues();};
-    return x;
-}
-utility::vector3d<double>& 
-S_values() {
-    static utility::vector3d<double> x;
-    if(x.empty()) {x = getSValues();};
-    return x;
-}
-
-
-utility::vector4d<double>& U_values() {
-    static utility::vector4d<double> x;
-    if(x.empty()) {x = getUValues();};
-    return x;
-}
-utility::vector4d<double>& UPrime_values() {
-    static utility::vector4d<double> x;
-    if(x.empty()) {x = getUPrimeValues();};
-    return x;
-}
-utility::vector4d<double>& D_values() {
-    static utility::vector4d<double> x;
-    if(x.empty()) {x = getDValues();};
-    return x;
-}
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-utility::vector4d<double> getUValues() {
-    std::array<int, 4> shape = {k_max + 1, l_max + 1, n_max + 1, N_R_tabulated};
-    int N_values = shape[0]*shape[1]*shape[2]*shape[3];
-    std::string path = "../cache/basis_functions/u_values.csv";
-    if(utility::fileExists(path)) {
-        std::vector<double> flat = utility::readCsv(path);
-        if(flat.size() == N_values) {
-            return utility::reshape(flat, shape);
-        }
-    }
-    std::cout << "U values not cached; caching..." << std::endl;
-    utility::vector4d<double> output = calculateUValues();
-    utility::writeCsv(path, utility::flatten(output));
-    return output;
-}
-
-utility::vector4d<double> getUPrimeValues() {
-    std::array<int, 4> shape = {k_max + 1, l_max + 1, n_max + 1, N_R_tabulated};
-    int N_values = shape[0]*shape[1]*shape[2]*shape[3];
-    std::string path = "../cache/basis_functions/u_prime_values.csv";
-    if(utility::fileExists(path)) {
-        std::vector<double> flat = utility::readCsv(path);
-        if(flat.size() == N_values) {
-            return utility::reshape(flat, shape);
-        }
-    }
-    std::cout << "U prime values not cached; caching..." << std::endl;
-    utility::vector4d<double> output = calculateUPrimeValues();
-    utility::writeCsv(path, utility::flatten(output));
-    return output;
-}
-
-utility::vector4d<double> getDValues() {
-    std::array<int, 4> shape = {k_max + 1, l_max + 1, n_max + 1, N_R_tabulated};
-    int N_values = shape[0]*shape[1]*shape[2]*shape[3];
-    std::string path = "../cache/basis_functions/d_values.csv";
-    if(utility::fileExists(path)) {
-        std::vector<double> flat = utility::readCsv(path);
-        if(flat.size() == N_values) {
-            return utility::reshape(flat, shape);
-        }
-    }
-    std::cout << "D values not cached; caching..." << std::endl;
-    utility::vector4d<double> output = calculateDValues();
-    utility::writeCsv(path, utility::flatten(output));
-    return output;
-}
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-double getU(int k, int n, int l, double R, double R_Ka) {
-    int R_bin = R/R_Ka*N_R_tabulated;
-    double output = U_values()[k][n][l][R_bin];
-    output /= pow(R_Ka, 0.5);
-    return output;
-}
-
-double getUPrime(int k, int n, int l, double R, double R_Ka) {
-    int R_bin = R/R_Ka*N_R_tabulated;
-    double output = UPrime_values()[k][n][l][R_bin];
-    output /= pow(R_Ka, 1.5);
-    return output;
-}
-
-double getD(int k, int n, int l, double R, double R_Ka) {
-    int R_bin = R/R_Ka*N_R_tabulated;
-    double output = D_values()[k][n][l][R_bin];
-    output /= pow(R_Ka, 1.5);
-    return output;
-}
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-utility::vector5d<LooongDouble> getAlphaKaValues() {
-    std::array<int, 5> shape = {k_max + 1, l_max + 1, n_max + 1,
-                                i_max + 1, j_max + 1};
-    int N_values = shape[0]*shape[1]*shape[2]*shape[3]*shape[4];
-    std::vector<std::function<std::vector<LooongDouble>()>> 
-    calculation_functions(N_values/(shape[3]*shape[4]));
-    for(int i = 0; i < shape[0]; ++i) {
-        for(int j = 0; j < shape[1]; ++j) {
-            for(int k = 0; k < shape[2]; ++k) {
-                calculation_functions[i*shape[1]*shape[2]
-                                        + j*shape[2] + k]
-                    = [i, j, k, shape] () {
-                    std::vector<LooongDouble> output(shape[3]*shape[4]);
-                    for(int l = 0; l < shape[3]; ++l) {
-                        for(int m = 0; m < shape[4]; ++m) {
-                            output[l*shape[4] + m] = alpha_Ka(i, j, k, l, m);
-                        }
-                    }
-                    return output;
-                };
-            }
-        }
-    }
-    std::vector<std::vector<LooongDouble>> 
-    flat = multithreading::executeInParallel(calculation_functions);
-    utility::vector5d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);
-    for(int i = 0; i < shape[0]; ++i) {
-        for(int j = 0; j < shape[1]; ++j) {
-            for(int k = 0; k < shape[2]; ++k) {
-                for(int l = 0; l < shape[3]; ++l) {
-                    for(int m = 0; m < shape[4]; ++m) {
-                        output[i][j][k][l][m] = flat[i*shape[1]*shape[2]
-                                              + j*shape[2] + k][l*shape[4] + m];
-                    }
-                }
-            }
-        }
-    }
-    return output;
-}
-
-utility::vector4d<LooongDouble> getBetaKaValues() {
-    std::array<int, 4> shape = {k_max + 1, l_max + 1, n_max + 1,
-                                j_max + 1};
-    int N_values = shape[0]*shape[1]*shape[2]*shape[3];
-    std::vector<std::function<std::vector<LooongDouble>()>> 
-    calculation_functions(N_values/shape[3]);
-    for(int i = 0; i < shape[0]; ++i) {
-        for(int j = 0; j < shape[1]; ++j) {
-            for(int k = 0; k < shape[2]; ++k) {
-                calculation_functions[i*shape[1]*shape[2]
-                                        + j*shape[2] + k]
-                    = [i, j, k, shape] () {
-                    std::vector<LooongDouble> output(shape[3]);
-                    for(int l = 0; l < shape[3]; ++l) {
-                            output[l] = beta_Ka(i, j, k, l);
-                    }
-                    return output;
-                };
-            }
-        }
-    }
-    std::vector<std::vector<LooongDouble>> 
-    flat = multithreading::executeInParallel(calculation_functions);
-    utility::vector4d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);
-    for(int i = 0; i < shape[0]; ++i) {
-        for(int j = 0; j < shape[1]; ++j) {
-            for(int k = 0; k < shape[2]; ++k) {
-                for(int l = 0; l < shape[3]; ++l) {
-                    output[i][j][k][l] = flat[i*shape[1]*shape[2]
-                                              + j*shape[2] + k][l];
-                }
-            }
-        }
-    }
-    return output;
-}
-namespace {
-utility::vector3d<double> getPSValues(std::function<double(int, int, int)> which) {
-    std::array<int, 3> shape = {k_max + 1, l_max + 1, n_max + 1};
-    int N_values = shape[0]*shape[1]*shape[2];
-    std::vector<std::function<std::vector<double>()>> 
-    calculation_functions(N_values/shape[2]);
+    calculation_functions(shape[0]*shape[1]);
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             calculation_functions[i*shape[1] + j]
-                        = [i, j, shape, &which] () {
-                std::vector<double> output(shape[2]);
-                for(int k = 0; k < shape[2]; ++k) {
-                    output[k] = which(i, j, k);
+                = [i, j, N_R_tabulated, &which] {
+                std::cout << "UUpD: " << i << ", " << j << std::endl;
+                std::vector<double> output(N_R_tabulated);
+                for(int k = 0; k < N_R_tabulated; ++k) {
+                    // Calculate central value in R bin
+                    double R_norm = (double)(k + 0.5)/N_R_tabulated;
+                    output[k] = which(k_Ka, i, j, R_norm);
                 }
                 return output;
             };
@@ -413,26 +163,259 @@ utility::vector3d<double> getPSValues(std::function<double(int, int, int)> which
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             for(int k = 0; k < shape[2]; ++k) {
-                output[i][j][k] = flat[i*shape[1] + j][k];
+                output[i][j][k] = 
+                flat[i*shape[1] + j][k];
+            }
+        }
+    }
+    return output;    
+} 
+}
+
+utility::vector3d<double> calculateUValues() {
+    return calculateUUpDValues(U);
+}
+
+utility::vector3d<double> calculateUPrimeValues() {
+    return calculateUUpDValues(UPrime);
+}
+
+utility::vector3d<double> calculateDValues() {
+    return calculateUUpDValues(D);
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+utility::vector4d<LooongDouble>& 
+alpha_Ka_values() {
+    static utility::vector4d<LooongDouble> x;
+    if(x.empty()) {x = getAlphaKaValues();};
+    return x;
+}
+utility::vector3d<LooongDouble>& 
+beta_Ka_values() {
+    static utility::vector3d<LooongDouble> x;
+    if(x.empty()) {x = getBetaKaValues();};
+    return x;
+}
+utility::vector2d<double>& 
+P_values() {
+    static utility::vector2d<double> x;
+    if(x.empty()) {x = getPValues();};
+    return x;
+}
+utility::vector2d<double>& 
+S_values() {
+    static utility::vector2d<double> x;
+    if(x.empty()) {x = getSValues();};
+    return x;
+}
+
+
+utility::vector3d<double>& U_values() {
+    static utility::vector3d<double> x;
+    if(x.empty()) {x = getUValues();};
+    return x;
+}
+utility::vector3d<double>& UPrime_values() {
+    static utility::vector3d<double> x;
+    if(x.empty()) {x = getUPrimeValues();};
+    return x;
+}
+utility::vector3d<double>& D_values() {
+    static utility::vector3d<double> x;
+    if(x.empty()) {x = getDValues();};
+    return x;
+}
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+namespace {
+std::unique_ptr<utility::vector3d<double>> readUUprimeDValues(std::string path) {
+    std::unique_ptr<utility::vector3d<double>> output(nullptr);
+    std::array<int, 3> shape = {l_max + 1, n_max + 1, N_R_tabulated};
+    int N_values = shape[0]*shape[1]*shape[2];
+    if(utility::fileExists(path)) {
+        std::vector<double> flat = utility::readCsv(path);
+        if(flat.size() == N_values) {
+            std::unique_ptr<utility::vector3d<double>>
+            // Pointers are annoying :-)
+            output = std::make_unique<utility::vector3d<double>>
+                        (utility::reshape(flat, shape));
+        }
+    }
+    return std::move(output);
+}
+}
+
+utility::vector3d<double> getUValues() {
+    std::string path = "../cache/basis_functions/u_values_k=" 
+                       + std::to_string(k_Ka) + ".csv";
+    std::unique_ptr<utility::vector3d<double>>
+    values = readUUprimeDValues(path);
+    if(values) {
+        return *values;
+    }
+    std::cout << "U values not cached; caching..." << std::endl;
+    utility::vector3d<double> output = calculateUValues();
+    utility::writeCsv(path, utility::flatten(output));
+    return output;
+}
+
+utility::vector3d<double> getUPrimeValues() {
+    std::string path = "../cache/basis_functions/u_prime_values_k=" 
+                       + std::to_string(k_Ka) + ".csv";
+    std::unique_ptr<utility::vector3d<double>>
+    values = readUUprimeDValues(path);
+    if(values) {
+        return *values;
+    }
+    std::cout << "U prime values not cached; caching..." << std::endl;
+    utility::vector3d<double> output = calculateUPrimeValues();
+    utility::writeCsv(path, utility::flatten(output));
+    return output;
+}
+
+utility::vector3d<double> getDValues() {
+    std::string path = "../cache/basis_functions/d_values_k=" 
+                       + std::to_string(k_Ka) + ".csv";
+    std::unique_ptr<utility::vector3d<double>>
+    values = readUUprimeDValues(path);
+    if(values) {
+        return *values;
+    }
+    std::cout << "D values not cached; caching..." << std::endl;
+    utility::vector3d<double> output = calculateDValues();
+    utility::writeCsv(path, utility::flatten(output));
+    return output;
+}
+
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+double getU(int n, int l, double R, double R_Ka) {
+    int R_bin = R/R_Ka*N_R_tabulated;
+    double output = U_values()[n][l][R_bin];
+    output /= pow(R_Ka, 0.5);
+    return output;
+}
+
+double getUPrime(int n, int l, double R, double R_Ka) {
+    int R_bin = R/R_Ka*N_R_tabulated;
+    double output = UPrime_values()[n][l][R_bin];
+    output /= pow(R_Ka, 1.5);
+    return output;
+}
+
+double getD(int n, int l, double R, double R_Ka) {
+    int R_bin = R/R_Ka*N_R_tabulated;
+    double output = D_values()[n][l][R_bin];
+    output /= pow(R_Ka, 1.5);
+    return output;
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+utility::vector4d<LooongDouble> getAlphaKaValues() {
+    std::array<int, 4> shape = {l_max + 1, n_max + 1,
+                                i_max + 1, j_max + 1};
+    int N_values = shape[0]*shape[1]*shape[2]*shape[3];
+    std::vector<std::function<std::vector<LooongDouble>()>> 
+    calculation_functions(N_values/(shape[2]*shape[3]));
+    for(int i = 0; i < shape[0]; ++i) {
+        for(int j = 0; j < shape[1]; ++j) {
+            calculation_functions[i*shape[1] + j]
+                = [i, j, shape] () {
+                std::vector<LooongDouble> output(shape[2]*shape[3]);
+                for(int k = 0; k < shape[2]; ++k) {
+                    for(int l = 0; l < shape[3]; ++l) {
+                        output[k*shape[3] + l] = alpha_Ka(k_Ka, i, j, k, l);
+                    }
+                }
+                return output;
+            };
+        }
+    }
+    std::vector<std::vector<LooongDouble>> 
+    flat = multithreading::executeInParallel(calculation_functions);
+    utility::vector4d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);
+    for(int i = 0; i < shape[0]; ++i) {
+        for(int j = 0; j < shape[1]; ++j) {
+            for(int k = 0; k < shape[2]; ++k) {
+                for(int l = 0; l < shape[3]; ++l) {
+                        output[i][j][k][l] = flat[i*shape[1] + j][k*shape[3] + l];
+                }
             }
         }
     }
     return output;
 }
+
+utility::vector3d<LooongDouble> getBetaKaValues() {
+    std::array<int, 3> shape = {l_max + 1, n_max + 1,
+                                j_max + 1};
+    int N_values = shape[0]*shape[1]*shape[2];
+    std::vector<std::function<std::vector<LooongDouble>()>> 
+    calculation_functions(N_values/shape[2]);
+    for(int i = 0; i < shape[0]; ++i) {
+        for(int j = 0; j < shape[1]; ++j) {
+            calculation_functions[i*shape[1] + j]
+                = [i, j, shape] () {
+                std::vector<LooongDouble> output(shape[2]);
+                for(int k = 0; k < shape[2]; ++k) {
+                        output[k] = beta_Ka(k_Ka, i, j, k);
+                }
+                return output;
+            };
+        }
+    }
+    std::vector<std::vector<LooongDouble>> 
+    flat = multithreading::executeInParallel(calculation_functions);
+    utility::vector3d<LooongDouble> output = utility::makeShape<LooongDouble>(shape);
+    for(int i = 0; i < shape[0]; ++i) {
+        for(int j = 0; j < shape[1]; ++j) {
+            for(int k = 0; k < shape[2]; ++k) {
+                    output[i][j][k] = flat[i*shape[1] + j][k];
+            }
+        }
+    }
+    return output;
+}
+namespace {
+utility::vector2d<double> getPSValues(std::function<double(int, int, int)> which) {
+    std::array<int, 2> shape = {l_max + 1, n_max + 1};
+    int N_values = shape[0]*shape[1];
+    std::vector<std::function<std::vector<double>()>> 
+    calculation_functions(N_values/shape[1]);
+    for(int i = 0; i < shape[0]; ++i) {
+        calculation_functions[i]
+                    = [i, shape, &which] () {
+            std::vector<double> output(shape[1]);
+            for(int j = 0; j < shape[2]; ++j) {
+                output[j] = which(k_Ka, i, j);
+            }
+            return output;
+        };
+    }
+    utility::vector2d<double>
+    output = multithreading::executeInParallel(calculation_functions);
+    return output;
+}
 }
 
-utility::vector3d<double> getPValues() {
+utility::vector2d<double> getPValues() {
     return getPSValues(P);
 }
 
-utility::vector3d<double> getSValues() {
+utility::vector2d<double> getSValues() {
     return getPSValues(S);
 }
 
 
-LooongDouble getAlphaKa(int k, int l, int n, int i, int j) {
-    assert(k >= 0);
-    assert(k <= k_max);
+LooongDouble getAlphaKa(int l, int n, int i, int j) {
     assert(l >= 0);
     assert(l <= l_max);
     assert(n >= 0);
@@ -442,12 +425,10 @@ LooongDouble getAlphaKa(int k, int l, int n, int i, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
-    return alpha_Ka_values()[k][l][n][i][j];
+    return alpha_Ka_values()[l][n][i][j];
 }
 
-LooongDouble getBetaKa(int k, int l, int n, int j) {
-    assert(k >= 0);
-    assert(k <= k_max);
+LooongDouble getBetaKa(int l, int n, int j) {
     assert(l >= 0);
     assert(l <= l_max);
     assert(n >= 0);
@@ -455,29 +436,25 @@ LooongDouble getBetaKa(int k, int l, int n, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
-    return beta_Ka_values()[k][l][n][j];
+    return beta_Ka_values()[l][n][j];
 }
 
-double getP(int k, int l, int n) {
-    assert(k >= 0);
-    assert(k <= k_max);
+double getP(int l, int n) {
     assert(l >= 0);
     assert(l <= l_max);
     assert(n >= 0);
     assert(n <= n_max);
 
-    return P_values()[k][l][n];
+    return P_values()[l][n];
 }
 
-double getS(int k, int l, int n) {
-    assert(k >= 0);
-    assert(k <= k_max);
+double getS(int l, int n) {
     assert(l >= 0);
     assert(l <= l_max);
     assert(n >= 0);
     assert(n <= n_max);
 
-    return S_values()[k][l][n];
+    return S_values()[l][n];
 }
 
 ////////////////////////////////////////////////////////////
@@ -518,9 +495,9 @@ scalarProduct(const std::function<std::complex<double>(double, double)>& pot_con
 ////////////////////////////////////////////////////////////
 
 
-BFE::BFE(int k_Ka_, double R_Ka_, int N_R_, int N_phi_): 
-k_Ka(k_Ka_), R_Ka(R_Ka_), N_R(N_R_), N_phi(N_phi_) {}
-BFE::BFE(const BFE& old): k_Ka(old.k_Ka), R_Ka(old.R_Ka),
+BFE::BFE(double R_Ka_, int N_R_, int N_phi_): 
+R_Ka(R_Ka_), N_R(N_R_), N_phi(N_phi_) {}
+BFE::BFE(const BFE& old): R_Ka(old.R_Ka),
                           N_R(old.N_R), N_phi(old.N_phi) {}
 
 std::function<std::complex<double>(double, double)> 
@@ -528,7 +505,7 @@ BFE::psi(int n, int l) const {
     assert(n >= 0);
     assert(l >= 0);
     return [*this, n, l] (double R, double phi) {
-        double prefactor = getU(k_Ka, n, l, R, R_Ka);
+        double prefactor = getU(n, l, R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
     };
@@ -539,7 +516,7 @@ BFE::rho(int n, int l) const {
     assert(n >= 0);
     assert(l >= 0);
     return [*this, n, l] (double R, double phi) {
-        double prefactor = getD(k_Ka, n, l, R, R_Ka);
+        double prefactor = getD(n, l, R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
     };
@@ -552,8 +529,8 @@ BFE::psi_f(int n, int l) const {
     return [*this, n, l] (double R, double phi) {
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         std::array<std::complex<double>, 2> output;
-        output[0] = -getUPrime(k_Ka, n, l, R, R_Ka)*phase;
-        output[1] = -1i*(double)l/R*getU(k_Ka, n, l, R, R_Ka)*phase;
+        output[0] = -getUPrime(n, l, R, R_Ka)*phase;
+        output[1] = -1i*(double)l/R*getU(n, l, R, R_Ka)*phase;
         return output;
     };
 }

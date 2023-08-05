@@ -22,51 +22,54 @@ namespace basis_functions {
 // calculate them then the alpha_Ka values etc likely stay in memory,
 // meaning you probably have to abort and start again (which is
 // untidy even if not terribly inconvenient)
+
+// All formulae involved (from eg Fouvry 2015) are in an anonymous namespace
+// in bfe.cpp
 namespace {
-static constexpr int k_max = 10;
-static constexpr int l_max = 50;
-static constexpr int n_max = 50;
-static constexpr int i_max = 10;
-static constexpr int j_max = 50;
+static constexpr int k_Ka = 100;
+static constexpr int l_max = 32;
+static constexpr int n_max = 100;
+static constexpr int i_max = 100;
+static constexpr int j_max = 100;
 
 static constexpr int N_R_tabulated = 1e4;
 }
 
-utility::vector5d<LooongDouble> getAlphaKaValues();
-utility::vector4d<LooongDouble> getBetaKaValues();
-utility::vector3d<double> getPValues();
-utility::vector3d<double> getSValues();
+utility::vector4d<LooongDouble> getAlphaKaValues();
+utility::vector3d<LooongDouble> getBetaKaValues();
+utility::vector2d<double> getPValues();
+utility::vector2d<double> getSValues();
 
-utility::vector5d<LooongDouble>& 
-alpha_Ka_values();
 utility::vector4d<LooongDouble>& 
+alpha_Ka_values();
+utility::vector3d<LooongDouble>& 
 beta_Ka_values();
-utility::vector3d<double>& 
+utility::vector2d<double>& 
 P_values();
-utility::vector3d<double>& 
+utility::vector2d<double>& 
 S_values();
 
-LooongDouble getAlphaKa(int k, int l, int n, int i, int j);
-LooongDouble getBetaKa(int k, int l, int n, int j);
-double getP(int k, int l, int n);
-double getS(int k, int l, int n);
+LooongDouble getAlphaKa(int l, int n, int i, int j);
+LooongDouble getBetaKa(int l, int n, int j);
+double getP(int l, int n);
+double getS(int l, int n);
 
 
-utility::vector4d<double> getUValues();
-utility::vector4d<double> getUPrimeValues();
-utility::vector4d<double> getDValues();
+utility::vector3d<double> getUValues();
+utility::vector3d<double> getUPrimeValues();
+utility::vector3d<double> getDValues();
 
-utility::vector4d<double> calculateUValues();
-utility::vector4d<double> calculateUPrimeValues();
-utility::vector4d<double> calculateDValues();
+utility::vector3d<double> calculateUValues();
+utility::vector3d<double> calculateUPrimeValues();
+utility::vector3d<double> calculateDValues();
 
-utility::vector4d<double>& U_values();
-utility::vector4d<double>& UPrime_values();
-utility::vector4d<double>& D_values();
+utility::vector3d<double>& U_values();
+utility::vector3d<double>& UPrime_values();
+utility::vector3d<double>& D_values();
 
-double getU(int k, int n, int l, double R, double R_Ka);
-double getUPrime(int k, int n, int l, double R, double R_Ka);
-double getD(int k, int n, int l, double R, double R_Ka);
+double getU(int n, int l, double R, double R_Ka);
+double getUPrime(int n, int l, double R, double R_Ka);
+double getD(int n, int l, double R, double R_Ka);
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -86,7 +89,6 @@ scalarProduct(const std::function<std::complex<double>(double, double)>& pot_con
 
 class BFE {
     // Following notation in Fouvry et al (2015)
-    const int k_Ka;
     const double R_Ka;
     // Integration numbers for scalar product (continuous density)
     const int N_R;
@@ -97,7 +99,7 @@ class BFE {
     // double D(int n, int l, double R) const;
 
     public:
-        BFE(int k_Ka_, double R_Ka_, int N_R_, int N_phi_);
+        BFE(double R_Ka_, int N_R_, int N_phi_);
         BFE(const BFE& old);
 
         // Basis functions

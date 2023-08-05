@@ -37,12 +37,11 @@ int main() {
 
     int n_max = 50;
     int l_max = 50;
-    int k_Ka = 10;
     double R_Ka = 20*Units::kpc;
     int N_R = 1000;
     int N_phi = 1000;
 
-    basis_functions::BFE expansion(k_Ka, R_Ka, N_R, N_phi);
+    basis_functions::BFE expansion(R_Ka, N_R, N_phi);
 
     std::function<double(double, double, double)>
     spiral_density_time = potential::getStandardSpiralDensity();

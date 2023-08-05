@@ -16,7 +16,6 @@ class BFETest : public ::testing::Test {
         std::optional<BFE> expansion;
         int n_max;
         int l_max;
-        int k_Ka;
         double R_Ka;
         int N_R;
         int N_phi;
@@ -32,11 +31,10 @@ class BFETest : public ::testing::Test {
         mestel_force;
 
         void SetUp() override {
-            k_Ka = 4;
             R_Ka = 20*Units::kpc;
             N_R = 5000;
             N_phi = 5000;
-            expansion.emplace(k_Ka, R_Ka, N_R, N_phi);
+            expansion.emplace(R_Ka, N_R, N_phi);
             // N_R and N_phi are being used for too many things
             // but can't be bothered to fix yet
             n_max = 30;
@@ -132,18 +130,16 @@ TEST_F(BFETest, DISABLED_PlotBasisFunctions) {
     int l = 2;
     int N_k = 6;
     std::vector<double> 
-    basis_function_values(N_n*N_k*2*N_R);
+    basis_function_values(N_n*2*N_R);
     for(int h = 0; h < N_n; ++h) {
-        for(int i = 0; i < N_k; ++i) {
-            BFE funcs(i, R_Ka, N_R, N_phi);
-            std::array<std::function<std::complex<double>(double, double)>, 2>
-            basis_functions = {funcs.psi(h, l), funcs.rho(h, l)};
-            for(int j = 0; j < 2; ++j) {
-                for(int k = 0; k < N_R; ++k) {
-                    double R = (double)k/N_R*R_Ka;
-                    basis_function_values[h*N_k*2*N_R + i*2*N_R + j*N_R + k]
-                        = basis_functions[j](R, 0).real();
-                }
+        BFE funcs(R_Ka, N_R, N_phi);
+        std::array<std::function<std::complex<double>(double, double)>, 2>
+        basis_functions = {funcs.psi(h, l), funcs.rho(h, l)};
+        for(int j = 0; j < 2; ++j) {
+            for(int k = 0; k < N_R; ++k) {
+                double R = (double)k/N_R*R_Ka;
+                basis_function_values[h*2*N_R + j*N_R + k]
+                    = basis_functions[j](R, 0).real();
             }
         }
     }
