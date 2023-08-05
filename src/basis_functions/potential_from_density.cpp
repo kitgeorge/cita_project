@@ -121,7 +121,6 @@ getTruncFunction(std::function<std::function<DataType(double, double)>
             }
         }
     }
-    
     return utility::addFunctions(utility::flatten(terms));
 }
 
