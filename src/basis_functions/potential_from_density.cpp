@@ -10,8 +10,7 @@ PotentialFromDensity(const DensityType& density, const BFE& expansion,
                      coefficients(getCoefficients(density, expansion)),
                      trunc_density(getTruncDensity(expansion)),
                      trunc_potential(getTruncPotential(expansion)),
-                     trunc_force(getTruncForce(expansion)),
-                     density_terms(calculateDensityTerms(expansion)) {}
+                     trunc_force(getTruncForce(expansion)) {}
 
 template <typename DensityType>
 std::vector<std::vector<std::complex<double>>> 
@@ -40,17 +39,22 @@ getCoefficients(const DensityType& density, const BFE& expansion) const {
     return output;
 }
 
-
-// Should probably refactor, as this is identical to some later code 
-// (where it is then summed)
-std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
-PotentialFromDensity::calculateDensityTerms(const BFE& expansion) const {
-    std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
+template <typename DataType>
+std::vector<std::vector<std::function<DataType(double, double)>>>
+PotentialFromDensity::
+getTerms(std::function<std::function<DataType(double, double)>
+                         (int, int)> BFE_member_function,
+                      const BFE& expansion) const {
+    // Initialising table for 0 <= n <= n_max, -l_max <= 0 <= l_max
+    std::vector<std::vector<std::function<DataType(double, double)>>>
     output(nl_max[0] + 1, 
-            std::vector<std::function<std::complex<double>(double, double)>>(2*nl_max[1] + 1));
+            std::vector<std::function<DataType(double, double)>>(2*nl_max[1] + 1));
+    // Populates table with respective basis functions multiplied by coefficients,
+    // and complex conjugate for negative l (not sure if it should be a pointer
+    // to expansion)
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
-            output[i][nl_max[1] + j] = utility::multiplyFunction(expansion.rho(i, j),
+            output[i][nl_max[1] + j] = utility::multiplyFunction(BFE_member_function(i, j),
                                             coefficients[i][j]);
             if(j != 0) {
                 output[i][nl_max[1] - j] 
@@ -59,6 +63,21 @@ PotentialFromDensity::calculateDensityTerms(const BFE& expansion) const {
         }
     }
     return output;
+}
+
+// Trying to generalise the summation of basis functions for density, potential and
+// force (in some ways this is quite ugly. DataType refers to complex or 
+// complex array (force))
+template <typename DataType>
+std::function<DataType(double, double)>
+PotentialFromDensity::
+getTruncFunction(std::function<std::function<DataType(double, double)>
+                    (int, int)> BFE_member_function,
+                 const BFE& expansion) const {
+
+    return utility::addFunctions(
+                utility::flatten(getTerms(BFE_member_function,
+                                          expansion)));
 }
 
 std::function<double(double, double)>
@@ -91,39 +110,6 @@ getTruncForce(const BFE& expansion) const {
     return utility::realFunction(getTruncFunction(wrapper, expansion));
 }
 
-// Trying to generalise the summation of basis functions for density, potential and
-// force (in some ways this is quite ugly. DataType refers to complex or 
-// complex array (force))
-template <typename DataType>
-std::function<DataType(double, double)>
-PotentialFromDensity::
-getTruncFunction(std::function<std::function<DataType(double, double)>
-                    (int, int)> BFE_member_function,
-                 const BFE& expansion) const {
-
-    // Initialising table for 0 <= n <= n_max, -l_max <= 0 <= l_max
-    std::vector<std::vector<std::function<DataType(double, double)>>>
-    terms(nl_max[0] + 1, 
-          std::vector<std::function<DataType
-                (double, double)>>(2*nl_max[1] + 1)); // Includes negative l
-    
-    // Populates table with respective basis functions multiplied by coefficients,
-    // and complex conjugate for negative l (not sure if it should be a pointer
-    // to expansion)
-    for(int i = 0; i <= nl_max[0]; ++i) {
-        for(int j = 0; j <= nl_max[1]; ++j) {
-            terms[i][nl_max[1] + j] 
-                = utility::multiplyFunction(BFE_member_function(i, j), 
-                                            coefficients[i][j]);
-            if(j != 0) {
-                terms[i][nl_max[1] - j]
-                    = utility::conjugateFunction(terms[i][nl_max[1] + j]);
-            }
-        }
-    }
-    return utility::addFunctions(utility::flatten(terms));
-}
-
 std::vector<std::vector<std::complex<double>>>
 PotentialFromDensity::getCoefficients() const {
     return coefficients;
@@ -143,6 +129,16 @@ template std::vector<std::vector<std::complex<double>>>
          PotentialFromDensity::
          getCoefficients(const std::vector<std::array<double, 3>>& density,
                          const BFE& expansion) const;
+template std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
+         PotentialFromDensity::
+         getTerms(std::function<std::function<std::complex<double>(double, double)>
+                    (int, int)> BFE_member_function,
+                 const BFE& expansion) const;
+template std::vector<std::vector<std::function<std::array<std::complex<double>, 2>(double, double)>>>
+         PotentialFromDensity::
+         getTerms(std::function<std::function<std::array<std::complex<double>, 2>(double, double)>
+                    (int, int)> BFE_member_function,
+                 const BFE& expansion) const;
 template std::function<std::complex<double>(double, double)>
         PotentialFromDensity::
         getTruncFunction(std::function<std::function<std::complex<double>(double, double)>

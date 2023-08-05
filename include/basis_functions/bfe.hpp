@@ -17,7 +17,11 @@ using LooongDouble = boost::multiprecision::mpf_float_1000;
 namespace basis_functions {
 
 // Basis function coefficients tabulated
-
+// I regret tabulating this all globally. If the basis functions
+// are already cached then it's not a problem, but if you have to 
+// calculate them then the alpha_Ka values etc likely stay in memory,
+// meaning you probably have to abort and start again (which is
+// untidy even if not terribly inconvenient)
 namespace {
 static constexpr int k_max = 10;
 static constexpr int l_max = 50;
@@ -84,6 +88,7 @@ class BFE {
     // Following notation in Fouvry et al (2015)
     const int k_Ka;
     const double R_Ka;
+    // Integration numbers for scalar product (continuous density)
     const int N_R;
     const int N_phi;
 

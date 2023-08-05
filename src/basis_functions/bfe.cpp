@@ -247,6 +247,7 @@ utility::vector4d<double> getUValues() {
             return utility::reshape(flat, shape);
         }
     }
+    std::cout << "U values not cached; caching..." << std::endl;
     utility::vector4d<double> output = calculateUValues();
     utility::writeCsv(path, utility::flatten(output));
     return output;
@@ -262,6 +263,7 @@ utility::vector4d<double> getUPrimeValues() {
             return utility::reshape(flat, shape);
         }
     }
+    std::cout << "U prime values not cached; caching..." << std::endl;
     utility::vector4d<double> output = calculateUPrimeValues();
     utility::writeCsv(path, utility::flatten(output));
     return output;
@@ -277,6 +279,7 @@ utility::vector4d<double> getDValues() {
             return utility::reshape(flat, shape);
         }
     }
+    std::cout << "D values not cached; caching..." << std::endl;
     utility::vector4d<double> output = calculateDValues();
     utility::writeCsv(path, utility::flatten(output));
     return output;

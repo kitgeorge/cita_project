@@ -16,12 +16,23 @@ class PotentialFromDensity {
     std::vector<std::vector<std::complex<double>>> 
     getCoefficients(const DensityType& density, const BFE& expansion) const;
 
+    // BFE_member_function refers to which set of basis functions
+    // (psi, psi_f or rho) to expand in
+    template <typename DataType>
+    std::vector<std::vector<std::function<DataType(double, double)>>>
+    getTerms(std::function<std::function<DataType(double, double)>
+                (int, int)> BFE_member_function,
+             const BFE& expansion) const;
+
+    // Sums the BFE for potential, force or density. I keep the above
+    // function separate for diagnostic purposes
     template <typename DataType>
     std::function<DataType(double, double)>
     getTruncFunction(std::function<std::function<DataType(double, double)>
                         (int, int)> BFE_member_function,
                      const BFE& expansion) const;
 
+    // Applies the above for each 
     std::function<double(double, double)> 
     getTruncDensity(const BFE& expansion) const;
     std::function<double(double, double)> 
@@ -29,16 +40,10 @@ class PotentialFromDensity {
     std::function<std::array<double, 2>(double, double)> 
     getTruncForce(const BFE& expansion) const;
 
-    std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
-    calculateDensityTerms(const BFE& expansion) const;
-
     public:
         const std::function<double(double, double)> trunc_density;
         const std::function<double(double, double)> trunc_potential;
         const std::function<std::array<double, 2>(double, double)> trunc_force;
-
-        const std::vector<std::vector<std::function<std::complex<double>(double, double)>>>
-        density_terms;
 
         template <typename DensityType>
         PotentialFromDensity(const DensityType& density, const BFE& expansion, 
