@@ -26,11 +26,11 @@ namespace basis_functions {
 // All formulae involved (from eg Fouvry 2015) are in an anonymous namespace
 // in bfe.cpp
 namespace {
-static constexpr int k_Ka = 100;
+static constexpr int k_Ka = 10;
 static constexpr int l_max = 32;
-static constexpr int n_max = 100;
-static constexpr int i_max = 100;
-static constexpr int j_max = 100;
+static constexpr int n_max = 64;
+static constexpr int i_max = 10;
+static constexpr int j_max = 64;
 
 static constexpr int N_R_tabulated = 1e4;
 }
