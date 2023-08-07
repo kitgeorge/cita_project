@@ -43,8 +43,6 @@ LooongDouble alpha_Ka(int k, int l, int n, int i, int j) {
                       *getPochhammerInt(l + i + 1, j)*getPochhammerHalfInt(l, j) 
                       *getPochhammerInt(1, j))
                     *getPochhammerHalfInt(i + l, j)*getPochhammerInt(-n, j);
-    std::cout << k << ", " << l << ", " << n << ", " << i << ", " << j << ", "
-              << output << std::endl;
     assert(std::isfinite(output.convert_to<double>()));
     return output;
 }
