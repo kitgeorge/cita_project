@@ -256,6 +256,7 @@ utility::vector3d<double> getUValues() {
     std::unique_ptr<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
+        std::cout << "U values found" << std::endl;
         return *values;
     }
     std::cout << "U values not cached; caching..." << std::endl;
@@ -270,6 +271,7 @@ utility::vector3d<double> getUPrimeValues() {
     std::unique_ptr<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
+        std::cout << "U prime values found" << std::endl;
         return *values;
     }
     std::cout << "U prime values not cached; caching..." << std::endl;
@@ -284,6 +286,7 @@ utility::vector3d<double> getDValues() {
     std::unique_ptr<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
+        std::cout << "D values found" << std::endl;
         return *values;
     }
     std::cout << "D values not cached; caching..." << std::endl;
