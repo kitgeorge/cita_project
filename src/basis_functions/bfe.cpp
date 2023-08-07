@@ -16,7 +16,7 @@ double P(int k, int l, int n) {
     double output = (2*k + l + 2*n + 0.5)*GammaHalf(2*k + l + n)
                     /(Gamma(2*k + n + 1)*pow(Gamma(l + 1), 2)*Gamma(n + 1))
                     *GammaHalf(l + n);
-    std::cout << k << ", " << l << ", " << n << ", " << output << std::endl;
+    // std::cout << k << ", " << l << ", " << n << ", " << output << std::endl;
     assert(output > 0);
     output = sqrt(output);
     assert(std::isfinite(output));
@@ -37,13 +37,14 @@ double S(int k, int l, int n) {
 }
 
 LooongDouble alpha_Ka(int k, int l, int n, int i, int j) {
-    // std::cout << k << ", " << l << ", " << n << ", " << i << ", " << j << std::endl;
     LooongDouble output = getPochhammerInt(-k, i)*getPochhammerHalfInt(l, i)
                     *getPochhammerHalfInt(2*k + l + n, j)
                     /(getPochhammerInt(l + 1, i)*getPochhammerInt(1, i)
                       *getPochhammerInt(l + i + 1, j)*getPochhammerHalfInt(l, j) 
                       *getPochhammerInt(1, j))
                     *getPochhammerHalfInt(i + l, j)*getPochhammerInt(-n, j);
+    std::cout << k << ", " << l << ", " << n << ", " << i << ", " << j << ", "
+              << output << std::endl;
     assert(std::isfinite(output.convert_to<double>()));
     return output;
 }
@@ -147,7 +148,7 @@ calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
         for(int j = 0; j < shape[1]; ++j) {
             calculation_functions[i*shape[1] + j]
                 = [i, j, N_R_tabulated, &which] {
-                std::cout << "UUpD: " << i << ", " << j << std::endl;
+                // std::cout << "UUpD: " << i << ", " << j << std::endl;
                 std::vector<double> output(N_R_tabulated);
                 for(int k = 0; k < N_R_tabulated; ++k) {
                     // Calculate central value in R bin
@@ -256,7 +257,6 @@ utility::vector3d<double> getUValues() {
     std::unique_ptr<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
-        std::cout << "U values found" << std::endl;
         return *values;
     }
     std::cout << "U values not cached; caching..." << std::endl;
@@ -271,7 +271,6 @@ utility::vector3d<double> getUPrimeValues() {
     std::unique_ptr<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
-        std::cout << "U prime values found" << std::endl;
         return *values;
     }
     std::cout << "U prime values not cached; caching..." << std::endl;
@@ -286,7 +285,6 @@ utility::vector3d<double> getDValues() {
     std::unique_ptr<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
-        std::cout << "D values found" << std::endl;
         return *values;
     }
     std::cout << "D values not cached; caching..." << std::endl;
