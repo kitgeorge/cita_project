@@ -16,6 +16,7 @@ double P(int k, int l, int n) {
     double output = (2*k + l + 2*n + 0.5)*GammaHalf(2*k + l + n)
                     /(Gamma(2*k + n + 1)*pow(Gamma(l + 1), 2)*Gamma(n + 1))
                     *GammaHalf(l + n);
+    std::cout << k << ", " << l << ", " << n << ", " << output << std::endl;
     assert(output > 0);
     output = sqrt(output);
     assert(std::isfinite(output));
