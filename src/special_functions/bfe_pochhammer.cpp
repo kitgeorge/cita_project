@@ -12,6 +12,8 @@ LooongDouble Pochhammer(double a, int i) {
     for(int j = 0; j < i; ++j) {
         output = output*(a + j);
     }
+    std::cout << "Pochhammer: " << a << ", " << i << ", "
+              << output.convert_to<double>() << std::endl;
     // std::cout << a << ", " << i << ", " << output << std::endl;
     assert(std::isfinite(output.convert_to<double>()));
     return output;
