@@ -1,5 +1,8 @@
 #include "bfe.hpp"
 #include <iostream>
+#include <mutex>
+
+std::mutex mtx;
 
 using namespace std::complex_literals;
 using special_functions::Gamma;
@@ -439,6 +442,7 @@ LooongDouble getAlphaKa(int l, int n, int i, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
+    std::lock_guard<std::mutex> lock(mtx);
     assert(alpha_Ka_values()[l][n][i][j].convert_to<double>() != 0);
 
     return alpha_Ka_values()[l][n][i][j];
