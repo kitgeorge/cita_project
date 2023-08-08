@@ -15,7 +15,9 @@ int main() {
     // utility::writeCsv("../data/alpha_Ka_values.csv", utility::flatten(basis_functions::alpha_Ka_values));
     // utility::writeCsv("../data/beta_Ka_values.csv", utility::flatten(basis_functions::beta_Ka_values));
     // return 0;
-
+    std::cout << "Gammas" << std::endl;
+    special_functions::gamma_int_values();
+    special_functions::gamma_half_int_values();
     std::cout << "Pochhammers" << std::endl;
     special_functions::getPochhammerInt(0, 0);
     special_functions::getPochhammerInt(-1, 0);
