@@ -14,11 +14,14 @@ namespace mp = boost::multiprecision;
 namespace basis_functions {
 
 namespace {
-
+// double only goes up to 1e307 or so
 double P(int k, int l, int n) {
-    double output = (2*k + l + 2*n + 0.5)*GammaHalf(2*k + l + n)
-                    /(Gamma(2*k + n + 1)*pow(Gamma(l + 1), 2)*Gamma(n + 1))
-                    *GammaHalf(l + n);
+    double output = (LooongDouble(2*k + l + 2*n + 0.5)
+                          *LooongDouble(GammaHalf(2*k + l + n))
+                    /(LooongDouble(Gamma(2*k + n + 1))
+                      *LooongDouble(pow(Gamma(l + 1), 2))
+                      *LooongDouble(Gamma(n + 1)))
+                    *LooongDouble(GammaHalf(l + n))).convert_to<double>();
     // mtx.lock();
     // std::cout << k << ", " << l << ", " << n << ", " << output << std::endl;
     // mtx.unlock();
@@ -29,24 +32,28 @@ double P(int k, int l, int n) {
 }
 
 double S(int k, int l, int n) {
-    double output = (2*k + l + 2*n + 0.5)*Gamma(2*k + n + 1)
-                         *GammaHalf(2*k + l + n)
-                         /(GammaHalf(l + n)*Gamma(n + 1));
+    LooongDouble output = LooongDouble(2*k + l + 2*n + 0.5)
+                         *LooongDouble(Gamma(2*k + n + 1))
+                         *LooongDouble(GammaHalf(2*k + l + n))
+                         /(LooongDouble(GammaHalf(l + n))
+                           *LooongDouble(Gamma(n + 1)));
     assert(output != 0);
     output = sqrt(output);
-    output = output*Gamma(k + 1)/(std::numbers::pi*Gamma(2*k + 1)
-                                  *GammaHalf(k));
+    output = output*LooongDouble(Gamma(k + 1))
+                /(LooongDouble(std::numbers::pi)
+                  *LooongDouble(Gamma(2*k + 1))
+                    *LooongDouble(GammaHalf(k)));
     assert(output > 0);
     if(!std::isfinite(output)) {
         mtx.lock();
         std::cout << "S: " << k << ", " << l << ", " << n << ", " 
                   << 2*k + l + 2*n + 0.5 << ", " << Gamma(2*k + n + 1) << ", " 
                   << GammaHalf(2*k + l + n) << ", " << GammaHalf(l + n) << ", "
-                  << Gamma(n + 1) << ", " << output << std::endl;
+                  << Gamma(n + 1) << ", " << output.convert_to<double>() << std::endl;
         mtx.unlock();
     }
     assert(std::isfinite(output));
-    return output;
+    return output.convert_to<double();
 }
 
 LooongDouble alpha_Ka(int k, int l, int n, int i, int j) {
