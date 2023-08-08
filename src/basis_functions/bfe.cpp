@@ -37,6 +37,14 @@ double S(int k, int l, int n) {
     output = output*Gamma(k + 1)/(std::numbers::pi*Gamma(2*k + 1)
                                   *GammaHalf(k));
     assert(output > 0);
+    if(!std::isfinite(output)) {
+        mtx.lock();
+        std::cout << "S: " << k << ", " << l << ", " << n << ", " 
+                  << 2*k + l + 2*n + 0.5 << ", " << Gamma(2*k + n + 1) << ", " 
+                  << GammaHalf(2*k + l + n) << ", " << GammaHalf(l + n) << ", "
+                  << Gamma(n + 1) << std::endl;
+        mtx.unlock();
+    }
     assert(std::isfinite(output));
     return output;
 }
