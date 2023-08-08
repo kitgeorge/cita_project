@@ -463,6 +463,10 @@ double getP(int l, int n) {
     assert(n >= 0);
     assert(n <= n_max);
 
+    if(P_values()[l][n] <= 0) {
+        std::cout << l << ", " << n << ", " << P_values()[l][n] << std::endl;
+    }
+
     assert(P_values()[l][n] > 0);
 
     return P_values()[l][n];
@@ -473,6 +477,10 @@ double getS(int l, int n) {
     assert(l <= l_max);
     assert(n >= 0);
     assert(n <= n_max);
+
+    if(S_values()[l][n] <= 0) {
+        std::cout << l << ", " << n << ", " << S_values()[l][n] << std::endl;
+    }
 
     assert(S_values()[l][n] > 0);
 
