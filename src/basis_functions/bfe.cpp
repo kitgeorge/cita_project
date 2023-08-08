@@ -442,7 +442,6 @@ LooongDouble getAlphaKa(int l, int n, int i, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
-    std::lock_guard<std::mutex> lock(mtx);
     assert(alpha_Ka_values()[l][n][i][j].convert_to<double>() != 0);
 
     return alpha_Ka_values()[l][n][i][j];
@@ -456,7 +455,6 @@ LooongDouble getBetaKa(int l, int n, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
-    std::lock_gaurd<std::mutex> lock(mtx);
     assert(beta_Ka_values()[l][n][j].convert_to<double>() != 0);
 
     return beta_Ka_values()[l][n][j];
@@ -469,6 +467,7 @@ double getP(int l, int n) {
     assert(n <= n_max);
 
     if(P_values()[l][n] <= 0) {
+        std::lock_guard<std::mutex> lock(mtx);
         std::cout << l << ", " << n << ", " << P_values()[l][n] << std::endl;
     }
 
@@ -484,6 +483,7 @@ double getS(int l, int n) {
     assert(n <= n_max);
 
     if(S_values()[l][n] <= 0) {
+        std::lock_guard<std::mutex> lock(mtx);
         std::cout << l << ", " << n << ", " << S_values()[l][n] << std::endl;
     }
 
