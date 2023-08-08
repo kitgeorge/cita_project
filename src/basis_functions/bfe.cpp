@@ -456,6 +456,7 @@ LooongDouble getBetaKa(int l, int n, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
+    std::lock_gaurd<std::mutex> lock(mtx);
     assert(beta_Ka_values()[l][n][j].convert_to<double>() != 0);
 
     return beta_Ka_values()[l][n][j];
