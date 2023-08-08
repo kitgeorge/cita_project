@@ -31,7 +31,7 @@ double S(int k, int l, int n) {
     output = sqrt(output);
     output = output*Gamma(k + 1)/(std::numbers::pi*Gamma(2*k + 1)
                                   *GammaHalf(k));
-    assert(output != 0);
+    assert(output > 0);
     assert(std::isfinite(output));
     return output;
 }
@@ -43,7 +43,9 @@ LooongDouble alpha_Ka(int k, int l, int n, int i, int j) {
                       *getPochhammerInt(l + i + 1, j)*getPochhammerHalfInt(l, j) 
                       *getPochhammerInt(1, j))
                     *getPochhammerHalfInt(i + l, j)*getPochhammerInt(-n, j);
-    assert(std::isfinite(output.convert_to<double>()));
+    double output_double = output.convert_to<double>();
+    assert(std::isfinite(output_double));
+    assert(output_double != 0);
     return output;
 }
 
@@ -62,6 +64,7 @@ LooongDouble beta_Ka(int k, int l, int n, int j) {
                   << ", " << getPochhammerInt(1, j) << std::endl;
     }
     assert(std::isfinite(check));
+    assert(check != 0);
     return output;
 }
 
@@ -425,6 +428,8 @@ LooongDouble getAlphaKa(int l, int n, int i, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
+    assert(alpha_Ka_values()[l][n][i][j].convert_to<double>() != 0);
+
     return alpha_Ka_values()[l][n][i][j];
 }
 
@@ -436,6 +441,8 @@ LooongDouble getBetaKa(int l, int n, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
+    assert(beta_Ka_values()[l][n][j].convert_to<double>() != 0);
+
     return beta_Ka_values()[l][n][j];
 }
 
@@ -445,6 +452,8 @@ double getP(int l, int n) {
     assert(n >= 0);
     assert(n <= n_max);
 
+    assert(P_values()[l][n] > 0);
+
     return P_values()[l][n];
 }
 
@@ -453,6 +462,8 @@ double getS(int l, int n) {
     assert(l <= l_max);
     assert(n >= 0);
     assert(n <= n_max);
+
+    assert(S_values()[l][n] > 0);
 
     return S_values()[l][n];
 }
