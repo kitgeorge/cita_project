@@ -19,7 +19,9 @@ double P(int k, int l, int n) {
     double output = (2*k + l + 2*n + 0.5)*GammaHalf(2*k + l + n)
                     /(Gamma(2*k + n + 1)*pow(Gamma(l + 1), 2)*Gamma(n + 1))
                     *GammaHalf(l + n);
-    // std::cout << k << ", " << l << ", " << n << ", " << output << std::endl;
+    mtx.lock();
+    std::cout << k << ", " << l << ", " << n << ", " << output << std::endl;
+    mtx.unlock();
     assert(output > 0);
     output = sqrt(output);
     assert(std::isfinite(output));
@@ -467,8 +469,9 @@ double getP(int l, int n) {
     assert(n <= n_max);
 
     if(P_values()[l][n] <= 0) {
-        std::lock_guard<std::mutex> lock(mtx);
+        mtx.lock();
         std::cout << l << ", " << n << ", " << P_values()[l][n] << std::endl;
+        mtx.unlock();
     }
 
     assert(P_values()[l][n] > 0);
@@ -483,8 +486,9 @@ double getS(int l, int n) {
     assert(n <= n_max);
 
     if(S_values()[l][n] <= 0) {
-        std::lock_guard<std::mutex> lock(mtx);
+        mtx.lock();
         std::cout << l << ", " << n << ", " << S_values()[l][n] << std::endl;
+        mtx.unlock();
     }
 
     assert(S_values()[l][n] > 0);
