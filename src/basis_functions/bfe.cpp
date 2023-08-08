@@ -37,23 +37,24 @@ double S(int k, int l, int n) {
                          *LooongDouble(GammaHalf(2*k + l + n))
                          /(LooongDouble(GammaHalf(l + n))
                            *LooongDouble(Gamma(n + 1)));
-    assert(output != 0);
+    assert(output.convert_to<double>() != 0);
     output = sqrt(output);
     output = output*LooongDouble(Gamma(k + 1))
                 /(LooongDouble(std::numbers::pi)
                   *LooongDouble(Gamma(2*k + 1))
                     *LooongDouble(GammaHalf(k)));
-    assert(output > 0);
-    if(!std::isfinite(output)) {
+    double output_double = output.convert_to<double>();
+    assert(output_double > 0);
+    if(!std::isfinite(output_double)) {
         mtx.lock();
         std::cout << "S: " << k << ", " << l << ", " << n << ", " 
                   << 2*k + l + 2*n + 0.5 << ", " << Gamma(2*k + n + 1) << ", " 
                   << GammaHalf(2*k + l + n) << ", " << GammaHalf(l + n) << ", "
-                  << Gamma(n + 1) << ", " << output.convert_to<double>() << std::endl;
+                  << Gamma(n + 1) << ", " << output_double << std::endl;
         mtx.unlock();
     }
-    assert(std::isfinite(output));
-    return output.convert_to<double();
+    assert(std::isfinite(output_double));
+    return output_double;
 }
 
 LooongDouble alpha_Ka(int k, int l, int n, int i, int j) {
