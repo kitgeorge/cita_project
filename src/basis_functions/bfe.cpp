@@ -416,6 +416,10 @@ utility::vector2d<double> getPSValues(std::function<double(int, int, int)> which
             for(int j = 0; j < shape[2]; ++j) {
                 output[j] = which(k_Ka, i, j);
             }
+            mtx.lock();
+            std::cout << "PSValues: " << i << ", " << output[0] << ", "
+                      << output[1] << ", " << output[2] << ", " 
+                      << output[3] << ", " << output[4] << std::endl;
             return output;
         };
     }
