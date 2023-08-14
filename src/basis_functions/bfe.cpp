@@ -280,6 +280,9 @@ std::unique_ptr<utility::vector3d<double>> readUUprimeDValues(std::string path) 
                         (utility::reshape(flat, shape));
         }
     }
+    mtx.lock();
+    std::cout << path << ", " << output != nullptr << std::endl;
+    mtx.unlock();
     return std::move(output);
 }
 }
@@ -289,6 +292,9 @@ utility::vector3d<double> getUValues() {
                        + std::to_string(k_Ka) + ".csv";
     std::unique_ptr<utility::vector3d<double>>
     values = readUUprimeDValues(path);
+    mtx.lock();
+    std::cout << path << ", " << values != nullptr << std::endl;
+    mtx.unlock();
     if(values) {
         return *values;
     }
