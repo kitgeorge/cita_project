@@ -37,8 +37,8 @@ int main() {
     std::cout << "D" << std::endl;
     basis_functions::D_values();
 
-    int n_max = 50;
-    int l_max = 50;
+    int n_max = 64;
+    int l_max = 32;
     double R_Ka = 20*Units::kpc;
     int N_R = 1000;
     int N_phi = 1000;
