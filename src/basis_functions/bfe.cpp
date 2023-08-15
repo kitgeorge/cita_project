@@ -589,7 +589,7 @@ BFE::psi(int n, int l) const {
     assert(n >= 0);
     assert(l >= 0);
     return [*this, n, l] (double R, double phi) {
-        double prefactor = getU(n, l, R, R_Ka);
+        double prefactor = tables.getU(n, l, R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
     };
@@ -600,7 +600,7 @@ BFE::rho(int n, int l) const {
     assert(n >= 0);
     assert(l >= 0);
     return [*this, n, l] (double R, double phi) {
-        double prefactor = getD(n, l, R, R_Ka);
+        double prefactor = tables.getD(n, l, R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
     };
@@ -613,8 +613,8 @@ BFE::psi_f(int n, int l) const {
     return [*this, n, l] (double R, double phi) {
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         std::array<std::complex<double>, 2> output;
-        output[0] = -getUPrime(n, l, R, R_Ka)*phase;
-        output[1] = -1i*(double)l/R*getU(n, l, R, R_Ka)*phase;
+        output[0] = -tables.getUPrime(n, l, R, R_Ka)*phase;
+        output[1] = -1i*(double)l/R*tables.getU(n, l, R, R_Ka)*phase;
         return output;
     };
 }

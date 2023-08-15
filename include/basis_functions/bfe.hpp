@@ -86,59 +86,6 @@ class BFETables {
         double getD(int n, int l, double R, double R_Ka) const;
 }
 
-
-
-
-
-
-
-
-namespace {
-static constexpr int k_Ka = 10;
-static constexpr int l_max = 32;
-static constexpr int n_max = 64;
-static constexpr int i_max = 10;
-static constexpr int j_max = 64;
-
-static constexpr int N_R_tabulated = 1e4;
-}
-
-utility::vector4d<LooongDouble> getAlphaKaValues();
-utility::vector3d<LooongDouble> getBetaKaValues();
-utility::vector2d<double> getPValues();
-utility::vector2d<double> getSValues();
-
-utility::vector4d<LooongDouble>& 
-alpha_Ka_values();
-utility::vector3d<LooongDouble>& 
-beta_Ka_values();
-utility::vector2d<double>& 
-P_values();
-utility::vector2d<double>& 
-S_values();
-
-LooongDouble getAlphaKa(int l, int n, int i, int j);
-LooongDouble getBetaKa(int l, int n, int j);
-double getP(int l, int n);
-double getS(int l, int n);
-
-
-utility::vector3d<double> getUValues();
-utility::vector3d<double> getUPrimeValues();
-utility::vector3d<double> getDValues();
-
-utility::vector3d<double> calculateUValues();
-utility::vector3d<double> calculateUPrimeValues();
-utility::vector3d<double> calculateDValues();
-
-utility::vector3d<double>& U_values();
-utility::vector3d<double>& UPrime_values();
-utility::vector3d<double>& D_values();
-
-double getU(int n, int l, double R, double R_Ka);
-double getUPrime(int n, int l, double R, double R_Ka);
-double getD(int n, int l, double R, double R_Ka);
-
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
@@ -161,6 +108,8 @@ class BFE {
     // Integration numbers for scalar product (continuous density)
     const int N_R;
     const int N_phi;
+
+    const BFETables tables;
 
     // double U(int n, int l, double R) const;
     // double UPrime(int n, int l, double R) const;
