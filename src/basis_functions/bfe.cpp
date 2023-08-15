@@ -273,23 +273,13 @@ std::unique_ptr<utility::vector3d<double>> readUUprimeDValues(std::string path) 
     int N_values = shape[0]*shape[1]*shape[2];
     if(utility::fileExists(path)) {
         std::vector<double> flat = utility::readCsv(path);
-        mtx.lock();
-        std::cout << "File exists" << std::endl;
-        std::cout << flat.size() << ", " << N_values << std::endl;
-        mtx.unlock();
         if(flat.size() == N_values) {
             std::unique_ptr<utility::vector3d<double>>
             // Pointers are annoying :-)
-            output = std::make_unique<utility::vector3d<double>>
-                        (utility::reshape(flat, shape));
-            std::cout << "Just made pointer, " << (output != nullptr) << std::endl;
-            std::cout << (*output)[0][0][0] << std::endl;
+            output = std::move(std::make_unique<utility::vector3d<double>>
+                        (utility::reshape(flat, shape)));
         }
     }
-    std::cout << (*output)[0][0][0] << std::endl;
-    mtx.lock();
-    std::cout << path << ", " << (output != nullptr) << std::endl;
-    mtx.unlock();
     return std::move(output);
 }
 }
@@ -299,9 +289,6 @@ utility::vector3d<double> getUValues() {
                        + std::to_string(k_Ka) + ".csv";
     std::unique_ptr<utility::vector3d<double>>
     values = readUUprimeDValues(path);
-    mtx.lock();
-    std::cout << path << ", " << (values != nullptr) << std::endl;
-    mtx.unlock();
     if(values) {
         return *values;
     }
