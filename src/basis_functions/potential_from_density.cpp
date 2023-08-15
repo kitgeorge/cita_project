@@ -12,6 +12,7 @@ PotentialFromDensity(const DensityType& density, const BFE& expansion,
                      trunc_potential(getTruncPotential(expansion)),
                      trunc_force(getTruncForce(expansion)) {}
 
+PotentialFromDensity::
 PotentialFromDensity(const std::vector<std::vector<std::complex<double>>> 
                      coefficients_, const BFE& expansion,
                      int n_max, int l_max): nl_max({n_max, l_max}),
@@ -123,7 +124,7 @@ PotentialFromDensity::getCoefficients() const {
     return coefficients;
 }
 
-std::complex<double> calculateAbsNorm() {
+std::complex<double> PotentialFromDensity::calculateAbsNorm() const {
     double output = 0;
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {

@@ -190,7 +190,7 @@ void BFETables::ensureSubTablesExist() {
         alpha_Ka_values.emplace(getAlphaKaValues());
     }
     if(!beta_Ka_values) {
-        beta_Ka_values.emplace(getAlphaKaValues());
+        beta_Ka_values.emplace(getBetaKaValues());
     }
     if(!P_values) {
         P_values.emplace(getPValues());
@@ -201,8 +201,8 @@ void BFETables::ensureSubTablesExist() {
 }
 
 utility::vector3d<double> 
-BFETables::calculateUUpDValues(const  
-        std::function<double(int, int, int, double)>& which) {
+BFETables::calculateUUpDValues(
+        std::function<double(int, int, int, double)> which) {
     ensureSubTablesExist();
     std::array<int, 3> shape = {n_max + 1, l_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2];
@@ -239,62 +239,29 @@ BFETables::calculateUUpDValues(const
 } 
 
 utility::vector3d<double> BFETables::calculateUValues() {
-    return calculateUUpDValues(U);
+    std::function<double(int, int, int, double)>
+    f = [this] (int k, int n, int l, double R_norm) {
+        return U(k, n, l, R_norm);
+    };
+    return calculateUUpDValues(f);
 }
 
 utility::vector3d<double> BFETables::calculateUPrimeValues() {
-    return calculateUUpDValues(UPrime);
+    std::function<double(int, int, int, double)>
+    f = [this] (int k, int n, int l, double R_norm) {
+        return UPrime(k, n, l, R_norm);
+    };
+    return calculateUUpDValues(f);
 }
 
 utility::vector3d<double> BFETables::calculateDValues() {
-    return calculateUUpDValues(D);
+    std::function<double(int, int, int, double)>
+    f = [this] (int k, int n, int l, double R_norm) {
+        return D(k, n, l, R_norm);
+    };
+    return calculateUUpDValues(f);
 }
 
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-utility::vector4d<LooongDouble>& 
-alpha_Ka_values() {
-    static utility::vector4d<LooongDouble> x;
-    if(x.empty()) {x = getAlphaKaValues();};
-    return x;
-}
-utility::vector3d<LooongDouble>& 
-beta_Ka_values() {
-    static utility::vector3d<LooongDouble> x;
-    if(x.empty()) {x = getBetaKaValues();};
-    return x;
-}
-utility::vector2d<double>& 
-P_values() {
-    static utility::vector2d<double> x;
-    if(x.empty()) {x = getPValues();};
-    return x;
-}
-utility::vector2d<double>& 
-S_values() {
-    static utility::vector2d<double> x;
-    if(x.empty()) {x = getSValues();};
-    return x;
-}
-
-
-utility::vector3d<double>& U_values() {
-    static utility::vector3d<double> x;
-    if(x.empty()) {x = getUValues();};
-    return x;
-}
-utility::vector3d<double>& UPrime_values() {
-    static utility::vector3d<double> x;
-    if(x.empty()) {x = getUPrimeValues();};
-    return x;
-}
-utility::vector3d<double>& D_values() {
-    static utility::vector3d<double> x;
-    if(x.empty()) {x = getDValues();};
-    return x;
-}
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
@@ -524,7 +491,7 @@ double BFETables::getP(int l, int n) const {
     return P_values.value()[l][n];
 }
 
-double getS(int l, int n) const {
+double BFETables::getS(int l, int n) const {
     assert(l >= 0);
     assert(l <= l_max);
     assert(n >= 0);

@@ -66,8 +66,8 @@ class BFETables {
     utility::vector3d<double> getDValues();
 
     utility::vector3d<double> 
-    calculateUUpDValues(const 
-            std::function<double(int, int, int, double)>& which);
+    calculateUUpDValues( 
+            std::function<double(int, int, int, double)> which);
     utility::vector3d<double> calculateUValues();
     utility::vector3d<double> calculateUPrimeValues();
     utility::vector3d<double> calculateDValues();
@@ -84,7 +84,7 @@ class BFETables {
         double getU(int n, int l, double R, double R_Ka) const;
         double getUPrime(int n, int l, double R, double R_Ka) const;
         double getD(int n, int l, double R, double R_Ka) const;
-}
+};
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
