@@ -123,6 +123,16 @@ PotentialFromDensity::getCoefficients() const {
     return coefficients;
 }
 
+std::complex<double> calculateAbsNorm() {
+    double output = 0;
+    for(int i = 0; i <= nl_max[0]; ++i) {
+        for(int j = 0; j <= nl_max[1]; ++j) {
+            output += pow(std::abs(coefficients[i][j]), 2);
+        }
+    }
+    return sqrt(output);
+}
+
 template PotentialFromDensity::
          PotentialFromDensity(const std::function<double(double, double)>& density,
                               const BFE& expansion, int N_n, int N_l);
