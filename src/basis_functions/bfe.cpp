@@ -293,7 +293,7 @@ utility::vector3d<double> getUValues() {
     std::unique_ptr<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     mtx.lock();
-    std::cout << path << ", " << values != nullptr << std::endl;
+    std::cout << path << ", " << (values != nullptr) << std::endl;
     mtx.unlock();
     if(values) {
         return *values;
