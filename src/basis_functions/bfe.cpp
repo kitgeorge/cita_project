@@ -273,6 +273,10 @@ std::unique_ptr<utility::vector3d<double>> readUUprimeDValues(std::string path) 
     int N_values = shape[0]*shape[1]*shape[2];
     if(utility::fileExists(path)) {
         std::vector<double> flat = utility::readCsv(path);
+        mtx.lock();
+        std::cout << "File exists" << std::endl;
+        std::cout << flat.size() << ", " << N_values << std::endl;
+        mtx.unlock();
         if(flat.size() == N_values) {
             std::unique_ptr<utility::vector3d<double>>
             // Pointers are annoying :-)
