@@ -283,10 +283,10 @@ std::unique_ptr<utility::vector3d<double>> readUUprimeDValues(std::string path) 
             output = std::make_unique<utility::vector3d<double>>
                         (utility::reshape(flat, shape));
             std::cout << "Just made pointer, " << (output != nullptr) << std::endl;
-            std::cout << *output[0][0][0] << std::endl;
+            std::cout << (*output)[0][0][0] << std::endl;
         }
     }
-    std::cout << *output[0][0][0] << std::endl;
+    std::cout << (*output)[0][0][0] << std::endl;
     mtx.lock();
     std::cout << path << ", " << (output != nullptr) << std::endl;
     mtx.unlock();
