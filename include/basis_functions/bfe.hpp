@@ -25,6 +25,74 @@ namespace basis_functions {
 
 // All formulae involved (from eg Fouvry 2015) are in an anonymous namespace
 // in bfe.cpp
+
+
+class BFETables {
+    static constexpr int k_Ka = 10;
+    static constexpr int l_max = 32;
+    static constexpr int n_max = 64;
+    static constexpr int i_max = 10;
+    static constexpr int j_max = 64;
+
+    static constexpr int N_R_tabulated = 1e4;
+
+
+    std::optional<utility::vector4d<LooongDouble>> alpha_Ka_values;
+    std::optional<utility::vector3d<LooongDouble>> beta_Ka_values;
+    std::optional<utility::vector2d<double>> P_values;
+    std::optional<utility::vector2d<double>> S_values;
+
+    const utility::vector3d<double> U_values;
+    const utility::vector3d<double> UPrime_values;
+    const utility::vector3d<double> D_values;
+
+    void ensureSubTablesExist();
+    utility::vector4d<LooongDouble> getAlphaKaValues() const;
+    utility::vector3d<LooongDouble> getBetaKaValues() const;
+    utility::vector2d<double> 
+    getPSValues(std::function<double(int, int, int)> which) const;
+    utility::vector2d<double> getPValues() const;
+    utility::vector2d<double> getSValues() const;
+
+    LooongDouble getAlphaKa(int l, int n, int i, int j) const;
+    LooongDouble getBetaKa(int l, int n, int j) const;
+    double getP(int l, int n) const;
+    double getS(int l, int n) const;
+
+    std::optional<utility::vector3d<double>> 
+    readUUprimeDValues(std::string path);
+    utility::vector3d<double> getUValues();
+    utility::vector3d<double> getUPrimeValues();
+    utility::vector3d<double> getDValues();
+
+    utility::vector3d<double> 
+    calculateUUpDValues(const 
+            std::function<double(int, int, int, double)>& which);
+    utility::vector3d<double> calculateUValues();
+    utility::vector3d<double> calculateUPrimeValues();
+    utility::vector3d<double> calculateDValues();
+
+    double U(int k, int n, int l, double R_norm) const;
+    double UPrime(int k, int n, int l, double R_norm) const;
+    double D(int k, int n, int l, double R_norm) const;
+
+
+    public:
+        BFETables();
+        BFETables(const BFETables& old);
+
+        double getU(int n, int l, double R, double R_Ka) const;
+        double getUPrime(int n, int l, double R, double R_Ka) const;
+        double getD(int n, int l, double R, double R_Ka) const;
+}
+
+
+
+
+
+
+
+
 namespace {
 static constexpr int k_Ka = 10;
 static constexpr int l_max = 32;

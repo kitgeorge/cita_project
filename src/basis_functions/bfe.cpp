@@ -105,9 +105,25 @@ LooongDouble beta_Ka(int k, int l, int n, int j) {
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-namespace {
+BFETables::BFETables(): U_values(getUValues()), 
+                        UPrime_values(getUPrimeValues()),
+                        D_values(getDValues()) {
+    // Clear out intermediate tables from memory
+    alpha_Ka_values.reset();
+    beta_Ka_values.reset();
+    P_values.reset();
+    S_values.reset();
+}
 
-double U(int k, int n, int l, double R_norm) {
+BFETables::BFETables(const BFETables& old):
+    U_values(old.U_values), UPrime_values(old.UPrime_values),
+    D_values(old.D_values) {}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+double BFETables::U(int k, int n, int l, double R_norm) const {
     // Missing R_Ka dependence, which will be reapplied later
     LooongDouble output = 0;
     for(int i = 0; i <= k; ++i) {
@@ -127,7 +143,7 @@ double U(int k, int n, int l, double R_norm) {
 
 }
 
-double UPrime(int k, int n, int l, double R_norm) {
+double BFETables::UPrime(int k, int n, int l, double R_norm) const {
     // Again need to reapply R_Ka dependence
     LooongDouble output = 0;
     for(int i = 0; i <= k; ++i) {
@@ -145,7 +161,7 @@ double UPrime(int k, int n, int l, double R_norm) {
     return output_double;
 }
 
-double D(int k, int n, int l, double R_norm) {
+double BFETables::D(int k, int n, int l, double R_norm) const {
     // As above
     LooongDouble output = 0;
     for(int j = 0; j <= n; ++j) {
@@ -165,13 +181,29 @@ double D(int k, int n, int l, double R_norm) {
 
 
 
-}
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
-namespace {
+
+void BFETables::ensureSubTablesExist() {
+    if(!alpha_Ka_values) {
+        alpha_Ka_values.emplace(getAlphaKaValues());
+    }
+    if(!beta_Ka_values) {
+        beta_Ka_values.emplace(getAlphaKaValues());
+    }
+    if(!P_values) {
+        P_values.emplace(getPValues());
+    }
+    if(!S_values) {
+        S_values.emplace(getSValues());
+    }
+}
+
 utility::vector3d<double> 
-calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
+BFETables::calculateUUpDValues(const  
+        std::function<double(int, int, int, double)>& which) {
+    ensureSubTablesExist();
     std::array<int, 3> shape = {n_max + 1, l_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2];
     // Bundling up to prevent under-utilisation of cores
@@ -205,19 +237,19 @@ calculateUUpDValues(const std::function<double(int, int, int, double)>& which) {
     }
     return output;    
 } 
-}
 
-utility::vector3d<double> calculateUValues() {
+utility::vector3d<double> BFETables::calculateUValues() {
     return calculateUUpDValues(U);
 }
 
-utility::vector3d<double> calculateUPrimeValues() {
+utility::vector3d<double> BFETables::calculateUPrimeValues() {
     return calculateUUpDValues(UPrime);
 }
 
-utility::vector3d<double> calculateDValues() {
+utility::vector3d<double> BFETables::calculateDValues() {
     return calculateUUpDValues(D);
 }
+
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -266,8 +298,8 @@ utility::vector3d<double>& D_values() {
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-namespace {
-std::optional<utility::vector3d<double>> readUUprimeDValues(std::string path) {
+std::optional<utility::vector3d<double>> 
+BFETables::readUUprimeDValues(std::string path) {
     std::optional<utility::vector3d<double>> output;
     std::array<int, 3> shape = {l_max + 1, n_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2];
@@ -279,9 +311,8 @@ std::optional<utility::vector3d<double>> readUUprimeDValues(std::string path) {
     }
     return output;
 }
-}
 
-utility::vector3d<double> getUValues() {
+utility::vector3d<double> BFETables::getUValues() {
     std::string path = "../cache/basis_functions/u_values_k=" 
                        + std::to_string(k_Ka) + ".csv";
     std::optional<utility::vector3d<double>>
@@ -295,7 +326,7 @@ utility::vector3d<double> getUValues() {
     return output;
 }
 
-utility::vector3d<double> getUPrimeValues() {
+utility::vector3d<double> BFETables::getUPrimeValues() {
     std::string path = "../cache/basis_functions/u_prime_values_k=" 
                        + std::to_string(k_Ka) + ".csv";
     std::optional<utility::vector3d<double>>
@@ -309,7 +340,7 @@ utility::vector3d<double> getUPrimeValues() {
     return output;
 }
 
-utility::vector3d<double> getDValues() {
+utility::vector3d<double> BFETables::getDValues() {
     std::string path = "../cache/basis_functions/d_values_k=" 
                        + std::to_string(k_Ka) + ".csv";
     std::optional<utility::vector3d<double>>
@@ -324,26 +355,27 @@ utility::vector3d<double> getDValues() {
 }
 
 
+
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-double getU(int n, int l, double R, double R_Ka) {
+double BFETables::getU(int n, int l, double R, double R_Ka) const {
     int R_bin = R/R_Ka*N_R_tabulated;
-    double output = U_values()[n][l][R_bin];
+    double output = U_values[n][l][R_bin];
     output /= pow(R_Ka, 0.5);
     return output;
 }
 
-double getUPrime(int n, int l, double R, double R_Ka) {
+double BFETables::getUPrime(int n, int l, double R, double R_Ka) const {
     int R_bin = R/R_Ka*N_R_tabulated;
-    double output = UPrime_values()[n][l][R_bin];
+    double output = UPrime_values[n][l][R_bin];
     output /= pow(R_Ka, 1.5);
     return output;
 }
 
-double getD(int n, int l, double R, double R_Ka) {
+double BFETables::getD(int n, int l, double R, double R_Ka) const {
     int R_bin = R/R_Ka*N_R_tabulated;
-    double output = D_values()[n][l][R_bin];
+    double output = D_values[n][l][R_bin];
     output /= pow(R_Ka, 1.5);
     return output;
 }
@@ -351,7 +383,7 @@ double getD(int n, int l, double R, double R_Ka) {
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-utility::vector4d<LooongDouble> getAlphaKaValues() {
+utility::vector4d<LooongDouble> BFETables::getAlphaKaValues() const {
     std::array<int, 4> shape = {l_max + 1, n_max + 1,
                                 i_max + 1, j_max + 1};
     int N_values = shape[0]*shape[1]*shape[2]*shape[3];
@@ -386,7 +418,7 @@ utility::vector4d<LooongDouble> getAlphaKaValues() {
     return output;
 }
 
-utility::vector3d<LooongDouble> getBetaKaValues() {
+utility::vector3d<LooongDouble> BFETables::getBetaKaValues() const {
     std::array<int, 3> shape = {l_max + 1, n_max + 1,
                                 j_max + 1};
     int N_values = shape[0]*shape[1]*shape[2];
@@ -416,8 +448,9 @@ utility::vector3d<LooongDouble> getBetaKaValues() {
     }
     return output;
 }
-namespace {
-utility::vector2d<double> getPSValues(std::function<double(int, int, int)> which) {
+
+utility::vector2d<double> 
+BFETables::getPSValues(std::function<double(int, int, int)> which) const {
     std::array<int, 2> shape = {l_max + 1, n_max + 1};
     int N_values = shape[0]*shape[1];
     std::vector<std::function<std::vector<double>()>> 
@@ -436,18 +469,17 @@ utility::vector2d<double> getPSValues(std::function<double(int, int, int)> which
     output = multithreading::executeInParallel(calculation_functions);
     return output;
 }
-}
 
-utility::vector2d<double> getPValues() {
+utility::vector2d<double> BFETables::getPValues() const {
     return getPSValues(P);
 }
 
-utility::vector2d<double> getSValues() {
+utility::vector2d<double> BFETables::getSValues() const {
     return getPSValues(S);
 }
 
 
-LooongDouble getAlphaKa(int l, int n, int i, int j) {
+LooongDouble BFETables::getAlphaKa(int l, int n, int i, int j) const {
     assert(l >= 0);
     assert(l <= l_max);
     assert(n >= 0);
@@ -457,12 +489,12 @@ LooongDouble getAlphaKa(int l, int n, int i, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
-    assert(alpha_Ka_values()[l][n][i][j].convert_to<double>() != 0);
+    assert(alpha_Ka_values.value()[l][n][i][j].convert_to<double>() != 0);
 
-    return alpha_Ka_values()[l][n][i][j];
+    return alpha_Ka_values.value()[l][n][i][j];
 }
 
-LooongDouble getBetaKa(int l, int n, int j) {
+LooongDouble BFETables::getBetaKa(int l, int n, int j) const {
     assert(l >= 0);
     assert(l <= l_max);
     assert(n >= 0);
@@ -470,43 +502,43 @@ LooongDouble getBetaKa(int l, int n, int j) {
     assert(j >= 0);
     assert(j <= j_max);
 
-    assert(beta_Ka_values()[l][n][j].convert_to<double>() != 0);
+    assert(beta_Ka_values.value()[l][n][j].convert_to<double>() != 0);
 
-    return beta_Ka_values()[l][n][j];
+    return beta_Ka_values.value()[l][n][j];
 }
 
-double getP(int l, int n) {
+double BFETables::getP(int l, int n) const {
     assert(l >= 0);
     assert(l <= l_max);
     assert(n >= 0);
     assert(n <= n_max);
 
-    if(P_values()[l][n] <= 0) {
+    if(P_values.value()[l][n] <= 0) {
         mtx.lock();
-        std::cout << l << ", " << n << ", " << P_values()[l][n] << std::endl;
+        std::cout << l << ", " << n << ", " << P_values.value()[l][n] << std::endl;
         mtx.unlock();
     }
 
-    assert(P_values()[l][n] > 0);
+    assert(P_values.value()[l][n] > 0);
 
-    return P_values()[l][n];
+    return P_values.value()[l][n];
 }
 
-double getS(int l, int n) {
+double getS(int l, int n) const {
     assert(l >= 0);
     assert(l <= l_max);
     assert(n >= 0);
     assert(n <= n_max);
 
-    if(S_values()[l][n] <= 0) {
+    if(S_values.value()[l][n] <= 0) {
         mtx.lock();
-        std::cout << l << ", " << n << ", " << S_values()[l][n] << std::endl;
+        std::cout << l << ", " << n << ", " << S_values.value()[l][n] << std::endl;
         mtx.unlock();
     }
 
-    assert(S_values()[l][n] > 0);
+    assert(S_values.value()[l][n] > 0);
 
-    return S_values()[l][n];
+    return S_values.value()[l][n];
 }
 
 ////////////////////////////////////////////////////////////

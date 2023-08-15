@@ -57,8 +57,9 @@ class PotentialFromDensity {
         // Calculate norm from coefficients. This might give us an idea
         // of how well the potential is represented byt the BFE with this
         // number of terms. (eg. if the norm remains constant during N-body,
-        // that's likely a good sign).
-        std::complex<double> calculateNorm() const;
+        // that's likely a good sign). Norm will be imaginary (for some reason)
+        // so we return its magnitude
+        std::complex<double> calculateAbsNorm() const;
 };
 
 
