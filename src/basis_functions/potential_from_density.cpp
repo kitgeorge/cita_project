@@ -12,6 +12,14 @@ PotentialFromDensity(const DensityType& density, const BFE& expansion,
                      trunc_potential(getTruncPotential(expansion)),
                      trunc_force(getTruncForce(expansion)) {}
 
+PotentialFromDensity(const std::vector<std::vector<std::complex<double>>> 
+                     coefficients_, const BFE& expansion,
+                     int n_max, int l_max): nl_max({n_max, l_max}),
+                     coefficients(coefficients_),
+                     trunc_density(getTruncDensity(expansion)),
+                     trunc_potential(getTruncPotential(expansion)),
+                     trunc_force(getTruncForce(expansion)) {}
+
 template <typename DensityType>
 std::vector<std::vector<std::complex<double>>> 
 PotentialFromDensity::
