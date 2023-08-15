@@ -267,30 +267,27 @@ utility::vector3d<double>& D_values() {
 ////////////////////////////////////////////////////////////
 
 namespace {
-std::unique_ptr<utility::vector3d<double>> readUUprimeDValues(std::string path) {
-    std::unique_ptr<utility::vector3d<double>> output(nullptr);
+std::optional<utility::vector3d<double>> readUUprimeDValues(std::string path) {
+    std::optional<utility::vector3d<double>> output;
     std::array<int, 3> shape = {l_max + 1, n_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2];
     if(utility::fileExists(path)) {
         std::vector<double> flat = utility::readCsv(path);
         if(flat.size() == N_values) {
-            std::unique_ptr<utility::vector3d<double>>
-            // Pointers are annoying :-)
-            output = std::move(std::make_unique<utility::vector3d<double>>
-                        (utility::reshape(flat, shape)));
+            output.emplace(utility::reshape(flat, shape));
         }
     }
-    return std::move(output);
+    return output;
 }
 }
 
 utility::vector3d<double> getUValues() {
     std::string path = "../cache/basis_functions/u_values_k=" 
                        + std::to_string(k_Ka) + ".csv";
-    std::unique_ptr<utility::vector3d<double>>
+    std::optional<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
-        return *values;
+        return values.value();
     }
     std::cout << "U values not cached; caching..." << std::endl;
     utility::vector3d<double> output = calculateUValues();
@@ -301,10 +298,10 @@ utility::vector3d<double> getUValues() {
 utility::vector3d<double> getUPrimeValues() {
     std::string path = "../cache/basis_functions/u_prime_values_k=" 
                        + std::to_string(k_Ka) + ".csv";
-    std::unique_ptr<utility::vector3d<double>>
+    std::optional<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
-        return *values;
+        return *values.value();
     }
     std::cout << "U prime values not cached; caching..." << std::endl;
     utility::vector3d<double> output = calculateUPrimeValues();
@@ -315,10 +312,10 @@ utility::vector3d<double> getUPrimeValues() {
 utility::vector3d<double> getDValues() {
     std::string path = "../cache/basis_functions/d_values_k=" 
                        + std::to_string(k_Ka) + ".csv";
-    std::unique_ptr<utility::vector3d<double>>
+    std::optional<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
-        return *values;
+        return *values.value();
     }
     std::cout << "D values not cached; caching..." << std::endl;
     utility::vector3d<double> output = calculateDValues();
