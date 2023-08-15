@@ -281,7 +281,7 @@ std::unique_ptr<utility::vector3d<double>> readUUprimeDValues(std::string path) 
         }
     }
     mtx.lock();
-    std::cout << path << ", " << output != nullptr << std::endl;
+    std::cout << path << ", " << (output != nullptr) << std::endl;
     mtx.unlock();
     return std::move(output);
 }
