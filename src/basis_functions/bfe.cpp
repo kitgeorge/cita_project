@@ -301,7 +301,7 @@ utility::vector3d<double> getUPrimeValues() {
     std::optional<utility::vector3d<double>>
     values = readUUprimeDValues(path);
     if(values) {
-        return *values.value();
+        return values.value();
     }
     std::cout << "U prime values not cached; caching..." << std::endl;
     utility::vector3d<double> output = calculateUPrimeValues();
