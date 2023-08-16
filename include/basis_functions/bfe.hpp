@@ -36,6 +36,8 @@ class BFETables {
 
     static constexpr int N_R_tabulated = 1e4;
 
+    std::optional<special_functions::GammaTables> gtables;
+    std::optional<special_functions::PochhammerTables> ptables;
 
     std::optional<utility::vector4d<LooongDouble>> alpha_Ka_values;
     std::optional<utility::vector3d<LooongDouble>> beta_Ka_values;
@@ -53,6 +55,11 @@ class BFETables {
     getPSValues(std::function<double(int, int, int)> which) const;
     utility::vector2d<double> getPValues() const;
     utility::vector2d<double> getSValues() const;
+
+    double P(int k, int l, int n) const;
+    double S(int k, int l, int n) const;
+    LooongDouble alpha_Ka(int k, int l, int n, int i, int j) const;
+    LooongDouble beta_Ka(int k, int l, int n, int j) const;
 
     LooongDouble getAlphaKa(int l, int n, int i, int j) const;
     LooongDouble getBetaKa(int l, int n, int j) const;

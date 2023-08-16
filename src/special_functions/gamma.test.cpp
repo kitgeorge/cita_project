@@ -4,11 +4,13 @@
 using namespace special_functions;
 
 TEST(GammaFunctionTest, CheckIntegers) {
-    ASSERT_EQ(Gamma(10), 362880);
+    GammaTables tables;
+    ASSERT_EQ(tables.Gamma(10), 362880);
 }
 
 TEST(GammaFunctionTest, CheckHalfIntegers) {
-    ASSERT_LT(std::abs(GammaHalf(10)/1.13328e6 - 1), 1e-3);
+    GammaTables tables;
+    ASSERT_LT(std::abs(tables.GammaHalf(10)/1.13328e6 - 1), 1e-3);
 }
 
 // TEST(PochhammerTest, CheckIntegers) {

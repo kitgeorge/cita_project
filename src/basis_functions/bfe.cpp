@@ -5,23 +5,18 @@
 std::mutex mtx;
 
 using namespace std::complex_literals;
-using special_functions::Gamma;
-using special_functions::GammaHalf;
-using special_functions::getPochhammerInt;
-using special_functions::getPochhammerHalfInt;
 namespace mp = boost::multiprecision;
 
 namespace basis_functions {
 
-namespace {
 // double only goes up to 1e307 or so
-double P(int k, int l, int n) {
+double BFETables::P(int k, int l, int n) const {
     double output = (LooongDouble(2*k + l + 2*n + 0.5)
-                          *LooongDouble(GammaHalf(2*k + l + n))
-                    /(LooongDouble(Gamma(2*k + n + 1))
-                      *LooongDouble(pow(Gamma(l + 1), 2))
-                      *LooongDouble(Gamma(n + 1)))
-                    *LooongDouble(GammaHalf(l + n))).convert_to<double>();
+                          *LooongDouble(gtables.value().GammaHalf(2*k + l + n))
+                    /(LooongDouble(gtables.value().Gamma(2*k + n + 1))
+                      *LooongDouble(pow(gtables.value().Gamma(l + 1), 2))
+                      *LooongDouble(gtables.value().Gamma(n + 1)))
+                    *LooongDouble(gtables.value().GammaHalf(l + n))).convert_to<double>();
     // mtx.lock();
     // std::cout << k << ", " << l << ", " << n << ", " << output << std::endl;
     // mtx.unlock();
@@ -31,39 +26,39 @@ double P(int k, int l, int n) {
     return output;
 }
 
-double S(int k, int l, int n) {
+double BFETables::S(int k, int l, int n) const {
     LooongDouble output = LooongDouble(2*k + l + 2*n + 0.5)
-                         *LooongDouble(Gamma(2*k + n + 1))
-                         *LooongDouble(GammaHalf(2*k + l + n))
-                         /(LooongDouble(GammaHalf(l + n))
-                           *LooongDouble(Gamma(n + 1)));
+                         *LooongDouble(gtables.value().Gamma(2*k + n + 1))
+                         *LooongDouble(gtables.value().GammaHalf(2*k + l + n))
+                         /(LooongDouble(gtables.value().GammaHalf(l + n))
+                           *LooongDouble(gtables.value().Gamma(n + 1)));
     assert(output.convert_to<double>() != 0);
     output = sqrt(output);
-    output = output*LooongDouble(Gamma(k + 1))
+    output = output*LooongDouble(gtables.value().Gamma(k + 1))
                 /(LooongDouble(std::numbers::pi)
-                  *LooongDouble(Gamma(2*k + 1))
-                    *LooongDouble(GammaHalf(k)));
+                  *LooongDouble(gtables.value().Gamma(2*k + 1))
+                    *LooongDouble(gtables.value().GammaHalf(k)));
     double output_double = output.convert_to<double>();
     assert(output_double > 0);
     if(!std::isfinite(output_double)) {
         mtx.lock();
         std::cout << "S: " << k << ", " << l << ", " << n << ", " 
-                  << 2*k + l + 2*n + 0.5 << ", " << Gamma(2*k + n + 1) << ", " 
-                  << GammaHalf(2*k + l + n) << ", " << GammaHalf(l + n) << ", "
-                  << Gamma(n + 1) << ", " << output_double << std::endl;
+                  << 2*k + l + 2*n + 0.5 << ", " << gtables.value().Gamma(2*k + n + 1) << ", " 
+                  << gtables.value().GammaHalf(2*k + l + n) << ", " << gtables.value().GammaHalf(l + n) << ", "
+                  << gtables.value().Gamma(n + 1) << ", " << output_double << std::endl;
         mtx.unlock();
     }
     assert(std::isfinite(output_double));
     return output_double;
 }
 
-LooongDouble alpha_Ka(int k, int l, int n, int i, int j) {
-    LooongDouble output = getPochhammerInt(-k, i)*getPochhammerHalfInt(l, i)
-                    *getPochhammerHalfInt(2*k + l + n, j)
-                    /(getPochhammerInt(l + 1, i)*getPochhammerInt(1, i)
-                      *getPochhammerInt(l + i + 1, j)*getPochhammerHalfInt(l, j) 
-                      *getPochhammerInt(1, j))
-                    *getPochhammerHalfInt(i + l, j)*getPochhammerInt(-n, j);
+LooongDouble BFETables::alpha_Ka(int k, int l, int n, int i, int j) const {
+    LooongDouble output = ptables.value().getPochhammerInt(-k, i)*ptables.value().getPochhammerHalfInt(l, i)
+                    *ptables.value().getPochhammerHalfInt(2*k + l + n, j)
+                    /(ptables.value().getPochhammerInt(l + 1, i)*ptables.value().getPochhammerInt(1, i)
+                      *ptables.value().getPochhammerInt(l + i + 1, j)*ptables.value().getPochhammerHalfInt(l, j) 
+                      *ptables.value().getPochhammerInt(1, j))
+                    *ptables.value().getPochhammerHalfInt(i + l, j)*ptables.value().getPochhammerInt(-n, j);
     double output_double = output.convert_to<double>();
     // if(output_double == 0) {
     //     std::cout << k << ", " << l << ", " << n << ", " << i << ", " << j << ", "
@@ -81,11 +76,11 @@ LooongDouble alpha_Ka(int k, int l, int n, int i, int j) {
     return output;
 }
 
-LooongDouble beta_Ka(int k, int l, int n, int j) {
-    LooongDouble output = getPochhammerHalfInt(2*k + l + n, j)*getPochhammerInt(k + 1, j)
-                    *getPochhammerInt(-n, j)
-                    /(getPochhammerInt(2*k + 1, j)*getPochhammerHalfInt(k, j)
-                      *getPochhammerInt(1, j));
+LooongDouble BFETables::beta_Ka(int k, int l, int n, int j) const {
+    LooongDouble output = ptables.value().getPochhammerHalfInt(2*k + l + n, j)*ptables.value().getPochhammerInt(k + 1, j)
+                    *ptables.value().getPochhammerInt(-n, j)
+                    /(ptables.value().getPochhammerInt(2*k + 1, j)*ptables.value().getPochhammerHalfInt(k, j)
+                      *ptables.value().getPochhammerInt(1, j));
     double check = output.convert_to<double>();
     // if(!std::isfinite(check)) {
     //     std::cout << k << ", " << l << ", " << n << ", " << j << ", " << output << std::endl;
@@ -100,7 +95,6 @@ LooongDouble beta_Ka(int k, int l, int n, int j) {
     return output;
 }
 
-}
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -109,6 +103,8 @@ BFETables::BFETables(): U_values(getUValues()),
                         UPrime_values(getUPrimeValues()),
                         D_values(getDValues()) {
     // Clear out intermediate tables from memory
+    gtables.reset();
+    ptables.reset();
     alpha_Ka_values.reset();
     beta_Ka_values.reset();
     P_values.reset();
@@ -186,16 +182,28 @@ double BFETables::D(int k, int n, int l, double R_norm) const {
 ////////////////////////////////////////////////////////////
 
 void BFETables::ensureSubTablesExist() {
+    if(!gtables) {
+        std::cout << "Calculating Gammas" << std::endl;
+        gtables.emplace();
+    }
+    if(!ptables) {
+        std::cout << "Calculating Pochhammers" << std::endl;
+        ptables.emplace();
+    }
     if(!alpha_Ka_values) {
+        std::cout << "Calculating alpha_Ka" << std::endl;
         alpha_Ka_values.emplace(getAlphaKaValues());
     }
     if(!beta_Ka_values) {
+        std::cout << "Calculating beta_Ka" << std::endl;
         beta_Ka_values.emplace(getBetaKaValues());
     }
     if(!P_values) {
+        std::cout << "Calculating P" << std::endl;
         P_values.emplace(getPValues());
     }
     if(!S_values) {
+        std::cout << "Calculating S" << std::endl;
         S_values.emplace(getSValues());
     }
 }
@@ -204,6 +212,7 @@ utility::vector3d<double>
 BFETables::calculateUUpDValues(
         std::function<double(int, int, int, double)> which) {
     ensureSubTablesExist();
+    std::cout << "Calculating U/U_prime/D" << std::endl;
     std::array<int, 3> shape = {n_max + 1, l_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2];
     // Bundling up to prevent under-utilisation of cores
@@ -359,7 +368,7 @@ utility::vector4d<LooongDouble> BFETables::getAlphaKaValues() const {
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             calculation_functions[i*shape[1] + j]
-                = [i, j, shape] () {
+                = [i, j, shape, this] () {
                 std::vector<LooongDouble> output(shape[2]*shape[3]);
                 for(int k = 0; k < shape[2]; ++k) {
                     for(int l = 0; l < shape[3]; ++l) {
@@ -394,7 +403,7 @@ utility::vector3d<LooongDouble> BFETables::getBetaKaValues() const {
     for(int i = 0; i < shape[0]; ++i) {
         for(int j = 0; j < shape[1]; ++j) {
             calculation_functions[i*shape[1] + j]
-                = [i, j, shape] () {
+                = [i, j, shape, this] () {
                 std::vector<LooongDouble> output(shape[2]);
                 for(int k = 0; k < shape[2]; ++k) {
                         output[k] = beta_Ka(k_Ka, i, j, k);
@@ -438,11 +447,19 @@ BFETables::getPSValues(std::function<double(int, int, int)> which) const {
 }
 
 utility::vector2d<double> BFETables::getPValues() const {
-    return getPSValues(P);
+    std::function<double(int, int, int)>
+    f = [this] (int k, int l, int n) {
+        return P(k, l, n);
+    };
+    return getPSValues(f);
 }
 
 utility::vector2d<double> BFETables::getSValues() const {
-    return getPSValues(S);
+    std::function<double(int, int, int)>
+    f = [this] (int k, int l, int n) {
+        return S(k, l, n);
+    };
+    return getPSValues(f);
 }
 
 
