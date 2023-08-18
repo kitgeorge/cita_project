@@ -55,7 +55,7 @@ class TaperedDF {
         std::function<double(double, double)>
         calculateTaperedDF() const;
 
-        double tdfFunction(double E, double L);
+        double tdfFunction(double E, double L) const;
 
     public:
         /**
@@ -82,7 +82,7 @@ class TaperedDF {
 
         /// Tapered DF, f(E, L), to be sampled
         std::function<double(double, double)> getTaperedDF() const;
-}
+};
 
 
 }

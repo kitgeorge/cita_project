@@ -47,5 +47,26 @@ getDFSampleEL(std::function<double(double, double)> df,
     return output;
 }
 
+std::array<std::array<double, 2>, 2>
+getDFSampleViaEL(std::function<double(double, double)> df,
+                 std::array<std::array<double, 2>, 2> E_L_bounds,
+                 potential::AxsymFuncs axsym_potential 
+                 double u_max, int N_u_intervals, int N_u_iterate) {
+    std::array<double, 2>
+    sample_E_L = df::getDFSampleEL(dehnen_df, E_L_bounds);
+    double angle_normalisation = RAND_MAX*2*std::numbers::pi
+    double theta_R = (double)std::rand()/angle_normalisation;
+    actions::ThetaRIntegrator integrator(axsym_potential, sample_E_L[0],
+                                         sample_E_L[1], u_max,
+                                         N_intervals, N_iterate);
+    std::array<std::array<double, 2>, 2> output;
+    std::array<double, 2> R_coords = integrator.getCoords(theta_R);
+    output[0][0] = R_coords[0];
+    output[1][0] = R_coords[1];
+    output[0][1] = (double)std::rand()/angle_normalisation;
+    output[1][1] = sample_E_L[1]/output[0][0];
+    return output;    
+}
+
 
 }

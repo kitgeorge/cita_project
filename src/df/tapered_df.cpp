@@ -10,14 +10,12 @@ TaperedDF::TaperedDF(double v_c_, double R_0_, double active_fraction,
     v_c(v_c_), R_0(R_0_), mestel_potential(potential::getMestel(v_c, R_0)),
     E_bounds(getEBounds(cutoff_radii)), L_bounds(getLBounds(cutoff_radii)),
     dehnen_df(calculateDehnenDF(active_fraction, target_Q)),
-    taper_radii(taper_radii_), taper_indices(taper_indices_),
-    tapered_df(calculateTaperedDF()) {}
+    taper_radii(taper_radii_), taper_indices(taper_indices_) {}
 
 TaperedDF::TaperedDF(const TaperedDF& old):v_c(old.v_c), R_0(old.R_0),
     mestel_potential(old.mestel_potential),
     E_bounds(old.E_bounds), L_bounds(old.L_bounds), dehnen_df(old.dehnen_df),
-    taper_radii(old.taper_radii), taper_indices(old.taper_indices),
-    tapered_df(old.tapered_df) {}
+    taper_radii(old.taper_radii), taper_indices(old.taper_indices) {}
 
 std::array<double, 2>
 TaperedDF::getEBounds(std::array<double, 2> cutoff_radii) const {
@@ -66,7 +64,7 @@ double TaperedDF::outerTaper(double L) const {
     return 1/denominator;
 }
 
-double tdfFunction(double E, double L) const {
+double TaperedDF::tdfFunction(double E, double L) const {
     return innerTaper(L)*outerTaper(L)*dehnen_df(E, L);
 }
 
