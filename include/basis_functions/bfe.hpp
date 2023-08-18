@@ -16,17 +16,39 @@ using LooongDouble = boost::multiprecision::mpf_float_1000;
 
 namespace basis_functions {
 
-// Basis function coefficients tabulated
-// I regret tabulating this all globally. If the basis functions
-// are already cached then it's not a problem, but if you have to 
-// calculate them then the alpha_Ka values etc likely stay in memory,
-// meaning you probably have to abort and start again (which is
-// untidy even if not terribly inconvenient)
-
 // All formulae involved (from eg Fouvry 2015) are in an anonymous namespace
 // in bfe.cpp
 
-
+/**
+ * Tabulates basis functions in R
+ *
+ * R-dependent parts of the Kalnajs basis functions for a 2D disc 
+ * (notation here follows Fouvry 2015) are tabulated. They are either
+ * read from a text file, or calculated (which involves temporary 
+ * tabulation of other functions) and cached in said text file for 
+ * future use.
+ *
+ * @note maximum values of indices n, l and sum indices i, j, as
+ * well as the value of basis label k_Ka and the number of R
+ * values to tabulate over, are set in the class declaration as
+ * constants. eg. 0 <= n <= n_max. l is non-negative here, but
+ * negative-l coefficients are simply the complex conjugates of
+ * their positive-l counterparts.
+ *
+ * @note values cached in text files in "../cache/basis_functions/"
+ *
+ * @note The alpha_Ka values and beta_Ka values are used as
+ * coefficients of very high-order polynomials. I've so far taken
+ * a brute-force approach, calculating these values to high precision
+ * as 1000-digit LooongDoubles. However, if the instability to 
+ * precision here arises only from the high-order polynomials,
+ * we could perhaps get around this by putting the polynomials in 
+ * Lagrange form. However, the alpha_Ka and beta_Ka values themselves
+ * may be dramatically varying in magnitude and so require high precision
+ * to cancel correctly (as they are functions of Pochhammer symbols).
+ * I should probably investigate at some point to see if we can get
+ * rid of the brute-force approach.
+ */
 class BFETables {
     static constexpr int k_Ka = 10;
     static constexpr int l_max = 32;
@@ -85,11 +107,49 @@ class BFETables {
 
 
     public:
+        /**
+         * Tabulates functions
+         *
+         * Checks "../cache/basis_functions/" for cached basis function
+         * files (and checks that each is of the right length for our
+         * chosen parameters). If so, it reads them and tabulates. 
+         * Otherwise, it calculates and tabulates, and writes to these
+         * files (overwriting if applicable).
+         *
+         * @note intermediate functions are tabulated in std::optional
+         * member variables, which are afterwards cleared to free up
+         * memory (in case usage was excessive).
+         */
         BFETables();
+        /**
+         * Copy constructor
+         *
+         * Copies tabulated functions (but leaves alone std::optional
+         * tables). 
+         *
+         * @param old copied object
+         */
         BFETables(const BFETables& old);
 
+        /**
+         * Retrieves a U function value from table for a given R
+         *
+         * @param n n-index of U basis function
+         * @param l l-index of U basis function
+         * @param R value of R to retrieve value for
+         * @param R_Ka R_Ka value chosen for basis function set
+         * (perhaps this last one should be refactored as a member variable
+         * as it helps define all the basis functions)
+         *
+         * @note U values are tabulated over N_R_tabulated bins in R,
+         * between 0 and R_Ka. The central U value of each bin is
+         * tabulated. This function retrieves that central U value
+         * for the bin which contains R (there is no interpolation).
+         */
         double getU(int n, int l, double R, double R_Ka) const;
+        /// Retrieves a U_prime value, as getU does U
         double getUPrime(int n, int l, double R, double R_Ka) const;
+        /// Retrieves a D value, as getU does U
         double getD(int n, int l, double R, double R_Ka) const;
 };
 
