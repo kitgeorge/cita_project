@@ -2,6 +2,7 @@
 #include "force.hpp"
 #include "coords.hpp"
 #include "add_functions.hpp"
+#include "potential_from_density.hpp"
 #include <array>
 #include <assert.h>
 
@@ -27,13 +28,20 @@ struct PotentialFuncs {
                    std::function<std::array<double, 2>(double, double, double)> 
                    polar_force_);
 
+    PotentialFuncs(const basis_functions::PotentialFromDensity& p);
+
     PotentialFuncs(const std::vector<PotentialFuncs>& p);
 
     PotentialFuncs(const PotentialFuncs& old);
 
     void operator +=(const PotentialFuncs& p);
+    PotentialFuncs operator *(const double& factor);
 
     void multiply(std::function<double(double, double, double)> envelope);
+    private:
+        std::function<std::array<double, 2>(double, double, double)>
+        getCartesianForce(std::function<std::array<double, 2>(double, double, double)>
+                          polar_force);
 };
 
 }

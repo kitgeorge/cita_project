@@ -17,12 +17,11 @@ PotentialFuncs::cartesian_force(double R, double phi, double t) const {
     return utility::addFunctions(cartesian_forces, R, phi, t);
 }
 
+std::function<std::array<double, 2>(double, double, double)>
 PotentialFuncs::
-PotentialFuncs(std::function<double(double, double, double)> potential,
-               std::function<std::array<double, 2>(double, double, double)>
-               polar_force):
-               potentials({potential}), polar_forces({polar_force}) {
-    cartesian_forces = {[polar_force](double x, double y, double t) {
+getCartesianForce(std::function<std::array<double, 2>(double, double, double)>
+                  polar_force) {
+    return [polar_force](double x, double y, double t) {
         std::array<std::array<double, 2>, 2>
         coords = {{ {{x, y}}, {{0, 0}} }};
         vrs::Coords2d pos(coords, 0);
@@ -32,8 +31,24 @@ PotentialFuncs(std::function<double(double, double, double)> potential,
                                                 pos.polar[0][1], t)[1]};
         f = vrs::getCartesianVector2d(pos.polar[0], f);
         return f;
-    }};        
+    };
 }
+
+PotentialFuncs::
+PotentialFuncs(std::function<double(double, double, double)> potential,
+               std::function<std::array<double, 2>(double, double, double)>
+               polar_force):
+               potentials({potential}), polar_forces({polar_force}) ,
+               cartesian_forces({getCartesianForce(polar_force)}) {}        
+
+PotentialFuncs::PotentialFuncs(const basis_functions::PotentialFromDensity& p):
+    potentials({[p] (double R, double phi, double t) {
+        return p.trunc_potential(R, phi);
+    }}),
+    polar_forces({[p] (double R, double phi, double t) {
+        return p.trunc_force(R, phi);
+    }}),
+    cartesian_forces({getCartesianForce(polar_forces[0])}) {}
 
 PotentialFuncs::PotentialFuncs(const PotentialFuncs& old) {
     potentials = old.potentials;
@@ -65,6 +80,19 @@ void PotentialFuncs::operator +=(const PotentialFuncs& p) {
         polar_forces[N_0 + i] = p.polar_forces[i];
         cartesian_forces[N_0 + i] = p.cartesian_forces[i];
     }
+}
+
+PotentialFuncs PotentialFuncs::operator *(const double& factor) {
+    PotentialFuncs output(*this);
+    for(int i = 0; i < output.potentials.size(); ++i) {
+        output.potentials[i] = utility::
+                multiplyFunction(output.potentials[i], factor);
+        output.polar_forces[i] = utility::
+                multiplyFunction(output.polar_forces[i], factor);
+        output.cartesian_forces[i] = utility::
+                multiplyFunction(output.cartesian_forces[i], factor);
+    }
+    return output;
 }
 
 

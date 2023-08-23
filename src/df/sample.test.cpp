@@ -61,7 +61,7 @@ TEST(SampleTest, getDFSampleViaELDensityPlotting) {
     int N_u_iterate = 5;
 
     int N_samples = 1e4;
-    std::vector<std::array<double, 2>> sample_positions;
+    std::vector<std::array<double, 2>> sample_positions(N_samples);
 
     for(int i = 0; i < N_samples; ++i) {
         std::array<std::array<double, 2>, 2>

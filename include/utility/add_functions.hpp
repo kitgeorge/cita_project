@@ -147,4 +147,11 @@ multiplyFunction(std::function<double(Arg0, Arg1, Arg2)> f, double scalar) {
     };
 }
 
+template <std::size_t N>
+std::function<std::array<double, N>(double, double, double)>
+multiplyFunction(const std::function<std::array<double, N>(double, double, double)>& 
+             function, double scalar) {
+    return [=] (double a0, double a1, double a2) {
+        return scalar*function(a0, a1, a2);
+    };
 }

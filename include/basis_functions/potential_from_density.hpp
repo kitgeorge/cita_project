@@ -1,3 +1,4 @@
+#pragma once
 #include "bfe.hpp"
 #include "add_functions.hpp"
 #include "comp_funcs.hpp"
@@ -47,10 +48,10 @@ class PotentialFromDensity {
 
         template <typename DensityType>
         PotentialFromDensity(const DensityType& density, const BFE& expansion, 
-                             int n_max, int l_max);
+                             int n_max=64, int l_max=32);
         PotentialFromDensity(const std::vector<std::vector<std::complex<double>>> 
                              coefficients_, const BFE& expansion,
-                             int n_max, int l_max);
+                             int n_max=64, int l_max=32);
         
         // For diagnostic purposes
         std::vector<std::vector<std::complex<double>>> getCoefficients() const;
@@ -59,7 +60,7 @@ class PotentialFromDensity {
         // number of terms. (eg. if the norm remains constant during N-body,
         // that's likely a good sign). Norm will be imaginary (for some reason)
         // so we return its magnitude
-        std::complex<double> calculateAbsNorm() const;
+        double calculateAbsNorm() const;
 };
 
 

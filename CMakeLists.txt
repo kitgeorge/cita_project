@@ -24,7 +24,8 @@ include_directories(${BOOST_INCLUDE_DIR} include/potential
 include/vectors include/consts include/df
 include/utility include/multithreading
 include/tp_integration include/rc include/actions
-include/special_functions include/basis_functions)
+include/special_functions include/basis_functions
+include/n_body)
 
 file(GLOB src_files src/*/*.cpp include/*/*.hpp)
 if(NOT Local)
@@ -45,7 +46,8 @@ target_include_directories(mylib INTERFACE include/potential
 include/vectors include/df include/consts 
 include/utility include/multithreading
 include/tp_integration include/rc include/actions
-include/special_functions include/basis_functions)
+include/special_functions include/basis_functions
+include/n_body)
 
 file(GLOB main1 main/test_particle.cpp)
 file(GLOB main2 main/tp_dehnen_df.cpp)

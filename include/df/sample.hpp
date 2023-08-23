@@ -64,6 +64,6 @@ getDFSampleEL(std::function<double(double, double)> df,
 std::array<std::array<double, 2>, 2>
 getDFSampleViaEL(std::function<double(double, double)> df,
                  std::array<std::array<double, 2>, 2> E_L_bounds,
-                 potential::AxsymFuncs axsym_potential 
+                 potential::AxsymFuncs axsym_potential, 
                  double u_max, int N_u_intervals, int N_u_iterate);
 }

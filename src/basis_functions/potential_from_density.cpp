@@ -124,7 +124,7 @@ PotentialFromDensity::getCoefficients() const {
     return coefficients;
 }
 
-std::complex<double> PotentialFromDensity::calculateAbsNorm() const {
+double PotentialFromDensity::calculateAbsNorm() const {
     double output = 0;
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
