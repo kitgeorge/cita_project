@@ -52,6 +52,7 @@ class PotentialFromDensity {
         PotentialFromDensity(const std::vector<std::vector<std::complex<double>>> 
                              coefficients_, const BFE& expansion,
                              int n_max=64, int l_max=32);
+        PotentialFromDensity(const PotentialFromDensity& old);
         
         // For diagnostic purposes
         std::vector<std::vector<std::complex<double>>> getCoefficients() const;

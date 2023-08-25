@@ -21,6 +21,13 @@ PotentialFromDensity(const std::vector<std::vector<std::complex<double>>>
                      trunc_potential(getTruncPotential(expansion)),
                      trunc_force(getTruncForce(expansion)) {}
 
+PotentialFromDensity::
+PotentialFromDensity(const PotentialFromDensity& old):
+                     nl_max(old.nl_max), coefficients(old.coefficients),
+                     trunc_density(old.trunc_density),
+                     trunc_potential(old.trunc_potential),
+                     trunc_force(old.trunc_force) {}
+
 template <typename DensityType>
 std::vector<std::vector<std::complex<double>>> 
 PotentialFromDensity::

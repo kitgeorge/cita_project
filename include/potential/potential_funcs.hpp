@@ -35,7 +35,7 @@ struct PotentialFuncs {
     PotentialFuncs(const PotentialFuncs& old);
 
     void operator +=(const PotentialFuncs& p);
-    PotentialFuncs operator *(const double& factor);
+    PotentialFuncs operator *(const double& factor) const;
 
     void multiply(std::function<double(double, double, double)> envelope);
     private:

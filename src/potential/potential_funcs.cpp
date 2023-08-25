@@ -82,7 +82,7 @@ void PotentialFuncs::operator +=(const PotentialFuncs& p) {
     }
 }
 
-PotentialFuncs PotentialFuncs::operator *(const double& factor) {
+PotentialFuncs PotentialFuncs::operator *(const double& factor) const {
     PotentialFuncs output(*this);
     for(int i = 0; i < output.potentials.size(); ++i) {
         output.potentials[i] = utility::

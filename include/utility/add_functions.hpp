@@ -152,6 +152,11 @@ std::function<std::array<double, N>(double, double, double)>
 multiplyFunction(const std::function<std::array<double, N>(double, double, double)>& 
              function, double scalar) {
     return [=] (double a0, double a1, double a2) {
-        return scalar*function(a0, a1, a2);
+        std::array<double, N> output = function(a0, a1, a2);
+        for(int i = 0; i < N; ++i) {
+            output[i] *= scalar;
+        }
+        return output;
     };
+}
 }
