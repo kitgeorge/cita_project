@@ -52,7 +52,8 @@ int main() {
         return spiral_density_time(R, phi, 0);
     };
     basis_functions::PotentialFromDensity
-    pot(spiral_density, expansion, n_max, l_max);
+    pot(expansion, n_max, l_max);
+    pot.initFromDensity(spiral_density);
 
     int N_R_values = 100;
     // int N_phi_values = 360;
