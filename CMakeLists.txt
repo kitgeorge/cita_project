@@ -189,7 +189,7 @@ else()
         ~/anaconda3/envs/cxx-env/lib/libgmp.so)
 ]]
     target_link_libraries(
-        n_body_trual
+        n_body_trial
         mylib
         ${BOOST_LIBRARIES}
         Threads::Threads
