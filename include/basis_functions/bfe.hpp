@@ -183,7 +183,8 @@ class BFE {
     // double D(int n, int l, double R) const;
 
     public:
-        BFE(double R_Ka_=20*Units::kpc, int N_R_=5000, int N_phi_=5000);
+        // BFE(double R_Ka_=20*Units::kpc, int N_R_=5000, int N_phi_=5000);
+        BFE(double R_Ka_=20*Units::kpc, int N_R_=1000, int N_phi_=1000);
         BFE(const BFE& old);
 
         // Basis functions

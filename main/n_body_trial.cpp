@@ -7,9 +7,9 @@
 
 
 int main() {
-    double timestep = 1*Units::Myr;
+    double timestep = 10*Units::Myr;
     int save_interval = 1;
-    double integration_time = 10000*Units::Myr;
+    double integration_time = 1000*Units::Myr;
 
     double v_c = 220*Units::kms;
     double R_0 = 1*Units::kpc;
@@ -29,7 +29,7 @@ int main() {
     int N_u_intervals = 1000;
     int N_u_iterate = 5;
 
-    int N_particles = 1e4;
+    int N_particles = 1e3;
     
     std::vector<std::array<std::array<double, 2>, 2>>
     sample_coords(N_particles);
