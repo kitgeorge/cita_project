@@ -1,5 +1,6 @@
 #include "potential_from_density.hpp"
 #include <iostream>
+#include <mutex>
 
 namespace basis_functions {
 
@@ -42,15 +43,18 @@ template <typename DensityType>
 std::vector<std::vector<std::complex<double>>> 
 PotentialFromDensity::
 getCoefficients(const DensityType& density) const {
+    std::mutex mtx;
     std::vector<std::vector<std::complex<double>>>
     output(nl_max[0] + 1, std::vector<std::complex<double>>(nl_max[1] + 1));
     std::vector<std::function<std::complex<double>()>>
     coefficient_functions((nl_max[0] + 1)*(nl_max[1] + 1));
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
-            coefficient_functions[i*(nl_max[1] + 1) + j] = [=] () {
+            coefficient_functions[i*(nl_max[1] + 1) + j] = [i, j, &density, &expansion, &mtx] () {
+                mtx.lock();
                 std::cout << "Calculating BFE coefficients: "
                           << i << ", " << j << std::endl;
+                mtx.unlock();
                 return expansion.getCoefficient(i, j, density);
             };
         }
