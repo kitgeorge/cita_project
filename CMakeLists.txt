@@ -54,6 +54,7 @@ file(GLOB main2 main/tp_dehnen_df.cpp)
 file(GLOB main3 main/libration_amplitude.cpp)
 file(GLOB main4 main/resonance_evolution.cpp)
 file(GLOB main5 main/bfe_evaluation.cpp)
+file(GLOB main6 main/n_body_trial.cpp)
 
 if(Local)
 include(FetchContent)
@@ -111,10 +112,15 @@ add_executable(
     ${main4}
     ${src_files})
 ]]
-
+#[[
 add_executable(
     bfe_evaluation
     ${main5}
+    ${src_files})
+]]
+add_executable(
+    n_body_trial
+    ${main6}
     ${src_files})
 
 if(Local)
@@ -139,7 +145,6 @@ if(Local)
         GTest::gtest_main
         ${BOOST_LIBRARIES}
         Threads::Threads)
-]]
     target_link_libraries(
         bfe_evaluation
         mylib
@@ -147,6 +152,15 @@ if(Local)
         ${BOOST_LIBRARIES}
         Threads::Threads
         /usr/lib/x86_64-linux-gnu/libgmp.so)
+]]
+    target_link_libraries(
+        n_body_trial
+        mylib
+        GTest::gtest_main
+        ${BOOST_LIBRARIES}
+        Threads::Threads
+        /usr/lib/x86_64-linux-gnu/libgmp.so
+    )
 
 else()
 #[[
@@ -167,9 +181,15 @@ else()
         mylib
         ${BOOST_LIBRARIES}
         Threads::Threads)
-]]
     target_link_libraries(
         bfe_evaluation
+        mylib
+        ${BOOST_LIBRARIES}
+        Threads::Threads
+        ~/anaconda3/envs/cxx-env/lib/libgmp.so)
+]]
+    target_link_libraries(
+        n_body_trual
         mylib
         ${BOOST_LIBRARIES}
         Threads::Threads
