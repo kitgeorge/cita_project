@@ -151,6 +151,34 @@ class BFETables {
         double getUPrime(int n, int l, double R, double R_Ka) const;
         /// Retrieves a D value, as getU does U
         double getD(int n, int l, double R, double R_Ka) const;
+
+        /**
+         * Gives U_{n, l} function for given n, l
+         *
+         * @param n n-index of U basis function
+         * @param l l-index of U basis Function
+         * @return an std::function which contains tabuled
+         * values of U_{n, l}, only for the speicified n and l,
+         * takes as inputs R and scale radius R_Ka of the basis
+         * functions, and returns a value for U_{n, l}.
+         *
+         * @note Doing it this way allows us not to copy the entire
+         * BFETables object when packaging the full basis function
+         * into an std::function.
+         *
+         * @note As above, the U_{n, l} values are tabulated over N_R_tabulated
+         * bins in R, between 0 and R_Ka. The central U_{n, l} value of each
+         * bin is tabulated, and the value corresponding to the bin which
+         * contains R is what is returned by the std::function.
+         */
+        std::function<double(double, double)> 
+        getUFunction(int n, int l) const;
+        // As above but for UPrime
+        std::function<double(double, double)> 
+        getUPrimeFunction(int n, int l) const;
+        // As above but for D
+        std::function<double(double, double)> 
+        getDFunction(int n, int l) const;
 };
 
 ////////////////////////////////////////////////////////////
