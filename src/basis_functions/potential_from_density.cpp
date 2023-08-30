@@ -50,12 +50,13 @@ getCoefficients(const DensityType& density) const {
     coefficient_functions((nl_max[0] + 1)*(nl_max[1] + 1));
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
-            coefficient_functions[i*(nl_max[1] + 1) + j] = [i, j, this, &density, &mtx] () {
+            BFE* expansion_ptr = &expansion;
+            coefficient_functions[i*(nl_max[1] + 1) + j] = [i, j, expansion_ptr, &density, &mtx] () {
                 mtx.lock();
                 std::cout << "Calculating BFE coefficients: "
                           << i << ", " << j << std::endl;
                 mtx.unlock();
-                return expansion.getCoefficient(i, j, density);
+                return expansion_ptr->getCoefficient(i, j, density);
             };
         }
     }
