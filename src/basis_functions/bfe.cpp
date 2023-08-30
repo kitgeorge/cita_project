@@ -550,12 +550,19 @@ std::complex<double>
 scalarProduct(const std::function<std::complex<double>(double, double)>& pot_conj,
               const std::vector<std::array<double, 3>>& density, double R_max) {
     // Each particle has array {R, phi, m}, so integral becomes a sum
+    int id = std::rand();
+    mtx.lock();
+    std::cout << "start " << id << std::endl;
+    mtx.unlock();
     int N_particles = density.size();
     std::complex<double> output = 0;
     for(int i = 0; i < N_particles; ++i) {
         assert(density[i][0] < R_max);
         output += pot_conj(density[i][0], density[i][1])*density[i][2];
     }
+    mtx.lock();
+    std::cout << "end " << id << std::endl;
+    mtx.unlock();
     return output;
 }
 

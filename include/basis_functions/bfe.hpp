@@ -183,8 +183,8 @@ class BFE {
     // double D(int n, int l, double R) const;
 
     public:
-        // BFE(double R_Ka_=20*Units::kpc, int N_R_=5000, int N_phi_=5000);
-        BFE(double R_Ka_=20*Units::kpc, int N_R_=1000, int N_phi_=1000);
+        BFE(double R_Ka_=20*Units::kpc, int N_R_=5000, int N_phi_=5000);
+        // BFE(double R_Ka_=20*Units::kpc, int N_R_=1000, int N_phi_=1000);
         BFE(const BFE& old);
 
         // Basis functions
@@ -200,7 +200,7 @@ class BFE {
         getCoefficient(int n, int l, 
                         const std::function<double(double, double)>& 
                         density) const;
-        // Takes discrete density distribution (in arrays {m, R, phi})
+        // Takes discrete density distribution (in arrays {R, phi, m})
         std::complex<double>
         getCoefficient(int n, int l,
                         const std::vector<std::array<double, 3>>& density) const;
