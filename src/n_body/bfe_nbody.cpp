@@ -2,6 +2,8 @@
 
 namespace n_body {
 
+std::mutex mtx;
+
 void BFENBody::getPotential() {
     std::vector<std::array<double, 3>> density(N_particles);
     for(int i = 0; i < N_particles; ++i) {
@@ -25,7 +27,11 @@ BFENBody::iterate() {
     std::vector<std::function<std::vector<std::array<std::array<double, 2>, 2>>()>>
     rk4_iteration_functions(N_functions);
     for(int i = 0; i < N_functions; ++i) {
+        std::cout << "Making RK4 function " << i << std::endl;
         rk4_iteration_functions[i] = [i, particles_per_function, &pot, this] () {
+            mtx.lock();
+            std::cout "Executing RK4 function " << i << std::endl;
+            mtx.unlock();
             std::vector<std::array<std::array<double, 2>, 2>>
             output(particles_per_function);
             for(int j = 0; j < particles_per_function; ++j) {
@@ -69,6 +75,7 @@ BFENBody::BFENBody(double timestep_, int save_interval_,
     std::cout << "Tabulating initial bfe coefficient norms" << std::endl;
     bfe_coefficient_norms[0] = bfe_pot.calculateAbsNorm();
     for(int i = 0; i < N_timesteps; ++i) {
+        std::cout << "Iteration " << i << std::endl;
         iterate();
         if(std::fmod(i, save_interval) == 0) {
             saved_trajectories[i/save_interval] = coords;
