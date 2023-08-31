@@ -11,7 +11,7 @@ BFENBody::getPotential() {
     bfe_pot.initFromDensity(density);
 }
 
-potential::PotentialFuncs BFENBody::getInit() const {
+potential::PotentialFuncs BFENBody::getInit() {
     getPotential();
     return potential::PotentialFuncs(bfe_pot);
 }

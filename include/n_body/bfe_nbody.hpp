@@ -61,7 +61,7 @@ class BFENBody {
      * bfe_pot, we have to invoke a function which, as a side
      * effect, first constructs bfe_pot.
      */
-    potential::PotentialFuncs getInit() const;
+    potential::PotentialFuncs getInit();
 
     std::vector<std::array<std::array<double, 2>, 2>>
     iterate();
