@@ -49,8 +49,7 @@ class BFENBody {
     // Tabulated norms of BFE coefficients for all timesteps
     std::vector<double> bfe_coefficient_norms;
 
-    basis_functions::PotentialFromDensity
-    getPotential();
+    void getPotential();
 
     /**
      * This is messy but a quick fix to preexisting messiness.

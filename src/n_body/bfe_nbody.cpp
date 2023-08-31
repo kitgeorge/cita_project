@@ -2,8 +2,7 @@
 
 namespace n_body {
 
-basis_functions::PotentialFromDensity
-BFENBody::getPotential() {
+void BFENBody::getPotential() {
     std::vector<std::array<double, 3>> density(N_particles);
     for(int i = 0; i < N_particles; ++i) {
         density[i] = {coords[i][0][0], coords[i][0][1], masses[i]};
