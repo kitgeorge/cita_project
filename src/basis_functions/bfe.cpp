@@ -591,8 +591,19 @@ scalarProduct(const std::function<std::complex<double>(double, double)>& pot_con
     int N_particles = density.size();
     std::complex<double> output = 0;
     for(int i = 0; i < N_particles; ++i) {
-        assert(density[i][0] < R_max);
-        output += pot_conj(density[i][0], density[i][1])*density[i][2];
+        // In simulation, particle may leave basis functions domain.
+        // We'll say then that it doesn't contribute to any scalar product.
+        // assert(density[i][0] < R_max);
+        if(density[i][0] < R_max) {
+            output += pot_conj(density[i][0], density[i][1])*density[i][2];
+        }
+        // for debugging
+        else {
+            mtx.lock();
+            std::cout << "Position: " << density[i][0] << ", " 
+                      << R_max << std::endl;
+            mtx.unlock();
+        }
     }
     mtx.lock();
     std::cout << "end " << id << std::endl;

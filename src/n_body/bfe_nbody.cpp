@@ -11,6 +11,11 @@ BFENBody::getPotential() {
     bfe_pot.initFromDensity(density);
 }
 
+potential::PotentialFuncs BFENBody::getInit() const {
+    getPotential();
+    return potential::PotentialFuncs(bfe_pot);
+}
+
 std::vector<std::array<std::array<double, 2>, 2>>
 BFENBody::iterate() {
     potential::PotentialFuncs pot({background, init*(-1), 
@@ -49,8 +54,7 @@ BFENBody::BFENBody(double timestep_, int save_interval_,
             N_particles(N_particles_), background(background_),
             masses(masses_), 
             coords(init_coords),
-            init([this]() {getPotential();
-                           return potential::PotentialFuncs(bfe_pot);}()),
+            init(getInit()),
             bfe_coefficients(N_timesteps + 1) {
     std::array<int, 2> shape = {{N_timesteps/save_interval + 1,
                                                 N_particles}};

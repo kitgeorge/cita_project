@@ -52,6 +52,17 @@ class BFENBody {
     basis_functions::PotentialFromDensity
     getPotential();
 
+    /**
+     * This is messy but a quick fix to preexisting messiness.
+     *
+     * We can't construct bfe_pot with getPotential(), as the latter
+     * doesn't return something but directly modifies the member.
+     * Therefore, to construct the const init, which depends on 
+     * bfe_pot, we have to invoke a function which, as a side
+     * effect, first constructs bfe_pot.
+     */
+    potential::PotentialFuncs getInit() const;
+
     std::vector<std::array<std::array<double, 2>, 2>>
     iterate();
 
