@@ -49,9 +49,9 @@ BFENBody::BFENBody(double timestep_, int save_interval_,
             N_particles(N_particles_), background(background_),
             masses(masses_), 
             coords(init_coords), 
-            bfe_pot(getPotential()),
-            init(potential::PotentialFuncs(bfe_pot)),
             bfe_coefficients(N_timesteps + 1) {
+    getPotential();
+    init = potential::PotentialFuncs(bfe_pot);
     std::array<int, 2> shape = {{N_timesteps/save_interval + 1,
                                                 N_particles}};
     saved_trajectories = utility::
