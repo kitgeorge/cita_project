@@ -46,6 +46,7 @@ getCoefficients(const DensityType& density) const {
     std::mutex mtx;
     mtx.lock();
     std::cout << nl_max[0] + 1 << ", " << nl_max[1] + 1 << std::endl;
+    mtx.unlock();
     std::vector<std::vector<std::complex<double>>>
     output(nl_max[0] + 1, std::vector<std::complex<double>>(nl_max[1] + 1));
     std::vector<std::function<std::complex<double>()>>
