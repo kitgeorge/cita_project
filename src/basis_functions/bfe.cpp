@@ -277,7 +277,7 @@ utility::vector3d<double> BFETables::calculateDValues() {
 std::optional<utility::vector3d<double>> 
 BFETables::readUUprimeDValues(std::string path) {
     std::optional<utility::vector3d<double>> output;
-    std::array<int, 3> shape = {l_max + 1, n_max + 1, N_R_tabulated};
+    std::array<int, 3> shape = {n_max + 1, l_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2];
     if(utility::fileExists(path)) {
         std::vector<double> flat = utility::readCsv(path);
@@ -358,10 +358,6 @@ double BFETables::getD(int n, int l, double R, double R_Ka) const {
 
 std::function<double(double, double)>
 BFETables::getUFunction(int n, int l) const {
-    std::array<int, 3> shape = utility::getShape(U_values);
-    mtx.lock();
-    std::cout << shape[0] << ", " << shape[1] << ", " << shape[2] << ", " << std::endl;
-    mtx.unlock();
     std::vector<double> values = U_values[n][l];
     return [values, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
