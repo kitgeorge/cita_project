@@ -25,7 +25,7 @@ BFENBody::iterate() {
     std::vector<std::function<std::vector<std::array<std::array<double, 2>, 2>>()>>
     rk4_iteration_functions(N_functions);
     for(int i = 0; i < N_functions; ++i) {
-        rk4_iteration_functions[i] = [i, particles_per_function, pot, this] () {
+        rk4_iteration_functions[i] = [i, particles_per_function, &pot, this] () {
             std::vector<std::array<std::array<double, 2>, 2>>
             output(particles_per_function);
             for(int j = 0; j < particles_per_function; ++j) {
@@ -54,13 +54,19 @@ BFENBody::BFENBody(double timestep_, int save_interval_,
             masses(masses_), 
             coords(init_coords),
             init(getInit()),
-            bfe_coefficients(N_timesteps + 1) {
+            bfe_coefficients(N_timesteps + 1),
+            bfe_coefficient_norms(N_timesteps + 1) {
     std::array<int, 2> shape = {{N_timesteps/save_interval + 1,
                                                 N_particles}};
+    std::cout << "Setting up trajectories table..." << std::endl;
     saved_trajectories = utility::
         makeShape<std::array<std::array<double, 2>, 2>>(shape);
+    std::cout << "Tabulating initial coords in trajectories table..." 
+              << std::endl;
     saved_trajectories[0] = coords;
+    std::cout << "Tabulating initial bfe coefficients" << std::endl;
     bfe_coefficients[0] = bfe_pot.getCoefficients();
+    std::cout << "Tabulating initial bfe coefficient norms" << std::endl;
     bfe_coefficient_norms[0] = bfe_pot.calculateAbsNorm();
     for(int i = 0; i < N_timesteps; ++i) {
         iterate();
