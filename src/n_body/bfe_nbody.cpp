@@ -30,7 +30,7 @@ BFENBody::iterate() {
         std::cout << "Making RK4 function " << i << std::endl;
         rk4_iteration_functions[i] = [i, particles_per_function, &pot, this] () {
             mtx.lock();
-            std::cout "Executing RK4 function " << i << std::endl;
+            std::cout << "Executing RK4 function " << i << std::endl;
             mtx.unlock();
             std::vector<std::array<std::array<double, 2>, 2>>
             output(particles_per_function);
