@@ -359,7 +359,7 @@ double BFETables::getD(int n, int l, double R, double R_Ka) const {
 std::function<double(double, double)>
 BFETables::getUFunction(int n, int l) const {
     std::vector<double> values = U_values[n][l];
-    return [values, *this] (double R, double R_Ka) {
+    return [values, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
         double output = values[R_bin];
         output /= pow(R_Ka, 0.5);
@@ -370,7 +370,7 @@ BFETables::getUFunction(int n, int l) const {
 std::function<double(double, double)>
 BFETables::getUPrimeFunction(int n, int l) const {
     std::vector<double> values = UPrime_values[n][l];
-    return [values, *this] (double R, double R_Ka) {
+    return [values, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
         double output = values[R_bin];
         output /= pow(R_Ka, 1.5);
@@ -381,7 +381,7 @@ BFETables::getUPrimeFunction(int n, int l) const {
 std::function<double(double, double)>
 BFETables::getDFunction(int n, int l) const {
     std::vector<double> values = D_values[n][l];
-    return [values, *this] (double R, double R_Ka) {
+    return [values, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
         double output = values[R_bin];
         output /= pow(R_Ka, 1.5);
@@ -615,7 +615,7 @@ BFE::psi(int n, int l) const {
     assert(l >= 0);
     std::function<double(double, double)>
     U_function = tables.getUFunction(n, l);
-    return [U_function, l, *this] (double R, double phi) {
+    return [U_function, l, R_Ka=R_Ka] (double R, double phi) {
         double prefactor = U_function(R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
@@ -628,7 +628,7 @@ BFE::rho(int n, int l) const {
     assert(l >= 0);
     std::function<double(double, double)>
     D_function = tables.getDFunction(n, l);
-    return [D_function, l, *this] (double R, double phi) {
+    return [D_function, l, R_Ka=R_Ka] (double R, double phi) {
         double prefactor = D_function(R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
@@ -643,7 +643,7 @@ BFE::psi_f(int n, int l) const {
     U_function = tables.getUFunction(n, l);
     std::function<double(double, double)>
     UPrime_function = tables.getUPrimeFunction(n, l);
-    return [U_function, UPrime_function, l, *this] (double R, double phi) {
+    return [U_function, UPrime_function, l, R_Ka=R_Ka] (double R, double phi) {
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         std::array<std::complex<double>, 2> output;
         output[0] = -UPrime_function(R, R_Ka)*phase;
