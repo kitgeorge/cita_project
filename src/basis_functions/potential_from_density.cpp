@@ -15,6 +15,7 @@ PotentialFromDensity(const basis_functions::BFE& expansion_,
 
 PotentialFromDensity::
 PotentialFromDensity(const PotentialFromDensity& old):
+                     expansion(old.expansion),
                      nl_max(old.nl_max), coefficients(old.coefficients),
                      trunc_density(old.trunc_density),
                      trunc_potential(old.trunc_potential),

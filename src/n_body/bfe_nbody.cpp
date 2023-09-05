@@ -37,6 +37,7 @@ BFENBody::iterate() {
             for(int j = 0; j < particles_per_function; ++j) {
                 vectors::Coords2d 
                 x(coords[i*particles_per_function + j], 1);
+                assert(std::isfinite(x.polar[0][0]));
                 output[j] = tp_integration::
                             rk4Iteration(pot, x, 0, timestep).polar;
             }

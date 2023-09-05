@@ -18,6 +18,7 @@ getTpIntegrationFunction(const ptl::PotentialFuncs& potential,
         std::vector<vrs::Coords2d>
         output(N_timesteps + 1);
         output[0] = initial_conditions;
+        assert(std::isfinite(output[0].polar[0][0]));
         double t = t_start;
         for(int i = 0; i < N_timesteps; ++i) {
             output[i + 1] = rk4Iteration(potential, output[i], t, timestep);
@@ -45,6 +46,9 @@ vrs::Coords2d
 rk4Iteration(const ptl::PotentialFuncs& potential, 
               vrs::Coords2d coords,
               double t, double timestep) {
+
+    assert(std::isfinite(coords.polar[0][0]));
+    
     std::array<std::array<double, 2>, 2>
     cart = coords.cartesian;
 
