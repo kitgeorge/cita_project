@@ -213,6 +213,12 @@ class BFE {
     public:
         BFE(double R_Ka_=20*Units::kpc, int N_R_=5000, int N_phi_=5000);
         // BFE(double R_Ka_=20*Units::kpc, int N_R_=1000, int N_phi_=1000);
+        
+        /**
+         * Copy constructor
+         *
+         * Copies parameters and BFETables object from old BFE object
+         */
         BFE(const BFE& old);
 
         // Basis functions

@@ -39,6 +39,10 @@ int main() {
         sample_coords[i] = df::getDFSampleViaEL(tap.getTaperedDF(), E_L_bounds,
                                   potential::getMestel(v_c, R_0),
                                   u_max, N_u_intervals, N_u_iterate);
+        std::cout << sample_coords[i][1][0] << ", " << sample_coords[i][1][1]
+                  << std::endl;
+        assert(std::isfinite(sample_coords[i][1][0]));
+        assert(std::isfinite(sample_coords[i][1][1]));
         sample_positions[i] = sample_coords[i][0];
     }
 
