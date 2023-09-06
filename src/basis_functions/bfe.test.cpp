@@ -244,7 +244,7 @@ TEST_F(BFETest, DISABLED_CheckSpiral) {
     std::vector<std::function<std::array<double, 2>()>> 
     trunc_force_functions(N_R_values*N_phi_values);
 
-    PotentialFromDensity p(expansion.value(), n_max, l_max);
+    PotentialFromDensity p(std::make_shared<BFE>(expansion.value()), n_max, l_max);
     p.initFromDensity(spiral_density);
 
     for(int i = 0; i < N_R_values; ++i) {
