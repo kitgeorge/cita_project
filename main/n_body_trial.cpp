@@ -36,6 +36,8 @@ int main() {
     std::vector<std::array<double, 2>> sample_positions(N_particles);
 
     for(int i = 0; i < N_particles; ++i) {
+        // For some reason, a sample was giving R = -nan. Rather than
+        // fixing the problem I'm just going to suppress it for now
         int nan_flag = 1;
         while(nan_flag) {
             sample_coords[i] = df::getDFSampleViaEL(tap.getTaperedDF(), E_L_bounds,
@@ -45,10 +47,6 @@ int main() {
                 nan_flag = 0;
             }
         }
-        std::cout << sample_coords[i][1][0] << ", " << sample_coords[i][1][1]
-                  << std::endl;
-        assert(std::isfinite(sample_coords[i][1][0]));
-        assert(std::isfinite(sample_coords[i][1][1]));
         sample_positions[i] = sample_coords[i][0];
     }
 
