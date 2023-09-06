@@ -54,7 +54,7 @@ BFENBody::BFENBody(double timestep_, int save_interval_,
             const potential::AxsymFuncs& background_,
             const std::vector<double>& masses_,
             const std::vector<std::array<std::array<double, 2>, 2>>&
-            init_coords): expansion(std::make_shared<const basis_functions::BFE>),
+            init_coords): expansion(std::make_shared<const basis_functions::BFE>()),
             timestep(timestep_), 
             save_interval(save_interval_),
             N_timesteps(integration_time/timestep_), 
