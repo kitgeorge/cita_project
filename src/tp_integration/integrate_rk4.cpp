@@ -1,8 +1,11 @@
 #include "integrate_rk4.hpp"
 #include <iostream>
+#include <mutex>
 
 namespace vrs = vectors;
 namespace ptl = potential;
+
+std::mutex mtx;
 
 namespace tp_integration {
 
@@ -51,6 +54,14 @@ rk4Iteration(const ptl::PotentialFuncs& potential,
     
     std::array<std::array<double, 2>, 2>
     cart = coords.cartesian;
+
+    mtx.lock();
+    std::cout << "rk4Iteration, " << coords.polar[0][0] << ", " 
+              << coords.polar[0][1] << ", " << cart[0][0] << ", "
+              << cart[0][1] << std::endl;
+    assert(std::isfinite(cart[0][0]));
+    assert(std::isfinite(cart[0][1]));
+    mtx.unlock();
 
     std::array<std::array<std::array<double, 2>, 2>, 4> k;
     k[0][0] = cart[1];
