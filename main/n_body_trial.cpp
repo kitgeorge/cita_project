@@ -36,9 +36,15 @@ int main() {
     std::vector<std::array<double, 2>> sample_positions(N_particles);
 
     for(int i = 0; i < N_particles; ++i) {
-        sample_coords[i] = df::getDFSampleViaEL(tap.getTaperedDF(), E_L_bounds,
-                                  potential::getMestel(v_c, R_0),
-                                  u_max, N_u_intervals, N_u_iterate);
+        int nan_flag = 1;
+        while(nan_flag) {
+            sample_coords[i] = df::getDFSampleViaEL(tap.getTaperedDF(), E_L_bounds,
+                                    potential::getMestel(v_c, R_0),
+                                    u_max, N_u_intervals, N_u_iterate);
+            if(std::isfinite(sample_coords[i][1][0])) {
+                nan_flag = 0;
+            }
+        }
         std::cout << sample_coords[i][1][0] << ", " << sample_coords[i][1][1]
                   << std::endl;
         assert(std::isfinite(sample_coords[i][1][0]));
