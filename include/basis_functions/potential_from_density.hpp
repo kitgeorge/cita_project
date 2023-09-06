@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "bfe.hpp"
 #include "add_functions.hpp"
 #include "comp_funcs.hpp"
@@ -8,7 +9,7 @@
 namespace basis_functions {
 
 class PotentialFromDensity {
-    const basis_functions::BFE expansion;
+    const std::shared_ptr<const basis_functions::BFE> expansion;
     const std::array<int, 2> nl_max;
     std::vector<std::vector<std::complex<double>>> coefficients;
 
@@ -45,7 +46,8 @@ class PotentialFromDensity {
         std::function<std::array<double, 2>(double, double)> trunc_force;
 
         PotentialFromDensity(int n_max=64, int l_max=32);
-        PotentialFromDensity(const basis_functions::BFE& expansion_,
+        PotentialFromDensity(const std::shared_ptr<const basis_functions::BFE> 
+                             expansion_,
                              int n_max=64, int l_max=32);
         PotentialFromDensity(const PotentialFromDensity& old);
 

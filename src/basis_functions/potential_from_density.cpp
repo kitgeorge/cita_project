@@ -6,10 +6,12 @@ namespace basis_functions {
 
 
 PotentialFromDensity::
-PotentialFromDensity(int n_max, int l_max): nl_max({n_max, l_max}) {}
+PotentialFromDensity(int n_max, int l_max): 
+                     expansion(std::make_shared<const basis_functions::BFE>()),
+                     nl_max({n_max, l_max}) {}
 
 PotentialFromDensity::
-PotentialFromDensity(const basis_functions::BFE& expansion_,
+PotentialFromDensity(const std::shared_ptr<const basis_functions::BFE> expansion_,
                      int n_max, int l_max): expansion(expansion_),
                      nl_max({n_max, l_max}) {}
 
@@ -54,8 +56,7 @@ getCoefficients(const DensityType& density) const {
     coefficient_functions((nl_max[0] + 1)*(nl_max[1] + 1));
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
-            const BFE* expansion_ptr = &expansion;
-            coefficient_functions[i*(nl_max[1] + 1) + j] = [i, j, expansion_ptr, &density, &mtx] () {
+            coefficient_functions[i*(nl_max[1] + 1) + j] = [i, j, expansion, &density, &mtx] () {
                 // mtx.lock();
                 // std::cout << "Calculating BFE coefficients: "
                 //           << i << ", " << j << std::endl;
@@ -117,7 +118,7 @@ PotentialFromDensity::
 getTruncDensity() const {
     std::function<std::function<std::complex<double>(double, double)>(int, int)>
     wrapper = [=] (int i, int j) {
-        return expansion.rho(i, j);
+        return expansion->rho(i, j);
     };
     return utility::realFunction(getTruncFunction(wrapper));
 }
@@ -127,7 +128,7 @@ PotentialFromDensity::
 getTruncPotential() const {
     std::function<std::function<std::complex<double>(double, double)>(int, int)>
     wrapper = [=] (int i, int j) {
-        return expansion.psi(i, j);
+        return expansion->psi(i, j);
     };
     return utility::realFunction(getTruncFunction(wrapper));
 }
@@ -137,7 +138,7 @@ PotentialFromDensity::
 getTruncForce() const {
     std::function<std::function<std::array<std::complex<double>, 2>(double, double)>(int, int)>
     wrapper = [=] (int i, int j) {
-        return expansion.psi_f(i, j);
+        return expansion->psi_f(i, j);
     };
     return utility::realFunction(getTruncFunction(wrapper));
 }

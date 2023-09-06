@@ -3,6 +3,7 @@
 #include "add_functions.hpp"
 #include "integrate_rk4.hpp"
 #include "nd_vectors.hpp"
+#include <memory>
 
 namespace n_body {
 
@@ -14,6 +15,8 @@ namespace n_body {
  *
  */
 class BFENBody {
+    const std::shared_ptr<const basis_functions::BFE> expansion;
+
     const double timestep;
     const int save_interval;
     const double N_timesteps;
