@@ -26,15 +26,10 @@ PotentialFromDensity(const PotentialFromDensity& old):
 template <typename DensityType>
 void PotentialFromDensity::
 initFromDensity(const DensityType& density) {
-    std::cout << "A" << std::endl;
     coefficients = getCoefficients(density);
-    std::cout << "A" << std::endl;
     trunc_density = getTruncDensity();
-    std::cout << "A" << std::endl;
     trunc_potential = getTruncPotential();
-    std::cout << "A" << std::endl;
     trunc_force = getTruncForce();
-    std::cout << "A" << std::endl;
 }
 
 void PotentialFromDensity::
