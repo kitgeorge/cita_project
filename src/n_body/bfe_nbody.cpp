@@ -58,8 +58,7 @@ BFENBody::iterate() {
     std::vector<std::vector<std::array<std::array<double, 2>, 2>>>
     data = multithreading::executeInParallel(rk4_iteration_functions);
     std::cout << "A" <<std::endl;
-    coords = utility::flatten<std::array<std::array<double, 2>, 2>>
-                (data);
+    coords = utility::flatten(data);
     std::cout << "A" <<std::endl;
     getPotential();
     std::cout << "A" <<std::endl;
