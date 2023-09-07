@@ -10,7 +10,6 @@ void BFENBody::getPotential() {
         density[i] = {coords[i][0][0], coords[i][0][1], masses[i]};
     }
     bfe_pot.initFromDensity(density);
-    std::cout << "A" << std::endl;
 }
 
 potential::PotentialFuncs BFENBody::getInit() {
@@ -18,8 +17,7 @@ potential::PotentialFuncs BFENBody::getInit() {
     return potential::PotentialFuncs(bfe_pot);
 }
 
-std::vector<std::array<std::array<double, 2>, 2>>
-BFENBody::iterate() {
+void BFENBody::iterate() {
     potential::PotentialFuncs pot({background, init*(-1), 
                                     potential::PotentialFuncs(bfe_pot)});
     // Ensure that N_particles is a multiple of particles_per_function please
@@ -59,7 +57,6 @@ BFENBody::iterate() {
     data = multithreading::executeInParallel(rk4_iteration_functions);
     coords = utility::flatten(data);
     getPotential();
-    std::cout << "B" << std::endl;
 }
 
 BFENBody::BFENBody(double timestep_, int save_interval_, 

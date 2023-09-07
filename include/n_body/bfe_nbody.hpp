@@ -65,8 +65,7 @@ class BFENBody {
      */
     potential::PotentialFuncs getInit();
 
-    std::vector<std::array<std::array<double, 2>, 2>>
-    iterate();
+    void iterate();
 
     public:
         /**
