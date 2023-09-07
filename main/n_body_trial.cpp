@@ -7,7 +7,7 @@
 
 
 int main() {
-    double timestep = 500*Units::Myr;
+    double timestep = 10*Units::Myr;
     int save_interval = 1;
     double integration_time = 1000*Units::Myr;
 
