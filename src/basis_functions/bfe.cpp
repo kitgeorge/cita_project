@@ -615,7 +615,7 @@ BFE::BFE(const BFE& old): R_Ka(old.R_Ka),
                           N_R(old.N_R), N_phi(old.N_phi),
                           tables(old.tables) {
     mtx.lock();
-    std::cout << "Copying BFE" << std::endl;
+    std::cout << "Copied BFE" << std::endl;
     mtx.unlock();
 }
 

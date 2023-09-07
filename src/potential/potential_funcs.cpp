@@ -56,13 +56,15 @@ PotentialFuncs(std::function<double(double, double, double)> potential,
                cartesian_forces({getCartesianForce(polar_force)}) {}        
 
 PotentialFuncs::PotentialFuncs(const basis_functions::PotentialFromDensity& p):
-    potentials({[p] (double R, double phi, double t) {
+    potentials({[p=std::make_shared<const basis_functions::PotentialFromDensity>(p)] 
+                 (double R, double phi, double t) {
         assert(std::isfinite(R));
-        return p.trunc_potential(R, phi);
+        return p->trunc_potential(R, phi);
     }}),
-    polar_forces({[p] (double R, double phi, double t) {
+    polar_forces({[p=std::make_shared<const basis_functions::PotentialFromDensity>(p)] 
+                   (double R, double phi, double t) {
         assert(std::isfinite(R));
-        return p.trunc_force(R, phi);
+        return p->trunc_force(R, phi);
     }}),
     cartesian_forces({getCartesianForce(polar_forces[0])}) {}
 
