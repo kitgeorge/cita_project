@@ -7,7 +7,7 @@
 
 
 int main() {
-    double timestep = 10*Units::Myr;
+    double timestep = 500*Units::Myr;
     int save_interval = 1;
     double integration_time = 1000*Units::Myr;
 
@@ -69,7 +69,7 @@ int main() {
     n_body::BFENBody simulation(timestep, save_interval, integration_time,
                         N_particles, background, particle_masses, 
                         sample_coords);
-    utility::writeCsv("../test_data/n_body/test_trajectories.csv",
+    utility::writeCsv("../data/n_body/test_trajectories.csv",
                       utility::flatten(utility::flatten(utility::flatten(
                         simulation.getTrajectories()
                       ))));
@@ -85,8 +85,8 @@ int main() {
             }
         }
     }
-    utility::writeCsv("../test_data/n_body/test_bfe_coefficients.csv",
+    utility::writeCsv("../data/n_body/test_bfe_coefficients.csv",
                       utility::flatten(utility::flatten(coefficients)));
-    utility::writeCsv("../test_data/n_body/test_bfe_coefficient_norms.csv",
+    utility::writeCsv("../data/n_body/test_bfe_coefficient_norms.csv",
                       simulation.getBFECoefficientNorms());
 }
