@@ -28,7 +28,7 @@ BFENBody::iterate() {
     rk4_iteration_functions(N_functions);
     for(int i = 0; i < N_functions; ++i) {
         std::cout << "Making RK4 function " << i << std::endl;
-        rk4_iteration_functions[i] = [i, particles_per_function, &pot, this] () {
+        rk4_iteration_functions[i] = [i, particles_per_function, &pot, coords=coords, timestep=timestep] () {
             mtx.lock();
             std::cout << "Executing RK4 function " << i << std::endl;
             mtx.unlock();
