@@ -19,18 +19,13 @@ potential::PotentialFuncs BFENBody::getInit() {
 
 std::vector<std::array<std::array<double, 2>, 2>>
 BFENBody::iterate() {
-    std::cout << "B" << std::endl;
     potential::PotentialFuncs pot({background, init*(-1), 
                                     potential::PotentialFuncs(bfe_pot)});
-    std::cout << "B" << std::endl;
     // Ensure that N_particles is a multiple of particles_per_function please
     int particles_per_function = 5;
-    std::cout << "B" << std::endl;
     int N_functions = N_particles/particles_per_function;
-    std::cout << "B" << std::endl;
     std::vector<std::function<std::vector<std::array<std::array<double, 2>, 2>>()>>
     rk4_iteration_functions(N_functions);
-    std::cout << "B" << std::endl;
     for(int i = 0; i < N_functions; ++i) {
         std::cout << "Making RK4 function " << i << std::endl;
         rk4_iteration_functions[i] = [i, particles_per_function, &pot, coords=coords, timestep=timestep] () {
@@ -96,15 +91,11 @@ BFENBody::BFENBody(double timestep_, int save_interval_,
     for(int i = 0; i < N_timesteps; ++i) {
         std::cout << "Iteration " << i << std::endl;
         iterate();
-        std::cout << "A" << std::endl;
         if(std::fmod(i, save_interval) == 0) {
             saved_trajectories[i/save_interval] = coords;
         }
-        std::cout << "A" << std::endl;
         bfe_coefficients[i] = bfe_pot.getCoefficients();
-        std::cout << "A" << std::endl;
         bfe_coefficient_norms[i] = bfe_pot.calculateAbsNorm();
-        std::cout << "A" << std::endl;
     }
 }
 
