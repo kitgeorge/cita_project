@@ -14,9 +14,9 @@ int main() {
     double v_c = 220*Units::kms;
     double R_0 = 1*Units::kpc;
     double active_fraction = 0.5;
-    std::array<double, 2> taper_radii = {1, 10};
+    std::array<double, 2> taper_radii = {1, 8};
     std::array<double, 2> taper_indices = {4, 5};
-    std::array<double, 2> cutoff_radii = {0.1, 20};
+    std::array<double, 2> cutoff_radii = {0.1, 12};
     std::function<double(double)>
     target_Q = [] (double R) {return 2;};
     df::TaperedDF tap(v_c, R_0, active_fraction,

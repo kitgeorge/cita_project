@@ -40,8 +40,8 @@ void BFENBody::iterate() {
                 coords_ = coords[i*particles_per_function + j];
                 // Keep particles within R_Ka, approximately by
                 // reflecting them off a wall at R_Ka
-                if(coords_[0][0] > 0.8*R_Ka) {
-                    coords_[0][0] = 0.8*R_Ka;
+                if(coords_[0][0] > 0.6*R_Ka) {
+                    coords_[0][0] = 0.6*R_Ka;
                     coords_[1][0] = -std::abs(coords_[1][0]);
                 }
                 vectors::Coords2d 
