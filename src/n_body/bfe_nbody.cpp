@@ -54,9 +54,12 @@ BFENBody::iterate() {
             return output;
         };
     }
+    std::cout << "A" <<std::endl;
     coords = utility::flatten<std::array<std::array<double, 2>, 2>>
                 (multithreading::executeInParallel(rk4_iteration_functions));
+    std::cout << "A" <<std::endl;
     getPotential();
+    std::cout << "A" <<std::endl;
 }
 
 BFENBody::BFENBody(double timestep_, int save_interval_, 
