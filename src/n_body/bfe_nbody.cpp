@@ -91,7 +91,7 @@ BFENBody::BFENBody(double timestep_, int save_interval_,
     for(int i = 0; i < N_timesteps; ++i) {
         std::cout << "Iteration " << i << std::endl;
         iterate();
-        if(std::fmod(i, save_interval) == 0) {
+        if(i % save_interval == 0) {
             saved_trajectories[i/save_interval] = coords;
         }
         bfe_coefficients[i] = bfe_pot.getCoefficients();
