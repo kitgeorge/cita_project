@@ -613,7 +613,11 @@ BFE::BFE(double R_Ka_, int N_R_, int N_phi_):
 R_Ka(R_Ka_), N_R(N_R_), N_phi(N_phi_) {}
 BFE::BFE(const BFE& old): R_Ka(old.R_Ka),
                           N_R(old.N_R), N_phi(old.N_phi),
-                          tables(old.tables) {}
+                          tables(old.tables) {
+    mtx.lock();
+    std::cout << "Copying BFE" << std::endl;
+    mtx.unlock();
+}
 
 std::function<std::complex<double>(double, double)> 
 BFE::psi(int n, int l) const {
