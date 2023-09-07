@@ -57,7 +57,8 @@ BFENBody::iterate() {
     std::cout << "A" <<std::endl;
     std::vector<std::vector<std::array<std::array<double, 2>, 2>>>
     data = multithreading::executeInParallel(rk4_iteration_functions);
-    std::cout << utility::getShape(data) << std::endl;
+    std::cout << utility::getShape(data)[0] << ", "
+              << utility::getShape(data)[1] << std::endl;
     std::cout << "A" <<std::endl;
     coords = utility::flatten(data);
     std::cout << "A" <<std::endl;
