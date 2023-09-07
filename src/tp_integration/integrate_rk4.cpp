@@ -51,6 +51,7 @@ rk4Iteration(const ptl::PotentialFuncs& potential,
               double t, double timestep) {
 
     assert(std::isfinite(coords.polar[0][0]));
+    assert(coords.polar[0][0] < 20*Units::kpc); // For debugging
     
     std::array<std::array<double, 2>, 2>
     cart = coords.cartesian;
