@@ -56,12 +56,12 @@ rk4Iteration(const ptl::PotentialFuncs& potential,
     cart = coords.cartesian;
 
     rk4_mtx.lock();
-    std::cout << "rk4Iteration, " << coords.polar[0][0] << ", " 
-              << coords.polar[0][1] << ", " << cart[0][0] << ", "
-              << cart[0][1] << std::endl;
-    std::cout << "velocities, " << coords.polar[1][0] << ", " 
-              << coords.polar[1][1] << ", " << cart[1][0] << ", " 
-              << cart[1][1] << std::endl;
+    // std::cout << "rk4Iteration, " << coords.polar[0][0] << ", " 
+    //           << coords.polar[0][1] << ", " << cart[0][0] << ", "
+    //           << cart[0][1] << std::endl;
+    // std::cout << "velocities, " << coords.polar[1][0] << ", " 
+    //           << coords.polar[1][1] << ", " << cart[1][0] << ", " 
+    //           << cart[1][1] << std::endl;
     assert(std::isfinite(cart[0][0]));
     assert(std::isfinite(cart[0][1]));
     assert(std::isfinite(cart[1][0]));
