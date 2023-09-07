@@ -37,13 +37,13 @@ BFENBody::iterate() {
             for(int j = 0; j < particles_per_function; ++j) {
                 // Should link this to BFE R_Ka somehow
                 double R_Ka = 20*Units::kpc;
-                std::array<std::array<double, 2>, 2>>
+                std::array<std::array<double, 2>, 2>
                 coords_ = coords[i*particles_per_function + j];
                 // Keep particles within R_Ka, approximately by
                 // reflecting them off a wall at R_Ka
                 if(coords_[0][0] > R_Ka) {
                     coords_[0][0] = 0.9999*R_Ka;
-                    coords_[1][0] = -std::abs(coords[1][0]);
+                    coords_[1][0] = -std::abs(coords_[1][0]);
                 }
                 vectors::Coords2d 
                 x(coords_, 1);
