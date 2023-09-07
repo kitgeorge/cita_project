@@ -35,8 +35,18 @@ BFENBody::iterate() {
             std::vector<std::array<std::array<double, 2>, 2>>
             output(particles_per_function);
             for(int j = 0; j < particles_per_function; ++j) {
+                // Should link this to BFE R_Ka somehow
+                double R_Ka = 20*Units::kpc;
+                std::array<std::array<double, 2>, 2>>
+                coords_ = coords[i*particles_per_function + j];
+                // Keep particles within R_Ka, approximately by
+                // reflecting them off a wall at R_Ka
+                if(coords_[0][0] > R_Ka) {
+                    coords_[0][0] = 0.9999*R_Ka;
+                    coords_[1][0] = -std::abs(coords[1][0]);
+                }
                 vectors::Coords2d 
-                x(coords[i*particles_per_function + j], 1);
+                x(coords_, 1);
                 assert(std::isfinite(x.polar[0][0]));
                 output[j] = tp_integration::
                             rk4Iteration(pot, x, 0, timestep).polar;
