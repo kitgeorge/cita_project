@@ -21,7 +21,7 @@ void BFENBody::iterate() {
     potential::PotentialFuncs pot({background, init*(-1), 
                                     potential::PotentialFuncs(bfe_pot)});
     // Ensure that N_particles is a multiple of particles_per_function please
-    int particles_per_function = 5;
+    int particles_per_function = 2;
     int N_functions = N_particles/particles_per_function;
     std::vector<std::function<std::vector<std::array<std::array<double, 2>, 2>>()>>
     rk4_iteration_functions(N_functions);
@@ -47,6 +47,7 @@ void BFENBody::iterate() {
                 vectors::Coords2d 
                 x(coords_, 1);
                 assert(std::isfinite(x.polar[0][0]));
+                assert(x.polar[0][0] < R_Ka);
                 output[j] = tp_integration::
                             rk4Iteration(pot, x, 0, timestep).polar;
             }
