@@ -22,7 +22,10 @@ rk4Iteration(const potential::PotentialFuncs& potential,
               vectors::Coords2d coords,
               double t, double timestep);
 
-
+vrs::Coords2d
+rk4IterationBoxed(const potential::PotentialFuncs& potential,
+                  vrs::Coords2d coords, double t, double timestep,
+                  double R_Ka);
 
 
 

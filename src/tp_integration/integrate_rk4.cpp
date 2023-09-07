@@ -46,6 +46,77 @@ getTpIntegrationFunctions(const potential::PotentialFuncs& potential,
 }
 
 vrs::Coords2d
+rk4IterationBoxed(const ptl::PotentialFuncs& potential,
+                  vrs::Coords2d coords, double t, double timestep,
+                  double R_Ka) {
+    assert(std::isfinite(coords.polar[0][0]));
+    assert(coords.polar[0][0] < 20*Units::kpc); // For debugging
+    
+    std::array<std::array<double, 2>, 2>
+    cart = coords.cartesian;
+
+    rk4_mtx.lock();
+    // std::cout << "rk4Iteration, " << coords.polar[0][0] << ", " 
+    //           << coords.polar[0][1] << ", " << cart[0][0] << ", "
+    //           << cart[0][1] << std::endl;
+    // std::cout << "velocities, " << coords.polar[1][0] << ", " 
+    //           << coords.polar[1][1] << ", " << cart[1][0] << ", " 
+    //           << cart[1][1] << std::endl;
+    assert(std::isfinite(cart[0][0]));
+    assert(std::isfinite(cart[0][1]));
+    assert(std::isfinite(cart[1][0]));
+    assert(std::isfinite(cart[1][1]));
+    rk4_mtx.unlock();
+
+    double x_temp;
+    double y_temp;
+
+    std::function<vrs::Coords2d()>
+    reflect = [&coords]() {
+        std::array<std::array<double, 2>, 2>
+        polar = {{coords.polar[0], {{-coords.polar[1][0],
+                                     coords.polar[1][1]}}}};
+        return vrs::Coords2d(polar, 1);
+    };
+
+    std::array<std::array<std::array<double, 2>, 2>, 4> k;
+    k[0][0] = cart[1];
+    k[0][1] = potential.cartesian_force(cart[0][0], cart[0][1], t);
+    k[1][0] = add_arrays(cart[1], multiply_array(k[0][1], timestep/2));
+    x_temp = cart[0][0] + timestep/2*k[0][0][0];
+    y_temp = cart[0][1] + timestep/2*k[0][0][1];
+    if(pow(x_temp, 2) + pow(y_temp, 2) > pow(R_Ka, 2)) {
+        return reflect();
+    }
+    k[1][1] = potential.cartesian_force(x_temp, y_temp, t + timestep/2);
+    k[2][0] = add_arrays(cart[1], multiply_array(k[1][1], timestep/2));
+    x_temp = cart[0][0] + timestep/2*k[1][0][0];
+    y_temp = cart[0][1] + timestep/2*k[1][0][1];
+    if(pow(x_temp, 2) + pow(y_temp, 2) > pow(R_Ka, 2)) {
+        return reflect();
+    }
+    k[2][1] = potential.cartesian_force(x_temp,
+                                        y_temp,
+                                        t + timestep/2);
+    k[3][0] = add_arrays(cart[1], multiply_array(k[2][1], timestep));
+    x_temp = cart[0][0] + timestep*k[2][0][0];
+    y_temp = cart[0][1] + timestep*k[2][0][1];
+    if(pow(x_temp, 2) + pow(y_temp, 2) > pow(R_Ka, 2)) {
+        return reflect();
+    }
+    k[3][1] = potential.cartesian_force(x_temp, y_temp,
+                                        t + timestep);
+
+    cart = add_arrays(cart, multiply_array(k[0], timestep/6));
+    cart = add_arrays(cart, multiply_array(k[1], timestep/3));
+    cart = add_arrays(cart, multiply_array(k[2], timestep/3));
+    cart = add_arrays(cart, multiply_array(k[3], timestep/6));
+
+    vrs::Coords2d output(cart, 0);
+    return output;
+}
+
+vrs::Coords2d
 rk4Iteration(const ptl::PotentialFuncs& potential, 
               vrs::Coords2d coords,
               double t, double timestep) {

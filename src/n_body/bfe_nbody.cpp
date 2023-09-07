@@ -40,8 +40,8 @@ void BFENBody::iterate() {
                 coords_ = coords[i*particles_per_function + j];
                 // Keep particles within R_Ka, approximately by
                 // reflecting them off a wall at R_Ka
-                if(coords_[0][0] > 0.6*R_Ka) {
-                    coords_[0][0] = 0.6*R_Ka;
+                if(coords_[0][0] > R_Ka) {
+                    coords_[0][0] = 0.999*R_Ka;
                     coords_[1][0] = -std::abs(coords_[1][0]);
                 }
                 vectors::Coords2d 
@@ -49,7 +49,7 @@ void BFENBody::iterate() {
                 assert(std::isfinite(x.polar[0][0]));
                 assert(x.polar[0][0] < R_Ka);
                 output[j] = tp_integration::
-                            rk4Iteration(pot, x, 0, timestep).polar;
+                            rk4IterationBoxed(pot, x, 0, timestep, R_Ka).polar;
             }
             return output;
         };
