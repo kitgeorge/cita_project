@@ -3,6 +3,8 @@
 #include <mutex>
 #include <chrono>
 
+std::mutex pfd_mtx;
+
 namespace basis_functions {
 
 
@@ -47,21 +49,20 @@ template <typename DensityType>
 std::vector<std::vector<std::complex<double>>> 
 PotentialFromDensity::
 getCoefficients(const DensityType& density) const {
-    std::mutex mtx;
-    mtx.lock();
+    pfd_mtx.lock();
     std::cout << nl_max[0] + 1 << ", " << nl_max[1] + 1 << std::endl;
-    mtx.unlock();
+    pfd_mtx.unlock();
     std::vector<std::vector<std::complex<double>>>
     output(nl_max[0] + 1, std::vector<std::complex<double>>(nl_max[1] + 1));
     std::vector<std::function<std::complex<double>()>>
     coefficient_functions((nl_max[0] + 1)*(nl_max[1] + 1));
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
-            coefficient_functions[i*(nl_max[1] + 1) + j] = [i, j, expansion=expansion, &density, &mtx] () {
-                // mtx.lock();
+            coefficient_functions[i*(nl_max[1] + 1) + j] = [i, j, expansion=expansion, &density, &pfd_mtx] () {
+                // pfd_mtx.lock();
                 // std::cout << "Calculating BFE coefficients: "
                 //           << i << ", " << j << std::endl;
-                // mtx.unlock();
+                // pfd_mtx.unlock();
                 return expansion->getCoefficient(i, j, density);
             };
         }
@@ -81,7 +82,6 @@ std::vector<std::vector<std::function<DataType(double, double)>>>
 PotentialFromDensity::
 getTerms(std::function<std::function<DataType(double, double)>
                          (int, int)> BFE_member_function) const {
-    std::mutex mtx;
     auto time_0 = std::chrono::steady_clock::now();
     // Initialising table for 0 <= n <= n_max, -l_max <= 0 <= l_max
     std::vector<std::vector<std::function<DataType(double, double)>>>
@@ -92,28 +92,28 @@ getTerms(std::function<std::function<DataType(double, double)>
     // to expansion)
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
-            auto time_1 = std::chrono::steady_clock::now();
+            // auto time_1 = std::chrono::steady_clock::now();
             output[i][nl_max[1] + j] = utility::multiplyFunction(BFE_member_function(i, j),
                                             coefficients[i][j]);
-            auto time_2 = std::chrono::steady_clock::now();
-            mtx.lock();
-            std::cout << "BFE terms: " << i << ", " << j << ", "
-                      << std::chrono::duration_cast<std::chrono::microseconds>
-                                (time_2 - time_1).count() << "us"
-                      << std::endl;
-            mtx.unlock();
+            // auto time_2 = std::chrono::steady_clock::now();
+            // pfd_mtx.lock();
+            // std::cout << "BFE terms: " << i << ", " << j << ", "
+            //           << std::chrono::duration_cast<std::chrono::microseconds>
+            //                     (time_2 - time_1).count() << "us"
+            //           << std::endl;
+            // pfd_mtx.unlock();
             if(j != 0) {
                 output[i][nl_max[1] - j] 
                         = utility::conjugateFunction(output[i][nl_max[1] + j]);
             }
         }
     }
-    mtx.lock();
-    std::cout << "Total time: " 
-              << std::chrono::duration_cast<std::chrono::milliseconds>
-                                (std::chrono::steady_clock::now() - time_0).count()
-              << "ms" << std::endl;
-    mtx.unlock();
+    // pfd_mtx.lock();
+    // std::cout << "Total time: " 
+    //           << std::chrono::duration_cast<std::chrono::milliseconds>
+    //                             (std::chrono::steady_clock::now() - time_0).count()
+    //           << "ms" << std::endl;
+    // pfd_mtx.unlock();
     return output;
 }
 
@@ -125,9 +125,18 @@ std::function<DataType(double, double)>
 PotentialFromDensity::
 getTruncFunction(std::function<std::function<DataType(double, double)>
                     (int, int)> BFE_member_function) const {
+    auto time_0 = std::chrono::steady_clock::now();
 
-    return utility::addFunctions(
+    auto output = utility::addFunctions(
                 utility::flatten(getTerms(BFE_member_function)));
+
+    pfd_mtx.lock();
+    std::cout << "Total force time: " 
+              << std::chrono::duration_cast<std::chrono::milliseconds>
+                    (std::chrono::steady_clock::now() - time_0).count() << "ms"
+              << std::endl;
+    pfd_mtx.unlock();
+    return output;
 }
 
 std::function<double(double, double)>
@@ -155,7 +164,15 @@ PotentialFromDensity::
 getTruncForce() const {
     std::function<std::function<std::array<std::complex<double>, 2>(double, double)>(int, int)>
     wrapper = [=] (int i, int j) {
-        return expansion->psi_f(i, j);
+        auto time_0 = std::chrono::steady_clock::now();
+        auto output = expansion->psi_f(i, j);
+        pfd_mtx.lock();
+        std::cout << "Force BFE term: " << i << ", " << j << ", "
+                  << std::chrono::duration_cast<std::chrono::milliseconds>
+                        (std::chrono::steady_clock::now() - time_0).count() << "ms"
+                  << std::endl;
+        pfd_mtx.unlock();
+        return output;
     };
     return utility::realFunction(getTruncFunction(wrapper));
 }
