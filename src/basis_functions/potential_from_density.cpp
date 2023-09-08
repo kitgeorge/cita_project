@@ -125,18 +125,23 @@ std::function<DataType(double, double)>
 PotentialFromDensity::
 getTruncFunction(std::function<std::function<DataType(double, double)>
                     (int, int)> BFE_member_function) const {
-    auto time_0 = std::chrono::steady_clock::now();
+    auto debug_output = [BFE_member_function, this] (double R, double phi) {
+        auto time_0 = std::chrono::steady_clock::now();
+        auto output = utility::addFunctions(
+                    utility::flatten(getTerms(BFE_member_function)))(R, phi);
+        pfd_mtx.lock();
+        std::cout << "Total force time: " 
+                << std::chrono::duration_cast<std::chrono::milliseconds>
+                        (std::chrono::steady_clock::now() - time_0).count() << "ms"
+                << std::endl;
+        pfd_mtx.unlock();
+        return output;
+    };
+    return debug_output;
+    // Usually this is all
+    // return utility::addFunctions(
+                // utility::flatten(getTerms(BFE_member_function)));
 
-    auto output = utility::addFunctions(
-                utility::flatten(getTerms(BFE_member_function)));
-
-    pfd_mtx.lock();
-    std::cout << "Total force time: " 
-              << std::chrono::duration_cast<std::chrono::milliseconds>
-                    (std::chrono::steady_clock::now() - time_0).count() << "ms"
-              << std::endl;
-    pfd_mtx.unlock();
-    return output;
 }
 
 std::function<double(double, double)>
@@ -164,15 +169,19 @@ PotentialFromDensity::
 getTruncForce() const {
     std::function<std::function<std::array<std::complex<double>, 2>(double, double)>(int, int)>
     wrapper = [=] (int i, int j) {
-        auto time_0 = std::chrono::steady_clock::now();
-        auto output = expansion->psi_f(i, j);
-        pfd_mtx.lock();
-        std::cout << "Force BFE term: " << i << ", " << j << ", "
-                  << std::chrono::duration_cast<std::chrono::milliseconds>
-                        (std::chrono::steady_clock::now() - time_0).count() << "ms"
-                  << std::endl;
-        pfd_mtx.unlock();
-        return output;
+        auto debug_output = [i, j, expansion=expansion] (double R, double phi) {
+            auto time_0 = std::chrono::steady_clock::now();
+            auto output = expansion->psi_f(i, j)(R, phi);
+            pfd_mtx.lock();
+            std::cout << "Force BFE term: " << i << ", " << j << ", "
+                    << std::chrono::duration_cast<std::chrono::microseconds>
+                            (std::chrono::steady_clock::now() - time_0).count() << "us"
+                    << std::endl;
+            pfd_mtx.unlock();
+            return output;
+        };
+        return debug_output;
+        // return expansion->psi_f(i, j); // usually this is all
     };
     return utility::realFunction(getTruncFunction(wrapper));
 }
