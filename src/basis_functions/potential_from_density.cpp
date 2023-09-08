@@ -95,7 +95,7 @@ getTerms(std::function<std::function<DataType(double, double)>
             auto time_1 = std::chrono::steady_clock::now();
             output[i][nl_max[1] + j] = utility::multiplyFunction(BFE_member_function(i, j),
                                             coefficients[i][j]);
-            auto time_1 = std::chrono::steady_clock::now();
+            auto time_2 = std::chrono::steady_clock::now();
             mtx.lock();
             std::cout << "BFE terms: " << i << ", " << j << ", "
                       << std::chrono::duration_cast<std::chrono::milliseconds>
