@@ -86,9 +86,9 @@ rk4IterationBoxed(const ptl::PotentialFuncs& potential,
     double time_1 = std::time(nullptr);
     k[0][1] = potential.cartesian_force(cart[0][0], cart[0][1], t);
     double time_2 = std::time(nullptr);
-    mtx.lock();
+    rk4_mtx.lock();
     std::cout << "First force: " << time_2 - time_1 << std::endl;
-    mtx.unlock();
+    rk4_mtx.unlock();
     k[1][0] = add_arrays(cart[1], multiply_array(k[0][1], timestep/2));
     x_temp = cart[0][0] + timestep/2*k[0][0][0];
     y_temp = cart[0][1] + timestep/2*k[0][0][1];
@@ -98,9 +98,9 @@ rk4IterationBoxed(const ptl::PotentialFuncs& potential,
     time_1 = std::time(nullptr);
     k[1][1] = potential.cartesian_force(x_temp, y_temp, t + timestep/2);
     time_2 = std::time(nullptr);
-    mtx.lock();
+    rk4_mtx.lock();
     std::cout << "Second force: " << time_2 - time_1 << std::endl;
-    mtx.unlock();
+    rk4_mtx.unlock();
     k[2][0] = add_arrays(cart[1], multiply_array(k[1][1], timestep/2));
     x_temp = cart[0][0] + timestep/2*k[1][0][0];
     y_temp = cart[0][1] + timestep/2*k[1][0][1];
@@ -112,9 +112,9 @@ rk4IterationBoxed(const ptl::PotentialFuncs& potential,
                                         y_temp,
                                         t + timestep/2);
     time_2 = std::time(nullptr);
-    mtx.lock();
+    rk4_mtx.lock();
     std::cout << "Third force: " << time_2 - time_1 << std::endl;
-    mtx.unlock();
+    rk4_mtx.unlock();
     k[3][0] = add_arrays(cart[1], multiply_array(k[2][1], timestep));
     x_temp = cart[0][0] + timestep*k[2][0][0];
     y_temp = cart[0][1] + timestep*k[2][0][1];
@@ -125,9 +125,9 @@ rk4IterationBoxed(const ptl::PotentialFuncs& potential,
     k[3][1] = potential.cartesian_force(x_temp, y_temp,
                                         t + timestep);
     time_2 = std::time(nullptr);
-    mtx.lock();
+    rk4_mtx.lock();
     std::cout << "Fourth force: " << time_2 - time_1 << std::endl;
-    mtx.unlock();
+    rk4_mtx.unlock();
 
     cart = add_arrays(cart, multiply_array(k[0], timestep/6));
     cart = add_arrays(cart, multiply_array(k[1], timestep/3));
@@ -135,9 +135,9 @@ rk4IterationBoxed(const ptl::PotentialFuncs& potential,
     cart = add_arrays(cart, multiply_array(k[3], timestep/6));
 
     vrs::Coords2d output(cart, 0);
-    mtx.lock();
+    rk4_mtx.lock();
     std::cout << "Total time: " << std::time(nullptr) - time_0 << std::endl;
-    mtx.unlock();
+    rk4_mtx.unlock();
     return output;
 }
 
