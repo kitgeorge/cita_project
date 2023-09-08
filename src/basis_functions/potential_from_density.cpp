@@ -98,8 +98,8 @@ getTerms(std::function<std::function<DataType(double, double)>
             auto time_2 = std::chrono::steady_clock::now();
             mtx.lock();
             std::cout << "BFE terms: " << i << ", " << j << ", "
-                      << std::chrono::duration_cast<std::chrono::milliseconds>
-                                (time_2 - time_1).count()
+                      << std::chrono::duration_cast<std::chrono::microseconds>
+                                (time_2 - time_1).count() << "us"
                       << std::endl;
             mtx.unlock();
             if(j != 0) {
@@ -112,7 +112,7 @@ getTerms(std::function<std::function<DataType(double, double)>
     std::cout << "Total time: " 
               << std::chrono::duration_cast<std::chrono::milliseconds>
                                 (std::chrono::steady_clock::now() - time_0).count()
-              << std::endl;
+              << "ms" << std::endl;
     mtx.unlock();
     return output;
 }
