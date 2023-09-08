@@ -125,14 +125,16 @@ std::function<DataType(double, double)>
 PotentialFromDensity::
 getTruncFunction(std::function<std::function<DataType(double, double)>
                     (int, int)> BFE_member_function) const {
-    auto debug_output = [BFE_member_function, this] (double R, double phi) {
+    auto output_function = utility::addFunctions(
+                utility::flatten(getTerms(BFE_member_function)));
+    auto debug_output = [output_function] (double R, double phi) {
         auto time_0 = std::chrono::steady_clock::now();
-        auto output = utility::addFunctions(
-                    utility::flatten(getTerms(BFE_member_function)))(R, phi);
+        auto output = output_function(R, phi);
+        auto time_1 = std::chrono::steady_clock::now();
         pfd_mtx.lock();
         std::cout << "Total force time: " 
                 << std::chrono::duration_cast<std::chrono::milliseconds>
-                        (std::chrono::steady_clock::now() - time_0).count() << "ms"
+                        (time_1 - time_0).count() << "ms"
                 << std::endl;
         pfd_mtx.unlock();
         return output;
@@ -172,10 +174,11 @@ getTruncForce() const {
         auto debug_output = [i, j, expansion=expansion] (double R, double phi) {
             auto time_0 = std::chrono::steady_clock::now();
             auto output = expansion->psi_f(i, j)(R, phi);
+            auto time_1 = std::chrono::steady_clock::now();
             pfd_mtx.lock();
             std::cout << "Force BFE term: " << i << ", " << j << ", "
                     << std::chrono::duration_cast<std::chrono::microseconds>
-                            (std::chrono::steady_clock::now() - time_0).count() << "us"
+                            (time_1 - time_0).count() << "us"
                     << std::endl;
             pfd_mtx.unlock();
             return output;
