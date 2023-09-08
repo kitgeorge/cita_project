@@ -1,6 +1,7 @@
 #include "potential_from_density.hpp"
 #include <iostream>
 #include <mutex>
+#include <chrono>
 
 namespace basis_functions {
 
@@ -80,6 +81,8 @@ std::vector<std::vector<std::function<DataType(double, double)>>>
 PotentialFromDensity::
 getTerms(std::function<std::function<DataType(double, double)>
                          (int, int)> BFE_member_function) const {
+    std::mutex mtx;
+    auto time_0 = std::chrono::steady_clock::now();
     // Initialising table for 0 <= n <= n_max, -l_max <= 0 <= l_max
     std::vector<std::vector<std::function<DataType(double, double)>>>
     output(nl_max[0] + 1, 
@@ -89,14 +92,28 @@ getTerms(std::function<std::function<DataType(double, double)>
     // to expansion)
     for(int i = 0; i <= nl_max[0]; ++i) {
         for(int j = 0; j <= nl_max[1]; ++j) {
+            auto time_1 = std::chrono::steady_clock::now();
             output[i][nl_max[1] + j] = utility::multiplyFunction(BFE_member_function(i, j),
                                             coefficients[i][j]);
+            auto time_1 = std::chrono::steady_clock::now();
+            mtx.lock();
+            std::cout << "BFE terms: " << i << ", " << j << ", "
+                      << std::chrono::duration_cast<std::chrono::milliseconds>
+                                (time_2 - time_1).count()
+                      << std::endl;
+            mtx.unlock();
             if(j != 0) {
                 output[i][nl_max[1] - j] 
                         = utility::conjugateFunction(output[i][nl_max[1] + j]);
             }
         }
     }
+    mtx.lock();
+    std::cout << "Total time: " 
+              << std::chrono::duration_cast<std::chrono::milliseconds>
+                                (std::chrono::steady_clock::now() - time_0).count()
+              << std::endl;
+    mtx.unlock();
     return output;
 }
 
