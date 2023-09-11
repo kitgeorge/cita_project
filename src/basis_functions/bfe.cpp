@@ -654,10 +654,18 @@ BFE::psi_f(int n, int l) const {
     std::function<double(double, double)>
     UPrime_function = tables.getUPrimeFunction(n, l);
     return [U_function, UPrime_function, l, R_Ka=R_Ka] (double R, double phi) {
+        utility::SimpleTimer timer;
+        timer.start();
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         std::array<std::complex<double>, 2> output;
         output[0] = -UPrime_function(R, R_Ka)*phase;
         output[1] = -1i*(double)l/R*U_function(R, R_Ka)*phase;
+        timer.stop();
+        double duration = timer.getDuration().count();
+        mtx.lock();
+        utility::debug_print("psi_f function: " + std::to_string(duration)
+                             + "s", 0);
+        mtx.unlock();
         return output;
     };
 }

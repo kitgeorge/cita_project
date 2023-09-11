@@ -3,6 +3,7 @@
 #include "add_functions.hpp"
 #include "integrate_rk4.hpp"
 #include "nd_vectors.hpp"
+#include "debug_print.hpp"
 #include <memory>
 
 namespace n_body {
