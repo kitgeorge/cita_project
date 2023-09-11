@@ -661,7 +661,8 @@ BFE::psi_f(int n, int l) const {
         output[0] = -UPrime_function(R, R_Ka)*phase;
         output[1] = -1i*(double)l/R*U_function(R, R_Ka)*phase;
         timer.stop();
-        double duration = timer.getDuration().count();
+        double duration = std::chrono::duration_cast
+                            <std::chrono::nanoseconds>(timer.getDuration()).count();
         mtx.lock();
         utility::debug_print("psi_f function: " + std::to_string(duration)
                              + "s", 0);
