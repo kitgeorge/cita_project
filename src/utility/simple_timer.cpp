@@ -14,7 +14,7 @@ void SimpleTimer::stop() {
     start_time.reset();
 }
 
-std::chrono::duration<double> SimpleTimer::duration() const {
+std::chrono::duration<double> SimpleTimer::getDuration() const {
     return duration.value();
 }
 
