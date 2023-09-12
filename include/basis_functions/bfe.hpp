@@ -199,7 +199,7 @@ scalarProduct(const std::function<std::complex<double>(double, double)>& pot_con
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-static const int N_cores = std::thread::hardware_concurrency() - 1;
+static const int N_cores = std::thread::hardware_concurrency();
 
 class BFE {
     // Following notation in Fouvry et al (2015)

@@ -635,12 +635,13 @@ BFE::getTables() const {
 }
 
 std::shared_ptr<const BFETables> BFE::accessTables() const {
-    mtx.lock();
-    int cpu = sched_getcpu();
-    std::cout << "cpu: " << cpu << std::endl;
-    std::shared_ptr<const BFETables> output = tables[cpu];
-    mtx.unlock();
-    return output;
+    // mtx.lock();
+    // int cpu = sched_getcpu();
+    // std::cout << "cpu: " << cpu << std::endl;
+    // std::shared_ptr<const BFETables> output = tables[cpu];
+    // mtx.unlock();
+    // return output;
+    return tables[sched_getcpu()];
 }
 
 std::function<std::complex<double>(double, double)> 
