@@ -665,7 +665,7 @@ BFE::psi_f(int n, int l) const {
                             <std::chrono::nanoseconds>(timer.getDuration()).count();
         mtx.lock();
         utility::debug_print("psi_f function: " + std::to_string(duration)
-                             + "s", 0);
+                             + "ns", 0);
         mtx.unlock();
         return output;
     };
