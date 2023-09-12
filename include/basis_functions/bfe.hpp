@@ -12,6 +12,7 @@
 #include <complex>
 #include <cassert>
 #include <boost/multiprecision/gmp.hpp>
+#include <sched.h>
 // With such high precision, I'll probably have to run on server for RAM
 
 using LooongDouble = boost::multiprecision::mpf_float_1000;
@@ -198,6 +199,8 @@ scalarProduct(const std::function<std::complex<double>(double, double)>& pot_con
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
+int getNCores() {return std::thread::hardware_concurrency() - 1;}
+static const int N_cores = getNCores();
 
 class BFE {
     // Following notation in Fouvry et al (2015)
@@ -206,7 +209,15 @@ class BFE {
     const int N_R;
     const int N_phi;
 
-    const BFETables tables;
+    // const BFETables tables;
+
+    const std::vector<std::shared_ptr<const BFETables>>
+    tables;
+
+    std::vector<std::shared_ptr<const BFETables>>
+    getTables() const;
+
+    std::shared_ptr<const BFETables> accessTables() const;
 
     // double U(int n, int l, double R) const;
     // double UPrime(int n, int l, double R) const;

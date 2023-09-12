@@ -358,10 +358,10 @@ double BFETables::getD(int n, int l, double R, double R_Ka) const {
 
 std::function<double(double, double)>
 BFETables::getUFunction(int n, int l) const {
-    std::vector<double> values = U_values[n][l];
-    return [values, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
+    // std::vector<double> values = U_values[n][l];
+    return [this, n, l, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
-        double output = values[R_bin];
+        double output = U_values[n][l][R_bin];
         output /= pow(R_Ka, 0.5);
         return output;
     };
@@ -369,10 +369,10 @@ BFETables::getUFunction(int n, int l) const {
 
 std::function<double(double, double)>
 BFETables::getUPrimeFunction(int n, int l) const {
-    std::vector<double> values = UPrime_values[n][l];
-    return [values, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
+    // std::vector<double> values = UPrime_values[n][l];
+    return [this, n, l, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
-        double output = values[R_bin];
+        double output = UPrime_values[n][l][R_bin];
         output /= pow(R_Ka, 1.5);
         return output;
     };
@@ -380,10 +380,10 @@ BFETables::getUPrimeFunction(int n, int l) const {
 
 std::function<double(double, double)>
 BFETables::getDFunction(int n, int l) const {
-    std::vector<double> values = D_values[n][l];
-    return [values, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
+    // std::vector<double> values = D_values[n][l];
+    return [this, n, l, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
-        double output = values[R_bin];
+        double output = D_values[n][l][R_bin];
         output /= pow(R_Ka, 1.5);
         return output;
     };
@@ -609,24 +609,41 @@ scalarProduct(const std::function<std::complex<double>(double, double)>& pot_con
 ////////////////////////////////////////////////////////////
 
 
-BFE::BFE(double R_Ka_, int N_R_, int N_phi_): 
-R_Ka(R_Ka_), N_R(N_R_), N_phi(N_phi_) {}
-BFE::BFE(const BFE& old): R_Ka(old.R_Ka),
-                          N_R(old.N_R), N_phi(old.N_phi),
-                          tables(old.tables) {
-    mtx.lock();
-    std::cout << "Copied BFE" << std::endl;
-    mtx.unlock();
+// BFE::BFE(double R_Ka_, int N_R_, int N_phi_): 
+// R_Ka(R_Ka_), N_R(N_R_), N_phi(N_phi_) {}
+// BFE::BFE(const BFE& old): R_Ka(old.R_Ka),
+//                           N_R(old.N_R), N_phi(old.N_phi),
+//                           tables(old.tables) {
+//     mtx.lock();
+//     std::cout << "Copied BFE" << std::endl;
+//     mtx.unlock();
+// }
+
+BFE::BFE(double R_Ka_, int N_R_, int N_phi_):
+R_Ka(R_Ka_), N_R(N_R_), N_phi(N_phi_), tables(getTables()) {}
+BFE::BFE(const BFE& old): R_Ka(old.R_Ka), N_R(old.N_R),
+                          N_phi(old.N_phi), tables(old.tables) {}
+
+std::vector<std::shared_ptr<const BFETables>>
+BFE::getTables() const {
+    std::vector<std::shared_ptr<const BFETables>> output(N_cores);
+    output[0] = std::make_shared<const BFETables>();
+    for(int i = 1; i < N_cores; ++i) {
+        output[i] = std::make_shared<const BFETables>(*output[0]);
+    }
+    return output;
+}
+
+std::shared_ptr<const BFETables> BFE::accessTables() const {
+    return tables[sched_getcpu()];
 }
 
 std::function<std::complex<double>(double, double)> 
 BFE::psi(int n, int l) const {
     assert(n >= 0);
     assert(l >= 0);
-    std::function<double(double, double)>
-    U_function = tables.getUFunction(n, l);
-    return [U_function, l, R_Ka=R_Ka] (double R, double phi) {
-        double prefactor = U_function(R, R_Ka);
+    return [this, n, l, R_Ka=R_Ka] (double R, double phi) {
+        double prefactor = accessTables()->getU(n, l, R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
     };
@@ -636,10 +653,8 @@ std::function<std::complex<double>(double, double)>
 BFE::rho(int n, int l) const {
     assert(n >= 0);
     assert(l >= 0);
-    std::function<double(double, double)>
-    D_function = tables.getDFunction(n, l);
-    return [D_function, l, R_Ka=R_Ka] (double R, double phi) {
-        double prefactor = D_function(R, R_Ka);
+    return [this, n, l, R_Ka=R_Ka] (double R, double phi) {
+        double prefactor = accessTables()->getD(n, l, R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
     };
@@ -649,17 +664,13 @@ std::function<std::array<std::complex<double>, 2>(double, double)>
 BFE::psi_f(int n, int l) const {
     assert(n >= 0);
     assert(l >= 0);
-    std::function<double(double, double)>
-    U_function = tables.getUFunction(n, l);
-    std::function<double(double, double)>
-    UPrime_function = tables.getUPrimeFunction(n, l);
-    return [U_function, UPrime_function, l, R_Ka=R_Ka] (double R, double phi) {
+    return [this, n, l, R_Ka=R_Ka] (double R, double phi) {
         utility::SimpleTimer timer;
         timer.start();
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         std::array<std::complex<double>, 2> output;
-        output[0] = -UPrime_function(R, R_Ka)*phase;
-        output[1] = -1i*(double)l/R*U_function(R, R_Ka)*phase;
+        output[0] = -accessTables()->getUPrime(n, l, R, R_Ka)*phase;
+        output[1] = -1i*(double)l/R*accessTables()->getU(n, l, R, R_Ka)*phase;
         timer.stop();
         double duration = std::chrono::duration_cast
                             <std::chrono::nanoseconds>(timer.getDuration()).count();
