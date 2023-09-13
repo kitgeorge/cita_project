@@ -27,7 +27,7 @@ double SimpleTimer::getDuration_us() const {
 }
 
 double SimpleTimer::getDuration_ns() const {
-    return std::crhono::duration_cast<std::chrono::nanoseconds>(duration.value()).count();
+    return std::chrono::duration_cast<std::chrono::nanoseconds>(duration.value()).count();
 }
 
 }
