@@ -681,8 +681,10 @@ BFE::psi_f(int n, int l) const {
         timer.start();
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         std::array<std::complex<double>, 2> output;
-        output[0] = -accessTables()->getUPrime(n, l, R, R_Ka)*phase;
-        output[1] = -1i*(double)l/R*accessTables()->getU(n, l, R, R_Ka)*phase;
+        // output[0] = -accessTables()->getUPrime(n, l, R, R_Ka)*phase;
+        // output[1] = -1i*(double)l/R*accessTables()->getU(n, l, R, R_Ka)*phase;
+        output[0] = -1*phase;
+        output[1] = -1i*(double)l/R*phase;
         timer.stop();
         double duration = std::chrono::duration_cast
                             <std::chrono::nanoseconds>(timer.getDuration()).count();
