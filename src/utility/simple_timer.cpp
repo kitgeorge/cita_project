@@ -22,11 +22,11 @@ double SimpleTimer::getDuration_ms() const {
     return std::chrono::duration_cast<std::chrono::milliseconds>(duration.value()).count();
 }
 
-double getDuration_us() const {
+double SimpleTimer::getDuration_us() const {
     return std::chrono::duration_cast<std::chrono::microseconds>(duration.value()).count();
 }
 
-double getDuration_ns() const {
+double SimpleTimer::getDuration_ns() const {
     return std::crhono::duration_cast<std::chrono::nanoseconds>(duration.value()).count();
 }
 
