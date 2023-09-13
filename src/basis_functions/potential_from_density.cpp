@@ -180,15 +180,15 @@ getTruncForce() const {
     std::function<std::function<std::array<std::complex<double>, 2>(double, double)>(int, int)>
     wrapper = [=] (int i, int j) {
         auto debug_output = [i, j, expansion=expansion] (double R, double phi) {
-            auto time_0 = std::chrono::steady_clock::now();
+            // auto time_0 = std::chrono::steady_clock::now();
             auto output = expansion->psi_f(i, j)(R, phi);
-            auto time_1 = std::chrono::steady_clock::now();
-            pfd_mtx.lock();
-            std::cout << "Force BFE term: " << i << ", " << j << ", "
-                    << std::chrono::duration_cast<std::chrono::microseconds>
-                            (time_1 - time_0).count() << "us"
-                    << std::endl;
-            pfd_mtx.unlock();
+            // auto time_1 = std::chrono::steady_clock::now();
+            // pfd_mtx.lock();
+            // std::cout << "Force BFE term: " << i << ", " << j << ", "
+            //         << std::chrono::duration_cast<std::chrono::microseconds>
+            //                 (time_1 - time_0).count() << "us"
+            //         << std::endl;
+            // pfd_mtx.unlock();
             return output;
         };
         return debug_output;
