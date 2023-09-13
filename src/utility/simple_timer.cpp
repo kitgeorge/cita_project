@@ -18,4 +18,16 @@ std::chrono::duration<double> SimpleTimer::getDuration() const {
     return duration.value();
 }
 
+double SimpleTimer::getDuration_ms() const {
+    return std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+}
+
+double getDuration_us() const {
+    return std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
+}
+
+double getDuration_ns() const {
+    return std::crhono::duration_cast<std::chrono::nanoseconds>(duration).count();
+}
+
 }

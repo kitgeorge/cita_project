@@ -14,6 +14,9 @@ class SimpleTimer {
         void start();
         void stop();
         std::chrono::duration<double> getDuration() const;
+        double getDuration_ms() const;
+        double getDuration_us() const;
+        double getDuration_ns() const;
 };
 
 }
