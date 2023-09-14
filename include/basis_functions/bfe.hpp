@@ -69,9 +69,9 @@ class BFETables {
     std::optional<utility::vector2d<double>> P_values;
     std::optional<utility::vector2d<double>> S_values;
 
-    const utility::vector3d<double> U_values;
-    const utility::vector3d<double> UPrime_values;
-    const utility::vector3d<double> D_values;
+    const std::vector<double> U_values;
+    const std::vector<double> UPrime_values;
+    const std::vector<double> D_values;
 
     void ensureSubTablesExist();
     utility::vector4d<LooongDouble> getAlphaKaValues() const;

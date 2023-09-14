@@ -233,17 +233,20 @@ BFETables::calculateUUpDValues(
             };
         }
     }
-    std::vector<std::vector<double>> 
-    flat = multithreading::executeInParallel(calculation_functions);
-    utility::vector3d<double> output = utility::makeShape<double>(shape);
-    for(int i = 0; i < shape[0]; ++i) {
-        for(int j = 0; j < shape[1]; ++j) {
-            for(int k = 0; k < shape[2]; ++k) {
-                output[i][j][k] = 
-                flat[i*shape[1] + j][k];
-            }
-        }
-    }
+    // We actually want the vector to be flat
+    std::vector<double>
+    output = utility::flatten(multithreading::executeInParallel(calculation_functions));
+    // std::vector<std::vector<double>> 
+    // flat = multithreading::executeInParallel(calculation_functions);
+    // utility::vector3d<double> output = utility::makeShape<double>(shape);
+    // for(int i = 0; i < shape[0]; ++i) {
+    //     for(int j = 0; j < shape[1]; ++j) {
+    //         for(int k = 0; k < shape[2]; ++k) {
+    //             output[i][j][k] = 
+    //             flat[i*shape[1] + j][k];
+    //         }
+    //     }
+    // }
     return output;    
 } 
 
@@ -282,7 +285,8 @@ BFETables::readUUprimeDValues(std::string path) {
     if(utility::fileExists(path)) {
         std::vector<double> flat = utility::readCsv(path);
         if(flat.size() == N_values) {
-            output.emplace(utility::reshape(flat, shape));
+            // output.emplace(utility::reshape(flat, shape));
+            output.emplace(flat);
         }
     }
     return output;
@@ -297,8 +301,10 @@ utility::vector3d<double> BFETables::getUValues() {
         return values.value();
     }
     std::cout << "U values not cached; caching..." << std::endl;
-    utility::vector3d<double> output = calculateUValues();
-    utility::writeCsv(path, utility::flatten(output));
+    std::vector<double> output = calculateUValues();
+    utility::writeCsv(path, output);
+    // utility::vector3d<double> output = calculateUValues();
+    // utility::writeCsv(path, utility::flatten(output));
     return output;
 }
 
@@ -311,8 +317,10 @@ utility::vector3d<double> BFETables::getUPrimeValues() {
         return values.value();
     }
     std::cout << "U prime values not cached; caching..." << std::endl;
-    utility::vector3d<double> output = calculateUPrimeValues();
-    utility::writeCsv(path, utility::flatten(output));
+    std::vector<double> output = calculateUPrimeValues();
+    utility::writeCsv(path, output);
+    // utility::vector3d<double> output = calculateUPrimeValues();
+    // utility::writeCsv(path, utility::flatten(output));
     return output;
 }
 
@@ -325,8 +333,10 @@ utility::vector3d<double> BFETables::getDValues() {
         return values.value();
     }
     std::cout << "D values not cached; caching..." << std::endl;
-    utility::vector3d<double> output = calculateDValues();
-    utility::writeCsv(path, utility::flatten(output));
+    std::vector<double> output = calculateDValues();
+    utility::writeCsv(path, output);
+    // utility::vector3d<double> output = calculateDValues();
+    // utility::writeCsv(path, utility::flatten(output));
     return output;
 }
 
@@ -337,21 +347,25 @@ utility::vector3d<double> BFETables::getDValues() {
 
 double BFETables::getU(int n, int l, double R, double R_Ka) const {
     int R_bin = R/R_Ka*N_R_tabulated;
-    double output = U_values[n][l][R_bin];
+    int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
+    double output = U_values[index];
+    // double output = U_values[n][l][R_bin];
     output /= pow(R_Ka, 0.5);
     return output;
 }
 
 double BFETables::getUPrime(int n, int l, double R, double R_Ka) const {
     int R_bin = R/R_Ka*N_R_tabulated;
-    double output = UPrime_values[n][l][R_bin];
+    int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
+    double output = UPrime_values[index];
     output /= pow(R_Ka, 1.5);
     return output;
 }
 
 double BFETables::getD(int n, int l, double R, double R_Ka) const {
     int R_bin = R/R_Ka*N_R_tabulated;
-    double output = D_values[n][l][R_bin];
+    int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
+    double output = D_values[index];
     output /= pow(R_Ka, 1.5);
     return output;
 }
@@ -361,7 +375,8 @@ BFETables::getUFunction(int n, int l) const {
     // std::vector<double> values = U_values[n][l];
     return [this, n, l, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
-        double output = U_values[n][l][R_bin];
+        int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
+        double output = U_values[index];
         output /= pow(R_Ka, 0.5);
         return output;
     };
@@ -372,7 +387,8 @@ BFETables::getUPrimeFunction(int n, int l) const {
     // std::vector<double> values = UPrime_values[n][l];
     return [this, n, l, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
-        double output = UPrime_values[n][l][R_bin];
+        int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
+        double output = UPrime_values[index];
         output /= pow(R_Ka, 1.5);
         return output;
     };
@@ -383,7 +399,8 @@ BFETables::getDFunction(int n, int l) const {
     // std::vector<double> values = D_values[n][l];
     return [this, n, l, N_R_tabulated=N_R_tabulated] (double R, double R_Ka) {
         int R_bin = R/R_Ka*N_R_tabulated;
-        double output = D_values[n][l][R_bin];
+        int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
+        double output = D_values[index];
         output /= pow(R_Ka, 1.5);
         return output;
     };
