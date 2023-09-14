@@ -32,6 +32,8 @@ void BFENBody::iterate() {
             mtx.lock();
             std::cout << "Executing RK4 function " << i << std::endl;
             mtx.unlock();
+            utility::SimpleTimer timer;
+            timer.start();
             std::vector<std::array<std::array<double, 2>, 2>>
             output(particles_per_function);
             for(int j = 0; j < particles_per_function; ++j) {
@@ -52,6 +54,11 @@ void BFENBody::iterate() {
                 output[j] = tp_integration::
                             rk4IterationBoxed(pot, x, 0, timestep, R_Ka).polar;
             }
+            timer.stop();
+            mtx.lock();
+            std::cout << "RK4 function " << i << ": " << timer.getDuration_ms 
+                      << "ms" << std::endl;
+            mtx.unlock();
             return output;
         };
     }

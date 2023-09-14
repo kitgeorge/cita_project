@@ -132,19 +132,19 @@ getTruncFunction(std::function<std::function<DataType(double, double)>
         auto time_a = std::chrono::steady_clock::now();
         double y = x;
         auto time_b = std::chrono::steady_clock::now();
-        std::cout << "Time to read double: "
-                << std::chrono::duration_cast<std::chrono::nanoseconds>
-                        (time_b - time_a).count() << "ns"
-                << std::endl;
+        // std::cout << "Time to read double: "
+        //         << std::chrono::duration_cast<std::chrono::nanoseconds>
+        //                 (time_b - time_a).count() << "ns"
+        //         << std::endl;
         auto time_0 = std::chrono::steady_clock::now();
         auto output = output_function(R, phi);
         auto time_1 = std::chrono::steady_clock::now();
-        pfd_mtx.lock();
-        std::cout << "Total force time: " 
-                << std::chrono::duration_cast<std::chrono::milliseconds>
-                        (time_1 - time_0).count() << "ms"
-                << std::endl;
-        pfd_mtx.unlock();
+        // pfd_mtx.lock();
+        // std::cout << "Total force time: " 
+        //         << std::chrono::duration_cast<std::chrono::milliseconds>
+        //                 (time_1 - time_0).count() << "ms"
+        //         << std::endl;
+        // pfd_mtx.unlock();
         return output;
     };
     return debug_output;
