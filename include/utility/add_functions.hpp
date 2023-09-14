@@ -92,6 +92,21 @@ addFunctions(const std::vector<std::function<std::array<std::complex<double>, N>
     };
 }
 
+template <class Arg0, class Arg1, std::size_t N>
+std::function<std::complex<double>(Arg0, Arg1)>
+addFunctions(const std::function<std::array<std::complex<double>, N>(Arg0, Arg1)>& first,
+             const std::function<std::array<std::complex<double>, N>(Arg0, Arg1)>& second) {
+    return [=] (Arg0 a0, Arg1 a1) {
+        std::array<std::complex<double>, N> 
+        out0 = first(a0, a1);
+        std::array<std::complex<double>, N>
+        out1 = second(a0, a1);
+        out0[0] += out1[0];
+        out0[1] += out1[1];
+        return out0;
+    };
+}
+
 template <std::size_t N>
 std::array<double, N> 
 addFunctions(const std::vector<std::function<std::array<double, N>(double, double, double)>>& 
