@@ -56,7 +56,7 @@ void BFENBody::iterate() {
             }
             timer.stop();
             mtx.lock();
-            std::cout << "RK4 function " << i << ": " << timer.getDuration_ms 
+            std::cout << "RK4 function " << i << ": " << timer.getDuration_ms() 
                       << "ms" << std::endl;
             mtx.unlock();
             return output;
