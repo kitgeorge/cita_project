@@ -154,7 +154,7 @@ getTruncFunction(std::function<std::function<DataType(double, double)>
     for(int n = 0; n <= nl_max[0]; ++n) {
         for(int l = 0; l <= nl_max[0]; ++l) {
             output = utility::addFunctions(output,
-                                           utility::multipyFunction(BFE_member_function(n, l),
+                                           utility::multiplyFunction(BFE_member_function(n, l),
                                                 coefficients[n][l]));
         }
     }
