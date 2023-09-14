@@ -91,18 +91,18 @@ class BFETables {
     double getP(int l, int n) const;
     double getS(int l, int n) const;
 
-    std::optional<utility::vector3d<double>> 
+    std::optional<std::vector<double>> 
     readUUprimeDValues(std::string path);
-    utility::vector3d<double> getUValues();
-    utility::vector3d<double> getUPrimeValues();
-    utility::vector3d<double> getDValues();
+    std::vector<double> getUValues();
+    std::vector<double> getUPrimeValues();
+    std::vector<double> getDValues();
 
-    utility::vector3d<double> 
+    std::vector<double> 
     calculateUUpDValues( 
             std::function<double(int, int, int, double)> which);
-    utility::vector3d<double> calculateUValues();
-    utility::vector3d<double> calculateUPrimeValues();
-    utility::vector3d<double> calculateDValues();
+    std::vector<double> calculateUValues();
+    std::vector<double> calculateUPrimeValues();
+    std::vector<double> calculateDValues();
 
     double U(int k, int n, int l, double R_norm) const;
     double UPrime(int k, int n, int l, double R_norm) const;

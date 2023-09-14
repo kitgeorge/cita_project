@@ -208,7 +208,7 @@ void BFETables::ensureSubTablesExist() {
     }
 }
 
-utility::vector3d<double> 
+std::vector<double> 
 BFETables::calculateUUpDValues(
         std::function<double(int, int, int, double)> which) {
     ensureSubTablesExist();
@@ -250,7 +250,7 @@ BFETables::calculateUUpDValues(
     return output;    
 } 
 
-utility::vector3d<double> BFETables::calculateUValues() {
+std::vector<double> BFETables::calculateUValues() {
     std::function<double(int, int, int, double)>
     f = [this] (int k, int n, int l, double R_norm) {
         return U(k, n, l, R_norm);
@@ -258,7 +258,7 @@ utility::vector3d<double> BFETables::calculateUValues() {
     return calculateUUpDValues(f);
 }
 
-utility::vector3d<double> BFETables::calculateUPrimeValues() {
+std::vector<double> BFETables::calculateUPrimeValues() {
     std::function<double(int, int, int, double)>
     f = [this] (int k, int n, int l, double R_norm) {
         return UPrime(k, n, l, R_norm);
@@ -266,7 +266,7 @@ utility::vector3d<double> BFETables::calculateUPrimeValues() {
     return calculateUUpDValues(f);
 }
 
-utility::vector3d<double> BFETables::calculateDValues() {
+std::vector<double> BFETables::calculateDValues() {
     std::function<double(int, int, int, double)>
     f = [this] (int k, int n, int l, double R_norm) {
         return D(k, n, l, R_norm);
@@ -277,9 +277,9 @@ utility::vector3d<double> BFETables::calculateDValues() {
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-std::optional<utility::vector3d<double>> 
+std::optional<std::vector<double>> 
 BFETables::readUUprimeDValues(std::string path) {
-    std::optional<utility::vector3d<double>> output;
+    std::optional<std::vector<double>> output;
     std::array<int, 3> shape = {n_max + 1, l_max + 1, N_R_tabulated};
     int N_values = shape[0]*shape[1]*shape[2];
     if(utility::fileExists(path)) {
@@ -292,10 +292,10 @@ BFETables::readUUprimeDValues(std::string path) {
     return output;
 }
 
-utility::vector3d<double> BFETables::getUValues() {
+std::vector<double> BFETables::getUValues() {
     std::string path = "../cache/basis_functions/u_values_k=" 
                        + std::to_string(k_Ka) + ".csv";
-    std::optional<utility::vector3d<double>>
+    std::optional<std::vector<double>>
     values = readUUprimeDValues(path);
     if(values) {
         return values.value();
@@ -308,10 +308,10 @@ utility::vector3d<double> BFETables::getUValues() {
     return output;
 }
 
-utility::vector3d<double> BFETables::getUPrimeValues() {
+std::vector<double> BFETables::getUPrimeValues() {
     std::string path = "../cache/basis_functions/u_prime_values_k=" 
                        + std::to_string(k_Ka) + ".csv";
-    std::optional<utility::vector3d<double>>
+    std::optional<std::vector<double>>
     values = readUUprimeDValues(path);
     if(values) {
         return values.value();
@@ -324,10 +324,10 @@ utility::vector3d<double> BFETables::getUPrimeValues() {
     return output;
 }
 
-utility::vector3d<double> BFETables::getDValues() {
+std::vector<double> BFETables::getDValues() {
     std::string path = "../cache/basis_functions/d_values_k=" 
                        + std::to_string(k_Ka) + ".csv";
-    std::optional<utility::vector3d<double>>
+    std::optional<std::vector<double>>
     values = readUUprimeDValues(path);
     if(values) {
         return values.value();
