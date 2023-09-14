@@ -681,7 +681,7 @@ BFE::rho(int n, int l) const {
     };
 }
 
-std::complex<double> rho(int n, int l, double R, double phi) const {
+std::complex<double> BFE::rho(int n, int l, double R, double phi) const {
     assert(n >= 0);
     assert(l >= 0);
     double prefactor = accessTables()->getD(n, l, R, R_Ka);
