@@ -346,11 +346,16 @@ std::vector<double> BFETables::getDValues() {
 ////////////////////////////////////////////////////////////
 
 double BFETables::getU(int n, int l, double R, double R_Ka) const {
+    utility::SimpleTimer timer;
+    timer.start();
     int R_bin = R/R_Ka*N_R_tabulated;
     int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
     double output = U_values[index];
     // double output = U_values[n][l][R_bin];
     output /= pow(R_Ka, 0.5);
+    timer.stop();
+    utility::debug_print("U read: " + std::to_string(timer.getDuration_us())
+                         + "us", 1);
     return output;
 }
 
