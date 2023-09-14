@@ -33,10 +33,10 @@ void BFENBody::iterate() {
             std::cout << "Executing RK4 function " << i << std::endl;
             mtx.unlock();
             utility::SimpleTimer timer;
-            timer.start();
             std::vector<std::array<std::array<double, 2>, 2>>
             output(particles_per_function);
             for(int j = 0; j < particles_per_function; ++j) {
+                timer.start();
                 // Should link this to BFE R_Ka somehow
                 double R_Ka = 20*Units::kpc;
                 std::array<std::array<double, 2>, 2>
@@ -53,12 +53,12 @@ void BFENBody::iterate() {
                 assert(x.polar[0][0] < R_Ka);
                 output[j] = tp_integration::
                             rk4IterationBoxed(pot, x, 0, timestep, R_Ka).polar;
+                timer.stop();
+                mtx.lock();
+                std::cout << "RK4 function " << i << ", " << j << ": " 
+                        << timer.getDuration_ms() << "ms" << std::endl;
+                mtx.unlock();
             }
-            timer.stop();
-            mtx.lock();
-            std::cout << "RK4 function " << i << ": " << timer.getDuration_ms() 
-                      << "ms" << std::endl;
-            mtx.unlock();
             return output;
         };
     }
