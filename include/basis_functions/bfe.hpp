@@ -242,6 +242,13 @@ class BFE {
         std::function<std::array<std::complex<double>, 2>(double, double)> 
         psi_f(int n, int l) const;
 
+        // Lambda functions above may be causing performance issues, 
+        // so we'll try simple functions
+        std::complex<double> psi(int n, int l, double R, double phi) const;
+        std::complex<double> rho(int n, int l, double R, double phi) const;
+        std::array<std::complex<double>, 2>
+        psi_f(int n, int l, double R, double phi) const;
+
         std::complex<double> 
         getCoefficient(int n, int l, 
                         const std::function<double(double, double)>& 

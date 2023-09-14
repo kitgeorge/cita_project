@@ -661,6 +661,15 @@ BFE::psi(int n, int l) const {
     };
 }
 
+std::complex<double> BFE::psi(int n, int l, double R, double phi) const {
+    assert(n >= 0);
+    assert(l >= 0);
+    double prefactor = accessTables()->getU(n, l, R, R_Ka);
+    std::complex<double> phase = std::exp(1i*(double)l*phi);
+    return prefactor*phase;
+}
+
+
 std::function<std::complex<double>(double, double)> 
 BFE::rho(int n, int l) const {
     assert(n >= 0);
@@ -671,6 +680,15 @@ BFE::rho(int n, int l) const {
         return prefactor*phase;
     };
 }
+
+std::complex<double> rho(int n, int l, double R, double phi) const {
+    assert(n >= 0);
+    assert(l >= 0);
+    double prefactor = accessTables()->getD(n, l, R, R_Ka);
+    std::complex<double> phase = std::exp(1i*(double)l*phi);
+    return prefactor*phase;
+}
+
 
 std::function<std::array<std::complex<double>, 2>(double, double)>
 BFE::psi_f(int n, int l) const {
@@ -694,6 +712,28 @@ BFE::psi_f(int n, int l) const {
         mtx.unlock();
         return output;
     };
+}
+
+std::array<std::complex<double>, 2>
+BFE::psi_f(int n, int l, double R, double phi) const {
+    assert(n >= 0);
+    assert(l >= 0);
+    utility::SimpleTimer timer;
+    timer.start();
+    std::complex<double> phase = std::exp(1i*(double)l*phi);
+    std::array<std::complex<double>, 2> output;
+    output[0] = -accessTables()->getUPrime(n, l, R, R_Ka)*phase;
+    output[1] = -1i*(double)l/R*accessTables()->getU(n, l, R, R_Ka)*phase;
+    // output[0] = -phase;
+    // output[1] = -1i*(double)l/R*phase;
+    timer.stop();
+    double duration = std::chrono::duration_cast
+                        <std::chrono::nanoseconds>(timer.getDuration()).count();
+    mtx.lock();
+    utility::debug_print("psi_f function: " + std::to_string(duration)
+                            + "ns", 0);
+    mtx.unlock();
+    return output;
 }
 
 // // Calculate as LooongDouble, but return as double
