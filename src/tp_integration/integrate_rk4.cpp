@@ -138,7 +138,7 @@ rk4IterationBoxed(const ptl::PotentialFuncs& potential,
     // rk4_mtx.lock();
     // std::cout << "Total time: " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - time_0).count() << std::endl;
     // rk4_mtx.unlock();
-    utility::debug_print("rk4IterationBoxed");
+    utility::debug_print("rk4IterationBoxed", 1);
     return output;
 }
 
