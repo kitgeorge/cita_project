@@ -25,6 +25,8 @@ PotentialFuncs::
 getCartesianForce(std::function<std::array<double, 2>(double, double, double)>
                   polar_force) {
     return [polar_force](double x, double y, double t) {
+        utility::SimpleTimer timer;
+        timer.start();
         std::array<std::array<double, 2>, 2>
         coords = {{ {{x, y}}, {{0, 0}} }};
         vrs::Coords2d pos(coords, 0);
@@ -45,6 +47,9 @@ getCartesianForce(std::function<std::array<double, 2>(double, double, double)>
                                     polar_force(pos.polar[0][0], 
                                                 pos.polar[0][1], t)[1]};
         f = vrs::getCartesianVector2d(pos.polar[0], f);
+        timer.stop();
+        utility::debug_print("getCartesianForce: " + timer.getDuration_us()
+                             + "us", 1);
         return f;
     };
 }
