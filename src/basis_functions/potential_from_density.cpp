@@ -201,22 +201,40 @@ PotentialFromDensity::
 getTruncForce() const {
     std::function<std::function<std::array<std::complex<double>, 2>(double, double)>(int, int)>
     wrapper = [=] (int i, int j) {
-        // auto debug_output = [i, j, expansion=expansion] (double R, double phi) {
-        //     // auto time_0 = std::chrono::steady_clock::now();
-        //     auto output = expansion->psi_f(i, j)(R, phi);
-        //     // auto time_1 = std::chrono::steady_clock::now();
-        //     // pfd_mtx.lock();
-        //     // std::cout << "Force BFE term: " << i << ", " << j << ", "
-        //     //         << std::chrono::duration_cast<std::chrono::microseconds>
-        //     //                 (time_1 - time_0).count() << "us"
-        //     //         << std::endl;
-        //     // pfd_mtx.unlock();
-        //     return output;
-        // };
-        // return debug_output;
-        return expansion->psi_f(i, j); // usually this is all
+        auto debug_output = [i, j, expansion=expansion] (double R, double phi) {
+            utility::SimpleTimer timer;
+            timer.start();
+            // auto time_0 = std::chrono::steady_clock::now();
+            auto output = expansion->psi_f(i, j)(R, phi);
+            timer.stop();
+            utility::debug_print("Force BFE term: " + std::to_string(i) + ", "
+                                 + std::to_string(j) + ": " 
+                                 + std::to_string(timer.getDuration_us()) + "us", 1);
+            // auto time_1 = std::chrono::steady_clock::now();
+            // pfd_mtx.lock();
+            // std::cout << "Force BFE term: " << i << ", " << j << ", "
+            //         << std::chrono::duration_cast<std::chrono::microseconds>
+            //                 (time_1 - time_0).count() << "us"
+            //         << std::endl;
+            // pfd_mtx.unlock();
+            return output;
+        };
+        return debug_output;
+
+        // return expansion->psi_f(i, j); // usually this is all
     };
-    return utility::realFunction(getTruncFunction(wrapper));
+
+    // return utility::realFunction(getTruncFunction(wrapper));
+    
+    return [this, wrapper] (double R, double phi) {
+        utility::SimpleTimer timer;
+        timer.start();
+        auto output = utility::realFunction(getTruncFunction(wrapper))(R, phi);
+        timer.stop();
+        utility::debug_print("Trunc force: " + std::to_string(timer.getDuration_us())
+                             + "us", 1);
+        return output;
+    }
 }
 
 std::vector<std::vector<std::complex<double>>>

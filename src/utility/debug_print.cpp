@@ -2,6 +2,8 @@
 
 namespace utility {
 
+std::mutex print_mtx;
+
 // Set all debug channels closed by default
 std::array<bool, N_debug_channels> 
 channel_open = [N_debug_channels]() {
@@ -22,7 +24,9 @@ void close_channel(int channel) {
 
 void debug_print(const std::string& statement, int channel) {
     if(channel_open[channel]) {
+        print_mtx.lock();
         std::cout << statement << std::endl;
+        print_mtx.unlock();
     }
 }
 
