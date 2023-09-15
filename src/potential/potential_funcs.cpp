@@ -42,10 +42,13 @@ getCartesianForce(std::function<std::array<double, 2>(double, double, double)>
         assert(std::isfinite(pos.polar[0][1]));
         pf_mtx.unlock();
 
-        std::array<double, 2> f = {polar_force(pos.polar[0][0], 
-                                                pos.polar[0][1], t)[0],
-                                    polar_force(pos.polar[0][0], 
-                                                pos.polar[0][1], t)[1]};
+        std::array<double, 2> f = polar_force(pos.polar[0][0],
+                                              pos.polar[0][1], t);
+
+        // std::array<double, 2> f = {polar_force(pos.polar[0][0], 
+        //                                         pos.polar[0][1], t)[0],
+        //                             polar_force(pos.polar[0][0], 
+        //                                         pos.polar[0][1], t)[1]};
         f = vrs::getCartesianVector2d(pos.polar[0], f);
         timer.stop();
         utility::debug_print("getCartesianForce: " + std::to_string(timer.getDuration_us())
