@@ -27,10 +27,10 @@ void BFENBody::iterate() {
     int N_functions = N_particles/particles_per_function;
     std::vector<std::function<std::vector<std::array<std::array<double, 2>, 2>>()>>
     rk4_iteration_functions(N_functions);
-    double R_Ka = 20*Units::kpc;
     for(int i = 0; i < N_functions; ++i) {
         std::cout << "Making RK4 function " << i << std::endl;
         rk4_iteration_functions[i] = [i, particles_per_function, &pot, coords=coords, timestep=timestep] () {
+            double R_Ka = 20*Units::kpc;
             mtx.lock();
             std::cout << "Executing RK4 function " << i << std::endl;
             mtx.unlock();
