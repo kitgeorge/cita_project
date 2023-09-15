@@ -234,7 +234,7 @@ getTruncForce() const {
         utility::debug_print("Trunc force: " + std::to_string(timer.getDuration_us())
                              + "us", 1);
         return output;
-    }
+    };
 }
 
 std::vector<std::vector<std::complex<double>>>
