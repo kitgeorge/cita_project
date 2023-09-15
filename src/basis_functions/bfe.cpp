@@ -354,8 +354,8 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     // double output = U_values[n][l][R_bin];
     output /= pow(R_Ka, 0.5);
     timer.stop();
-    utility::debug_print("U read: " + std::to_string(timer.getDuration_ns())
-                         + "ns", 1);
+    // utility::debug_print("U read: " + std::to_string(timer.getDuration_ns())
+    //                      + "ns", 1);
     return output;
 }
 
