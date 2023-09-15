@@ -153,7 +153,7 @@ getTruncFunction(std::function<std::function<DataType(double, double)>
     // Would just do nested for loops for n and l, but we need to initialise output
     // with the first function before we can pass it to addFunctions.
     std::function<DataType(double, double)> 
-    output = utility::multiplyFunction(BFE_member_function(0, 0), coefficeints[0][0]);
+    output = utility::multiplyFunction(BFE_member_function(0, 0), coefficients[0][0]);
     for(int l = 1; l <= nl_max[1]; ++l) {
         output = utility::addFunctions(output,
                                         utility::multiplyFunction(BFE_member_function(0, l),
