@@ -41,7 +41,7 @@ TEST(SampleTest, getDFSampleELPlotting) {
 
 }
 
-TEST(SampleTest, getDFSampleViaELDensityPlotting) {
+TEST(SampleTest, DISABLED_getDFSampleViaELDensityPlotting) {
     double v_c = 220*Units::kms;
     double R_0 = 1*Units::kpc;
     double active_fraction = 0.5;

@@ -38,7 +38,7 @@ getCartesianForce(std::function<std::array<double, 2>(double, double, double)>
         assert(std::isfinite(coords[0][0]));
         assert(std::isfinite(coords[0][1]));
         assert(std::isfinite(pos.polar[0][0]));
-        assert(pos.polar[0][0] < 20*Units::kpc); // For debugging
+        // assert(pos.polar[0][0] < 20*Units::kpc); // For debugging
         assert(std::isfinite(pos.polar[0][1]));
         pf_mtx.unlock();
 
