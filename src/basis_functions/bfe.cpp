@@ -348,7 +348,6 @@ std::vector<double> BFETables::getDValues() {
 ////////////////////////////////////////////////////////////
 
 double BFETables::getU(int n, int l, double R, double R_Ka) const {
-    std::cout << U_values[U_values.size()/2] << std::endl;
     utility::SimpleTimer timer0;
     // utility::SimpleTimer timer1;
     // utility::SimpleTimer timer2;
@@ -361,7 +360,9 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     // timer1.stop();
     // timer2.start();
     double output = U_values[index];
-    utility::debug_print(std::to_string(index) + ", " + std::to_string(U_values.size()), 1);
+    utility::debug_print(std::to_string(index) + ", " + std::to_string(U_values.size())
+                         + ", " + std::to_string(output) + ", "
+                         + std::to_string(U_values[U_values.size()/2]), 1);
     const int N_time = 100;
     std::vector<double> temp(N_time);
     timer0.start();
