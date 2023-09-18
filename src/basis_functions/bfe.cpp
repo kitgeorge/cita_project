@@ -372,7 +372,7 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
                          + "ns, " + std::to_string(timer2.getDuration_ns())
                          + "ns, " + std::to_string(timer3.getDuration_ns())
                          + "ns, " + std::to_string(timer4.getDuration_ns())
-                         + "ns" + x.count(), 1);
+                         + "ns" + std::to_string(x.count()), 1);
     return output;
 }
 
