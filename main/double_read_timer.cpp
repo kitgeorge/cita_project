@@ -52,7 +52,7 @@ double SimpleTimer::getDuration_ns() const {
 
 int main() {
     SimpleTimer timer;
-    const int N_a = 1000000;
+    const int N_a = 1000;
     std::vector<double> a(N_a);
     for(int i = 0; i < N_a; ++i) {
         a[i] = (double)std::rand()/RAND_MAX;
@@ -64,8 +64,9 @@ int main() {
     }
     timer.stop();
     for(int i = 0; i < N_a; ++i) {
-        // std::cout << b[i];
+        std::cout << b[i];
     }
     std::cout << std::endl << "Read double: " << timer.getDuration_ns()/N_a
               << "ns" << std::endl;
+    
 }

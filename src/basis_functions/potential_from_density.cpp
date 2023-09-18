@@ -207,9 +207,9 @@ getTruncForce() const {
             // auto time_0 = std::chrono::steady_clock::now();
             auto output = expansion->psi_f(i, j)(R, phi);
             timer.stop();
-            utility::debug_print("Force BFE term: " + std::to_string(i) + ", "
-                                 + std::to_string(j) + ": " 
-                                 + std::to_string(timer.getDuration_us()) + "us", 1);
+            // utility::debug_print("Force BFE term: " + std::to_string(i) + ", "
+            //                      + std::to_string(j) + ": " 
+            //                      + std::to_string(timer.getDuration_us()) + "us", 1);
             // auto time_1 = std::chrono::steady_clock::now();
             // pfd_mtx.lock();
             // std::cout << "Force BFE term: " << i << ", " << j << ", "
@@ -231,8 +231,8 @@ getTruncForce() const {
         timer.start();
         auto output = utility::realFunction(getTruncFunction(wrapper))(R, phi);
         timer.stop();
-        utility::debug_print("Trunc force: " + std::to_string(timer.getDuration_us())
-                             + "us", 1);
+        // utility::debug_print("Trunc force: " + std::to_string(timer.getDuration_us())
+        //                      + "us", 1);
         return output;
     };
 }

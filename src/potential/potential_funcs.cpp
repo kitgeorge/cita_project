@@ -51,8 +51,8 @@ getCartesianForce(std::function<std::array<double, 2>(double, double, double)>
         //                                         pos.polar[0][1], t)[1]};
         f = vrs::getCartesianVector2d(pos.polar[0], f);
         timer.stop();
-        utility::debug_print("CartesianForce: " + std::to_string(timer.getDuration_us())
-                             + "us", 1);
+        // utility::debug_print("CartesianForce: " + std::to_string(timer.getDuration_us())
+        //                      + "us", 1);
         return f;
     };
 }
