@@ -346,7 +346,7 @@ std::vector<double> BFETables::getDValues() {
 ////////////////////////////////////////////////////////////
 
 double BFETables::getU(int n, int l, double R, double R_Ka) const {
-    // utility::SimpleTimer timer0;
+    utility::SimpleTimer timer0;
     // utility::SimpleTimer timer1;
     // utility::SimpleTimer timer2;
     // utility::SimpleTimer timer3;
@@ -357,7 +357,12 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
     // timer1.stop();
     // timer2.start();
-    double output = U_values[index];
+    timer0.start();
+    int N_time = 1000;
+    for(int i = 0; i < N_time; ++i) {
+        double output = U_values[index + i];
+    }
+    timer0.stop();
     // timer2.stop();
     // double output = U_values[n][l][R_bin];
     // timer3.start();
@@ -366,7 +371,8 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     // timer4.start();
     // timer4.stop();
     // timer0.stop();
-    // utility::debug_print("U read: " + std::to_string(timer0.getDuration_ns())
+    utility::debug_print("U read: " + std::to_string(timer0.getDuration_ns()/N_time)
+                         + "ns", 1);
     //                      + "ns, " + std::to_string(timer1.getDuration_ns())
     //                      + "ns, " + std::to_string(timer2.getDuration_ns())
     //                      + "ns, " + std::to_string(timer3.getDuration_ns())
