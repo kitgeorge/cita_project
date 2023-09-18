@@ -18,8 +18,8 @@ potential::PotentialFuncs BFENBody::getInit() {
 }
 
 void BFENBody::iterate() {
-    utility::open_channel(1);
-    utility::open_channel(0);
+    // utility::open_channel(1);
+    // utility::open_channel(0);
     // potential::PotentialFuncs pot(background);
     potential::PotentialFuncs pot({background, init*(-1), 
                                     potential::PotentialFuncs(bfe_pot)});
@@ -68,8 +68,8 @@ void BFENBody::iterate() {
     data = multithreading::executeInParallel(rk4_iteration_functions);
     coords = utility::flatten(data);
     getPotential();
-    utility::close_channel(1);
-    utility::close_channel(0);
+    // utility::close_channel(1);
+    // utility::close_channel(0);
 }
 
 BFENBody::BFENBody(double timestep_, int save_interval_, 
