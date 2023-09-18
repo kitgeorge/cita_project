@@ -358,7 +358,7 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     // timer1.stop();
     // timer2.start();
     double output = U_values[index];
-    const int N_time = 10000;
+    const int N_time = 100;
     std::vector<double> temp(N_time);
     timer0.start();
     for(int i = 0; i < N_time; ++i) {
