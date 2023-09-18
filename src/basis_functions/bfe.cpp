@@ -363,8 +363,9 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     timer3.start();
     output /= pow(R_Ka, 0.5);
     timer3.stop();
+    std::vector<double> temp = U_values;
     timer4.start();
-    std::chrono::time_point<std::chrono::steady_clock> x = std::chrono::steady_clock::now();
+    output = temp[index];
     timer4.stop();
     timer0.stop();
     utility::debug_print("U read: " + std::to_string(timer0.getDuration_ns())
