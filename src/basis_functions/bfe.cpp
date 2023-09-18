@@ -364,7 +364,7 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     output /= pow(R_Ka, 0.5);
     timer3.stop();
     timer4.start();
-    auto x = std::chrono::steady_clock::now();
+    std::chrono::time_point<std::chrono::steady_clock> x = std::chrono::steady_clock::now();
     timer4.stop();
     timer0.stop();
     utility::debug_print("U read: " + std::to_string(timer0.getDuration_ns())
@@ -372,7 +372,7 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
                          + "ns, " + std::to_string(timer2.getDuration_ns())
                          + "ns, " + std::to_string(timer3.getDuration_ns())
                          + "ns, " + std::to_string(timer4.getDuration_ns())
-                         + "ns" + std::to_string(std::chrono::duration_cast<std::chrono::seconds>(x).count()), 1);
+                         + "ns" + std::to_string(std::chrono::duration_cast<std::chrono::milliseconds>(x).count()), 1);
     return output;
 }
 
