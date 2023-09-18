@@ -373,6 +373,7 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     std::string temp_output = "";
     for(int i = 0; i < N_time; ++i) {
         temp_output += std::to_string(temp[i]);
+        std::cout << temp[i] << std::endl;
     }
     utility::debug_print(temp_output, 1);
     // timer2.stop();
