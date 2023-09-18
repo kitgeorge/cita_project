@@ -114,7 +114,6 @@ BFETables::BFETables(): U_values(getUValues()),
 BFETables::BFETables(const BFETables& old):
     U_values(old.U_values), UPrime_values(old.UPrime_values),
     D_values(old.D_values) {
-    std::cout << "Copy, " << U_values[0] << std::endl;
 }
 
 ////////////////////////////////////////////////////////////
