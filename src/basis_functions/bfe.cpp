@@ -365,6 +365,10 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
         temp[i] = U_values[index + i];
     }
     timer0.stop();
+    std::string temp_output = "";
+    for(int i = 0; i < N_time; ++i) {
+        temp_output += std::to_string(temp[i]);
+    }
     // timer2.stop();
     // double output = U_values[n][l][R_bin];
     // timer3.start();
