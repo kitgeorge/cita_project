@@ -298,6 +298,9 @@ std::vector<double> BFETables::getUValues() {
     std::optional<std::vector<double>>
     values = readUUprimeDValues(path);
     if(values) {
+        for(auto value: values.value()) {
+            std::cout << value << std::endl;
+        }
         return values.value();
     }
     std::cout << "U values not cached; caching..." << std::endl;
@@ -359,7 +362,7 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     // timer2.start();
     double output = U_values[index];
     utility::debug_print(std::to_string(index) + ", " + std::to_string(U_values.size()), 1);
-    const int N_time = 1000;
+    const int N_time = 100;
     std::vector<double> temp(N_time);
     timer0.start();
     for(int i = 0; i < N_time; ++i) {
