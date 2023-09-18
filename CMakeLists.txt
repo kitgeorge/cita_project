@@ -5,6 +5,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Apple
     add_compile_options(-g -pg -O3) # Removed -Wall -Wextra, may want to reinstate
     message(STATUS "Added compiler options: -g -O3 -pthread")
 #    add_link_options(-fsanitize=address)
+    add_link_options(-pg)
 endif()
 
 option(Local "Local" ON)
