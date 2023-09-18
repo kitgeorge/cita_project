@@ -348,7 +348,7 @@ std::vector<double> BFETables::getDValues() {
 ////////////////////////////////////////////////////////////
 
 double BFETables::getU(int n, int l, double R, double R_Ka) const {
-    std::abort();
+    std::cout << U_values[0] << std::endl;
     utility::SimpleTimer timer0;
     // utility::SimpleTimer timer1;
     // utility::SimpleTimer timer2;
