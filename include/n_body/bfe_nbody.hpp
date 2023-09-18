@@ -4,6 +4,7 @@
 #include "integrate_rk4.hpp"
 #include "nd_vectors.hpp"
 #include "debug_print.hpp"
+#include "stdlib.h"
 #include <memory>
 
 namespace n_body {
