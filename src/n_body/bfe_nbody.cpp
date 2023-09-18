@@ -68,7 +68,7 @@ void BFENBody::iterate() {
     data = multithreading::executeInParallel(rk4_iteration_functions);
     coords = utility::flatten(data);
     getPotential();
-    exit();
+    std::exit(0);
     // utility::close_channel(1);
     // utility::close_channel(0);
 }
