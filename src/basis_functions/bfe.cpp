@@ -773,6 +773,7 @@ BFE::psi_f(int n, int l, double R, double phi) const {
     utility::debug_print("psi_f function: " + std::to_string(duration)
                             + "ns", 0);
     mtx.unlock();
+    std::abort();
     return output;
 }
 
