@@ -30,7 +30,7 @@ int main() {
     int N_u_intervals = 1000;
     int N_u_iterate = 5;
 
-    int N_particles = 1e6;
+    int N_particles = 1e4;
     
     std::vector<std::array<std::array<double, 2>, 2>>
     sample_coords(N_particles);
