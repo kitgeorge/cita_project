@@ -102,6 +102,9 @@ LooongDouble BFETables::beta_Ka(int k, int l, int n, int j) const {
 BFETables::BFETables(): U_values(getUValues()), 
                         UPrime_values(getUPrimeValues()),
                         D_values(getDValues()) {
+    for(auto value: U_values) {
+        std::cout << value << std::endl;
+    }
     // Clear out intermediate tables from memory
     gtables.reset();
     ptables.reset();
@@ -298,9 +301,6 @@ std::vector<double> BFETables::getUValues() {
     std::optional<std::vector<double>>
     values = readUUprimeDValues(path);
     if(values) {
-        for(auto value: values.value()) {
-            std::cout << value << std::endl;
-        }
         return values.value();
     }
     std::cout << "U values not cached; caching..." << std::endl;
