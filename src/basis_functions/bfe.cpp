@@ -102,9 +102,6 @@ LooongDouble BFETables::beta_Ka(int k, int l, int n, int j) const {
 BFETables::BFETables(): U_values(getUValues()), 
                         UPrime_values(getUPrimeValues()),
                         D_values(getDValues()) {
-    for(auto value: U_values) {
-        std::cout << value << std::endl;
-    }
     // Clear out intermediate tables from memory
     gtables.reset();
     ptables.reset();
@@ -116,7 +113,11 @@ BFETables::BFETables(): U_values(getUValues()),
 
 BFETables::BFETables(const BFETables& old):
     U_values(old.U_values), UPrime_values(old.UPrime_values),
-    D_values(old.D_values) {}
+    D_values(old.D_values) {
+    for(auto value: U_values) {
+        std::cout << value << std::endl;
+    }
+}
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
