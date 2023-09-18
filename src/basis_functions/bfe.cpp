@@ -357,10 +357,12 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
     // timer1.stop();
     // timer2.start();
+    double output = U_values[index];
+    const int N_time = 1000;
+    std::vector<double> temp(N_time);
     timer0.start();
-    int N_time = 1000;
     for(int i = 0; i < N_time; ++i) {
-        double output = U_values[index + i];
+        temp[i] = U_values[index + i];
     }
     timer0.stop();
     // timer2.stop();
