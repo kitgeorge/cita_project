@@ -675,10 +675,10 @@ BFE::getTables() const {
 }
 
 std::shared_ptr<const BFETables> BFE::accessTables() const {
-    // Not currently in use
+    Not currently in use
 
     // mtx.lock();
-    // int cpu = sched_getcpu();
+    int cpu = sched_getcpu();
     // std::cout << "cpu: " << cpu << std::endl;
     // std::shared_ptr<const BFETables> output = tables[cpu];
     // mtx.unlock();
@@ -688,8 +688,8 @@ std::shared_ptr<const BFETables> BFE::accessTables() const {
     // int cpu = sched_getcpu();
     // timer.stop();
     // utility::debug_print("sched_getcpu(): " + std::to_string(timer.getDuration_ns()) + "ns", 0);
-    return tables[0];
-    // return tables[sched_getcpu()];
+    // return tables[0];
+    return tables[cpu];
 }
 
 std::function<std::complex<double>(double, double)> 
@@ -741,8 +741,8 @@ BFE::psi_f(int n, int l) const {
         // timer.start();
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         std::array<std::complex<double>, 2> output;
-        output[0] = -tables[0]->getUPrime(n, l, R, R_Ka)*phase;
-        output[1] = -1i*(double)l/R*tables[0]->getU(n, l, R, R_Ka)*phase;
+        output[0] = -accessTables()->getUPrime(n, l, R, R_Ka)*phase;
+        output[1] = -1i*(double)l/R*accessTables()->getU(n, l, R, R_Ka)*phase;
         // output[0] = -phase;
         // output[1] = -1i*(double)l/R*phase;
         // timer.stop();
@@ -764,8 +764,8 @@ BFE::psi_f(int n, int l, double R, double phi) const {
     // timer.start();
     std::complex<double> phase = std::exp(1i*(double)l*phi);
     std::array<std::complex<double>, 2> output;
-    output[0] = -tables[0]->getUPrime(n, l, R, R_Ka)*phase;
-    output[1] = -1i*(double)l/R*tables[0]->getU(n, l, R, R_Ka)*phase;
+    output[0] = -accessTables()->getUPrime(n, l, R, R_Ka)*phase;
+    output[1] = -1i*(double)l/R*accessTables()->getU(n, l, R, R_Ka)*phase;
     // output[0] = -phase;
     // output[1] = -1i*(double)l/R*phase;
     // timer.stop();
