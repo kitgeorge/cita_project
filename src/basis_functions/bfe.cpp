@@ -348,7 +348,7 @@ std::vector<double> BFETables::getDValues() {
 ////////////////////////////////////////////////////////////
 
 double BFETables::getU(int n, int l, double R, double R_Ka) const {
-    utility::SimpleTimer timer0;
+    // utility::SimpleTimer timer0;
     // utility::SimpleTimer timer1;
     // utility::SimpleTimer timer2;
     // utility::SimpleTimer timer3;
@@ -360,18 +360,6 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     // timer1.stop();
     // timer2.start();
     double output = U_values[index];
-    const int N_time = 100;
-    std::vector<double> temp(N_time);
-    timer0.start();
-    for(int i = 0; i < N_time; ++i) {
-        temp[i] = U_values[index + i];
-    }
-    timer0.stop();
-    std::string temp_output = "";
-    for(int i = 0; i < N_time; ++i) {
-        temp_output += std::to_string(1e18*temp[i]);
-    }
-    utility::debug_print(temp_output, 1);
     // timer2.stop();
     // double output = U_values[n][l][R_bin];
     // timer3.start();
@@ -380,8 +368,8 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     // timer4.start();
     // timer4.stop();
     // timer0.stop();
-    utility::debug_print("U read: " + std::to_string(timer0.getDuration_ns()/N_time)
-                         + "ns", 1);
+    // utility::debug_print("U read: " + std::to_string(timer0.getDuration_ns()/N_time)
+                        //  + "ns", 1);
     //                      + "ns, " + std::to_string(timer1.getDuration_ns())
     //                      + "ns, " + std::to_string(timer2.getDuration_ns())
     //                      + "ns, " + std::to_string(timer3.getDuration_ns())
@@ -771,21 +759,21 @@ std::array<std::complex<double>, 2>
 BFE::psi_f(int n, int l, double R, double phi) const {
     assert(n >= 0);
     assert(l >= 0);
-    utility::SimpleTimer timer;
-    timer.start();
+    // utility::SimpleTimer timer;
+    // timer.start();
     std::complex<double> phase = std::exp(1i*(double)l*phi);
     std::array<std::complex<double>, 2> output;
     output[0] = -accessTables()->getUPrime(n, l, R, R_Ka)*phase;
     output[1] = -1i*(double)l/R*accessTables()->getU(n, l, R, R_Ka)*phase;
     // output[0] = -phase;
     // output[1] = -1i*(double)l/R*phase;
-    timer.stop();
-    double duration = std::chrono::duration_cast
-                        <std::chrono::nanoseconds>(timer.getDuration()).count();
-    mtx.lock();
-    utility::debug_print("psi_f function: " + std::to_string(duration)
-                            + "ns", 0);
-    mtx.unlock();
+    // timer.stop();
+    // double duration = std::chrono::duration_cast
+                        // <std::chrono::nanoseconds>(timer.getDuration()).count();
+    // mtx.lock();
+    // utility::debug_print("psi_f function: " + std::to_string(duration)
+                            // + "ns", 0);
+    // mtx.unlock();
     return output;
 }
 
