@@ -100,6 +100,7 @@ BFENBody::BFENBody(double timestep_, int save_interval_,
     bfe_coefficients[0] = bfe_pot.getCoefficients();
     std::cout << "Tabulating initial bfe coefficient norms" << std::endl;
     bfe_coefficient_norms[0] = bfe_pot.calculateAbsNorm();
+    std::abort();
     for(int i = 1; i <= N_timesteps; ++i) {
         std::cout << "Iteration " << i << std::endl;
         iterate();
