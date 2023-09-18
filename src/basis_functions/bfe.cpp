@@ -675,7 +675,7 @@ BFE::getTables() const {
 }
 
 std::shared_ptr<const BFETables> BFE::accessTables() const {
-    Not currently in use
+    // Not currently in use
 
     // mtx.lock();
     int cpu = sched_getcpu();
