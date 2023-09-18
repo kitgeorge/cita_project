@@ -682,12 +682,12 @@ std::shared_ptr<const BFETables> BFE::accessTables() const {
     // std::shared_ptr<const BFETables> output = tables[cpu];
     // mtx.unlock();
     // return output;
-    utility::SimpleTimer timer;
-    timer.start();
-    int cpu = sched_getcpu();
-    timer.stop();
-    utility::debug_print("sched_getcpu(): " + std::to_string(timer.getDuration_ns()) + "ns", 0);
-    return tables[cpu];
+    // utility::SimpleTimer timer;
+    // timer.start();
+    // int cpu = sched_getcpu();
+    // timer.stop();
+    // utility::debug_print("sched_getcpu(): " + std::to_string(timer.getDuration_ns()) + "ns", 0);
+    return tables[0];
     // return tables[sched_getcpu()];
 }
 
