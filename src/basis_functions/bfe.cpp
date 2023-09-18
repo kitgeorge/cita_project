@@ -369,7 +369,7 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     timer0.stop();
     std::string temp_output = "";
     for(int i = 0; i < N_time; ++i) {
-        temp_output += std::to_string(1e8*temp[i]);
+        temp_output += std::to_string(1e18*temp[i]);
     }
     utility::debug_print(temp_output, 1);
     // timer2.stop();
