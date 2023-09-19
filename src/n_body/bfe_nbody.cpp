@@ -24,7 +24,7 @@ void BFENBody::iterate() {
     potential::PotentialFuncs pot({background, init*(-1), 
                                     potential::PotentialFuncs(bfe_pot)});
     // Ensure that N_particles is a multiple of particles_per_function please
-    int particles_per_function = 3;
+    int particles_per_function = 50;
     int N_functions = N_particles/particles_per_function;
     std::vector<std::function<std::vector<std::array<std::array<double, 2>, 2>>()>>
     rk4_iteration_functions(N_functions);
@@ -32,9 +32,9 @@ void BFENBody::iterate() {
         std::cout << "Making RK4 function " << i << std::endl;
         rk4_iteration_functions[i] = [i, particles_per_function, &pot, coords=coords, timestep=timestep] () {
             double R_Ka = 20*Units::kpc;
-            mtx.lock();
-            std::cout << "Executing RK4 function " << i << std::endl;
-            mtx.unlock();
+            // mtx.lock();
+            // std::cout << "Executing RK4 function " << i << std::endl;
+            // mtx.unlock();
             utility::SimpleTimer timer;
             std::vector<std::array<std::array<double, 2>, 2>>
             output(particles_per_function);
@@ -68,7 +68,6 @@ void BFENBody::iterate() {
     data = multithreading::executeInParallel(rk4_iteration_functions);
     coords = utility::flatten(data);
     getPotential();
-    std::exit(0);
     // utility::close_channel(1);
     // utility::close_channel(0);
 }
