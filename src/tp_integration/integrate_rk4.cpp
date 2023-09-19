@@ -57,7 +57,7 @@ rk4IterationBoxed(const ptl::PotentialFuncs& potential,
     std::array<std::array<double, 2>, 2>
     cart = coords.cartesian;
 
-    rk4_mtx.lock();
+    // rk4_mtx.lock();
     // std::cout << "rk4Iteration, " << coords.polar[0][0] << ", " 
     //           << coords.polar[0][1] << ", " << cart[0][0] << ", "
     //           << cart[0][1] << std::endl;
@@ -68,7 +68,7 @@ rk4IterationBoxed(const ptl::PotentialFuncs& potential,
     assert(std::isfinite(cart[0][1]));
     assert(std::isfinite(cart[1][0]));
     assert(std::isfinite(cart[1][1]));
-    rk4_mtx.unlock();
+    // rk4_mtx.unlock();
 
     double x_temp;
     double y_temp;
