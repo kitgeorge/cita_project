@@ -1,3 +1,4 @@
+#define NDEBUG
 #include "bfe_nbody.hpp"
 #include "units.hpp"
 #include "tapered_df.hpp"

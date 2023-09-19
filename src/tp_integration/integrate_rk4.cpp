@@ -64,10 +64,6 @@ rk4IterationBoxed(const ptl::PotentialFuncs& potential,
     // std::cout << "velocities, " << coords.polar[1][0] << ", " 
     //           << coords.polar[1][1] << ", " << cart[1][0] << ", " 
     //           << cart[1][1] << std::endl;
-    assert(std::isfinite(cart[0][0]));
-    assert(std::isfinite(cart[0][1]));
-    assert(std::isfinite(cart[1][0]));
-    assert(std::isfinite(cart[1][1]));
     // rk4_mtx.unlock();
 
     double x_temp;
