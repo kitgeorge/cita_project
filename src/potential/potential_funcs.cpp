@@ -31,7 +31,7 @@ getCartesianForce(std::function<std::array<double, 2>(double, double, double)>
         coords = {{ {{x, y}}, {{0, 0}} }};
         vrs::Coords2d pos(coords, 0);
         
-        pf_mtx.lock();
+        // pf_mtx.lock();
         // std::cout << "getCartesianForce, " << coords[0][0] << ", "
         //           << coords[0][1] << ", " << pos.polar[0][0] << ", "
         //           << pos.polar[0][1] << std::endl;
@@ -40,7 +40,7 @@ getCartesianForce(std::function<std::array<double, 2>(double, double, double)>
         assert(std::isfinite(pos.polar[0][0]));
         // assert(pos.polar[0][0] < 20*Units::kpc); // For debugging
         assert(std::isfinite(pos.polar[0][1]));
-        pf_mtx.unlock();
+        // pf_mtx.unlock();
 
         std::array<double, 2> f = polar_force(pos.polar[0][0],
                                               pos.polar[0][1], t);
