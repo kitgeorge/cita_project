@@ -9,7 +9,7 @@
 
 int main() {
     utility::open_channel(1);
-    double timestep = 10*Units::Myr;
+    double timestep = 1*Units::Myr;
     int save_interval = 1;
     double integration_time = 1000*Units::Myr;
 

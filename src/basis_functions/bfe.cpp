@@ -635,12 +635,12 @@ scalarProduct(const std::function<std::complex<double>(double, double)>& pot_con
             output += pot_conj(density[i][0], density[i][1])*density[i][2];
         }
         // for debugging
-        else {
-            mtx.lock();
-            std::cout << "Position: " << density[i][0] << ", " 
-                      << R_max << std::endl;
-            mtx.unlock();
-        }
+        // else {
+        //     mtx.lock();
+        //     std::cout << "Position: " << density[i][0] << ", " 
+        //               << R_max << std::endl;
+        //     mtx.unlock();
+        // }
     }
     return output;
 }

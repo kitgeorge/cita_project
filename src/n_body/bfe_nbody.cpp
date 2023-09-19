@@ -24,12 +24,12 @@ void BFENBody::iterate() {
     potential::PotentialFuncs pot({background, init*(-1), 
                                     potential::PotentialFuncs(bfe_pot)});
     // Ensure that N_particles is a multiple of particles_per_function please
-    int particles_per_function = 500;
+    int particles_per_function = 10;
     int N_functions = N_particles/particles_per_function;
     std::vector<std::function<std::vector<std::array<std::array<double, 2>, 2>>()>>
     rk4_iteration_functions(N_functions);
     for(int i = 0; i < N_functions; ++i) {
-        std::cout << "Making RK4 function " << i << std::endl;
+        // std::cout << "Making RK4 function " << i << std::endl;
         rk4_iteration_functions[i] = [i, particles_per_function, &pot, coords=coords, timestep=timestep] () {
             double R_Ka = 20*Units::kpc;
             // mtx.lock();
@@ -56,10 +56,10 @@ void BFENBody::iterate() {
                 output[j] = tp_integration::
                             rk4IterationBoxed(pot, x, 0, timestep, R_Ka).polar;
                 timer.stop();
-                mtx.lock();
-                std::cout << "RK4 function " << i << ", " << j << ": " 
-                        << timer.getDuration_ns() << "ns" << std::endl;
-                mtx.unlock();
+                // mtx.lock();
+                // std::cout << "RK4 function " << i << ", " << j << ": " 
+                //         << timer.getDuration_ns() << "ns" << std::endl;
+                // mtx.unlock();
             }
             return output;
         };
