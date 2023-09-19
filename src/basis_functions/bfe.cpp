@@ -3,7 +3,7 @@
 #include <mutex>
 
 std::mutex mtx;
-std::mutex table_mtx:
+std::mutex table_mtx;
 
 using namespace std::complex_literals;
 namespace mp = boost::multiprecision;
