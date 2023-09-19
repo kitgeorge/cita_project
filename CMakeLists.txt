@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 3.13)
 project(shared LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
-    add_compile_options(-g -O3 -fsanitize=thread) # Removed -Wall -Wextra, may want to reinstate
+    add_compile_options(-g -O3) # Removed -Wall -Wextra, may want to reinstate
     message(STATUS "Added compiler options: -g -O3 -pthread")
 #    add_link_options(-fsanitize=address)
 #    add_link_options(-pg)
-    add_link_options(-fsanitize=thread)
+#    add_link_options(-fsanitize=thread)
 endif()
 
 option(Local "Local" ON)

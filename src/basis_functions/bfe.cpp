@@ -3,6 +3,7 @@
 #include <mutex>
 
 std::mutex mtx;
+std::mutex table_mtx:
 
 using namespace std::complex_literals;
 namespace mp = boost::multiprecision;
@@ -358,7 +359,9 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
     int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
     // timer1.stop();
     // timer2.start();
+    table_mtx.lock();
     double output = U_values[index];
+    table_mtx.unlock();
     // timer2.stop();
     // double output = U_values[n][l][R_bin];
     // timer3.start();
@@ -380,7 +383,9 @@ double BFETables::getU(int n, int l, double R, double R_Ka) const {
 double BFETables::getUPrime(int n, int l, double R, double R_Ka) const {
     int R_bin = R/R_Ka*N_R_tabulated;
     int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
+    table_mtx.lock();
     double output = UPrime_values[index];
+    table_mtx.unlock();
     output /= pow(R_Ka, 1.5);
     return output;
 }
@@ -388,7 +393,9 @@ double BFETables::getUPrime(int n, int l, double R, double R_Ka) const {
 double BFETables::getD(int n, int l, double R, double R_Ka) const {
     int R_bin = R/R_Ka*N_R_tabulated;
     int index = n*(l_max + 1)*N_R_tabulated + l*N_R_tabulated + R_bin;
+    table_mtx.lock();
     double output = D_values[index];
+    table_mtx.unlock();
     output /= pow(R_Ka, 1.5);
     return output;
 }
