@@ -79,11 +79,12 @@ int main() {
     coefficients_shape = utility::getShape(simulation.getBFECoefficients());
     utility::vector3d<std::array<double, 2>>
     coefficients = utility::makeShape<std::array<double, 2>>(coefficients_shape);
+    utility::vector3d<std::complex<double>> c_coefficients = simulation.getBFECoefficients();
     for(int i = 0; i < coefficients_shape[0]; ++i) {
         for(int j = 0; j < coefficients_shape[1]; ++j) {
             for(int k = 0; k < coefficients_shape[2]; ++k) {
-                coefficients[i][j][k][0] = simulation.getBFECoefficients()[i][j][k].real();
-                coefficients[i][j][k][1] = simulation.getBFECoefficients()[i][j][k].imag();
+                coefficients[i][j][k][0] = c_coefficients[i][j][k].real();
+                coefficients[i][j][k][1] = c_coefficients[i][j][k].imag();
             }
         }
     }

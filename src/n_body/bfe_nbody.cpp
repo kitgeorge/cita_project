@@ -121,6 +121,7 @@ BFENBody::getBFECoefficients() {
     return bfe_coefficients;
 }
 
+
 std::vector<double>
 BFENBody::getBFECoefficientNorms() {
     return bfe_coefficient_norms;
