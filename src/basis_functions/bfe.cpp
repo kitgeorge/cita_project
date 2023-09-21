@@ -660,44 +660,17 @@ scalarProduct(const std::function<std::complex<double>(double, double)>& pot_con
 // }
 
 BFE::BFE(double R_Ka_, int N_R_, int N_phi_):
-R_Ka(R_Ka_), N_R(N_R_), N_phi(N_phi_), tables(getTables()) {}
+R_Ka(R_Ka_), N_R(N_R_), N_phi(N_phi_), 
+tables(std::make_shared<const BFETables>()) {}
 BFE::BFE(const BFE& old): R_Ka(old.R_Ka), N_R(old.N_R),
                           N_phi(old.N_phi), tables(old.tables) {}
-
-std::vector<std::shared_ptr<const BFETables>>
-BFE::getTables() const {
-    std::vector<std::shared_ptr<const BFETables>> output(N_cores);
-    output[0] = std::make_shared<const BFETables>();
-    for(int i = 1; i < N_cores; ++i) {
-        output[i] = std::make_shared<const BFETables>(*output[0]);
-    }
-    return output;
-}
-
-std::shared_ptr<const BFETables> BFE::accessTables() const {
-    // Not currently in use
-
-    // mtx.lock();
-    // int cpu = sched_getcpu();
-    // std::cout << "cpu: " << cpu << std::endl;
-    // std::shared_ptr<const BFETables> output = tables[cpu];
-    // mtx.unlock();
-    // return output;
-    // utility::SimpleTimer timer;
-    // timer.start();
-    // int cpu = sched_getcpu();
-    // timer.stop();
-    // utility::debug_print("sched_getcpu(): " + std::to_string(timer.getDuration_ns()) + "ns", 0);
-    return tables[0];
-    // return tables[cpu];
-}
 
 std::function<std::complex<double>(double, double)> 
 BFE::psi(int n, int l) const {
     assert(n >= 0);
     assert(l >= 0);
     return [this, n, l, R_Ka=R_Ka] (double R, double phi) {
-        double prefactor = tables[0]->getU(n, l, R, R_Ka);
+        double prefactor = tables->getU(n, l, R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
     };
@@ -706,7 +679,7 @@ BFE::psi(int n, int l) const {
 std::complex<double> BFE::psi(int n, int l, double R, double phi) const {
     assert(n >= 0);
     assert(l >= 0);
-    double prefactor = tables[0]->getU(n, l, R, R_Ka);
+    double prefactor = tables->getU(n, l, R, R_Ka);
     std::complex<double> phase = std::exp(1i*(double)l*phi);
     return prefactor*phase;
 }
@@ -717,7 +690,7 @@ BFE::rho(int n, int l) const {
     assert(n >= 0);
     assert(l >= 0);
     return [this, n, l, R_Ka=R_Ka] (double R, double phi) {
-        double prefactor = tables[0]->getD(n, l, R, R_Ka);
+        double prefactor = tables->getD(n, l, R, R_Ka);
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         return prefactor*phase;
     };
@@ -726,7 +699,7 @@ BFE::rho(int n, int l) const {
 std::complex<double> BFE::rho(int n, int l, double R, double phi) const {
     assert(n >= 0);
     assert(l >= 0);
-    double prefactor = tables[0]->getD(n, l, R, R_Ka);
+    double prefactor = tables->getD(n, l, R, R_Ka);
     std::complex<double> phase = std::exp(1i*(double)l*phi);
     return prefactor*phase;
 }
@@ -741,10 +714,8 @@ BFE::psi_f(int n, int l) const {
         // timer.start();
         std::complex<double> phase = std::exp(1i*(double)l*phi);
         std::array<std::complex<double>, 2> output;
-        output[0] = -tables[0]->getUPrime(n, l, R, R_Ka)*phase;
-        output[1] = -1i*(double)l/R*tables[0]->getU(n, l, R, R_Ka)*phase;
-        // output[0] = -phase;
-        // output[1] = -1i*(double)l/R*phase;
+        output[0] = -tables->getUPrime(n, l, R, R_Ka)*phase;
+        output[1] = -1i*(double)l/R*tables->getU(n, l, R, R_Ka)*phase;
         // timer.stop();
         // double duration = std::chrono::duration_cast
         //                     <std::chrono::nanoseconds>(timer.getDuration()).count();
@@ -760,73 +731,12 @@ std::array<std::complex<double>, 2>
 BFE::psi_f(int n, int l, double R, double phi) const {
     assert(n >= 0);
     assert(l >= 0);
-    // utility::SimpleTimer timer;
-    // timer.start();
     std::complex<double> phase = std::exp(1i*(double)l*phi);
     std::array<std::complex<double>, 2> output;
-    output[0] = -tables[0]->getUPrime(n, l, R, R_Ka)*phase;
-    output[1] = -1i*(double)l/R*tables[0]->getU(n, l, R, R_Ka)*phase;
-    // output[0] = -phase;
-    // output[1] = -1i*(double)l/R*phase;
-    // timer.stop();
-    // double duration = std::chrono::duration_cast
-                        // <std::chrono::nanoseconds>(timer.getDuration()).count();
-    // mtx.lock();
-    // utility::debug_print("psi_f function: " + std::to_string(duration)
-                            // + "ns", 0);
-    // mtx.unlock();
+    output[0] = -tables->getUPrime(n, l, R, R_Ka)*phase;
+    output[1] = -1i*(double)l/R*tables->getU(n, l, R, R_Ka)*phase;
     return output;
 }
-
-// // Calculate as LooongDouble, but return as double
-// double BFE::U(int n, int l, double R) const {
-//     LooongDouble output = 0;
-//     for(int i = 0; i <= k_Ka; ++i) {
-//         for(int j = 0; j <= n; ++j) {
-//             LooongDouble term = getAlphaKa(k_Ka, l, n, i, j)*pow(R/R_Ka, 2*i + 2*j + l);
-//             output += term;
-//         }
-//     }
-//     double output_double = output.convert_to<double>();
-//     output_double *= -sqrt(Units::G)/sqrt(R_Ka)*getP(k_Ka, l, n);
-//     // if(R > 0) {
-//     //     assert(output != 0);
-//     // }
-//     return output_double;
-// }
-
-// double BFE::UPrime(int n, int l, double R) const {
-//     LooongDouble output = 0;
-//     for(int i = 0; i <= k_Ka; ++i) {
-//         for(int j = 0; j <= n; ++j) {
-//             if(i == 0 && j == 0 && l == 0) {
-//                 continue;
-//             }
-//             LooongDouble term = getAlphaKa(k_Ka, l, n, i, j)
-//                           *(2*i + 2*j + l)*pow(R/R_Ka, 2*i + 2*j + l - 1);
-//             output += term;
-//         }
-//     }
-//     double output_double = output.convert_to<double>();
-//     output_double *= -sqrt(Units::G)/pow(R_Ka, 1.5)*getP(k_Ka, l, n);
-//     return output_double;
-// }
-
-// double BFE::D(int n, int l, double R) const {
-//     LooongDouble output = 0;
-//     for(int j = 0; j <= n; ++j) {
-//         LooongDouble term = getBetaKa(k_Ka, l, n, j)*pow(1 - pow(R/R_Ka, 2), j);
-//         // std:: cout << "D, " << term << std::endl;
-//         output += term;
-//     }
-//     double output_double = output.convert_to<double>();
-//     output_double *= pow(-1, n)/(sqrt(Units::G)*pow(R_Ka, 1.5))
-//              *getS(k_Ka, l, n)*pow(1 - pow(R/R_Ka, 2), k_Ka - 0.5)*pow(R/R_Ka, l);
-//     // if(R > 0 && R < R_Ka) {
-//     //     assert(output != 0);
-//     // }
-//     return output_double;
-// }
 
 std::complex<double>
 BFE::getCoefficient(int n, int l, const std::function<double(double, double)>&

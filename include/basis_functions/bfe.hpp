@@ -19,6 +19,8 @@ using LooongDouble = boost::multiprecision::mpf_float_1000;
 
 namespace basis_functions {
 
+// TODO: Replace some std::functions with auto, for hopefully less overhead
+
 // All formulae involved (from eg Fouvry 2015) are in an anonymous namespace
 // in bfe.cpp
 
@@ -208,19 +210,9 @@ class BFE {
     const int N_R;
     const int N_phi;
 
-    // const BFETables tables;
+    const std::shared_ptr<const BFETables> tables;
 
-    const std::vector<std::shared_ptr<const BFETables>>
-    tables;
 
-    std::vector<std::shared_ptr<const BFETables>>
-    getTables() const;
-
-    std::shared_ptr<const BFETables> accessTables() const;
-
-    // double U(int n, int l, double R) const;
-    // double UPrime(int n, int l, double R) const;
-    // double D(int n, int l, double R) const;
 
     public:
         BFE(double R_Ka_=20*Units::kpc, int N_R_=5000, int N_phi_=5000);
