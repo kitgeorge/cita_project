@@ -55,7 +55,7 @@ int main() {
     ///////////////////////////////////////////////////////////////////
     /// Debugging sample angles
     ///////////////////////////////////////////////////////////////////
-    
+
     potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
     std::vector<double> theta_R_values(N_particles);
     for(int i = 0; i < N_particles; ++i) {
@@ -64,6 +64,10 @@ int main() {
         actions::ThetaRIntegrator integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
         theta_R_values[i] = integrator.calculateThetaR({{sample_coords[i][0][0],
                                                          sample_coords[i][1][0]}});
+        if(std::isnan(theta_R_values[i])) {
+            std::cout << "NAN theta_R: " << sample_coords[i][0][0] << ", " << sample_coords[i][0][1]
+                      << ", " << sample_coords[i][1][0] << ", " << sample_coords[i][1][1] << std::endl;
+        }
     }
 
     utility::writeCsv("../data/n_body/init_theta_R_values.csv",
