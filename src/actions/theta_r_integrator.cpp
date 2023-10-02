@@ -16,6 +16,25 @@ ThetaRIntegrator::ThetaRIntegrator(potential::AxsymFuncs pot_,
     calculateT();
 }
 
+double ThetaRIntegrator::calculateThetaR(std::array<double, 2> R_coords) {
+    double u = calculate_u(pot, E, L, R_coords[0]);
+    double interval = 2*u_max/N_intervals;
+    double integral = 0;
+    for(int i = 0; i < N_intervals; ++i) {
+        integral += (integrand(-u_max + i*interval)
+                     + integrand(-u_max + (i + 1)*interval))
+                     /2*interval;
+    }
+    // I'm pretty sure the integrand is doubled so that the integral only goes
+    // out and not back (I'm even more sure after checking calculateR);
+    double T = getT();
+    double theta_R = integral/T*std::numbers::pi;
+    if(R_coords[1] < 0) {
+        theta_R = 2*std::numbers::pi - theta_R;
+    }
+    return theta_R;
+}
+
 void ThetaRIntegrator::calculateT() {
     // Use Trapezium rule for integration in u (symmetry)
     double interval = 2*u_max/N_intervals;

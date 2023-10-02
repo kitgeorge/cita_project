@@ -54,7 +54,7 @@ TEST_F(ThetaRIntegratorTest, CoordsConsistent) {
     std::vector<double> angle_errors;
     for(int i = 0; i < N_angles; ++i) {
         double angle = (double)i/N_angles*2*std::numbers::pi;
-        angle_errors[i] = integrator->calculateThetaR(integator->getCoords(angle)) - angle;
+        angle_errors[i] = integrator->calculateThetaR(integrator->getCoords(angle)) - angle;
         EXPECT_LT(angle_errors[i], 1e-2);
     }
 }

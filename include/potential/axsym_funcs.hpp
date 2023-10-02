@@ -23,6 +23,21 @@ struct AxsymFuncs : public PotentialFuncs {
     std::function<double(double, double, double, double)> RcGivenwpN;
 	std::function<double(int, int, double)> resonanceRadius;
 
+	/**
+	 * Calculates E under this potential for given coordinates
+	 *
+	 * @param coords polar coordinates {{R, phi}, {v_R, v_phi}}
+	 * @return E value (per unit mass)
+	 */
+	double EGivenPolar(std::array<std::array<double, 2>, 2> coords);
+	/** 
+	 * Calculates L under this potential given coordinates
+	 *
+	 * @param coords polar coordinates {{R, phi}, {v_R, v_phi}}
+	 * @return L value (per unit mass)
+	 */
+	double LGivenPolar(std::array<std::array<double, 2>, 2> coords);
+
     AxsymFuncs(std::function<double(double, double, double)> potential_,
                std::function<std::array<double, 2>(double, double, double)>
                polar_force_, 

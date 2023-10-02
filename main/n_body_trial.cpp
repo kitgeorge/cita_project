@@ -52,6 +52,28 @@ int main() {
         sample_positions[i] = sample_coords[i][0];
     }
 
+    ///////////////////////////////////////////////////////////////////
+    /// Debugging sample angles
+    ///////////////////////////////////////////////////////////////////
+    
+    potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
+    std::vector<double> theta_R_values(N_particles);
+    for(int i = 0; i < N_particles; ++i) {
+        double E = pot.EGivenPolar(sample_coords[i]);
+        double L = pot.EGivenPolar(sample_coords[i]);
+        actions::ThetaRIntegrator integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
+        theta_R_values[i] = integrator.calculateThetaR({{sample_coords[i][0][0],
+                                                         sample_coords[i][1][0]}});
+    }
+
+    utility::writeCsv("../data/n_body/init_theta_R_values.csv",
+                      theta_R_values);
+    
+    ///////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
+
+    
+
     potential::AxsymFuncs background = potential::getMestel(v_c, R_0);
 
 

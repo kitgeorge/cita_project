@@ -56,7 +56,6 @@ getDFSampleViaEL(std::function<double(double, double)> df,
     sample_E_L = df::getDFSampleEL(df, E_L_bounds);
     double angle_normalisation = (double)RAND_MAX/(2*std::numbers::pi);
     double theta_R = (double)std::rand()/angle_normalisation;
-    std::cout << "theta_R: " << theta_R << std::endl;
     actions::ThetaRIntegrator integrator(axsym_potential, sample_E_L[0],
                                          sample_E_L[1], u_max,
                                          N_u_intervals, N_u_iterate);

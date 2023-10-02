@@ -17,7 +17,7 @@ namespace actions {
  * The standard integrand diverges at the pericentre/apocentre, so
  * we change variables to integrate over some x between +/- 1. We then change
  * variables again, to x = tanh(pi/2 * sinh(u)), and integrate over all u. 
- * This is called tanh-sinh quadrate, and this function gives us the integrand
+ * This is called tanh-sinh quadrature, and this function gives us the integrand
  * as a function of u, given the potential and parameters of the orbit
  *
  * @param E E of orbit
@@ -43,6 +43,21 @@ getThetaRSTQIntegrand(potential::AxsymFuncs pot,
  */
 std::array<double, 2>
 findApsis(potential::AxsymFuncs pot, double E, double L);
+
+/**
+ * Calculates u for a given R value of an orbit
+ * 
+ * @param E E of orbit
+ * @param L L of orbit
+ * @param pot Unperturbed potential
+ * @param R R value for which to calculate u
+ *
+ * @return u value for R
+ *
+ * @note this is useful for calculating theta_R for a point between
+ * the apses. That will also depend on the sign of v_R.
+ */
+double calculate_u(const potential::AxsymFuncs& pot, double E, double L, double R);
 
 /**
  * Get effective potential function of unperturbed potential given L

@@ -28,6 +28,15 @@ getThetaRSTQIntegrand(potential::AxsymFuncs pot,
 
 }
 
+double calculate_u(const potential::AxsymFuncs& pot, double E, double L, double R) {
+    std::array<double, 2> apsis = findApsis(pot, E, L);
+    double R_0 = (apsis[0] + apsis[1])/2;
+    double x = (R - R_0)/(0.5*(apsis[1] - apsis[0]));
+    double u = std::asinh(2/std::numbers::pi*std::atanh(x));
+    return u;
+}
+
+
 std::function<double(double)>
 getPhiEff(potential::AxsymFuncs pot, double L) {
     return [=] (double R) {

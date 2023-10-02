@@ -53,7 +53,7 @@ getDFSampleEL(std::function<double(double, double)> df,
  * @param N_u_iterate Number of iterations for calculating R from theta_R,
  * see ThetaRIntegrator
  *
- * @return sample {{R, phi}, {p_R, p_phi}}
+ * @return sample {{R, phi}, {v_R, v_phi}}
  *
  * @note considering this uses df, E_L_bounds and axsym_potential, 
  * perhaps it should be absorbed into the taperedDF class? Unless
