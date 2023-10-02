@@ -68,7 +68,7 @@ class ThetaRIntegrator {
      * you consider the two integrals, out and back. Have to dig into my notes to
      * see that).
      *
-     * @param theta_R theta_R value for which to find corresponding R value
+     * @param theta_R theta_R  value for which to find corresponding R value
      *
      * @return corresponding R value
      *
@@ -81,6 +81,19 @@ class ThetaRIntegrator {
     double calculateR(double theta_R);
     /// Calculates {R, p_R} at given theta_R for this orbit
     std::array<double, 2> getCoords(double theta_R);
+
+    /**
+     * Calculates theta_R from R, v_R for a star on this orbit
+     *
+     * @param R_coords {R, v_R} value for which to find theta_R (given E, L of 
+     * this orbit)
+     *
+     * @return theta_R, which is set to zero at the pericentre of this orbit
+     *
+     * @note Purpose (at least for now) is for checking getCoords calculations
+     *
+     **/
+    double calculateThetaR(std::array<double, 2> R_coords);
 
 };
 

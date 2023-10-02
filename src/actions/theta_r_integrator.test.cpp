@@ -48,3 +48,13 @@ TEST_F(ThetaRIntegratorTest, CoordsPlotting) {
     utility::writeCsv("../test_data/actions/theta_r_coords.csv",
                       utility::flatten(coords));
 }
+
+TEST_F(ThetaRIntegratorTest, CoordsConsistent) {
+    int N_angles = 100;
+    std::vector<double> angle_errors;
+    for(int i = 0; i < N_angles; ++i) {
+        double angle = (double)i/N_angles*2*std::numbers::pi;
+        angle_errors[i] = integrator->calculateThetaR(integator->getCoords(angle)) - angle;
+        EXPECT_LT(angle_errors[i], 1e-2);
+    }
+}
