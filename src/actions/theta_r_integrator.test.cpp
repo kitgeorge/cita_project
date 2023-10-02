@@ -51,10 +51,12 @@ TEST_F(ThetaRIntegratorTest, CoordsPlotting) {
 
 TEST_F(ThetaRIntegratorTest, CoordsConsistent) {
     int N_angles = 100;
-    std::vector<double> angle_errors;
+    std::vector<double> angle_errors(N_angles);
     for(int i = 0; i < N_angles; ++i) {
         double angle = (double)i/N_angles*2*std::numbers::pi;
-        angle_errors[i] = integrator->calculateThetaR(integrator->getCoords(angle)) - angle;
+        std::array<double, 2> R_coords = integrator->getCoords(angle);
+        double new_angle = integrator->calculateThetaR(R_coords);
+        angle_errors[i] = std::abs(new_angle - angle);
         EXPECT_LT(angle_errors[i], 1e-2);
     }
 }

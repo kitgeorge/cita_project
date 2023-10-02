@@ -6,7 +6,7 @@
 namespace vrs = vectors;
 
 namespace potential {
-// Axsymmetric, time-independent substruct with extra functions
+// Axisymmetric, time-independent substruct with extra functions
 struct AxsymFuncs : public PotentialFuncs {
     std::function<double(double)> potential_R;
     std::function<double(double)> dPhidR;

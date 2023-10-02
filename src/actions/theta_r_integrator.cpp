@@ -19,8 +19,9 @@ ThetaRIntegrator::ThetaRIntegrator(potential::AxsymFuncs pot_,
 double ThetaRIntegrator::calculateThetaR(std::array<double, 2> R_coords) {
     double u = calculate_u(pot, E, L, R_coords[0]);
     double interval = 2*u_max/N_intervals;
+    double N_intervals_u = (int)((u - (-u_max))/interval);
     double integral = 0;
-    for(int i = 0; i < N_intervals; ++i) {
+    for(int i = 0; i < N_intervals_u; ++i) {
         integral += (integrand(-u_max + i*interval)
                      + integrand(-u_max + (i + 1)*interval))
                      /2*interval;
