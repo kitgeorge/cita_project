@@ -121,25 +121,28 @@ int main() {
 
     potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
     int N_timesteps = integration_time/timestep;
-    std::array<int, 2> shape = {N_timesteps/save_interval + 1,
-                                         N_particles};
-    utility::vector2d<double> 
-    theta_R_values = utility::
-                     makeShape<double>(shape);
+    std::array<int, 2> shape = {N_particles, N_timesteps/save_interval + 1};
+    std::vector<std::function<double()>>
+    theta_R_functions(shape[0]);
     for(int i = 0; i < N_particles; ++i) {
-        std::cout << "Calculating angles: particle " << i << std::endl; 
-        double E = pot.EGivenPolar(simulation.getTrajectories()[0][i]);
-        double L = pot.LGivenPolar(simulation.getTrajectories()[0][i]);
-        actions::ThetaRIntegrator
-        integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
-        for(int j = 0; j <= N_timesteps/save_interval; ++j) {
-            std::array<double, 2>
-            R_coords = {simulation.getTrajectories()[j][i][0][0],
-                        simulation.getTrajectories()[j][i][1][0]};
-            theta_R_values[j][i] = integrator.calculateThetaR(R_coords);
+        theta_R_functions[i] = [&pot, u_max, N_u_intervals, N_u_iterate, &simulation, shape]() {
+            std::cout << "Calculating angles: particle " << i << std::endl; 
+            double E = pot.EGivenPolar(simulation.getTrajectories()[0][i]);
+            double L = pot.LGivenPolar(simulation.getTrajectories()[0][i]);
+            actions::ThetaRIntegrator
+            integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
+            std::vector<double> output(shape[1]);
+            for(int j = 0; j <= N_timesteps/save_interval; ++j) {
+                std::array<double, 2>
+                R_coords = {simulation.getTrajectories()[j][i][0][0],
+                            simulation.getTrajectories()[j][i][1][0]};
+                output[j] = integrator.calculateThetaR(R_coords);
+            }
+            return output;
         }
     }
-
+    utility::vector2d<double>
+    theta_R_values = multithreading::executeInParallel(theta_R_functions);
     utility::writeCsv("../data/n_body/theta_R_values.csv",
                       utility::flatten(theta_R_values));
 

@@ -9,14 +9,18 @@ init_theta_R_values = np.loadtxt("../data/n_body/init_theta_R_values.csv")
 plt.hist(init_theta_R_values, bins=1000)
 plt.savefig("../plots/init_theta_R_values.png")
 
+N_particles = 10000
+N_timesteps = 1001
+theta_R_values = np.loadtxt("../data/n_body/theta_R_values.csv")
+theta_R_values = theta_R_values.reshape(N_timesteps, N_particles)
+
+
 coefficient_norms = np.loadtxt("../data/n_body/test_bfe_coefficient_norms.csv")
 plt.plot(coefficient_norms)
 plt.savefig("../plots/n_body_trial_norms.png")
 # exit()
 
 data = np.loadtxt("../data/n_body/test_trajectories_nsg.csv")
-N_particles = 10000
-N_timesteps = 1001
 data = data.reshape(N_timesteps, N_particles, 2, 2)
 
 for i in range(N_timesteps):
