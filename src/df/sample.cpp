@@ -66,7 +66,7 @@ getDFSampleViaEL(std::function<double(double, double)> df,
     output[0][1] = (double)std::rand()/angle_normalisation;
     output[1][1] = sample_E_L[1]/output[0][0];
     // Just to check but I don't think this will find the problem
-    std::cout << theta_R << ", " << integrator.calculate_theta_R(R_coords) << std::endl;
+    std::cout << theta_R << ", " << integrator.calculateThetaR(R_coords) << std::endl;
     // Let's try comparing E and L calculations
     std::cout << "E: " << sample_E_L[0] << ", " << axsym_potential.EGivenPolar(output) 
               << std::endl;
