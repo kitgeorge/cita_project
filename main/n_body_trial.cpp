@@ -122,7 +122,7 @@ int main() {
     potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
     utility::vector2d<double> 
     theta_R_values = utility::
-                     makeShape<double>({{N_timesteps/save_interval + 1,
+                     makeShape<double>({{(int)integration_time/(timestep*save_interval) + 1,
                                          N_particles}});
     for(int i = 0; i < N_particles; ++i) {
         std::cout << "Calculating angles: particle " << i << std::endl; 
