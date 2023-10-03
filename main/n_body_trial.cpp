@@ -122,10 +122,10 @@ int main() {
     potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
     int N_timesteps = integration_time/timestep;
     std::array<int, 2> shape = {N_particles, N_timesteps/save_interval + 1};
-    std::vector<std::function<double()>>
+    std::vector<std::function<std::vector<double>()>>
     theta_R_functions(shape[0]);
     for(int i = 0; i < N_particles; ++i) {
-        theta_R_functions[i] = [&pot, u_max, N_u_intervals, N_u_iterate, &simulation, shape]() {
+        theta_R_functions[i] = [i, N_timesteps, save_interval, &pot, u_max, N_u_intervals, N_u_iterate, &simulation, shape]() {
             std::cout << "Calculating angles: particle " << i << std::endl; 
             double E = pot.EGivenPolar(simulation.getTrajectories()[0][i]);
             double L = pot.LGivenPolar(simulation.getTrajectories()[0][i]);
@@ -139,7 +139,7 @@ int main() {
                 output[j] = integrator.calculateThetaR(R_coords);
             }
             return output;
-        }
+        };
     }
     utility::vector2d<double>
     theta_R_values = multithreading::executeInParallel(theta_R_functions);
