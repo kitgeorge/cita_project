@@ -132,12 +132,12 @@ int main() {
             actions::ThetaRIntegrator
             integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
             std::vector<double> output(shape[1]);
-            std::vector<std::array<std::array<double, 2>, 2>>
-            R_coords_vector = simulation.getTrajectories()[j];
+            std::vector<std::vector<std::array<std::array<double, 2>, 2>>>
+            R_coords_vector = simulation.getTrajectories();
             for(int j = 0; j <= N_timesteps/save_interval; ++j) {
                 std::array<double, 2>
-                R_coords = {R_coords_vector[i][0][0],
-                            R_coords_vector[i][1][0]};
+                R_coords = {R_coords_vector[j][i][0][0],
+                            R_coords_vector[j][i][1][0]};
                 output[j] = integrator.calculateThetaR(R_coords);
             }
             return output;
