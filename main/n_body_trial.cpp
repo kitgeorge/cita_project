@@ -56,18 +56,18 @@ int main() {
     /// Debugging sample angles
     ///////////////////////////////////////////////////////////////////
 
-    potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
-    std::vector<double> theta_R_values(N_particles);
-    for(int i = 0; i < N_particles; ++i) {
-        double E = pot.EGivenPolar(sample_coords[i]);
-        double L = pot.LGivenPolar(sample_coords[i]);
-        actions::ThetaRIntegrator integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
-        theta_R_values[i] = integrator.calculateThetaR({{sample_coords[i][0][0],
-                                                         sample_coords[i][1][0]}});
-    }
+    // potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
+    // std::vector<double> theta_R_values(N_particles);
+    // for(int i = 0; i < N_particles; ++i) {
+    //     double E = pot.EGivenPolar(sample_coords[i]);
+    //     double L = pot.LGivenPolar(sample_coords[i]);
+    //     actions::ThetaRIntegrator integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
+    //     theta_R_values[i] = integrator.calculateThetaR({{sample_coords[i][0][0],
+    //                                                      sample_coords[i][1][0]}});
+    // }
 
-    utility::writeCsv("../data/n_body/init_theta_R_values.csv",
-                      theta_R_values);
+    // utility::writeCsv("../data/n_body/init_theta_R_values.csv",
+    //                   theta_R_values);
     
     ///////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////
@@ -114,4 +114,34 @@ int main() {
                       utility::flatten(utility::flatten(coefficients)));
     utility::writeCsv("../data/n_body/test_bfe_coefficient_norms.csv",
                       simulation.getBFECoefficientNorms());
+
+    ///////////////////////////////////////////////////////////////////
+    /// Calculate angles throughout trajectories
+    ///////////////////////////////////////////////////////////////////
+
+    potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
+    utility::vector2d<double> 
+    theta_R_values = utility::
+                     makeShape<double>({{N_timesteps/save_interval + 1,
+                                         N_particles}});
+    for(int i = 0; i < N_particles; ++i) {
+        std::cout << "Calculating angles: particle " << i << std::endl; 
+        double E = pot.EGivenPolar(simulation.getTrajectories()[0][i]);
+        double L = pot.LGivenPolar(simulation.getTrajectories()[0][i]);
+        actions::ThetaRIntegrator
+        integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
+        for(int j = 0; j <= N_timesteps/save_interval; ++j) {
+            std::array<double, 2>
+            R_coords = {simulation.getTrajectories()[j][i][0][0],
+                        simulation.getTrajectories()[j][i][1][0]};
+            theta_R_values[j][i] = integrator.calculateThetaR(R_coords);
+        }
+    }
+
+    utility::writeCsv("../data/n_body/theta_R_values.csv",
+                      utility::flatten(theta_R_values));
+
+    ///////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
+
 }
