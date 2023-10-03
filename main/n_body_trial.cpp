@@ -120,7 +120,7 @@ int main() {
     ///////////////////////////////////////////////////////////////////
 
     potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
-    int N_timesteps = integration_time/timestep
+    int N_timesteps = integration_time/timestep;
     std::array<int, 2> shape = {N_timesteps/save_interval + 1,
                                          N_particles};
     utility::vector2d<double> 
