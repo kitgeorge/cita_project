@@ -33,6 +33,12 @@ double ThetaRIntegrator::calculateThetaR(std::array<double, 2> R_coords) {
     if(R_coords[1] < 0) {
         theta_R = 2*std::numbers::pi - theta_R;
     }
+    // Apses are calculated in Rimpei's code. I believe that, within some small 
+    // precision, the apses may be wider than allowed by E (unless Rimpei's code
+    // forces them to be narrower, which doesn't seem to be the case). Therefore
+    // these integrals can become undefined at the apses, so to avoid this we don't
+    // go above a certain u (so we stay a certain distance from the apses).
+    // Let's try u_max = 3.
     if(std::isnan(theta_R)) {
         std::cout << "NAN theta_R: " << E << ", " << L << ", "
                   << u << ", " << integral << ", " << T << std::endl;
