@@ -33,6 +33,10 @@ double ThetaRIntegrator::calculateThetaR(std::array<double, 2> R_coords) {
     if(R_coords[1] < 0) {
         theta_R = 2*std::numbers::pi - theta_R;
     }
+    if(std::isnan(theta_R)) {
+        std::cout << "NAN theta_R: " << E << ", " << L << ", "
+                  << u << ", " << integral << ", " << T << std::endl;
+    }
     return theta_R;
 }
 
