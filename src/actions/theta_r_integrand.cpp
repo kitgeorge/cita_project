@@ -25,6 +25,8 @@ getThetaRSTQIntegrand(potential::AxsymFuncs pot,
     return [=] (double u) {
         if(Phi_eff(R_u(u)) > E) {
             std::cout << E << " < " << Phi_eff(R_u(u)) << std::endl;
+            std::cout << R_apo << ", " << R_peri << ", "
+                      << R_u(u) << ", " << R_u(-u) << std::endl;
         }
         return sqrt(2)*jacobian(u)/sqrt(E - Phi_eff(R_u(u)));
     };
