@@ -27,7 +27,7 @@ int main() {
     std::array<std::array<double, 2>, 2>
     E_L_bounds = {tap.E_bounds, tap.L_bounds};
 
-    double u_max = 5;
+    double u_max = 3;
     int N_u_intervals = 1000;
     int N_u_iterate = 5;
 
