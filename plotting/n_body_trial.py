@@ -5,6 +5,10 @@ sys.path.append('/home/kit/Documents/cita_project/')
 from py_src.disc_plotter import DiscPlotter
 import math
 
+init_theta_R_values = np.loadtxt("../data/n_body/init_theta_R_values.csv")
+plt.hist(init_theta_R_values, bins=1000)
+plt.savefig("../plots/init_theta_R_values.png")
+
 coefficient_norms = np.loadtxt("../data/n_body/test_bfe_coefficient_norms.csv")
 plt.plot(coefficient_norms)
 plt.savefig("../plots/n_body_trial_norms.png")

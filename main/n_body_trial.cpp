@@ -27,7 +27,7 @@ int main() {
     std::array<std::array<double, 2>, 2>
     E_L_bounds = {tap.E_bounds, tap.L_bounds};
 
-    double u_max = 3;
+    double u_max = 5;
     int N_u_intervals = 1000;
     int N_u_iterate = 5;
 
@@ -60,7 +60,7 @@ int main() {
     std::vector<double> theta_R_values(N_particles);
     for(int i = 0; i < N_particles; ++i) {
         double E = pot.EGivenPolar(sample_coords[i]);
-        double L = pot.EGivenPolar(sample_coords[i]);
+        double L = pot.LGivenPolar(sample_coords[i]);
         actions::ThetaRIntegrator integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
         theta_R_values[i] = integrator.calculateThetaR({{sample_coords[i][0][0],
                                                          sample_coords[i][1][0]}});
