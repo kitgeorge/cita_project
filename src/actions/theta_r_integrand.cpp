@@ -23,7 +23,7 @@ getThetaRSTQIntegrand(potential::AxsymFuncs pot,
                *std::numbers::pi/2*cosh(u);
     };
     return [=] (double u) {
-        if(Phi_eff(R_u(u)) > E) {
+        if(Phi_eff(R_u(u)) > E && 1 - std::abs(tanh(std::numbers::pi/2*sinh(u))) > 0) {
             std::cout << u << ", " << E << " < " << Phi_eff(R_u(u)) << std::endl;
             std::cout << R_apo << ", " << R_peri << ", "
                       << R_u(u) << ", " << R_u(-u) << std::endl;
