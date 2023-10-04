@@ -117,36 +117,51 @@ int main() {
 
     ///////////////////////////////////////////////////////////////////
     /// Calculate angles throughout trajectories
+    /// also E, L values
     ///////////////////////////////////////////////////////////////////
 
     potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
     int N_timesteps = integration_time/timestep;
     std::array<int, 2> shape = {N_particles, N_timesteps/save_interval + 1};
-    std::vector<std::function<std::vector<double>()>>
-    theta_R_functions(shape[0]);
+    // std::vector<std::function<std::vector<double>()>>
+    // theta_R_functions(shape[0]);
+    std::veector<std::function<std::vector<std::array<double, 2>>()>>
+    E_L_functions(shape[0]);
     std::vector<std::vector<std::array<std::array<double, 2>, 2>>>
     R_coords_vector = simulation.getTrajectories();
+    std::vector<std::vector<std::array<double, 2>>>
+    E_L_values = utility::makeShape<double>(shape);
     for(int i = 0; i < N_particles; ++i) {
-        theta_R_functions[i] = [i, N_timesteps, save_interval, &pot, u_max, N_u_intervals, N_u_iterate, &simulation, shape, &R_coords_vector]() {
-            std::cout << "Calculating angles: particle " << i << std::endl; 
-            double E = pot.EGivenPolar(R_coords_vector[0][i]);
-            double L = pot.LGivenPolar(R_coords_vector[0][i]);
-            actions::ThetaRIntegrator
-            integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
-            std::vector<double> output(shape[1]);
+        E_L_functions = [i, N_timesteps, save_interval, &pot, shape, &R_coords_vector] () {
+            std::cout << "Calculating E, L: particle " << i << std::endl;
+            std::vector<std::array<double, 2>> output(shape[1]);
             for(int j = 0; j <= N_timesteps/save_interval; ++j) {
                 std::array<double, 2>
-                R_coords = {R_coords_vector[j][i][0][0],
-                            R_coords_vector[j][i][1][0]};
-                output[j] = integrator.calculateThetaR(R_coords);
+                output[j] = {{pot.EGivenPolar(R_coords_vector[j][i]),
+                              pot.LGivenPolar(R_coords_vector[j][i])}}
             }
             return output;
         };
+        // theta_R_functions[i] = [i, N_timesteps, save_interval, &pot, u_max, N_u_intervals, N_u_iterate, &simulation, shape, &R_coords_vector]() {
+        //     std::cout << "Calculating angles: particle " << i << std::endl; 
+        //     double E = pot.EGivenPolar(R_coords_vector[0][i]);
+        //     double L = pot.LGivenPolar(R_coords_vector[0][i]);
+        //     actions::ThetaRIntegrator
+        //     integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
+        //     std::vector<double> output(shape[1]);
+        //     for(int j = 0; j <= N_timesteps/save_interval; ++j) {
+        //         std::array<double, 2>
+        //         R_coords = {R_coords_vector[j][i][0][0],
+        //                     R_coords_vector[j][i][1][0]};
+        //         output[j] = integrator.calculateThetaR(R_coords);
+        //     }
+        //     return output;
+        // };
     }
-    utility::vector2d<double>
-    theta_R_values = multithreading::executeInParallel(theta_R_functions);
-    utility::writeCsv("../data/n_body/theta_R_values.csv",
-                      utility::flatten(theta_R_values));
+    utility::vector2d<std::array<double, 2>>
+    E_L_values = multithreading::executeInParallel(E_L_functions);
+    utility::writeCsv("../data/n_body/E_L_values.csv",
+                      utility::flatten(utility::flatten(E_L_values)));
 
     ///////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////

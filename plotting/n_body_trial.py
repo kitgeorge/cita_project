@@ -16,8 +16,8 @@ theta_R_values = np.loadtxt("../data/n_body/theta_R_values.csv")
 theta_R_values = theta_R_values.reshape(N_particles, N_timesteps)
 
 for i in range(N_timesteps):
-    plt.hist(theta_R_values[:, i], bins=1000)
-    plt.ylim(0, 20)
+    plt.hist(theta_R_values[:, i], bins=10)
+    plt.ylim(0, 1500)
     plt.savefig("../plots/n_body/theta_R_distribution/t={}.png".format(i),
                 dpi=500)
     plt.close()
