@@ -20,9 +20,9 @@ potential::PotentialFuncs BFENBody::getInit() {
 void BFENBody::iterate() {
     // utility::open_channel(1);
     // utility::open_channel(0);
-    potential::PotentialFuncs pot(background);
-    // potential::PotentialFuncs pot({background, init*(-1), 
-    //                                 potential::PotentialFuncs(bfe_pot)});
+    // potential::PotentialFuncs pot(background);
+    potential::PotentialFuncs pot({background, init*(-1), 
+                                    potential::PotentialFuncs(bfe_pot)});
     // Ensure that N_particles is a multiple of particles_per_function please
     int particles_per_function = 10;
     int N_functions = N_particles/particles_per_function;
