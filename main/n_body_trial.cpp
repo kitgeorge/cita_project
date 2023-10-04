@@ -132,7 +132,7 @@ int main() {
     // std::vector<std::vector<std::array<double, 2>>>
     // E_L_values = utility::makeShape<std::array<double, 2>>(shape);
     for(int i = 0; i < N_particles; ++i) {
-        E_L_functions = [i, N_timesteps, save_interval, &pot, shape, &R_coords_vector] () {
+        E_L_functions[i] = [i, N_timesteps, save_interval, &pot, shape, &R_coords_vector] () {
             std::cout << "Calculating E, L: particle " << i << std::endl;
             std::vector<std::array<double, 2>> output(shape[1]);
             for(int j = 0; j <= N_timesteps/save_interval; ++j) {
