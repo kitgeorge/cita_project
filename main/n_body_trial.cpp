@@ -125,12 +125,12 @@ int main() {
     std::array<int, 2> shape = {N_particles, N_timesteps/save_interval + 1};
     // std::vector<std::function<std::vector<double>()>>
     // theta_R_functions(shape[0]);
-    std::veector<std::function<std::vector<std::array<double, 2>>()>>
+    std::vector<std::function<std::vector<std::array<double, 2>>()>>
     E_L_functions(shape[0]);
     std::vector<std::vector<std::array<std::array<double, 2>, 2>>>
     R_coords_vector = simulation.getTrajectories();
-    std::vector<std::vector<std::array<double, 2>>>
-    E_L_values = utility::makeShape<double>(shape);
+    // std::vector<std::vector<std::array<double, 2>>>
+    // E_L_values = utility::makeShape<std::array<double, 2>>(shape);
     for(int i = 0; i < N_particles; ++i) {
         E_L_functions = [i, N_timesteps, save_interval, &pot, shape, &R_coords_vector] () {
             std::cout << "Calculating E, L: particle " << i << std::endl;
@@ -138,7 +138,7 @@ int main() {
             for(int j = 0; j <= N_timesteps/save_interval; ++j) {
                 std::array<double, 2>
                 output[j] = {{pot.EGivenPolar(R_coords_vector[j][i]),
-                              pot.LGivenPolar(R_coords_vector[j][i])}}
+                              pot.LGivenPolar(R_coords_vector[j][i])}};
             }
             return output;
         };
