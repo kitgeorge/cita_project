@@ -160,7 +160,7 @@ int main() {
     }
     utility::vector2d<std::array<double, 2>>
     E_L_values = multithreading::executeInParallel(E_L_functions);
-    for(auto a: E_L_functions) {
+    for(auto a: E_L_values) {
         for(auto b: a) {
             for(auto c: b) {
                 std::cout << c << std::endl;
