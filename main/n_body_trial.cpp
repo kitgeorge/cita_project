@@ -139,7 +139,6 @@ int main() {
                 std::array<double, 2>
                 output[j] = {{pot.EGivenPolar(R_coords_vector[j][i]),
                               pot.LGivenPolar(R_coords_vector[j][i])}};
-                std::cout << output[j][0] << ", " << output[j][1] << std::endl;
             }
             return output;
         };
@@ -161,6 +160,13 @@ int main() {
     }
     utility::vector2d<std::array<double, 2>>
     E_L_values = multithreading::executeInParallel(E_L_functions);
+    for(auto a: E_L_functions) {
+        for(auto b: a) {
+            for(auto c: b) {
+                std::cout << c << std::endl;
+            }
+        }
+    }
     utility::writeCsv("../data/n_body/E_L_values.csv",
                       utility::flatten(utility::flatten(E_L_values)));
 
