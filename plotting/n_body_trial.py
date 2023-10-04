@@ -12,8 +12,22 @@ import math
 
 N_particles = 10000
 N_timesteps = 1001
-theta_R_values = np.loadtxt("../data/n_body/theta_R_values.csv")
-theta_R_values = theta_R_values.reshape(N_particles, N_timesteps)
+# theta_R_values = np.loadtxt("../data/n_body/theta_R_values.csv")
+# theta_R_values = theta_R_values.reshape(N_particles, N_timesteps)
+
+
+E_L_values = np.loadtxt("../data/n_body/E_L_values.csv")
+E_L_values = E_L_values.reshape(N_particles, N_timesteps, 2)
+
+for i in range(N_timesteps):
+    plt.hist(E_L_values[:, i, 0], bins=10)
+    plt.savefig("../plots/n_body/E_distribution/t={}.png".format(i),
+                dpi = 500)
+    plt.close()
+    plt.hist(E_L_values[:, i, 1], bins=10)
+    plt.savefig("../plots/n_body/L_distribution/t={}.png".format(i),
+                dpi = 500)
+    plt.close()
 
 for i in range(N_timesteps):
     plt.hist(theta_R_values[:, i], bins=10)

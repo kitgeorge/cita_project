@@ -139,6 +139,7 @@ int main() {
                 std::array<double, 2>
                 output[j] = {{pot.EGivenPolar(R_coords_vector[j][i]),
                               pot.LGivenPolar(R_coords_vector[j][i])}};
+                std::cout << output[j][0] << ", " << output[j][1] << std::endl;
             }
             return output;
         };
