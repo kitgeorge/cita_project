@@ -119,12 +119,12 @@ int main() {
     /// Plot comparison of background vs init potential
     ///////////////////////////////////////////////////////////////////
 
-    int N_potential_tabluated = 1000;
+    int N_potential_tabulated = 1000;
     int p_R_max = 10*Units::kpc;
     std::vector<double> background_tabulated(p_R_max);
     std::vector<double> init_tabulated(p_R_max);
     // potential::AxsymFuncs background = simulation.getBackground()
-    potential::PotentialFuncs init = simulation.get__Init()
+    potential::PotentialFuncs init = simulation.get__Init();
     for(int i = 0; i < N_potential_tabulated; ++i) {
         double R = (double)i/N_potential_tabulated*p_R_max;
         background_tabulated[i] = background.potential(R, 0, 0);
