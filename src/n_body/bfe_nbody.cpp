@@ -15,14 +15,14 @@ void BFENBody::getPotential() {
 potential::PotentialFuncs BFENBody::getInit() {
     getPotential();
     return potential::PotentialFuncs(bfe_pot);
-}
+} 
 
 void BFENBody::iterate() {
     // utility::open_channel(1);
     // utility::open_channel(0);
-    // potential::PotentialFuncs pot(background);
-    potential::PotentialFuncs pot({background, init*(-1), 
-                                    potential::PotentialFuncs(bfe_pot)});
+    potential::PotentialFuncs pot(background);
+    // potential::PotentialFuncs pot({background, init*(-1), 
+    //                                 potential::PotentialFuncs(bfe_pot)});
     // Ensure that N_particles is a multiple of particles_per_function please
     int particles_per_function = 10;
     int N_functions = N_particles/particles_per_function;
@@ -67,7 +67,7 @@ void BFENBody::iterate() {
     std::vector<std::vector<std::array<std::array<double, 2>, 2>>>
     data = multithreading::executeInParallel(rk4_iteration_functions);
     coords = utility::flatten(data);
-    getPotential();
+    // getPotential();
     // utility::close_channel(1);
     // utility::close_channel(0);
 }
