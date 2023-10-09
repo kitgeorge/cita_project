@@ -127,4 +127,14 @@ BFENBody::getBFECoefficientNorms() {
     return bfe_coefficient_norms;
 }
 
+const potential::AxsymFuncs
+BFENBody::getBackground() {
+    return background;
+}
+
+const potential::AxsymFuncs
+BFENBody::getInit() {
+    return init;
+}
+
 }

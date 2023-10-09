@@ -126,6 +126,8 @@ class BFENBody {
         std::vector<double>
         getBFECoefficientNorms();
 
+        const potential::AxsymFuncs getBackground();
+        const potential::AxsymFuncs getInit();
 };
 
 }

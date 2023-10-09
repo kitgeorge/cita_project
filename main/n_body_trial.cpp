@@ -110,10 +110,36 @@ int main() {
     n_body::BFENBody simulation(timestep, save_interval, integration_time,
                         N_particles, background, particle_masses, 
                         sample_coords);
-    utility::writeCsv("../data/n_body/test_trajectories.csv",
+    utility::writeCsv("../data/n_body/test_trajectories_nsg.csv",
                       utility::flatten(utility::flatten(utility::flatten(
                         simulation.getTrajectories()
                       ))));
+
+    ///////////////////////////////////////////////////////////////////
+    /// Plot comparison of background vs init potential
+    ///////////////////////////////////////////////////////////////////
+
+    int N_potential_tabluated = 1000;
+    int p_R_max = 10*Units::kpc;
+    std::vector<double> background_tabulated(p_R_max);
+    std::vector<double> init_tabulated(p_R_max);
+    potential::AxsymFuncs background = simulation.getBackground()
+    potential::AxsymFuncs init = simulation.getInit()
+    for(int i = 0; i < N_potential_tabulated; ++i) {
+        double R = (double)i/N_potential_tabulated*p_R_max;
+        background_tabulated[i] = background.potential(R, 0, 0);
+        init_tabulated[i] = init.potential(R, 0, 0);
+    }
+    utility::writeCsv("../data/n_body/background_potential.csv",
+                      background_tabulated);
+    utility::writeCsv("../data/n_body/init_potential.csv",
+                      init_tabulated);
+
+    ///////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
+
+
+
     std::array<int, 3> 
     coefficients_shape = utility::getShape(simulation.getBFECoefficients());
     utility::vector3d<std::array<double, 2>>

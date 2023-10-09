@@ -96,12 +96,23 @@ N_timesteps = 1001
 
 data = np.loadtxt("../data/n_body/test_trajectories.csv")
 data = data.reshape(N_timesteps, N_particles, 2, 2)
+data_nsg = np.loadtxt("../data/n_body/test_trajectories_nsg.csv")
+data_nsg = data_nsg.reshape(N_timesteps, N_particles, 2, 2)
+
+difference = data - data_nsg
+
+# for i in range(N_timesteps):
+#     fig = plt.figure()
+#     ax = fig.add_subplot(projection='polar')
+#     c = ax.scatter(data[i, :, 0, 1], data[i, :, 0, 0], s=0.1)
+#     ax.set_ylim([0, 10])
+#     plt.savefig("../plots/n_body_trial/t={:04d}Myr".format(i*10))
+#     plt.close()
 
 for i in range(N_timesteps):
     fig = plt.figure()
     ax = fig.add_subplot(projection='polar')
-    c = ax.scatter(data[i, :, 0, 1], data[i, :, 0, 0], s=0.1)
+    c = ax.scatter(difference[i, :, 0, 1], difference[i, :, 0, 0], s=0.1)
     ax.set_ylim([0, 10])
-    plt.savefig("../plots/n_body_trial/t={:04d}Myr".format(i*10))
+    plt.savefig("../plots/n_body_trial_difference/t={:04d}Myr".format(i*10))
     plt.close()
-
