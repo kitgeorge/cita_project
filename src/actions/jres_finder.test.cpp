@@ -1,3 +1,4 @@
+#pragma once
 #include "gtest/gtest.h"
 #include "jres_finder.hpp"
 #include "mestel.hpp"

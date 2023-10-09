@@ -4,11 +4,48 @@
 #include "mestel.hpp"
 #include "units.hpp"
 #include "spiral.hpp"
+#include "shape.hpp"
 #include <cmath>
 #include <numbers>
 #include <iostream>
 
 using namespace potential;
+
+TEST(PotentialFuncsTest, DISABLED_PlottingPotentialFromDensity) {
+    std::array<int, 2> shape = {65, 33};
+    utility::vector2d<std::complex<double>>
+    coefficients = utility::makeShape<std::complex<double>>(shape);
+    for(int i = 0; i <= 64; ++i) {
+        for(int j = 0; j <= 32; ++j) {
+            coefficients[i][j] = 0;
+        }
+    }
+    coefficients[0][1] = 1;
+    basis_functions::PotentialFromDensity bfe_pot;
+    bfe_pot.initFromCoefficients(coefficients);
+    PotentialFuncs pot(bfe_pot);
+    int N_R = 100;
+    int N_phi = 300;
+    std::array<int, 2> plot_shape = {N_R, N_phi};
+    double R_max = 1;
+    utility::vector2d<double> 
+    potential_values = utility::makeShape<double>(plot_shape);
+    utility::vector2d<std::array<double, 2>> 
+    force_values = utility::makeShape<std::array<double, 2>>(plot_shape);
+    for(int i = 0; i < plot_shape[0]; ++i) {
+        for(int j = 0; j < plot_shape[1]; ++j) {
+            double R = (double)i/plot_shape[0]*R_max;
+            double phi = (double)j/plot_shape[1]*2*std::numbers::pi;
+            potential_values[i][j] = pot.potential(R, phi, 0);
+            force_values[i][j] = pot.polar_force(R, phi, 0);
+        }
+    }
+    utility::writeCsv("../test_data/potential/pfd_potential.csv",
+                      utility::flatten(potential_values));
+    utility::writeCsv("../test_data/potential/pfd_polar_force.csv",
+                      utility::flatten(utility::flatten(force_values)));
+
+}
 
 TEST(PotentialFuncsTest, CartesianForceWorks) {
     std::function<double(double, double, double)>

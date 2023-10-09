@@ -37,12 +37,27 @@ int main() {
     sample_coords(N_particles);
     std::vector<std::array<double, 2>> sample_positions(N_particles);
 
+    ///////////////////////////////////////////////////////////////////
+    /// Try multiplying DF by azimuthal variation
+    ///////////////////////////////////////////////////////////////////
+
+    std::function<double(double, double)>
+    unwound_spiral = [tap] (double R, double phi) {
+        return tap.getTaperedDF()(R, phi)*cos(2*phi);
+    };
+
+    ///////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
+
     for(int i = 0; i < N_particles; ++i) {
         // For some reason, a sample was giving R = -nan. Rather than
         // fixing the problem I'm just going to suppress it for now
         int nan_flag = 1;
         while(nan_flag) {
-            sample_coords[i] = df::getDFSampleViaEL(tap.getTaperedDF(), E_L_bounds,
+            // sample_coords[i] = df::getDFSampleViaEL(tap.getTaperedDF(), E_L_bounds,
+            //                         potential::getMestel(v_c, R_0),
+            //                         u_max, N_u_intervals, N_u_iterate);
+            sample_coords[i] = df::getDFSampleViaEL(unwound_spiral, E_L_bounds,
                                     potential::getMestel(v_c, R_0),
                                     u_max, N_u_intervals, N_u_iterate);
             if(std::isfinite(sample_coords[i][1][0])) {
@@ -51,6 +66,8 @@ int main() {
         }
         sample_positions[i] = sample_coords[i][0];
     }
+
+
 
     ///////////////////////////////////////////////////////////////////
     /// Debugging sample angles
@@ -123,8 +140,8 @@ int main() {
     potential::AxsymFuncs pot = potential::getMestel(v_c, R_0);
     int N_timesteps = integration_time/timestep;
     std::array<int, 2> shape = {N_particles, N_timesteps/save_interval + 1};
-    // std::vector<std::function<std::vector<double>()>>
-    // theta_R_functions(shape[0]);
+    std::vector<std::function<std::vector<double>()>>
+    theta_R_functions(shape[0]);
     std::vector<std::function<std::vector<std::array<double, 2>>()>>
     E_L_functions(shape[0]);
     std::vector<std::vector<std::array<std::array<double, 2>, 2>>>
@@ -141,25 +158,29 @@ int main() {
             }
             return output;
         };
-        // theta_R_functions[i] = [i, N_timesteps, save_interval, &pot, u_max, N_u_intervals, N_u_iterate, &simulation, shape, &R_coords_vector]() {
-        //     std::cout << "Calculating angles: particle " << i << std::endl; 
-        //     double E = pot.EGivenPolar(R_coords_vector[0][i]);
-        //     double L = pot.LGivenPolar(R_coords_vector[0][i]);
-        //     actions::ThetaRIntegrator
-        //     integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
-        //     std::vector<double> output(shape[1]);
-        //     for(int j = 0; j <= N_timesteps/save_interval; ++j) {
-        //         std::array<double, 2>
-        //         R_coords = {R_coords_vector[j][i][0][0],
-        //                     R_coords_vector[j][i][1][0]};
-        //         output[j] = integrator.calculateThetaR(R_coords);
-        //     }
-        //     return output;
-        // };
+        theta_R_functions[i] = [i, N_timesteps, save_interval, &pot, u_max, N_u_intervals, N_u_iterate, &simulation, shape, &R_coords_vector]() {
+            std::cout << "Calculating angles: particle " << i << std::endl; 
+            double E = pot.EGivenPolar(R_coords_vector[0][i]);
+            double L = pot.LGivenPolar(R_coords_vector[0][i]);
+            actions::ThetaRIntegrator
+            integrator(pot, E, L, u_max, N_u_intervals, N_u_iterate);
+            std::vector<double> output(shape[1]);
+            for(int j = 0; j <= N_timesteps/save_interval; ++j) {
+                std::array<double, 2>
+                R_coords = {R_coords_vector[j][i][0][0],
+                            R_coords_vector[j][i][1][0]};
+                output[j] = integrator.calculateThetaR(R_coords);
+            }
+            return output;
+        };
     }
     utility::vector2d<std::array<double, 2>>
     E_L_values = multithreading::executeInParallel(E_L_functions);
+    utility::vector2d<double>
+    theta_R_values = multithreading::executeInParallel(theta_R_functions);
 
+    utility::writeCsv("../data/n_body/theta_R_values.csv",
+                      utility::flatten(theta_R_values));
     utility::writeCsv("../data/n_body/E_L_values.csv",
                       utility::flatten(utility::flatten(E_L_values)));
 
