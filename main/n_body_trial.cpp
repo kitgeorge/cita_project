@@ -20,7 +20,7 @@ int main() {
     std::array<double, 2> taper_indices = {4, 5};
     std::array<double, 2> cutoff_radii = {0.1, 20};
     std::function<double(double)>
-    target_Q = [] (double R) {return 2;};
+    target_Q = [] (double R) {return 1;};
     df::TaperedDF tap(v_c, R_0, active_fraction,
                   taper_radii, taper_indices, cutoff_radii,
                   target_Q);
@@ -41,10 +41,10 @@ int main() {
     /// Try multiplying DF by azimuthal variation
     ///////////////////////////////////////////////////////////////////
 
-    std::function<double(double, double)>
-    unwound_spiral = [tap] (double R, double phi) {
-        return tap.getTaperedDF()(R, phi)*cos(2*phi);
-    };
+    // std::function<double(double, double)>
+    // unwound_spiral = [tap] (double R, double phi) {
+    //     return tap.getTaperedDF()(R, phi)*cos(2*phi);
+    // };
 
     ///////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////
@@ -54,12 +54,12 @@ int main() {
         // fixing the problem I'm just going to suppress it for now
         int nan_flag = 1;
         while(nan_flag) {
-            // sample_coords[i] = df::getDFSampleViaEL(tap.getTaperedDF(), E_L_bounds,
-            //                         potential::getMestel(v_c, R_0),
-            //                         u_max, N_u_intervals, N_u_iterate);
-            sample_coords[i] = df::getDFSampleViaEL(unwound_spiral, E_L_bounds,
+            sample_coords[i] = df::getDFSampleViaEL(tap.getTaperedDF(), E_L_bounds,
                                     potential::getMestel(v_c, R_0),
                                     u_max, N_u_intervals, N_u_iterate);
+            // sample_coords[i] = df::getDFSampleViaEL(unwound_spiral, E_L_bounds,
+            //                         potential::getMestel(v_c, R_0),
+            //                         u_max, N_u_intervals, N_u_iterate);
             if(std::isfinite(sample_coords[i][1][0])) {
                 nan_flag = 0;
             }
