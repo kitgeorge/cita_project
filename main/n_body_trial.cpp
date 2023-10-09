@@ -124,7 +124,7 @@ int main() {
     std::vector<double> background_tabulated(p_R_max);
     std::vector<double> init_tabulated(p_R_max);
     potential::AxsymFuncs background = simulation.getBackground()
-    potential::AxsymFuncs init = simulation.getInit()
+    potential::PotentialFuncs init = simulation.get__Init()
     for(int i = 0; i < N_potential_tabulated; ++i) {
         double R = (double)i/N_potential_tabulated*p_R_max;
         background_tabulated[i] = background.potential(R, 0, 0);

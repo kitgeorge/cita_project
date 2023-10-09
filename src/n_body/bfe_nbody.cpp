@@ -132,8 +132,8 @@ BFENBody::getBackground() {
     return background;
 }
 
-const potential::AxsymFuncs
-BFENBody::getInit() {
+const potential::PotentialFuncs
+BFENBody::get__Init() {
     return init;
 }
 

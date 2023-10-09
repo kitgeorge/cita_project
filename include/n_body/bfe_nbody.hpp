@@ -127,7 +127,8 @@ class BFENBody {
         getBFECoefficientNorms();
 
         const potential::AxsymFuncs getBackground();
-        const potential::AxsymFuncs getInit();
+        // Just get Init, no side effects
+        const potential::PotentialFuncs get__Init();
 };
 
 }
