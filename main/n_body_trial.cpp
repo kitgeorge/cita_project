@@ -121,8 +121,8 @@ int main() {
 
     int N_potential_tabulated = 1000;
     int p_R_max = 10*Units::kpc;
-    std::vector<double> background_tabulated(p_R_max);
-    std::vector<double> init_tabulated(p_R_max);
+    std::vector<double> background_tabulated(N_potential_tabulated);
+    std::vector<double> init_tabulated(N_potential_tabulated);
     // potential::AxsymFuncs background = simulation.getBackground()
     potential::PotentialFuncs init = simulation.get__Init();
     for(int i = 0; i < N_potential_tabulated; ++i) {
