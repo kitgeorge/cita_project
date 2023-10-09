@@ -123,7 +123,7 @@ int main() {
     int p_R_max = 10*Units::kpc;
     std::vector<double> background_tabulated(p_R_max);
     std::vector<double> init_tabulated(p_R_max);
-    potential::AxsymFuncs background = simulation.getBackground()
+    // potential::AxsymFuncs background = simulation.getBackground()
     potential::PotentialFuncs init = simulation.get__Init()
     for(int i = 0; i < N_potential_tabulated; ++i) {
         double R = (double)i/N_potential_tabulated*p_R_max;
