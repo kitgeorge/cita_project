@@ -50,7 +50,7 @@ std::vector<std::vector<std::complex<double>>>
 PotentialFromDensity::
 getCoefficients(const DensityType& density) const {
     pfd_mtx.lock();
-    std::cout << nl_max[0] + 1 << ", " << nl_max[1] + 1 << std::endl;
+    // std::cout << nl_max[0] + 1 << ", " << nl_max[1] + 1 << std::endl;
     pfd_mtx.unlock();
     std::vector<std::vector<std::complex<double>>>
     output(nl_max[0] + 1, std::vector<std::complex<double>>(nl_max[1] + 1));
@@ -161,15 +161,13 @@ getTruncFunction(std::function<std::function<DataType(double, double)>
     }
     for(int n = 1; n <= nl_max[0]; ++n) {
         for(int l = 0; l <= nl_max[1]; ++l) {
-            std::cout << n << ", " << l << std::endl;
+            // std::cout << n << ", " << l << std::endl;
             output = utility::addFunctions(output,
                                            utility::multiplyFunction(BFE_member_function(n, l),
                                                 coefficients[n][l]));
         }
     }
 
-    int s = 7;
-    std::cout << s << std::endl;
 
     return output;
 

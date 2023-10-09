@@ -71,7 +71,6 @@ template <class Arg0, class Arg1>
 std::function<std::complex<double>(Arg0, Arg1)>
 addFunctions(const std::function<std::complex<double>(Arg0, Arg1)>& first,
              const std::function<std::complex<double>(Arg0, Arg1)>& second) {
-    std::cout << "B" << std::endl;
     return [=] (Arg0 a0, Arg1 a1) {
         return first(a0, a1) + second(a0, a1);
     };
@@ -146,7 +145,6 @@ template<class Arg0, class Arg1>
 std::function<std::complex<double>(Arg0, Arg1)>
 multiplyFunction(const std::function<std::complex<double>(Arg0, Arg1)>& f, 
                  std::complex<double> scalar) {
-    std::cout << "A" << std::endl;
     return [=] (Arg0 a0, Arg1 a1) {
         return scalar*f(a0, a1);
     };
