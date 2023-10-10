@@ -108,39 +108,39 @@ int main() {
     /// Will plot background and init densities
     ///////////////////////////////////////////////////////////////////
 
-    std::vector<std::array<double, 3>> sample_density(N_particles);
-    for(int i = 0; i < N_particles; ++i) {
-        sample_density[i][0] = sample_positions[i][0];
-        sample_density[i][1] = sample_positions[i][1];
-        sample_density[i][2] = particle_mass;
-    }
-    basis_functions::PotentialFromDensity check_pot;
-    check_pot.initFromDensity(sample_density);
+    // std::vector<std::array<double, 3>> sample_density(N_particles);
+    // for(int i = 0; i < N_particles; ++i) {
+    //     sample_density[i][0] = sample_positions[i][0];
+    //     sample_density[i][1] = sample_positions[i][1];
+    //     sample_density[i][2] = particle_mass;
+    // }
+    // basis_functions::PotentialFromDensity check_pot;
+    // check_pot.initFromDensity(sample_density);
 
-    std::function<double(double, double)>
-    background_density = [v_c] (double R, double phi) {
-        return pow(v_c, 2)/(2*std::numbers::pi*Units::G*R);
-    };
-    std::function<double(double, double)>
-    sample_density_function = check_pot.trunc_density;
+    // std::function<double(double, double)>
+    // background_density = [v_c] (double R, double phi) {
+    //     return pow(v_c, 2)/(2*std::numbers::pi*Units::G*R);
+    // };
+    // std::function<double(double, double)>
+    // sample_density_function = check_pot.trunc_density;
 
-    int N_R_values_density = 1000;
-    double R_density_max = 10*Units::kpc;
+    // int N_R_values_density = 1000;
+    // double R_density_max = 10*Units::kpc;
 
-    std::vector<double> background_density_values(N_R_values_density);
-    std::vector<double> sample_density_values(N_R_values_density);
-    for(int i = 0; i < N_R_values_density; ++i) {
-        double R = (double)i/N_R_values_density*R_density_max;
-        background_density_values[i] = background_density(R, 0);
-        sample_density_values[i] = sample_density_function(R, 0);
-    }
+    // std::vector<double> background_density_values(N_R_values_density);
+    // std::vector<double> sample_density_values(N_R_values_density);
+    // for(int i = 0; i < N_R_values_density; ++i) {
+    //     double R = (double)i/N_R_values_density*R_density_max;
+    //     background_density_values[i] = background_density(R, 0);
+    //     sample_density_values[i] = sample_density_function(R, 0);
+    // }
 
-    utility::writeCsv("../data/n_body/background_density_values.csv",
-                      background_density_values);
-    utility::writeCsv("../data/n_body/sample_density_values.csv",
-                      sample_density_values);
+    // utility::writeCsv("../data/n_body/background_density_values.csv",
+    //                   background_density_values);
+    // utility::writeCsv("../data/n_body/sample_density_values.csv",
+    //                   sample_density_values);
     
-    return 0;
+    // return 0;
 
     ///////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////
@@ -154,7 +154,7 @@ int main() {
     n_body::BFENBody simulation(timestep, save_interval, integration_time,
                         N_particles, background, particle_masses, 
                         sample_coords);
-    utility::writeCsv("../data/n_body/test_trajectories_nsg.csv",
+    utility::writeCsv("../data/n_body/test_trajectories.csv",
                       utility::flatten(utility::flatten(utility::flatten(
                         simulation.getTrajectories()
                       ))));
@@ -197,7 +197,7 @@ int main() {
             }
         }
     }
-    utility::writeCsv("../data/n_body/test_bfe_coefficients_nsg.csv",
+    utility::writeCsv("../data/n_body/test_bfe_coefficients.csv",
                       utility::flatten(utility::flatten(coefficients)));
     utility::writeCsv("../data/n_body/test_bfe_coefficient_norms.csv",
                       simulation.getBFECoefficientNorms());
