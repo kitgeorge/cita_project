@@ -139,8 +139,8 @@ int main() {
                       background_density_values);
     utility::writeCsv("../data/n_body/sample_density_values.csv",
                       sample_density_values);
-                      return 0;
     
+    return 0;
 
     ///////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////

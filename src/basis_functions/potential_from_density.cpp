@@ -262,7 +262,7 @@ getParticleMass(const std::vector<std::array<double, 2>> positions,
     int N_particles = positions.size();
     std::vector<std::array<double, 3>> density(N_particles);
     for(int i = 0; i < N_particles; ++i) {
-        density[i] = {1, positions[i][0], positions[i][1]};
+        density[i] = {positions[i][0], positions[i][1], 1};
     }
     initFromDensity(density);
     double mass = target_density(target_coords[0], target_coords[1])
