@@ -8,6 +8,22 @@
 
 namespace basis_functions {
 
+
+
+
+
+/**
+ * Calculates truncated density/potential/force functions from density
+ *
+ * This class uses a BFE object to find the BFE coefficients of 
+ * a density object (either a function or a vector of particle positions/masses).
+ * It can also accept the BFE coefficients directly. These coefficients
+ * describe terms up to maximum n and |l| indices in the BFE. 
+ * Density, potential and force functions are expanded in basis functions
+ * and the expansion is truncated at nl_max, giving truncated density,
+ * potential and force functions.
+ *
+ */
 class PotentialFromDensity {
     const std::shared_ptr<const basis_functions::BFE> expansion;
     const std::array<int, 2> nl_max;
@@ -41,14 +57,40 @@ class PotentialFromDensity {
     getTruncForce() const;
 
     public:
+        /**
+         * Truncated density function of (R, phi)
+         *
+         * Density in (R, phi), expanded in basis functions with only
+         * terms of indices n <= n_max, -l_max <= l <= l_max included.
+         */
         std::function<double(double, double)> trunc_density;
+        /// Truncated potential function of (R, phi)
         std::function<double(double, double)> trunc_potential;
+        /// Truncated force function of (R, phi)
         std::function<std::array<double, 2>(double, double)> trunc_force;
 
+
+        /**
+         * Constructor
+         *
+         * Sets the maximum indices n and l of basis functions to be used,
+         * and constructs a BFE object, a shared pointer to which is kept.
+         *
+         * @param n_max maximum value of n index in BFE
+         * @param l_max maximum(/negative of minimum) value for l index in BFE
+         *
+         * @note n_max and l_max for the BFE object are set as constants in 
+         * its BFETables subclass, so the values here are not connected to the 
+         * BFE object. Just make sure they are not greater than the BFETables
+         * values (the default values here at time of writing). This is poor
+         * design but not a priority now.
+         */
         PotentialFromDensity(int n_max=64, int l_max=32);
+        /// Constructor as above, but stores pointer to existing BFE object
         PotentialFromDensity(const std::shared_ptr<const basis_functions::BFE> 
                              expansion_,
                              int n_max=64, int l_max=32);
+        /// Copy constructor
         PotentialFromDensity(const PotentialFromDensity& old);
 
 
@@ -77,8 +119,23 @@ class PotentialFromDensity {
                                target_density, 
                                const std::array<double, 2> target_coords);
 
+        /**
+         * Finds BFE coefficients -> truncated functions for a given density
+         *
+         * This function takes a density, either as a function or a list of particle
+         * positions with masses, and uses the BFE object to find the corresponding
+         * BFE coefficients (up to n_max, l_max). The truncated density, potential
+         * and force functions (truncated to only the terms up to n_max, l_max) are
+         * then set from these coefficients
+         *
+         * @param density This template is explictly instantiated for density as an
+         * std::function<double(double, double)> (function of R and phi) or an
+         * std::vector<std::array<double, 3>> (a vector of particles' 
+         * {R, phi, m} values).
+         */
         template <typename DensityType>
         void initFromDensity(const DensityType& density);
+        /// Directly sets BFE coefficients -> truncated functions as above
         void initFromCoefficients(const std::vector<std::vector<std::complex<double>>>
                                   coefficients_);
         

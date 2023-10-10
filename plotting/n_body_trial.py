@@ -93,6 +93,12 @@ N_timesteps = 1001
 # plt.plot(coefficient_norms)
 # plt.savefig("../plots/n_body_trial_norms.png")
 # # exit()
+#     fig = plt.figure()
+#     ax = fig.add_subplot(projection='polar')
+#     c = ax.scatter(data[i, :, 0, 1], data[i, :, 0, 0], s=0.1)
+#     ax.set_ylim([0, 10])
+#     plt.savefig("../plots/n_body_trial/t={:04d}Myr".format(i*10))
+#     plt.close()
 
 data = np.loadtxt("../data/n_body/test_trajectories.csv")
 data = data.reshape(N_timesteps, N_particles, 2, 2)
